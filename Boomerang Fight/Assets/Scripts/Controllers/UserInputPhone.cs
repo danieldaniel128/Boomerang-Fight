@@ -1,13 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-
-
-public abstract class UserInputPhone : ScriptableObject// interface "IPhoneInput" that has GetTouchPhase, GetTouchPosition
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+public class UserInputPhone : ScriptableObject, IPhoneInput // interface "IPhoneInput" that has GetTouchPhase, GetTouchPosition
 {
     public Vector2 TouchPosition;
+    public TouchPhase TouchPhase;
+
+    public TouchPhase GetTouchPhase()
+    {
+        return TouchPhase.None;
+    }
+
+    public Vector2 GetTouchPosition()
+    {
+       return TouchPosition;
+    }
+
     //phase
 }

@@ -6,9 +6,18 @@
             "id": "d3410333-3758-450d-8356-5a4bb75098f1",
             "actions": [
                 {
-                    "name": "Touch",
-                    "type": "Button",
+                    "name": "TouchPosition",
+                    "type": "Value",
                     "id": "2ac42e18-7d4f-41cf-8afc-86faa6b95687",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TouchPhase",
+                    "type": "Button",
+                    "id": "b57eea1a-bc3b-4575-8568-4748df9bb774",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,12 +27,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "c505881a-8b86-4ab8-9aba-48b910773a01",
+                    "id": "36cc63a8-77ee-4776-869b-8df3febd4ced",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11ea0b11-60af-4e5f-821f-f59d1bffb5a1",
                     "path": "<Touchscreen>/touch*/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "TouchPhase",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
