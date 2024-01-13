@@ -9,15 +9,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        
-        //_input.
+        _input.SubscribeInputActions();
+    }
+    private void OnDisable()
+    {
+        _input.UnsubscribeInputActions();
     }
 
     private void Update()
     {
         //_input.
     }
-
 
     private void HandleMovement()
     {

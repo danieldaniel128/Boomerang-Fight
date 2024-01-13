@@ -9,4 +9,13 @@ public class OldInputSystem : UserInputPhone
 {
     //GetTouchPhase
     //GetTouchPhase
+    public override void SubscribeInputActions()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void UnsubscribeInputActions()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -31,26 +31,26 @@ public partial class @InputAsset: IInputActionCollection2, IDisposable
                     ""name"": ""TouchPosition"",
                     ""type"": ""Value"",
                     ""id"": ""2ac42e18-7d4f-41cf-8afc-86faa6b95687"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""TouchPhase"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b57eea1a-bc3b-4575-8568-4748df9bb774"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""36cc63a8-77ee-4776-869b-8df3febd4ced"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -61,7 +61,7 @@ public partial class @InputAsset: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""11ea0b11-60af-4e5f-821f-f59d1bffb5a1"",
-                    ""path"": ""<Touchscreen>/touch*/Press"",
+                    ""path"": ""<Touchscreen>/primaryTouch/phase"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

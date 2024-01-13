@@ -11,25 +11,36 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class NewInputSystem : UserInputPhone, IPlayerActions
 {
     InputAsset _input;
-
-    public void SubscribeInputActions()//subscribe on enable
+    public override void SubscribeInputActions()//subscribe on enable
     {
         _input = new InputAsset();
-        _input.Player.SetCallbacks(this);
+        _input.Player.TouchPhase.started += OnTouchPhase;
+        _input.Player.TouchPhase.performed += OnTouchPhase;
+        _input.Player.TouchPhase.canceled += OnTouchPhase;
+        _input.Player.TouchPosition.started += OnTouchPosition;
+        _input.Player.TouchPosition.performed += OnTouchPosition;
+        _input.Player.TouchPosition.canceled += OnTouchPosition;
     }
-    public void UnsubscribeInputActions()//unsubsribed on disable
+    public override void UnsubscribeInputActions()//unsubsribed on disable
     {
-        _input.Player.RemoveCallbacks(this);
+        _input.Player.TouchPhase.started -= OnTouchPhase;
+        _input.Player.TouchPhase.performed -= OnTouchPhase;
+        _input.Player.TouchPhase.canceled -= OnTouchPhase;
+        _input.Player.TouchPosition.started -= OnTouchPosition;
+        _input.Player.TouchPosition.performed -= OnTouchPosition;
+        _input.Player.TouchPosition.canceled -= OnTouchPosition;
     }
 
     public void OnTouchPhase(InputAction.CallbackContext context)
     {
         this.TouchPhase = context.ReadValue<TouchPhase>();
+        Debug.Log($"touched phase {TouchPhase}");
     }
 
     public void OnTouchPosition(InputAction.CallbackContext context)
     {
         TouchPosition = context.ReadValue<Vector2>();
+        Debug.Log($"touched phase {TouchPosition}");
     }
 }
 
