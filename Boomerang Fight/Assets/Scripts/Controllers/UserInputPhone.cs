@@ -5,8 +5,15 @@ public abstract class UserInputPhone : ScriptableObject, IPhoneInput // interfac
 {
     public Vector2 TouchPosition;
     public TouchPhase TouchPhase;
-    public abstract void SubscribeInputActions();
-    public abstract void UnsubscribeInputActions();
+
+    Action OnTouch;
+    public virtual void SubscribeInputActions()
+    {
+    }
+    public virtual void UnsubscribeInputActions()
+    {
+
+    }
     public virtual TouchPhase GetTouchPhase()
     {
         return TouchPhase.None;
@@ -14,7 +21,7 @@ public abstract class UserInputPhone : ScriptableObject, IPhoneInput // interfac
 
     public virtual Vector2 GetTouchPosition()
     {
-       return TouchPosition;
+       return Vector2.zero;
     }
 
     //phase

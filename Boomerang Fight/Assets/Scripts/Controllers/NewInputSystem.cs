@@ -8,11 +8,12 @@ using static InputAsset;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 [CreateAssetMenu(fileName = "NewInput", menuName = "InputSystem/New Input", order = 1)]
-public class NewInputSystem : UserInputPhone, IPlayerActions
+public class NewInputSystem : UserInputPhone/*, IPlayerActions*/
 {
     InputAsset _input;
     public override void SubscribeInputActions()//subscribe on enable
     {
+        base.SubscribeInputActions();
         _input = new InputAsset();
         _input.Player.TouchPhase.started += OnTouchPhase;
         _input.Player.TouchPhase.performed += OnTouchPhase;
@@ -23,6 +24,7 @@ public class NewInputSystem : UserInputPhone, IPlayerActions
     }
     public override void UnsubscribeInputActions()//unsubsribed on disable
     {
+        base.UnsubscribeInputActions();
         _input.Player.TouchPhase.started -= OnTouchPhase;
         _input.Player.TouchPhase.performed -= OnTouchPhase;
         _input.Player.TouchPhase.canceled -= OnTouchPhase;

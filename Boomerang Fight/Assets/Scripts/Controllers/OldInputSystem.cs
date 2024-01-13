@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.InputSystem.EnhancedTouch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 [CreateAssetMenu(fileName = "OldInput", menuName = "InputSystem/Old Input", order = 1)]
 public class OldInputSystem : UserInputPhone
@@ -11,11 +11,21 @@ public class OldInputSystem : UserInputPhone
     //GetTouchPhase
     public override void SubscribeInputActions()
     {
-        throw new System.NotImplementedException();
+        base.SubscribeInputActions();
     }
 
     public override void UnsubscribeInputActions()
     {
-        throw new System.NotImplementedException();
+        base .UnsubscribeInputActions();
+
     }
+    public override Vector2 GetTouchPosition()
+    {
+        return Vector2.zero;
+    }
+    public override TouchPhase GetTouchPhase()
+    {
+        return TouchPhase.None;
+    }
+
 }

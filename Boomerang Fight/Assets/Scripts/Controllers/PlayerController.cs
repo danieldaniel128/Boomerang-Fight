@@ -5,25 +5,30 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     
-   [SerializeField] UserInputPhone _input;
+    //[SerializeField] UserInputPhone _input;
+    [Header("JoySticks")]
+    [SerializeField] Joystick _moveJoystick;
+    [SerializeField] Joystick _AttackJoystick;
+    [SerializeField] float moveSpeed;
 
     private void OnEnable()
     {
-        _input.SubscribeInputActions();
+        //_input.SubscribeInputActions();
     }
     private void OnDisable()
     {
-        _input.UnsubscribeInputActions();
+        //_input.UnsubscribeInputActions();
     }
 
     private void Update()
     {
-        //_input.
+        HandleMovement();
     }
 
     private void HandleMovement()
     {
-        Vector2 touchPosition = new Vector2(_input.TouchPosition.x, _input.TouchPosition.y);
+        Vector3 moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical);
+        transform.position +=  moveDirection * moveSpeed * Time.deltaTime;
         //do logic
     }
 }
