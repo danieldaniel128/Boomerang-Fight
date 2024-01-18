@@ -10,7 +10,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     [SerializeField] TMP_InputField _playerNameInput;
     [SerializeField] TextMeshProUGUI _connectingState_TMP;
-    const string _lobbySceneName = "Lobby";
+    [SerializeField] GameObject _lobbyPanel;
 
     /// <summary>
     /// tries to connect to server using setting and seting player nickname
@@ -27,6 +27,14 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     /// </summary>
     public override void OnConnectedToMaster()
     {
-        SceneManager.LoadScene(_lobbySceneName);
+        EnterLobby();
+    }
+    /// <summary>
+    /// switches to lobby panel when connected
+    /// </summary>
+    private void EnterLobby()
+    {
+        gameObject.SetActive(false);
+        _lobbyPanel.SetActive(true);
     }
 }
