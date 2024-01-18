@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviourPun
 
     private void HandleMovement()
     {
-        Vector3 moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical);
+        Vector3 moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
         transform.position +=  moveDirection * moveSpeed * Time.deltaTime;
         //do logic
     }
