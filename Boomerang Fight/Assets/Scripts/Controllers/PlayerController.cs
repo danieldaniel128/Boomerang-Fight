@@ -1,8 +1,10 @@
+using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun
 {
     
     //[SerializeField] UserInputPhone _input;
@@ -10,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Joystick _moveJoystick;
     [SerializeField] Joystick _AttackJoystick;
     [SerializeField] float moveSpeed;
+    Action OnMasterPlayerController;
+    Action OnLocalPlayerController;
 
     private void OnEnable()
     {

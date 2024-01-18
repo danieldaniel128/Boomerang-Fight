@@ -653,6 +653,28 @@ MonoBehaviour:
   _moveJoystick: {fileID: 2054761900}
   _AttackJoystick: {fileID: 2095254795}
   moveSpeed: 5
+--- !u!114 &1622343865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622343858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1718266428
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +816,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662110757491583722, guid: 0a9f034e8a41039469ed457553c21aba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9159049975881454643, guid: 0a9f034e8a41039469ed457553c21aba,
         type: 3}
@@ -1039,6 +1066,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1622343864}
+    - targetCorrespondingSourceObject: {fileID: 4205989076061145175, guid: 929f6fe4b8894f5448c3af58e5d0959f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1622343865}
   m_SourcePrefab: {fileID: 100100000, guid: 929f6fe4b8894f5448c3af58e5d0959f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
