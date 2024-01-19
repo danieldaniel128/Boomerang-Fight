@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    [SerializeField] int _maxPlayersInRoom = 4;
-
+    [SerializeField] private int _maxPlayersInRoom = 4;
+    private const string GAME_SCENE_NAME = "Game Scene";
     /// <summary>
     /// creates and enters room.
     /// </summary>
@@ -38,9 +38,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
-        Debug.Log($"player: {PhotonNetwork.LocalPlayer.NickName} joined room {PhotonNetwork.NetworkingClient.CurrentRoom.Name}");
+        Debug.Log($"<color=green>player: {PhotonNetwork.LocalPlayer.NickName} joined room {PhotonNetwork.NetworkingClient.CurrentRoom.Name}</color>");
+        if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+            photonView.RPC(nameof(LoadGame),RpcTarget.MasterClient);
     }
-
+    [PunRPC]
+    private void LoadGame()
+    {
+        PhotonNetwork.LoadLevel(GAME_SCENE_NAME);
+    }
     /// <summary>
     /// create new room if it failed
     /// </summary>
@@ -48,15 +54,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     /// <param name="message"></param>
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("joined failed");
+        Debug.Log("<color=red>joined failed</color>");
         CreateRoom();
     }
     #endregion
-
     #region UnusedCallBacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log("creating room has failed");
+        Debug.Log("<color=red>creating room has failed</color>");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
