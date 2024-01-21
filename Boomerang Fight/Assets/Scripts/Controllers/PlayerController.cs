@@ -10,12 +10,20 @@ public class PlayerController : MonoBehaviourPun
     //[SerializeField] UserInputPhone _input;
     [Header("JoySticks")]
     [SerializeField] GameObject _joystickCanvas;
+    [SerializeField] CameraFollow _camera;
     [SerializeField] Joystick _moveJoystick;
     [SerializeField] Joystick _AttackJoystick;
     [SerializeField] float moveSpeed;
+    [SerializeField] GameObject _playerBody;
     Action OnMasterPlayerControllerUpdate;
     Action OnLocalPlayerControllerUpdate;
 
+    private void Start()
+    {
+        _camera = Camera.main.GetComponent<CameraFollow>();
+        if (photonView.IsMine)
+            _camera.target = _playerBody.transform;
+    }
     private void OnEnable()
     {
         OnLocalPlayerControllerUpdate += HandleMovement;

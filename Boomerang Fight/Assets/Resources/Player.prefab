@@ -180,9 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _joystickCanvas: {fileID: 6782129767931833032}
+  _camera: {fileID: 0}
   _moveJoystick: {fileID: 7923024098359700179}
   _AttackJoystick: {fileID: 6750646667342047459}
   moveSpeed: 5
+  _playerBody: {fileID: 1683698286115224800}
 --- !u!114 &8128531511137509897
 MonoBehaviour:
   m_ObjectHideFlags: 0
