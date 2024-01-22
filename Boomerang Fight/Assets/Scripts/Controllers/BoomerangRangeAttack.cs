@@ -2,34 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerangAttack : MonoBehaviour//interface of attacks
+public class BoomerangRangeAttack : MonoBehaviour//interface of attacks
 {
 
     [SerializeField] GameObject _boomerangBody;
+    [SerializeField] Transform _recallPos;
     [Header("Boomerang Behaviors")]
     [SerializeField] AnimationCurve _attackSpeedCurve;
     [SerializeField] AnimationCurve _recallSpeedCurve;
     [Header("Boomerang Limits")]
     [SerializeField] float _maxBoomerangSpeed;
     [SerializeField] float _maxRecallBoomerangSpeed;
-    [SerializeField] float attackTime;
+    [SerializeField] float _maxAttackRange;
     [Header("Components")]
     [SerializeField] Rigidbody _boomerangRigidbody;
 
-    private bool isFlying;//or can be called isAttacking.
-    private bool isSeperated;
+    Vector3 _currentBoomerangFromPlayerVector =>  _recallPos.position - _boomerangBody.transform.position;
     private Vector3 _forwardDirection = Vector3.forward;
-    private CountdownTimer _attackTimer;
-    float _pressedRecallFromPlayerDistance;
-    
+    private float _currentBoomerangFromPlayerDistance => _currentBoomerangFromPlayerVector.magnitude;
+    private float _pressedRecallFromPlayerDistance;
+    private bool _isFlying;//or can be called isAttacking.
+    private bool _isSeperated;
     private void OnEnable()
     {
-        _attackTimer = new CountdownTimer(attackTime);
-        _attackTimer.OnTimerStop += StopBoomerang;
     }
     private void OnDisable()
     {
-        _attackTimer.OnTimerStop -= StopBoomerang;
     }
 
     // Update is called once per frame
@@ -39,58 +37,52 @@ public class BoomerangAttack : MonoBehaviour//interface of attacks
     }
     private void Update()
     {
-        _attackTimer.Tick(Time.deltaTime);
     }
     [ContextMenu("attack test")]
     public void AttackMelee()
     {
-        _attackTimer.Start();
-        isFlying = true;
+        _isFlying = true;
     }
     private void FlyBoomerang()
     {
-        if (!isFlying)
+        if (!_isFlying)
             return;
-        Vector3 boomerangVelocity = _forwardDirection * _maxBoomerangSpeed * _attackSpeedCurve.Evaluate(1 - _attackTimer.Progress);
+
+        Vector3 boomerangVelocity = _forwardDirection * _maxBoomerangSpeed * _attackSpeedCurve.Evaluate(_currentBoomerangFromPlayerDistance / _maxAttackRange);//_maxAttackRange cant be 0
         _boomerangRigidbody.velocity = boomerangVelocity; //attack time cant be 0
+        if (_currentBoomerangFromPlayerDistance >= _maxAttackRange)
+            StopBoomerang();
     }
     public void AttackRange(Vector3 attackDirection)
     {
         //cant use attack when is seperated.
-        if (isSeperated)
+        if (_isSeperated)
             return;
         ReleaseBoomerang();
-        _attackTimer.Restart();
         _forwardDirection = attackDirection;
-        isFlying = true;
+        _isFlying = true;
     }
-    public void Recall(Transform origin)
+    public void Recall()
     {
         if (_boomerangRigidbody.velocity == Vector3.zero)
-            _pressedRecallFromPlayerDistance = Vector3.Distance(origin.position, _boomerangBody.transform.position);
+            _pressedRecallFromPlayerDistance = _currentBoomerangFromPlayerDistance;
         //is not in hand and not flying?
-        if (!isFlying && isSeperated)
+        if (!_isFlying && _isSeperated)
         {
-            //vector of player pos to boomerang pos.
-            Vector3 boomerangToPlayerVector = origin.position - _boomerangBody.transform.position;
-            //direction of boomerang to player.
-            Vector3 playerDirection = boomerangToPlayerVector.normalized;
-            //remaining distance of boomerang and player.
-            float playerDistance = boomerangToPlayerVector.magnitude;
             //set speed of recalling x is distance, y is speed.
-            _boomerangRigidbody.velocity = playerDirection * _maxRecallBoomerangSpeed * _recallSpeedCurve.Evaluate(playerDistance/ _pressedRecallFromPlayerDistance);
+            _boomerangRigidbody.velocity = _currentBoomerangFromPlayerVector.normalized * _maxRecallBoomerangSpeed * _recallSpeedCurve.Evaluate(_currentBoomerangFromPlayerDistance / _pressedRecallFromPlayerDistance);
             //checks if finished recalling
-            if(playerDistance <= 0.2f)
+            if(_currentBoomerangFromPlayerDistance <= 0.2f)
                 AttachBoomerang();
+            //Debug.Log("<color=red>Recalling</color>");
         }
     }
     private void StopBoomerang()
     {
-        isFlying = false;
+        _isFlying = false;
         _boomerangRigidbody.velocity = Vector3.zero;
         _boomerangRigidbody.useGravity = true;
-        isSeperated = true;
-        _attackTimer.Reset();
+        _isSeperated = true;
     }
     private void ReleaseBoomerang()
     {
@@ -99,7 +91,7 @@ public class BoomerangAttack : MonoBehaviour//interface of attacks
     private void AttachBoomerang()
     {
         _boomerangBody.transform.SetParent(transform);
-        isSeperated = false;
+        _isSeperated = false;
         _boomerangRigidbody.velocity = Vector3.zero;
         _boomerangRigidbody.useGravity = false;
     }

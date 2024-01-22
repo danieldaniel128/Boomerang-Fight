@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] GameObject _playerBody;
     [Header("Components")]
     [SerializeField] CameraFollow _camera;
-    [SerializeField] BoomerangAttack _battlerangAttack;
+    [SerializeField] BoomerangRangeAttack _battlerangAttack;
 
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
@@ -26,21 +26,25 @@ public class PlayerController : MonoBehaviourPun
     private void Start()
     {
         _camera = Camera.main.GetComponent<CameraFollow>();
-        if (photonView.IsMine)
+        if (!photonView.IsMine)
         {
             _joystickCanvas.SetActive(false);
-            _camera.target = _playerBody.transform;
         }
+        else
+            _camera.target = _playerBody.transform;
+
     }
     private void OnEnable()
     {
         OnLocalPlayerControllerUpdate += HandleMovement;
         _AttackJoystick.OnJoystickUp += HandleAttack;
+        _AttackJoystick.OnJoystickPressed += HandleRecall;
     }
     private void OnDisable()
     {
         OnLocalPlayerControllerUpdate -= HandleMovement;
         _AttackJoystick.OnJoystickUp -= HandleAttack;
+        _AttackJoystick.OnJoystickPressed -= HandleRecall;
     }
 
     private void Update()
@@ -67,5 +71,9 @@ public class PlayerController : MonoBehaviourPun
             _battlerangAttack.AttackRange(attackDirection);
         }
         //else auto aim like brawl stars?
+    }
+    private void HandleRecall()
+    {
+        _battlerangAttack.Recall();
     }
 }

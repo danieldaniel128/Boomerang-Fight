@@ -24,6 +24,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public Action OnJoystickUp { get; set; }
     public Action OnJoystickDown { get; set; }
     public Action OnJoystickDrag { get; set; }
+    public Action OnJoystickPressed { get; set; }
 
     public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
     public bool SnapX { get { return snapX; } set { snapX = value; } }
@@ -43,6 +44,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Camera cam;
 
     private Vector2 input = Vector2.zero;
+    bool isPressed;
+    bool hasReleased;
 
     protected virtual void Start()
     {
@@ -60,9 +63,19 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
     }
-
+    private void Update()
+    {
+        if (isPressed && !hasReleased)
+        {
+            OnJoystickPressed?.Invoke();
+            Debug.Log("pressed");
+        }
+        else if (hasReleased)
+            hasReleased = false;
+    }
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        isPressed = true;
         OnDrag(eventData);
         OnJoystickDown?.Invoke();
     }
@@ -137,7 +150,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
-        OnJoystickUp?.Invoke();
+        Debug.Log("released");
+        if(isPressed)
+            OnJoystickUp?.Invoke();
+        isPressed = false;
+        hasReleased = true;
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
     }

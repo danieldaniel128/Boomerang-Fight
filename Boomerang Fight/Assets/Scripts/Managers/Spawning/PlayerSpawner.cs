@@ -19,9 +19,9 @@ public class PlayerSpawner : MonoBehaviourPun
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            foreach(Player pl in PhotonNetwork.PlayerList)
+            foreach(Player player in PhotonNetwork.PlayerList)
             {
-                photonView.RPC(nameof(InstantiationPlayer),pl,index);
+                photonView.RPC(nameof(InstantiationPlayer), player, index);
                 index++;
             }
         }
