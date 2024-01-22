@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6c674d6ec6317b94c93e92adfe85e550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 4186622543459288105}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.84, y: -1.403, z: -0.7243695}
+  m_LocalPosition: {x: -1.51, y: -1.4, z: 0.64}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -274,6 +274,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &5178514810636989025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2457579034938624542}
+  m_Layer: 0
+  m_Name: Recall Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2457579034938624542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178514810636989025}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.18, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2268886858427433525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5705707461653276099
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +367,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6c674d6ec6317b94c93e92adfe85e550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -424,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30636639fcb155c419197040e7cecbbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFlying: 0
+  _boomerangBody: {fileID: 4186622543459288105}
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -455,18 +486,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -474,10 +505,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _maxBoomerangSpeed: 8
-  _maxRecallBoomerangSpeed: 0
-  _boomerangRigidbody: {fileID: 896689533785725450}
+  _maxRecallBoomerangSpeed: 12
   attackTime: 1
-  _boomerangBody: {fileID: 4186622543459288105}
+  _boomerangRigidbody: {fileID: 896689533785725450}
 --- !u!1 &6461610516121305678
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +545,7 @@ Transform:
   - {fileID: 7096813842700506425}
   - {fileID: 8491850849664502180}
   - {fileID: 239976276200032287}
+  - {fileID: 2457579034938624542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1949292043620430676
@@ -553,13 +584,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47952b9217878c948a057454f1e777e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _joystickCanvas: {fileID: 6782129767931833032}
+  _playerBody: {fileID: 1683698286115224800}
   _camera: {fileID: 0}
+  _battlerangAttack: {fileID: 2381242388957077566}
+  _joystickCanvas: {fileID: 6782129767931833032}
   _moveJoystick: {fileID: 7923024098359700179}
   _AttackJoystick: {fileID: 6750646667342047459}
-  moveSpeed: 5
-  _playerBody: {fileID: 1683698286115224800}
-  _battlerangAttack: {fileID: 2381242388957077566}
+  _moveSpeed: 0
 --- !u!114 &8128531511137509897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +712,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6c674d6ec6317b94c93e92adfe85e550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -734,16 +765,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2268886858427433525}
     m_Modifications:
-    - target: {fileID: 418556438955724520, guid: 3623d2288c15a474687354d69d8536d7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2381242388957077566}
-    - target: {fileID: 418556438955724520, guid: 3623d2288c15a474687354d69d8536d7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 7096813842700506425}
     - target: {fileID: 5381080767227683688, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_Name
@@ -849,6 +870,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7174473699135325715, guid: 3623d2288c15a474687354d69d8536d7,
+        type: 3}
+      propertyPath: OnPressBTN.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2381242388957077566}
+    - target: {fileID: 7174473699135325715, guid: 3623d2288c15a474687354d69d8536d7,
+        type: 3}
+      propertyPath: OnPressBTN.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2457579034938624542}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
