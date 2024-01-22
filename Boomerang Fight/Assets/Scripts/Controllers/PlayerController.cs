@@ -8,49 +8,64 @@ public class PlayerController : MonoBehaviourPun
 {
 
     //[SerializeField] UserInputPhone _input;
-    [Header("JoySticks")]
-    [SerializeField] GameObject _joystickCanvas;
+    [SerializeField] GameObject _playerBody;
+    [Header("Components")]
     [SerializeField] CameraFollow _camera;
+    [SerializeField] BoomerangAttack _battlerangAttack;
+
+    [Header("JoySticks Set-UP")]
+    [SerializeField] GameObject _joystickCanvas;
     [SerializeField] Joystick _moveJoystick;
     [SerializeField] Joystick _AttackJoystick;
-    [SerializeField] float moveSpeed;
-    [SerializeField] GameObject _playerBody;
-    Action OnMasterPlayerControllerUpdate;
-    Action OnLocalPlayerControllerUpdate;
+    [Header("Player Stats")]
+    [SerializeField] float _moveSpeed;
+
+    private Action OnMasterPlayerControllerUpdate;
+    private Action OnLocalPlayerControllerUpdate;
 
     private void Start()
     {
         _camera = Camera.main.GetComponent<CameraFollow>();
         if (photonView.IsMine)
+        {
+            _joystickCanvas.SetActive(false);
             _camera.target = _playerBody.transform;
+        }
     }
     private void OnEnable()
     {
         OnLocalPlayerControllerUpdate += HandleMovement;
+        _AttackJoystick.OnJoystickUp += HandleAttack;
     }
     private void OnDisable()
     {
         OnLocalPlayerControllerUpdate -= HandleMovement;
+        _AttackJoystick.OnJoystickUp -= HandleAttack;
     }
 
     private void Update()
     {
-        IsLocalPlayer();
+        LocalPlayerControlUpdate();
     }
 
     private void HandleMovement()
     {
         Vector3 moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
-        transform.position +=  moveDirection * moveSpeed * Time.deltaTime;
+        transform.position +=  moveDirection * _moveSpeed * Time.deltaTime;
         //do logic
     }
-    private void IsLocalPlayer()
+    private void LocalPlayerControlUpdate()
     {
         if(photonView.IsMine)
             OnLocalPlayerControllerUpdate?.Invoke();
-        else
+    }
+    private void HandleAttack()
+    {
+        if (_AttackJoystick.Direction != Vector2.zero)
         {
-            _joystickCanvas.SetActive(false);
+            Vector3 attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
+            _battlerangAttack.AttackRange(attackDirection);
         }
+        //else auto aim like brawl stars?
     }
 }
