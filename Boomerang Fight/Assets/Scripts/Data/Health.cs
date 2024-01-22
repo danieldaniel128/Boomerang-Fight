@@ -1,27 +1,27 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviourPun
 {
     [SerializeField] private float _currentHP;
-    public float CurrentHP { get { return _currentHP; } private set { _currentHP = value; OnValueChanged?.Invoke(); } }
-
     [SerializeField] private float _maxHP;
+    public float CurrentHP { get { return _currentHP; } private set { _currentHP = value; OnValueChanged?.Invoke(); } }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
+    public bool IsDead { get; private set; }
 
     public UnityEvent OnValueChanged;
     public UnityEvent OnDeath;
 
-    bool _isDead;
 
     public void TakeDamage(float damage)
     {
         CurrentHP -= damage;
         if (CurrentHP <= 0)
         {
-            _isDead = true;
+            IsDead = true;
             OnDeath?.Invoke();
         }
     }
@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
     public void Revive()
     {
         CurrentHP = MaxHP;
-        _isDead = false;
+        IsDead = false;
     }
 
     public void SetHealth(float health)
@@ -37,8 +37,8 @@ public class Health : MonoBehaviour
         MaxHP = health;
         CurrentHP = health;
     }
-    private void OnDisable()
-    {
-        OnDeath?.Invoke();
-    }
+    //private void OnDisable()
+    //{
+    //    OnDeath?.Invoke();
+    //}
 }

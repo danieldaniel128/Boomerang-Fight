@@ -20,16 +20,11 @@ public class BoomerangAttack : MonoBehaviour//interface of attacks
     private bool isSeperated;
     private Vector3 _forwardDirection = Vector3.forward;
     private CountdownTimer _attackTimer;
-
     float _pressedRecallFromPlayerDistance;
-    void Start()
-    {
-        //set timer instance
-        _attackTimer = new CountdownTimer(attackTime);
-        //set on timer finished action
-    }
+    
     private void OnEnable()
     {
+        _attackTimer = new CountdownTimer(attackTime);
         _attackTimer.OnTimerStop += StopBoomerang;
     }
     private void OnDisable()
@@ -40,12 +35,7 @@ public class BoomerangAttack : MonoBehaviour//interface of attacks
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isFlying)
-        { 
-            Vector3 boomerangVelocity = _forwardDirection * _maxBoomerangSpeed * _attackSpeedCurve.Evaluate(1 - _attackTimer.Progress);
-            _boomerangRigidbody.velocity = boomerangVelocity; //attack time cant be 0
-            //Debug.Log(_forwardDirection * _maxBoomerangSpeed * _attackSpeedCurve.Evaluate(1 - _attackTimer.Progress));
-        }
+        FlyBoomerang();
     }
     private void Update()
     {
@@ -56,6 +46,13 @@ public class BoomerangAttack : MonoBehaviour//interface of attacks
     {
         _attackTimer.Start();
         isFlying = true;
+    }
+    private void FlyBoomerang()
+    {
+        if (!isFlying)
+            return;
+        Vector3 boomerangVelocity = _forwardDirection * _maxBoomerangSpeed * _attackSpeedCurve.Evaluate(1 - _attackTimer.Progress);
+        _boomerangRigidbody.velocity = boomerangVelocity; //attack time cant be 0
     }
     public void AttackRange(Vector3 attackDirection)
     {
