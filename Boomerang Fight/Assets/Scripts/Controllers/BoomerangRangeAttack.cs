@@ -68,7 +68,6 @@ public class BoomerangRangeAttack : MonoBehaviour//interface of attacks
         //checks if finished recalling.
         if(_currentBoomerangFromPlayerDistance <= 0.2f)
             AttachBoomerang();
-        //Debug.Log("<color=red>Recalling</color>");
     }
     private void StopBoomerang()
     {
@@ -89,7 +88,7 @@ public class BoomerangRangeAttack : MonoBehaviour//interface of attacks
     private void AttachBoomerang()
     {
         //finished recalling.
-        StartCoroutine(FinishRecalling());
+        OnFinishRecalling?.Invoke();
         //set boomerang body parent to this.
         _boomerangBody.transform.SetParent(transform);
         //set on player.
@@ -98,11 +97,5 @@ public class BoomerangRangeAttack : MonoBehaviour//interface of attacks
         _boomerangRigidbody.velocity = Vector3.zero;
         //let it fly.
         _boomerangRigidbody.useGravity = false;
-    }
-    private IEnumerator FinishRecalling()
-    {
-        yield return new WaitForEndOfFrame();
-        //finished recalling.
-        OnFinishRecalling?.Invoke();
     }
 }
