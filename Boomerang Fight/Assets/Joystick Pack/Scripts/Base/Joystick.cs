@@ -63,15 +63,17 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
     }
-    private void Update()
+    private void LateUpdate()
     {
         if (isPressed && !hasReleased)
         {
             OnJoystickPressed?.Invoke();
-            Debug.Log("pressed");
         }
-        else if (hasReleased)
+        else if (!isPressed && hasReleased)
+        {
             hasReleased = false;
+            OnJoystickPressed?.Invoke();
+        }
     }
     public virtual void OnPointerDown(PointerEventData eventData)
     {
@@ -150,9 +152,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("released");
-        if(isPressed)
-            OnJoystickUp?.Invoke();
+        OnJoystickUp?.Invoke();
         isPressed = false;
         hasReleased = true;
         input = Vector2.zero;

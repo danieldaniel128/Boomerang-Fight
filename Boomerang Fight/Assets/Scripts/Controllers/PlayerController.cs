@@ -2,6 +2,7 @@ using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviourPun
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviourPun
     //[SerializeField] UserInputPhone _input;
     [SerializeField] GameObject _playerBody;
     [Header("Components")]
-    [SerializeField] CameraFollow _camera;
+    [SerializeField] CameraFollow _cameraFollow;
     [SerializeField] BoomerangRangeAttack _battlerangAttack;
 
     [Header("JoySticks Set-UP")]
@@ -25,26 +26,34 @@ public class PlayerController : MonoBehaviourPun
 
     private void Start()
     {
-        _camera = Camera.main.GetComponent<CameraFollow>();
+        //set camera reference
+        _cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        //checks if its not my player.
         if (!photonView.IsMine)
         {
+            //close other players joysticks canvas
             _joystickCanvas.SetActive(false);
         }
-        else
-            _camera.target = _playerBody.transform;
+        else//set camera follow to my player
+            _cameraFollow.target = _playerBody.transform;
 
     }
     private void OnEnable()
     {
+        //on my player, handle movement in update.
         OnLocalPlayerControllerUpdate += HandleMovement;
-        _AttackJoystick.OnJoystickUp += HandleAttack;
+        //when press attack button, enable attack.
+        _AttackJoystick.OnJoystickDown += EnableRangeAttack;
+        //when is pressed, handle recall boomerang.
         _AttackJoystick.OnJoystickPressed += HandleRecall;
     }
     private void OnDisable()
     {
+        //In order to prevent resource leaks, unsubscribe events
         OnLocalPlayerControllerUpdate -= HandleMovement;
-        _AttackJoystick.OnJoystickUp -= HandleAttack;
         _AttackJoystick.OnJoystickPressed -= HandleRecall;
+        _AttackJoystick.OnJoystickDown -= EnableRangeAttack;
+        DisableRangeAttack();
     }
 
     private void Update()
@@ -63,6 +72,17 @@ public class PlayerController : MonoBehaviourPun
         if(photonView.IsMine)
             OnLocalPlayerControllerUpdate?.Invoke();
     }
+    private void HandleRecall()
+    {
+        //checks if can recall boomerang.
+        if (_battlerangAttack.CanRecall())
+        {
+            //when recalling, disable attack
+            DisableRangeAttack();
+            //recalling boomerang.
+            _battlerangAttack.Recall();
+        }
+    }
     private void HandleAttack()
     {
         if (_AttackJoystick.Direction != Vector2.zero)
@@ -72,8 +92,13 @@ public class PlayerController : MonoBehaviourPun
         }
         //else auto aim like brawl stars?
     }
-    private void HandleRecall()
+    private void EnableRangeAttack()
     {
-        _battlerangAttack.Recall();
+        _AttackJoystick.OnJoystickUp += HandleAttack;
     }
+    private void DisableRangeAttack()
+    {
+        _AttackJoystick.OnJoystickUp -= HandleAttack;
+    }
+
 }
