@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using UnityEngine;
 using UnityEngine.InputSystem.XInput;
 
@@ -10,7 +11,8 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
     [SerializeField] bool showGizmos;
 
-    [Header("Size Parameters")]
+    [Header("Collider Parameters")]
+    [SerializeField] BoxCollider attackCollider;
     [SerializeField] float colliderWidth;
     [SerializeField] float colliderDepth;
     [SerializeField] float colliderHeight;
@@ -25,6 +27,7 @@ public class BoomerangMeleeAttack : MonoBehaviour
     bool inAttack = false;
     CountdownTimer cooldownTimer;
     CountdownTimer delayToAttackTimer;
+    CountdownTimer attackDurationTimer;
 
     private void Start()
     {
@@ -37,6 +40,13 @@ public class BoomerangMeleeAttack : MonoBehaviour
         //set up delay to attack timer
         delayToAttackTimer = new(timeToStartAttack);
         delayToAttackTimer.OnTimerStop += Attack;
+
+        //set up duration of attack timer
+        attackDurationTimer = new(attackDuration);
+        attackDurationTimer.OnTimerStop += StopAttack;
+
+        attackCollider.size = new Vector3(colliderWidth, colliderHeight, colliderDepth);
+        attackCollider.center = Vector3.forward * distanceFromPlayer;
     }
     private void FixedUpdate()
     {
@@ -47,6 +57,7 @@ public class BoomerangMeleeAttack : MonoBehaviour
     {
         delayToAttackTimer.Tick(Time.fixedDeltaTime);
         cooldownTimer.Tick(Time.fixedDeltaTime);
+        attackDurationTimer.Tick(Time.fixedDeltaTime);
     }
 
     [ContextMenu("Press Attack")]
@@ -68,15 +79,32 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //check if other is iHitable
+        //HitTarget passing iHitable
+        HitTarget(other);
+    }
     public void Attack()
     {
-        Collider[] colliders = GetCollidersInAttackRange();
+        //enable collider
+        attackDurationTimer.Start();
+        attackCollider.enabled = true;
+        inAttack = true;
 
-        foreach (Collider target in colliders)
-        {
-            //add filter for what gets hit
-            HitTarget(target);
-        }
+        //Collider[] colliders = GetCollidersInAttackRange();
+
+        //foreach (Collider target in colliders)
+        //{
+        //    //add filter for what gets hit
+        //    HitTarget(target);
+        //}
+    }
+
+    public void StopAttack()
+    {
+        attackCollider.enabled = false;
+        inAttack = false;
     }
 
     public void HitTarget(Collider target)
