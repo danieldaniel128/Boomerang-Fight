@@ -7,57 +7,68 @@ using UnityEngine.InputSystem.XInput;
 
 public class BoomerangMeleeAttack : MonoBehaviour
 {
+    private const string MELEE_ATTACK_STRING_CONST = "MeleeAttack";
+
     public Action OnAttackPressed { get; set; }
 
-    [SerializeField] bool showGizmos;
-
     [Header("Collider Parameters")]
-    [SerializeField] BoxCollider attackCollider;
-    [SerializeField] float colliderWidth;
-    [SerializeField] float colliderDepth;
-    [SerializeField] float colliderHeight;
-    [SerializeField] float distanceFromPlayer;
+    [SerializeField] BoxCollider _attackCollider;
+    [SerializeField] LayerMask _canAttackLayerMask;
 
     [Header("Timing Parameters")]
-    [SerializeField] float timeToStartAttack;
-    [SerializeField] float attackDuration;
-    [SerializeField] float cooldownDuration;
+    [SerializeField] float _timeToStartAttack;
+    [SerializeField] float _attackDuration;
+    [SerializeField] float _cooldownDuration;
 
-    bool canAttack = true;
-    bool inAttack = false;
-    CountdownTimer cooldownTimer;
-    CountdownTimer delayToAttackTimer;
-    CountdownTimer attackDurationTimer;
+    [Header("Components")]
+    [SerializeField] Animator _characterAnimator;
+
+    bool _canAttack = true;
+
+    CountdownTimer _cooldownTimer;
+    CountdownTimer _delayAttackTimer;
+    CountdownTimer _attackDurationTimer;
+
+    //Gizmo Parameters
+    [SerializeField] bool _showGizmos;
+    bool _inAttack = false;
+
 
     private void Start()
     {
         OnAttackPressed += TryInitiateAttack;
 
         //set up cooldown timer
-        cooldownTimer = new(cooldownDuration);
-        cooldownTimer.OnTimerStop += () => canAttack = true;
+        _cooldownTimer = new(_cooldownDuration);
+        _cooldownTimer.OnTimerStop += () => _canAttack = true;
 
         //set up delay to attack timer
-        delayToAttackTimer = new(timeToStartAttack);
-        delayToAttackTimer.OnTimerStop += Attack;
+        _delayAttackTimer = new(_timeToStartAttack);
+        _delayAttackTimer.OnTimerStop += Attack;
 
         //set up duration of attack timer
-        attackDurationTimer = new(attackDuration);
-        attackDurationTimer.OnTimerStop += StopAttack;
+        _attackDurationTimer = new(_attackDuration);
+        _attackDurationTimer.OnTimerStop += StopAttack;
 
-        attackCollider.size = new Vector3(colliderWidth, colliderHeight, colliderDepth);
-        attackCollider.center = Vector3.forward * distanceFromPlayer;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         Tick();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
+        {
+            HitTarget(other);
+        }
+    }
+
     void Tick()
     {
-        delayToAttackTimer.Tick(Time.fixedDeltaTime);
-        cooldownTimer.Tick(Time.fixedDeltaTime);
-        attackDurationTimer.Tick(Time.fixedDeltaTime);
+        _delayAttackTimer.Tick(Time.deltaTime);
+        _cooldownTimer.Tick(Time.deltaTime);
+        _attackDurationTimer.Tick(Time.deltaTime);
     }
 
     [ContextMenu("Press Attack")]
@@ -69,73 +80,47 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
     public void TryInitiateAttack()
     {
-        if (canAttack)
+        if (_canAttack)
         {
-            canAttack = false;
-
-            delayToAttackTimer.Start();
-            cooldownTimer.Start();
+            _canAttack = false;
+            _characterAnimator.Play(MELEE_ATTACK_STRING_CONST);
+            _delayAttackTimer.Start();
+            _cooldownTimer.Start();
         }
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //check if other is iHitable
-        //HitTarget passing iHitable
-        HitTarget(other);
-    }
     public void Attack()
     {
         //enable collider
-        attackDurationTimer.Start();
-        attackCollider.enabled = true;
-        inAttack = true;
+        _attackDurationTimer.Start();
+        _attackCollider.enabled = true;
+        _inAttack = true;
 
-        //Collider[] colliders = GetCollidersInAttackRange();
-
-        //foreach (Collider target in colliders)
-        //{
-        //    //add filter for what gets hit
-        //    HitTarget(target);
-        //}
     }
 
     public void StopAttack()
     {
-        attackCollider.enabled = false;
-        inAttack = false;
+        _attackCollider.enabled = false;
+        _inAttack = false;
     }
 
     public void HitTarget(Collider target)
     {
+        //RPC for target to be hit
         print("hit target: " + target.name);
-    }
-
-    [ContextMenu("Activate Attack Collider")]
-    public Collider[] GetCollidersInAttackRange()
-    {
-        //collider size
-        Vector3 colliderSize = new(colliderWidth, colliderHeight, colliderDepth);
-
-        //convert from local space to world space for physics overlap box
-        Vector3 localBoxCenter = Vector3.forward * distanceFromPlayer;
-        Vector3 worldBoxCenter = transform.TransformPoint(localBoxCenter);
-
-        Collider[] collidersHit = Physics.OverlapBox(worldBoxCenter, colliderSize / 2, transform.rotation);
-        return collidersHit;
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (!showGizmos)
+        if (!_showGizmos)
             return;
 
-        if (canAttack)
+        if (_canAttack)
             Gizmos.color = Color.green;
         else
         {
-            if (inAttack)
+            if (_inAttack)
                 Gizmos.color = Color.blue;
             else
                 Gizmos.color = Color.red;
@@ -143,7 +128,7 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
         //convert from local to world space for draw wire cube
         Gizmos.matrix = this.transform.localToWorldMatrix;
-        Vector3 colliderSize = new(colliderWidth, colliderHeight, colliderDepth);
-        Gizmos.DrawWireCube(Vector3.forward * distanceFromPlayer, colliderSize);
+        Vector3 colliderSize = _attackCollider.size;
+        Gizmos.DrawWireCube(_attackCollider.center, _attackCollider.size);
     }
 }

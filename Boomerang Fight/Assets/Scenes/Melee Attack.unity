@@ -535,6 +535,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 361031493}
+    - targetCorrespondingSourceObject: {fileID: 6461610516121305678, guid: c01a903ee16b5954cadab36ccd9ef721,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 361031501}
     - targetCorrespondingSourceObject: {fileID: 6319277829129467976, guid: c01a903ee16b5954cadab36ccd9ef721,
         type: 3}
       insertIndex: -1
@@ -577,14 +581,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGizmos: 1
-  attackCollider: {fileID: 835704762}
+  _attackCollider: {fileID: 835704762}
   colliderWidth: 3
   colliderDepth: 1.5
   colliderHeight: 0.8
   distanceFromPlayer: 1
-  timeToStartAttack: 0.1
+  _canAttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  timeToStartAttack: 0
   attackDuration: 0.5
   cooldownDuration: 1
+  characterAnimator: {fileID: 361031501}
 --- !u!114 &361031494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,6 +649,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &361031501
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361031490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a87943afc8518f4a8968dd04205b82e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +800,7 @@ GameObject:
   - component: {fileID: 439572892}
   - component: {fileID: 439572891}
   - component: {fileID: 439572890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +889,7 @@ Transform:
   m_GameObject: {fileID: 439572889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.06, y: 1.09, z: -5.66}
+  m_LocalPosition: {x: 1.06, y: 1.64, z: -5.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
