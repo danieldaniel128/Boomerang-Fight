@@ -36,8 +36,6 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
     private void Start()
     {
-        OnAttackPressed += TryInitiateAttack;
-
         //set up cooldown timer
         _cooldownTimer = new(_cooldownDuration);
         _cooldownTimer.OnTimerStop += () => _canAttack = true;
@@ -51,6 +49,14 @@ public class BoomerangMeleeAttack : MonoBehaviour
         _attackDurationTimer.OnTimerStop += StopAttack;
 
     }
+    private void OnEnable()
+    {
+        OnAttackPressed += TryInitiateAttack;
+    }
+    private void OnDisable()
+    {
+        OnAttackPressed -= TryInitiateAttack;
+    }
     private void Update()
     {
         Tick();
@@ -58,8 +64,10 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("melee attacked");
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
         {
+            Debug.Log("hit melee");
             HitTarget(other);
         }
     }
@@ -74,7 +82,7 @@ public class BoomerangMeleeAttack : MonoBehaviour
     [ContextMenu("Press Attack")]
     public void ActivateAttackEvent()
     {
-        print("Attack invoked");
+        //print("Attack invoked");
         OnAttackPressed?.Invoke();
     }
 
@@ -83,7 +91,7 @@ public class BoomerangMeleeAttack : MonoBehaviour
         if (_canAttack)
         {
             _canAttack = false;
-            _characterAnimator.Play(MELEE_ATTACK_STRING_CONST);
+            //_characterAnimator.Play(MELEE_ATTACK_STRING_CONST);
             _delayAttackTimer.Start();
             _cooldownTimer.Start();
         }
@@ -128,7 +136,6 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
         //convert from local to world space for draw wire cube
         Gizmos.matrix = this.transform.localToWorldMatrix;
-        Vector3 colliderSize = _attackCollider.size;
         Gizmos.DrawWireCube(_attackCollider.center, _attackCollider.size);
     }
 }
