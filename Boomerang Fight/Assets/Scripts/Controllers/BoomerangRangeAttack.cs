@@ -1,9 +1,10 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerangRangeAttack : MonoBehaviour//interface of attacks
+public class BoomerangRangeAttack : MonoBehaviourPun//interface of attacks
 {
     public Action OnFinishRecalling { get; set; }
 
@@ -29,9 +30,18 @@ public class BoomerangRangeAttack : MonoBehaviour//interface of attacks
     
     void FixedUpdate()
     {
+        if (!photonView.IsMine)
+            return;
+        if (!_isFlying && !_isSeperated)
+            _boomerangRigidbody.velocity = Vector3.zero;
         FlyBoomerang();
     }
-    
+    private void Start()
+    {
+        if (!photonView.IsMine)
+            return;
+        _boomerangRigidbody.velocity = Vector3.zero;
+    }
     private void FlyBoomerang()
     {
         if (!_isFlying)
@@ -60,6 +70,8 @@ public class BoomerangRangeAttack : MonoBehaviour//interface of attacks
     }
     public void Recall()
     {
+        if (!photonView.IsMine)
+            return;
         //set recall distance from boomerang.
         if (_boomerangRigidbody.velocity == Vector3.zero)
             _pressedRecallFromPlayerDistance = _currentBoomerangFromPlayerDistance;

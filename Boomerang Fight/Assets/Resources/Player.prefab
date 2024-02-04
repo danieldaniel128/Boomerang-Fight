@@ -223,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8684640894934366111}
   - component: {fileID: 896689533785725450}
+  - component: {fileID: 5999427564758102316}
   m_Layer: 0
   m_Name: Boomerang body
   m_TagString: Untagged
@@ -275,6 +276,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5999427564758102316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4186622543459288105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &5178514810636989025
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,13 +438,14 @@ GameObject:
   m_Component:
   - component: {fileID: 239976276200032287}
   - component: {fileID: 2381242388957077566}
+  - component: {fileID: 3417720361273407067}
   m_Layer: 0
   m_Name: Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &239976276200032287
 Transform:
   m_ObjectHideFlags: 0
@@ -510,6 +528,29 @@ MonoBehaviour:
   _maxRecallBoomerangSpeed: 12
   _maxAttackRange: 3.85
   _boomerangRigidbody: {fileID: 896689533785725450}
+--- !u!114 &3417720361273407067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5712511802046123894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5999427564758102316}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6461610516121305678
 GameObject:
   m_ObjectHideFlags: 0

@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviourPun
     }
     private void HandleRecall()
     {
+        if (!photonView.IsMine)
+            return;
         //checks if can recall boomerang.
         if (_battlerangAttack.CanRecall())
         {
@@ -85,6 +87,8 @@ public class PlayerController : MonoBehaviourPun
     }
     private void HandleAttack()
     {
+        if (!photonView.IsMine)
+            return;
         if (_AttackJoystick.Direction != Vector2.zero)
         {
             Vector3 attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
