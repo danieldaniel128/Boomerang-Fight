@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using System.Net.Security;
 using UnityEngine;
 using UnityEngine.InputSystem.XInput;
 
-public class BoomerangMeleeAttack : MonoBehaviour
+public class BoomerangMeleeAttack : MonoBehaviourPun
 {
     private const string MELEE_ATTACK_STRING_CONST = "MeleeAttack";
 
@@ -64,10 +65,8 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("melee attacked");
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
         {
-            Debug.Log("hit melee");
             HitTarget(other);
         }
     }
@@ -115,8 +114,7 @@ public class BoomerangMeleeAttack : MonoBehaviour
 
     public void HitTarget(Collider target)
     {
-        //RPC for target to be hit
-        print("hit target: " + target.name);
+        target.GetComponent<Health>().TakeDamage(2);
     }
 
     private void OnDrawGizmosSelected()

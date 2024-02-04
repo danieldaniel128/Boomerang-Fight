@@ -44,6 +44,9 @@ MonoBehaviour:
   - UpdateSpawnPointsPoolToAllPlayers
   - LoadGame
   - InstantiationPlayer
+  - TakeDamage
+  - SyncHealth
+  - SyncRevive
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
