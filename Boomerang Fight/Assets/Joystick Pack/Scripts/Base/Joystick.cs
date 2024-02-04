@@ -65,15 +65,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     }
     private void LateUpdate()
     {
-        if (isPressed && !hasReleased)
+        if (isPressed)
         {
             OnJoystickPressed?.Invoke();
         }
-        else if (!isPressed && hasReleased)
-        {
-            hasReleased = false;
-            OnJoystickPressed?.Invoke();
-        }
+        
     }
     public virtual void OnPointerDown(PointerEventData eventData)
     {
