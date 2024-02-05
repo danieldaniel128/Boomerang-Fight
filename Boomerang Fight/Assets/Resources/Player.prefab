@@ -455,7 +455,7 @@ MonoBehaviour:
   _attackCollider: {fileID: 6763774625053604192}
   _canAttackLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   _timeToStartAttack: 0.3
   _attackDuration: 2.9
   _cooldownDuration: 1
@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 1556816211872772023}
   - component: {fileID: 8537642879142281159}
   - component: {fileID: 1500810551860589892}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boomerang Range Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ MonoBehaviour:
   _recallPos: {fileID: 2457579034938624542}
   _canAttackLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -741,7 +741,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
