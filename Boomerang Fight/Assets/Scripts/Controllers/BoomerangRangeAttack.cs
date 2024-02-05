@@ -7,9 +7,10 @@ using UnityEngine;
 public class BoomerangRangeAttack : MonoBehaviourPun//interface of attacks
 {
     public Action OnFinishRecalling { get; set; }
-
+    [SerializeField] GameObject _boomerangParent;
     [SerializeField] GameObject _boomerangBody;
     [SerializeField] Transform _recallPos;
+    [SerializeField] LayerMask _canAttackLayerMask;//seperate to base class.
     [Header("Boomerang Behaviors")]
     [SerializeField] AnimationCurve _attackSpeedCurve;
     [SerializeField] AnimationCurve _recallSpeedCurve;
@@ -95,19 +96,27 @@ public class BoomerangRangeAttack : MonoBehaviourPun//interface of attacks
     private void ReleaseBoomerang()
     {
         //release boomerang from player prefab.
-        _boomerangBody.transform.SetParent(null);
+        transform.SetParent(null);
     }
     private void AttachBoomerang()
     {
         //finished recalling.
         OnFinishRecalling?.Invoke();
-        //set boomerang body parent to this.
-        _boomerangBody.transform.SetParent(transform);
+        //set boomerang body parent to its parent holder.
+        transform.SetParent(_boomerangParent.transform);
         //set on player.
         _isSeperated = false;
         //stop recalling velocity.
         _boomerangRigidbody.velocity = Vector3.zero;
         //let it fly.
         _boomerangRigidbody.useGravity = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_canAttackLayerMask == (_canAttackLayerMask | (1 << collision.gameObject.layer)))
+        {
+            collision.gameObject.GetComponent<Health>().TakeDamage(2);
+        }
+        StopBoomerang();
     }
 }
