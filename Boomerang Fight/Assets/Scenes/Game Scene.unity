@@ -700,6 +700,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2381242388957077566, guid: c01a903ee16b5954cadab36ccd9ef721,
+        type: 3}
+      propertyPath: _canAttackLayerMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3417720361273407067, guid: c01a903ee16b5954cadab36ccd9ef721,
         type: 3}
       propertyPath: sceneViewId
