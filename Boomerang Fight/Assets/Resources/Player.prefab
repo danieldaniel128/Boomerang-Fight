@@ -95,9 +95,8 @@ GameObject:
   - component: {fileID: 1841738187223332658}
   - component: {fileID: 1682745030739301567}
   - component: {fileID: 9003262914291918112}
-  - component: {fileID: 303125846626040712}
   - component: {fileID: 8578505521668640374}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,38 +189,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &303125846626040712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683698286115224800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae4cb46ec81157c4e9ebaf719328d1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentHP: 10
-  _maxHP: 10
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4540214632164705568}
-        m_TargetAssemblyTypeName: UpdateHPBarMaterial, Assembly-CSharp
-        m_MethodName: UpdateOnHealthChangedEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8578505521668640374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +457,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _timeToStartAttack: 0.3
-  _attackDuration: 1
+  _attackDuration: 2.9
   _cooldownDuration: 1
   _characterAnimator: {fileID: 5122105994880568347}
   _showGizmos: 1
@@ -662,7 +629,7 @@ MonoBehaviour:
   _recallPos: {fileID: 2457579034938624542}
   _canAttackLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -812,7 +779,8 @@ GameObject:
   - component: {fileID: 8128531511137509897}
   - component: {fileID: 2128822952462949966}
   - component: {fileID: 4417597003901068123}
-  m_Layer: 0
+  - component: {fileID: 6884603398478304450}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,8 +908,40 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &6884603398478304450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461610516121305678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4cb46ec81157c4e9ebaf719328d1f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHP: 10
+  _maxHP: 10
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4540214632164705568}
+        m_TargetAssemblyTypeName: UpdateHPBarMaterial, Assembly-CSharp
+        m_MethodName: UpdateOnHealthChangedEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6842412213393933239
 GameObject:
   m_ObjectHideFlags: 0

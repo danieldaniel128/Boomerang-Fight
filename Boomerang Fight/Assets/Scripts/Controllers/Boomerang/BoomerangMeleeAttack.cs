@@ -114,7 +114,7 @@ public class BoomerangMeleeAttack : MonoBehaviourPun
 
     public void HitTarget(Collider target)
     {
-        target.GetComponent<Health>().TakeDamage(2);
+        target.GetComponentInParent<Health>().TakeDamage(2);
     }
 
     private void OnDrawGizmosSelected()

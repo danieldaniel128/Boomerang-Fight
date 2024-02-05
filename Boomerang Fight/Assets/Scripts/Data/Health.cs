@@ -18,9 +18,6 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        if (!photonView.IsMine)
-            return;
-
         CurrentHP -= damage;
         if (CurrentHP <= 0)
         {

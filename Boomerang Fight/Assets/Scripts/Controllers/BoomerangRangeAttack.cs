@@ -116,7 +116,9 @@ public class BoomerangRangeAttack : MonoBehaviourPun//interface of attacks
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << collision.gameObject.layer)))
         {
             collision.gameObject.GetComponent<Health>().TakeDamage(2);
+            Debug.Log("hit dummy");
         }
+        Debug.Log("collided name: " + collision.gameObject.name);
         StopBoomerang();
     }
 }
