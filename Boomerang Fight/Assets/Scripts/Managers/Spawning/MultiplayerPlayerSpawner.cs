@@ -6,17 +6,35 @@ using UnityEngine;
 
 public class MultiplayerPlayerSpawner : MonoBehaviourPun
 {
+    public static MultiplayerPlayerSpawner Instance;
     [SerializeField] SpawnPoint[] _spawnPoints;
     [SerializeField] int _playerLayerIndex = 3; // Change to your desired player layer index
     [SerializeField] int _enemyLayerIndex = 7;  // Change to your desired enemy layer index
     int index;
+    int _myPlayerIndex;
     Player _myPlayer;
     const string PLAYER_RESOURCE_NAME = "Player";
+    [SerializeField] List<PlayerController> _playersPlayerControllers;
+    [SerializeField] PlayerController _localPlayerController;
+
+    public void RegisterPlayerController(PlayerController playerController)
+    {
+        _playersPlayerControllers.Add(playerController);
+    }
+    public void SetMyPlayerController(PlayerController playerController)
+    {
+        _localPlayerController = playerController;
+    }
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         GetMyPlayer();
         SpawnPlayers();
+        SetEnemiesLayer();
     }
 
     void SpawnPlayers()
@@ -44,9 +62,17 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPun
     void InstantiationPlayer(int index)
     {
         GameObject playerGameobject = PhotonNetwork.Instantiate(PLAYER_RESOURCE_NAME, _spawnPoints[index].SpawnPosition, Quaternion.identity, 0);
-        //Identify the local player
-        //Set the layer of the local player to PlayerLayer
-        //playerGameobject.layer = _playerLayerIndex;
+            playerGameobject.layer = _playerLayerIndex;
+        _myPlayerIndex = index;
     }
-
-}
+    void SetEnemiesLayer()
+    {
+        Debug.Log(_playersPlayerControllers);
+        foreach (var playerController in _playersPlayerControllers)
+        {
+            if (playerController != _localPlayerController)
+                playerController.gameObject.layer = _enemyLayerIndex;
+            Debug.Log("set enemy");
+        }
+    }
+}   

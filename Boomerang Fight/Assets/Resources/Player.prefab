@@ -455,7 +455,7 @@ MonoBehaviour:
   _attackCollider: {fileID: 6763774625053604192}
   _canAttackLayerMask:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   _timeToStartAttack: 0.3
   _attackDuration: 2.9
   _cooldownDuration: 1
@@ -629,7 +629,7 @@ MonoBehaviour:
   _recallPos: {fileID: 2457579034938624542}
   _canAttackLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -702,7 +702,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1556816211872772023}
-  - {fileID: 0}
+  - {fileID: 1500810551860589892}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

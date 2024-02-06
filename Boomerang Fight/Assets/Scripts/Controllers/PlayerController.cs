@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviourPun
+public class PlayerController : MonoBehaviourPun, IPunInstantiateMagicCallback
 {
 
     //[SerializeField] UserInputPhone _input;
@@ -23,7 +23,16 @@ public class PlayerController : MonoBehaviourPun
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerUpdate;
-
+    int _mySpawnIndex;
+    [PunRPC]
+    void SetMyPlayerIndex(int index)
+    {
+        _mySpawnIndex = index;
+    }
+    public int GetPlayerIndex()
+    {
+        return _mySpawnIndex;
+    }
     private void Start()
     {
         //set camera reference
@@ -34,9 +43,12 @@ public class PlayerController : MonoBehaviourPun
             //close other players joysticks canvas
             _joystickCanvas.SetActive(false);
         }
-        else//set camera follow to my player
+        else
+        {
+            //set camera follow to my player
             _cameraFollow.target = _playerBody.transform;
-
+        }
+        Debug.Log("OnStart");
     }
     private void OnEnable()
     {
@@ -46,6 +58,7 @@ public class PlayerController : MonoBehaviourPun
         _AttackJoystick.OnJoystickDown += EnableRangeAttack;
         //when is pressed, handle recall boomerang.
         _AttackJoystick.OnJoystickPressed += HandleRecall;
+        Debug.Log("OnEnable");
     }
     private void OnDisable()
     {
@@ -105,4 +118,9 @@ public class PlayerController : MonoBehaviourPun
         _AttackJoystick.OnJoystickUp -= HandleAttack;
     }
 
+    public void OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        MultiplayerPlayerSpawner.Instance.SetMyPlayerController(this);
+        MultiplayerPlayerSpawner.Instance.RegisterPlayerController(this);
+    }
 }

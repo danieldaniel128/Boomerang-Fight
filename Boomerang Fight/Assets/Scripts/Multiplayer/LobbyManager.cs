@@ -15,7 +15,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject QuickMatchPanel;
 
     private const string GAME_SCENE_NAME = "Game Scene";
-    
+
     private void RefreshPlayerCountTXT()
     {
         _currentRoomPlayersTXT.text = $"Found Players " +

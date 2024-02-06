@@ -645,11 +645,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1080
       objectReference: {fileID: 0}
-    - target: {fileID: 1949292043620430676, guid: c01a903ee16b5954cadab36ccd9ef721,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2268886858427433525, guid: c01a903ee16b5954cadab36ccd9ef721,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -700,11 +695,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3417720361273407067, guid: c01a903ee16b5954cadab36ccd9ef721,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6187736998003109280, guid: c01a903ee16b5954cadab36ccd9ef721,
         type: 3}
       propertyPath: _cameraFollow
@@ -734,11 +724,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 8578505521668640374, guid: c01a903ee16b5954cadab36ccd9ef721,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
