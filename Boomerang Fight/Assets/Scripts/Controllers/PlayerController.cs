@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviourPun, IPunInstantiateMagicCallback
         _AttackJoystick.OnJoystickDown += EnableRangeAttack;
         //when is pressed, handle recall boomerang.
         _AttackJoystick.OnJoystickPressed += HandleRecall;
-        Debug.Log("OnEnable");
     }
     private void OnDisable()
     {

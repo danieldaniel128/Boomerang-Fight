@@ -34,6 +34,7 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPun
     {
         GetMyPlayer();
         SpawnPlayers();
+        SetEnemiesLayerRPC();
         SetEnemiesLayer();
     }
 
@@ -42,8 +43,17 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPun
         if(PhotonNetwork.IsMasterClient)
             foreach(Player player in PhotonNetwork.PlayerList)
             {
-                photonView.RPC(nameof(InstantiationPlayer), player, index);
+                photonView.RPC(nameof(InstantiationPlayerRPC), player, index);
+                Debug.Log("happend");
                 index++;
+            }
+    }
+    void SetEnemiesLayer()
+    {
+        if (PhotonNetwork.IsMasterClient)
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                photonView.RPC(nameof(SetEnemiesLayerRPC), player);
             }
     }
     void GetMyPlayer()
@@ -59,19 +69,24 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPun
     }
 
     [PunRPC]
-    void InstantiationPlayer(int index)
+    void InstantiationPlayerRPC(int index)
     {
         GameObject playerGameobject = PhotonNetwork.Instantiate(PLAYER_RESOURCE_NAME, _spawnPoints[index].SpawnPosition, Quaternion.identity, 0);
             playerGameobject.layer = _playerLayerIndex;
         _myPlayerIndex = index;
     }
-    void SetEnemiesLayer()
+
+    [PunRPC]
+    void SetEnemiesLayerRPC()
     {
         Debug.Log(_playersPlayerControllers);
         foreach (var playerController in _playersPlayerControllers)
         {
             if (playerController != _localPlayerController)
+            {
                 playerController.gameObject.layer = _enemyLayerIndex;
+                Debug.Log(playerController.gameObject.layer);
+            }
             Debug.Log("set enemy");
         }
     }
