@@ -455,7 +455,7 @@ MonoBehaviour:
   _attackCollider: {fileID: 6763774625053604192}
   _canAttackLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   _timeToStartAttack: 0.3
   _attackDuration: 2.9
   _cooldownDuration: 1
@@ -629,7 +629,7 @@ MonoBehaviour:
   _recallPos: {fileID: 2457579034938624542}
   _canAttackLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -786,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2268886858427433525
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,22 +1036,22 @@ PrefabInstance:
     - target: {fileID: 1876521747082184127, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1876521747082184127, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1876521747082184127, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 1876521747082184127, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -1080
       objectReference: {fileID: 0}
     - target: {fileID: 1876521748256122338, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
@@ -1181,17 +1181,17 @@ PrefabInstance:
     - target: {fileID: 8739159301373944690, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8739159301373944690, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8739159301373944690, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -1080
       objectReference: {fileID: 0}
     - target: {fileID: 8791662451872448992, guid: 3623d2288c15a474687354d69d8536d7,
         type: 3}
