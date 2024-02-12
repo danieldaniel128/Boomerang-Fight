@@ -695,6 +695,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Local Test Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6461610516121305678, guid: c01a903ee16b5954cadab36ccd9ef721,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8578505521668640374, guid: c01a903ee16b5954cadab36ccd9ef721,
         type: 3}
       propertyPath: sceneViewId

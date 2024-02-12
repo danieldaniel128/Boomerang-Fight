@@ -1,3 +1,4 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,16 +19,7 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        CurrentHP -= damage;
-        if (CurrentHP <= 0)
-        {
-            //Debug.Log("took damage" + damage);
-            IsDead = true;
-            OnDeath?.Invoke();
-        }
-
-        // Call the RPC to notify other players
-        photonView.RPC(nameof(SyncHealth), RpcTarget.Others, CurrentHP);
+        photonView.RPC(nameof(SyncHealth), RpcTarget.All, CurrentHP - damage);
     }
 
     [PunRPC]
@@ -35,21 +27,19 @@ public class Health : MonoBehaviourPun
     {
         // Update health for remote players
         CurrentHP = newHealth;
-
         if (newHealth <= 0)
         {
+            Debug.Log("Invoked");
             IsDead = true;
             OnDeath?.Invoke();
+            gameObject.SetActive(false);
         }
     }
 
     public void Revive()
     {
-        CurrentHP = MaxHP;
-        IsDead = false;
-
-        // Call the RPC to notify other players about the revival
-        photonView.RPC(nameof(SyncRevive), RpcTarget.Others);
+        //Call the RPC to notify other players about the revival
+        photonView.RPC(nameof(SyncRevive), RpcTarget.All);
     }
 
     [PunRPC]

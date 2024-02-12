@@ -35,16 +35,19 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPun
         GetMyPlayer();
         SpawnPlayers();
         SetEnemiesLayerRPC();
+        StartCoroutine(SetLayerAfterFrame());
+    }
+    IEnumerator SetLayerAfterFrame()
+    {
+        yield return null;
         SetEnemiesLayer();
     }
-
     void SpawnPlayers()
     {
         if(PhotonNetwork.IsMasterClient)
             foreach(Player player in PhotonNetwork.PlayerList)
             {
                 photonView.RPC(nameof(InstantiationPlayerRPC), player, index);
-                Debug.Log("happend");
                 index++;
             }
     }
@@ -85,9 +88,7 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPun
             if (playerController != _localPlayerController)
             {
                 playerController.gameObject.layer = _enemyLayerIndex;
-                Debug.Log(playerController.gameObject.layer);
             }
-            Debug.Log("set enemy");
         }
     }
 }   
