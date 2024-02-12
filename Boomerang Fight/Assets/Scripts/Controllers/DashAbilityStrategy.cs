@@ -22,14 +22,12 @@ public class DashAbilityStrategy : MonoBehaviour
     private void OnEnable()
     {
         SetTimers();
-
         _canDash = true;
     }
 
     private void Update()
     {
         TickTimers();
-
         if (_dashDuration.IsRunning)
             Dash();
     }
@@ -90,8 +88,8 @@ public class DashAbilityStrategy : MonoBehaviour
     private void SetCooldownTimer()
     {
         _dashCooldown = new(_cooldown);
-        _dashCooldown.OnTimerStart += EnableDash;
-        _dashCooldown.OnTimerStop += DisableDash;
+        _dashCooldown.OnTimerStart += DisableDash;
+        _dashCooldown.OnTimerStop += EnableDash;
     }
 
     private void EnableDash()
@@ -106,8 +104,8 @@ public class DashAbilityStrategy : MonoBehaviour
 
     private void ClearCooldownTimer()
     {
-        _dashCooldown.OnTimerStart -= EnableDash;
-        _dashCooldown.OnTimerStop -= DisableDash;
+        _dashCooldown.OnTimerStart -= DisableDash;
+        _dashCooldown.OnTimerStop -= EnableDash;
     }
 
     #endregion CooldownTimer
@@ -142,9 +140,7 @@ public class DashAbilityStrategy : MonoBehaviour
         //lerp transform to facing direction + range
         float curveValue = _speedCurve.Evaluate(1 - _dashDuration.Progress);
         Vector3 newPosition = Vector3.Lerp(_dashStartPosition, _dashDestination, curveValue);
-
         transform.position = newPosition;
-
     }
 
     //call when hit a wall or death or something
