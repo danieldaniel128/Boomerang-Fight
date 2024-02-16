@@ -79,7 +79,7 @@ public class BoomerangRangeAttack : MonoBehaviourPun//interface of attacks
         //set velocity of recalling. x is distance, f(x) is velocity.
         _boomerangRigidbody.velocity = _currentBoomerangFromPlayerVector.normalized * _maxRecallBoomerangSpeed * _recallSpeedCurve.Evaluate(_currentBoomerangFromPlayerDistance / _pressedRecallFromPlayerDistance);
         //checks if finished recalling.
-        if(_currentBoomerangFromPlayerDistance <= 0.2f)
+        if(_currentBoomerangFromPlayerDistance <= 0.15f)
             AttachBoomerang();
     }
     private void StopBoomerang()

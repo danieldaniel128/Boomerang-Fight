@@ -19,7 +19,9 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        photonView.RPC(nameof(SyncHealth), RpcTarget.All, CurrentHP - damage);
+        if (photonView.IsMine)
+            Debug.Log("i got hit");
+        photonView.RPC(nameof(SyncHealth), RpcTarget.Others, CurrentHP - damage);
     }
 
     [PunRPC]
@@ -29,7 +31,6 @@ public class Health : MonoBehaviourPun
         CurrentHP = newHealth;
         if (newHealth <= 0)
         {
-            Debug.Log("Invoked");
             IsDead = true;
             OnDeath?.Invoke();
             gameObject.SetActive(false);
