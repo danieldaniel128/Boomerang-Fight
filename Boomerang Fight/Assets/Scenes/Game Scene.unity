@@ -625,6 +625,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1559992962702580600, guid: c01a903ee16b5954cadab36ccd9ef721,
+        type: 3}
+      propertyPath: _showGizmos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559992962702580600, guid: c01a903ee16b5954cadab36ccd9ef721,
+        type: 3}
+      propertyPath: abilityData
+      value: 
+      objectReference: {fileID: 11400000, guid: d25a952389184ba488fd28d91a0723ce,
+        type: 2}
     - target: {fileID: 1949292043620430676, guid: c01a903ee16b5954cadab36ccd9ef721,
         type: 3}
       propertyPath: sceneViewId
