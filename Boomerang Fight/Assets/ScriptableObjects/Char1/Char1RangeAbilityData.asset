@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40ad013b2f9444489cd2654f1e4987a, type: 3}
-  m_Name: Char1RangeAttackData
+  m_Name: Char1RangeAbilityData
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
   _cooldown: 0.2
   _canAttackLayerMask:
     serializedVersion: 2
     m_Bits: 192
   _damage: 1
   _maxBoomerangSpeed: 8
-  _maxAttackRange: 12
-  _maxChargeTime: 4
+  _maxAttackRange: 10
+  _minAttackRange: 4
+  _maxChargeTime: 2
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -35,12 +35,12 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -2.7866616
-      outSlope: -2.7866616
+      value: 0.80145866
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.036153197
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

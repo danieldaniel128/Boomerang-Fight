@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbilityStrategy : MonoBehaviour
+public class DashAbility : MonoBehaviour
 {
     [Header("Dash Parameters")]
     [SerializeField] float _range;

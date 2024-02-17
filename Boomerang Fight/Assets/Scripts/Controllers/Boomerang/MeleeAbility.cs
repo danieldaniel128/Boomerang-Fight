@@ -6,12 +6,11 @@ using System.Net.Security;
 using UnityEngine;
 using UnityEngine.InputSystem.XInput;
 
-public class BoomerangMeleeAttack : Ability
+public class MeleeAbility : AttackAbility
 {
     private const string MELEE_ATTACK_STRING_CONST = "MeleeAttack";
 
-    public Action OnAttackPressed { get; set; }
-    public float Damage { get => _damage;}
+    public float Damage { get => _damage; }
 
     [Header("Collider Parameters")]
     [SerializeField] BoxCollider _attackCollider;
@@ -47,14 +46,14 @@ public class BoomerangMeleeAttack : Ability
     {
         Tick();
     }
-    private void OnEnable()
-    {
-        OnAttackPressed += UseAbility;
-    }
-    private void OnDisable()
-    {
-        OnAttackPressed -= UseAbility;
-    }
+    //private void OnEnable()
+    //{
+    //    OnAttackPressed += UseAbility;
+    //}
+    //private void OnDisable()
+    //{
+    //    OnAttackPressed -= UseAbility;
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
@@ -63,15 +62,14 @@ public class BoomerangMeleeAttack : Ability
         }
     }
 
+    #region Ability Overrides
+
+    [ContextMenu("Press Attack")]
     public override void UseAbility()
     {
         TryInitiateAttack();
     }
-
-    /// <summary>
-    /// gets the data from ability scriptable object
-    /// </summary>
-    private void GetData()
+    protected override void GetData()
     {
         MeleeAttackData meleeAttackData = abilityData as MeleeAttackData;
 
@@ -80,8 +78,9 @@ public class BoomerangMeleeAttack : Ability
         _attackDuration = meleeAttackData.AttackDuration;
         _cooldownDuration = meleeAttackData.Cooldown;
         _damage = meleeAttackData.Damage;
-        //_characterAnimator = meleeAttackData.Animator;
     }
+
+    #endregion Ability Overrides
 
     #region Timers
     private void InitializeTimers()
@@ -122,12 +121,12 @@ public class BoomerangMeleeAttack : Ability
     }
     #endregion Timers
 
-    [ContextMenu("Press Attack")]
-    public void ActivateAttackEvent()
-    {
-        //print("Attack invoked");
-        OnAttackPressed?.Invoke();
-    }
+    //[ContextMenu("Press Attack")]
+    //public void ActivateAttackEvent()
+    //{
+    //    //print("Attack invoked");
+    //    OnAttackPressed?.Invoke();
+    //}
 
     public void TryInitiateAttack()
     {
