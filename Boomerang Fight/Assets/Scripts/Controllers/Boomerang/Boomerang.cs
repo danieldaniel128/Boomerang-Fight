@@ -18,16 +18,20 @@ public class Boomerang : MonoBehaviourPun
     public GameObject Parent { get { return _parent; } }
     public bool IsFlying { get => _isFlying; set => _isFlying = value; }
     public bool IsSeperated { get => _isSeperated; set => _isSeperated = value; }
+    public bool Interrupted { get => _interupted; set => _interupted = value; }
+    public bool ReachedMaxRange { get => _reachedMaxRange; set => _reachedMaxRange = value; }
     public float Damage { get => _damage; }
+    public float MinDistanceToPickUp { get => _minDistanceToPickUp;}
 
     protected bool _isFlying;
     protected bool _isSeperated;
+    private bool _interupted; // to check if hit anything that changes its trajectory
+    private bool _reachedMaxRange; // to check if reached max range and should start returning to player
     LayerMask _canAttackLayerMask;
     float _damage;
 
     private void Update()
     {
-        print("velo mag: " + RB.velocity.magnitude);
         if (!IsFlying && IsSeperated)
         {
             if (RB.velocity.magnitude <= 0.1f)
@@ -36,7 +40,7 @@ public class Boomerang : MonoBehaviourPun
             }
 
             RB.AddForce(-RB.velocity.normalized * _slowDownForce);
-            if(Vector3.Distance(transform.position, _parent.transform.position) < _minDistanceToPickUp)
+            if(Vector3.Distance(transform.position, _parent.transform.position) < MinDistanceToPickUp)
             {
                 Attach();
             }
@@ -69,6 +73,8 @@ public class Boomerang : MonoBehaviourPun
         print("Boomerang Released");
         transform.SetParent(null);
         _isSeperated = true;
+        _reachedMaxRange = false;
+        _interupted = false;
     }
     //attach to player prefab
     public void Attach()

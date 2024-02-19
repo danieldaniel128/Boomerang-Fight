@@ -17,7 +17,8 @@ public class RangeAbility : AttackAbility//interface of attacks
     float _maxChargeTime;
     float _damage;
 
-    Vector3 attackDirectionVector;
+    Vector3 _attackDirectionVector;
+
     Vector3 _releasedPosition;
     Vector3 _currentBoomerangFromReleasedPositionVector => _releasedPosition - PlayerBoomerang.transform.position;
     private float _currentDistanceFromReleasedPosition => _currentBoomerangFromReleasedPositionVector.magnitude; // need to change to from player starting point
@@ -28,7 +29,9 @@ public class RangeAbility : AttackAbility//interface of attacks
             return;
         if (!PlayerBoomerang.IsFlying && !PlayerBoomerang.IsSeperated)
             PlayerBoomerang.RB.velocity = Vector3.zero;
-        FlyBoomerang();
+        if (PlayerBoomerang.Interrupted)
+            return;
+        Fly();
     }
     private void Start()
     {
@@ -61,15 +64,43 @@ public class RangeAbility : AttackAbility//interface of attacks
     }
     #endregion Ability Overrides
 
-    private void FlyBoomerang() // need to split into boomerang flying out and boomerang flying back... need to make boomerang flying back
+    private void FlyBoomerangBack()
+    {
+        if (!PlayerBoomerang.IsFlying)
+            return;
+
+        //get distance and direction to player vector
+        Vector3 distanceToPlayerVector = PlayerBoomerang.Parent.transform.position - PlayerBoomerang.transform.position;
+        Vector3 boomerangVelocity = distanceToPlayerVector.normalized * _maxBoomerangSpeed;
+        PlayerBoomerang.RB.velocity = boomerangVelocity; //attack time cant be 0
+        
+        if (distanceToPlayerVector.magnitude <= PlayerBoomerang.MinDistanceToPickUp)
+        {
+            PlayerBoomerang.Stop();
+        }
+    }
+
+    private void FlyBoomerangOut() // need to split into boomerang flying out and boomerang flying back... need to make boomerang flying back
     {
         if (!PlayerBoomerang.IsFlying)
             return;
         //set velocity of attacking. x is distance of player and released attack position, f(x) is velocity.
-        Vector3 boomerangVelocity = attackDirectionVector * _maxBoomerangSpeed * (1 - _attackSpeedCurve.Evaluate(_currentDistanceFromReleasedPosition / _maxAttackRange));//_maxAttackRange cant be 0
+        Vector3 boomerangVelocity = _attackDirectionVector * _maxBoomerangSpeed * (1 - _attackSpeedCurve.Evaluate(_currentDistanceFromReleasedPosition / _maxAttackRange));//_maxAttackRange cant be 0
         PlayerBoomerang.RB.velocity = boomerangVelocity; //attack time cant be 0
         if (_currentDistanceFromReleasedPosition >= _maxAttackRange)
-            PlayerBoomerang.Stop();
+        {
+            //_maxRangePos = PlayerBoomerang.transform.position;
+            PlayerBoomerang.ReachedMaxRange = true;
+        }
+    }
+
+    private void Fly()
+    {
+        if (PlayerBoomerang.ReachedMaxRange)
+            FlyBoomerangBack();
+        else
+            FlyBoomerangOut();
+
     }
     public void CalculateAttackRange(Vector3 attackDirection)
     {
@@ -79,7 +110,7 @@ public class RangeAbility : AttackAbility//interface of attacks
 
         if (attackDirection != Vector3.zero)
         {
-            attackDirectionVector = attackDirection;
+            _attackDirectionVector = attackDirection;
         }
         else
         {

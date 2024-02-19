@@ -610,33 +610,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityData: {fileID: 11400000, guid: 5d0df67e750da774f9b307838dc7595d, type: 2}
   _playerBoomerang: {fileID: 6437971786199756181}
-  _canAttackLayerMask:
-    serializedVersion: 2
-    m_Bits: 192
-  _attackSpeedCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.9755287
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -2.7866616
-      outSlope: -2.7866616
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.036153197
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &2637411979835113435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,15 +683,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4503815329630383127, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: _parent
       value: 
       objectReference: {fileID: 6461610516121305678}
+    - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: _slowDownForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: _minDistanceToPickUp
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6820703380817466682, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: m_Name
       value: Elad Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463914113709303179, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463914113709303179, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
