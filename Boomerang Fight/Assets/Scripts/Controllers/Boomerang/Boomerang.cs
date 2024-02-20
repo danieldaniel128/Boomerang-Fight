@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boomerang : MonoBehaviourPun
@@ -21,7 +22,7 @@ public class Boomerang : MonoBehaviourPun
     public bool Interrupted { get => _interupted; set => _interupted = value; }
     public bool ReachedMaxRange { get => _reachedMaxRange; set => _reachedMaxRange = value; }
     public float Damage { get => _damage; }
-    public float MinDistanceToPickUp { get => _minDistanceToPickUp;}
+    public float MinDistanceToPickUp { get => _minDistanceToPickUp; }
 
     protected bool _isFlying;
     protected bool _isSeperated;
@@ -38,9 +39,12 @@ public class Boomerang : MonoBehaviourPun
             {
                 RB.velocity = Vector3.zero;
             }
+            else
+            {
+                RB.AddForce(-RB.velocity.normalized * _slowDownForce);
+            }
 
-            RB.AddForce(-RB.velocity.normalized * _slowDownForce);
-            if(Vector3.Distance(transform.position, _parent.transform.position) < MinDistanceToPickUp)
+            if (Vector3.Distance(transform.position, _parent.transform.position) < MinDistanceToPickUp)
             {
                 Attach();
             }
@@ -57,6 +61,11 @@ public class Boomerang : MonoBehaviourPun
             other.gameObject.GetComponent<Health>().TakeDamage(Damage);
         }
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Interrupted = true;
+    //}
 
     public void SetBoomerangDamage(float damage)
     {

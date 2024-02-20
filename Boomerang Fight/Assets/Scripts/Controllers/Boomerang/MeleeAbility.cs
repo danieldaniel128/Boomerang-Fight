@@ -10,21 +10,17 @@ public class MeleeAbility : AttackAbility
 {
     private const string MELEE_ATTACK_STRING_CONST = "MeleeAttack";
 
-    public float Damage { get => _damage; }
+    public float Damage { get => _baseDamage; }
 
     [Header("Collider Parameters")]
     [SerializeField] BoxCollider _attackCollider;
     LayerMask _canAttackLayerMask;
-
-    [Header("Components")]
-    [SerializeField] Animator _characterAnimator;
 
     [Header("Timing Parameters")]
     float _timeToStartAttack;
     float _attackDuration;
     float _cooldownDuration;
 
-    float _damage;
     bool _canAttack = true;
 
     CountdownTimer _cooldownTimer;
@@ -46,14 +42,6 @@ public class MeleeAbility : AttackAbility
     {
         Tick();
     }
-    //private void OnEnable()
-    //{
-    //    OnAttackPressed += UseAbility;
-    //}
-    //private void OnDisable()
-    //{
-    //    OnAttackPressed -= UseAbility;
-    //}
     private void OnTriggerEnter(Collider other)
     {
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
@@ -77,7 +65,7 @@ public class MeleeAbility : AttackAbility
         _timeToStartAttack = meleeAttackData.TimeToStartAttack;
         _attackDuration = meleeAttackData.AttackDuration;
         _cooldownDuration = meleeAttackData.Cooldown;
-        _damage = meleeAttackData.Damage;
+        _baseDamage = meleeAttackData.Damage;
     }
 
     #endregion Ability Overrides
@@ -121,26 +109,17 @@ public class MeleeAbility : AttackAbility
     }
     #endregion Timers
 
-    //[ContextMenu("Press Attack")]
-    //public void ActivateAttackEvent()
-    //{
-    //    //print("Attack invoked");
-    //    OnAttackPressed?.Invoke();
-    //}
-
-    public void TryInitiateAttack()
+    private void TryInitiateAttack()
     {
         if (_canAttack)
         {
             _canAttack = false;
-            //_characterAnimator.Play(MELEE_ATTACK_STRING_CONST);
             _delayAttackTimer.Start();
             _cooldownTimer.Start();
         }
-
     }
 
-    public void Attack()
+    private void Attack()
     {
         //enable collider
         _attackDurationTimer.Start();
@@ -149,7 +128,7 @@ public class MeleeAbility : AttackAbility
 
     }
 
-    public void StopAttack()
+    private void StopAttack()
     {
         _attackCollider.enabled = false;
         _inAttack = false;

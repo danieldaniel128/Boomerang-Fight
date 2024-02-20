@@ -314,9 +314,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityData: {fileID: 11400000, guid: d25a952389184ba488fd28d91a0723ce, type: 2}
+  animator: {fileID: 0}
   _playerBoomerang: {fileID: 6437971786199756181}
+  _baseDamage: 0
   _attackCollider: {fileID: 6763774625053604192}
-  _characterAnimator: {fileID: 5122105994880568347}
   _showGizmos: 0
 --- !u!1 &5178514810636989025
 GameObject:
@@ -609,7 +610,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityData: {fileID: 11400000, guid: 5d0df67e750da774f9b307838dc7595d, type: 2}
+  animator: {fileID: 0}
   _playerBoomerang: {fileID: 6437971786199756181}
+  _baseDamage: 0
 --- !u!114 &2637411979835113435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,7 +626,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityData: {fileID: 11400000, guid: e29c792490326654da1005b5a7deff10, type: 2}
+  animator: {fileID: 0}
   _playerBoomerang: {fileID: 6437971786199756181}
+  _baseDamage: 0
   _recallObject: {fileID: 2457579034938624542}
 --- !u!1001 &1311365642296509354
 PrefabInstance:
@@ -683,40 +688,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4503815329630383127, guid: ae5d6ee223ee27d448a5b928ea41e72d,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: _parent
       value: 
       objectReference: {fileID: 6461610516121305678}
-    - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
-        type: 3}
-      propertyPath: _slowDownForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
-        type: 3}
-      propertyPath: _minDistanceToPickUp
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6820703380817466682, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: m_Name
       value: Elad Boomerang
-      objectReference: {fileID: 0}
-    - target: {fileID: 7463914113709303179, guid: ae5d6ee223ee27d448a5b928ea41e72d,
-        type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7463914113709303179, guid: ae5d6ee223ee27d448a5b928ea41e72d,
-        type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

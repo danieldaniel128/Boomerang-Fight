@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -273,6 +278,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -341,6 +351,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -408,6 +423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -852,6 +872,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -978,6 +1003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Wall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1042,7 +1072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695129855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Testing Walls Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,6 +1114,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -1152,6 +1187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -1330,35 +1370,10 @@ PrefabInstance:
       propertyPath: _cameraFollow
       value: 
       objectReference: {fileID: 323402549}
-    - target: {fileID: 6437971786199756181, guid: be63c66fea0b98844a61870527b50878,
-        type: 3}
-      propertyPath: _slowDownForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6437971786199756181, guid: be63c66fea0b98844a61870527b50878,
-        type: 3}
-      propertyPath: _minDistanceToPickUp
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6461610516121305678, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
       propertyPath: m_Name
       value: Elad Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8477971657046533665, guid: be63c66fea0b98844a61870527b50878,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8477971657046533665, guid: be63c66fea0b98844a61870527b50878,
-        type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8477971657046533665, guid: be63c66fea0b98844a61870527b50878,
-        type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 8578505521668640374, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
@@ -1382,6 +1397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -1590,6 +1610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1695,6 +1720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -1953,7 +1983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525714320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Testing Walls (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2126,6 +2156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2199,6 +2234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -2305,7 +2345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1855656398}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Testing Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2352,6 +2392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -2420,6 +2465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}
@@ -2765,6 +2815,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Testing Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 448261233145805734, guid: b0089e6891e25194f9e5ce35057bb15b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
         type: 3}

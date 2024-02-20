@@ -30,7 +30,7 @@ public class RecallAbility : AttackAbility
         RecallAbilityData recallAbilityData = abilityData as RecallAbilityData;
 
         // Assigning variables from the scriptable object
-        _maxRecallBoomerangSpeed = recallAbilityData.MaxRecallBoomerangSpeed;
+        _maxRecallBoomerangSpeed = recallAbilityData.MaxBoomerangRecallSpeed;
         _autoBoomerangTeleportToPlayerTime = recallAbilityData.AutoBoomerangTeleportToPlayerTime;
         _recallForce = recallAbilityData.RecallForce;
         _minDistanceToRecallPosition = recallAbilityData.MinDistanceToRecallPosition;

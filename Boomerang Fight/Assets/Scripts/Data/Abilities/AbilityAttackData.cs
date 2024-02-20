@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class AbilityAttackData : AbilityData
 {
     [Header("Attack Parameters")]
-    [SerializeField] protected LayerMask _canAttackLayerMask;
-    [SerializeField] protected float _damage;
+    [SerializeField] private LayerMask _canAttackLayerMask;
+    [SerializeField] private float _damage;
 
     #region Properties
     public LayerMask CanAttackLayerMask { get { return _canAttackLayerMask; } }

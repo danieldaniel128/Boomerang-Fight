@@ -5,7 +5,8 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviourPun
 {
-    [SerializeField] protected AbilityData abilityData; 
+    [SerializeField] protected AbilityData abilityData;
+    [SerializeField] protected Animator animator;
 
     /// <summary>
     /// Gets the data from the ability scriptable object

@@ -15,13 +15,12 @@ public class RangeAbility : AttackAbility//interface of attacks
     float _maxAttackRange;
     float _minAttackRange;
     float _maxChargeTime;
-    float _damage;
 
     Vector3 _attackDirectionVector;
 
     Vector3 _releasedPosition;
     Vector3 _currentBoomerangFromReleasedPositionVector => _releasedPosition - PlayerBoomerang.transform.position;
-    private float _currentDistanceFromReleasedPosition => _currentBoomerangFromReleasedPositionVector.magnitude; // need to change to from player starting point
+    private float _currentDistanceFromReleasedPosition => _currentBoomerangFromReleasedPositionVector.magnitude; // need to be distance travelled
 
     void FixedUpdate()
     {
@@ -47,7 +46,8 @@ public class RangeAbility : AttackAbility//interface of attacks
     {
         _releasedPosition = transform.position;
         PlayerBoomerang.IsFlying = true;
-        PlayerBoomerang.SetBoomerangDamage(_damage);
+        PlayerBoomerang.SetBoomerangDamage(_baseDamage);
+        timeFlying = 0;
         PlayerBoomerang.Release();
     }
     protected override void GetData()
@@ -60,7 +60,7 @@ public class RangeAbility : AttackAbility//interface of attacks
         _minAttackRange = rangeAbilityData.MinAttackRange;
         _maxChargeTime = rangeAbilityData.MaxChargeTime;
         _attackSpeedCurve = rangeAbilityData.AttackSpeedCurve;
-        _damage = rangeAbilityData.Damage;
+        _baseDamage = rangeAbilityData.Damage;
     }
     #endregion Ability Overrides
 
@@ -76,6 +76,7 @@ public class RangeAbility : AttackAbility//interface of attacks
         
         if (distanceToPlayerVector.magnitude <= PlayerBoomerang.MinDistanceToPickUp)
         {
+            print("time flying when returned: " + timeFlying);
             PlayerBoomerang.Stop();
         }
     }
@@ -89,19 +90,21 @@ public class RangeAbility : AttackAbility//interface of attacks
         PlayerBoomerang.RB.velocity = boomerangVelocity; //attack time cant be 0
         if (_currentDistanceFromReleasedPosition >= _maxAttackRange)
         {
-            //_maxRangePos = PlayerBoomerang.transform.position;
+            print("time flying when max range reached: " + timeFlying);
             PlayerBoomerang.ReachedMaxRange = true;
         }
     }
 
+    float timeFlying = 0;
     private void Fly()
     {
+        timeFlying += Time.deltaTime;
         if (PlayerBoomerang.ReachedMaxRange)
             FlyBoomerangBack();
         else
             FlyBoomerangOut();
-
     }
+
     public void CalculateAttackRange(Vector3 attackDirection)
     {
         //cant use attack when is seperated.
@@ -114,8 +117,8 @@ public class RangeAbility : AttackAbility//interface of attacks
         }
         else
         {
-            //brawl stars auto aim here
-            //transform forward = closest enemy direction
+            //brawlstars-like auto aim here
+            //_attackDirectionVector = closest enemy direction
         }
     }
 

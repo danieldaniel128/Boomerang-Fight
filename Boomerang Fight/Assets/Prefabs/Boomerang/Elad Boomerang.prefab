@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1615924389864688998}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.371, y: 0, z: 1.75}
+  m_LocalPosition: {x: 1, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 3168059841709694565}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -131,14 +131,14 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.0660548, y: 1, z: 3.247423}
-  m_Center: {x: -0.6618012, y: 0, z: 1.123711}
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5700372981505726971
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 5700372981505726971}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.15, y: 0, z: 0.18413186}
+  m_LocalPosition: {x: -0.5, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 7463914113709303179}
   - component: {fileID: 377486115953651464}
   - component: {fileID: 5434346254430645823}
+  - component: {fileID: 7827871511119988387}
   m_Layer: 6
   m_Name: Elad Boomerang
   m_TagString: Untagged
@@ -251,7 +252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6820703380817466682}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -315,10 +316,10 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -356,8 +357,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 7463914113709303179}
   _parent: {fileID: 0}
-  _slowDownSpeed: 2
+  _slowDownForce: 5
   _minSpeedToDamage: 2
+  _minDistanceToPickUp: 0.5
+--- !u!135 &7827871511119988387
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820703380817466682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 255
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.34
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6827549485873397647
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 6827549485873397647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.413, y: 0, z: 0.16800427}
+  m_LocalPosition: {x: 1, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
