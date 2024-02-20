@@ -1,35 +1,54 @@
+using ExitGames.Client.Photon;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviourPun
 {
     [SerializeField] private float _currentHP;
-    public float CurrentHP { get { return _currentHP; } private set { _currentHP = value; OnValueChanged?.Invoke(); } }
-
     [SerializeField] private float _maxHP;
+    public float CurrentHP { get { return _currentHP; } private set { _currentHP = value; OnValueChanged?.Invoke(_currentHP, _maxHP); } }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
+    public bool IsDead { get; private set; }
 
-    public UnityEvent OnValueChanged;
+    public UnityEvent<float,float> OnValueChanged;
     public UnityEvent OnDeath;
 
-    bool _isDead;
 
     public void TakeDamage(float damage)
     {
-        CurrentHP -= damage;
-        if (CurrentHP <= 0)
+        if (photonView.IsMine)
+            Debug.Log("i got hit");
+        photonView.RPC(nameof(SyncHealth), RpcTarget.Others, CurrentHP - damage);
+    }
+
+    [PunRPC]
+    private void SyncHealth(float newHealth)
+    {
+        // Update health for remote players
+        CurrentHP = newHealth;
+        if (newHealth <= 0)
         {
-            _isDead = true;
+            IsDead = true;
             OnDeath?.Invoke();
+            gameObject.SetActive(false);
         }
     }
 
     public void Revive()
     {
+        //Call the RPC to notify other players about the revival
+        photonView.RPC(nameof(SyncRevive), RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void SyncRevive()
+    {
+        // Handle revival for remote players
         CurrentHP = MaxHP;
-        _isDead = false;
+        IsDead = false;
     }
 
     public void SetHealth(float health)
@@ -37,8 +56,8 @@ public class Health : MonoBehaviour
         MaxHP = health;
         CurrentHP = health;
     }
-    private void OnDisable()
-    {
-        OnDeath?.Invoke();
-    }
+    //private void OnDisable()
+    //{
+    //    OnDeath?.Invoke();
+    //}
 }

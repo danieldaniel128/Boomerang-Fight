@@ -8,7 +8,7 @@ using static InputAsset;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 [CreateAssetMenu(fileName = "NewInput", menuName = "InputSystem/New Input", order = 1)]
-public class NewInputSystem : UserInputPhone/*, IPlayerActions*/
+public class NewPhoneInputSystem : UserInputPhone/*, IPlayerActions*/
 {
     InputAsset _input;
     public override void SubscribeInputActions()//subscribe on enable

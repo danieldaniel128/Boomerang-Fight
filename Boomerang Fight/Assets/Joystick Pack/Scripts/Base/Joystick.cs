@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,6 +21,10 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         get { return deadZone; }
         set { deadZone = Mathf.Abs(value); }
     }
+    public Action OnJoystickUp { get; set; }
+    public Action OnJoystickDown { get; set; }
+    public Action OnJoystickDrag { get; set; }
+    public Action OnJoystickPressed { get; set; }
 
     public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
     public bool SnapX { get { return snapX; } set { snapX = value; } }
@@ -39,6 +44,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Camera cam;
 
     private Vector2 input = Vector2.zero;
+    bool isPressed;
+    bool hasReleased;
 
     protected virtual void Start()
     {
@@ -56,10 +63,19 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
     }
-
+    private void LateUpdate()
+    {
+        if (isPressed)
+        {
+            OnJoystickPressed?.Invoke();
+        }
+        
+    }
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        isPressed = true;
         OnDrag(eventData);
+        OnJoystickDown?.Invoke();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -74,6 +90,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
         handle.anchoredPosition = input * radius * handleRange;
+        OnJoystickDrag?.Invoke();
     }
 
     protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
@@ -131,6 +148,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
+        OnJoystickUp?.Invoke();
+        isPressed = false;
+        hasReleased = true;
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
     }
