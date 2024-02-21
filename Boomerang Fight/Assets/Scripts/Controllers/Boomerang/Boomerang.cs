@@ -6,86 +6,70 @@ using UnityEngine;
 
 public class Boomerang : MonoBehaviourPun
 {
+
+    [SerializeField] GameObject _parent;
     [Header("Components")]
     [SerializeField] Rigidbody _rb;
-
-    [Space]
-    [SerializeField] GameObject _parent;
+    [Header("Boomerang Limits")]
     [SerializeField] float _slowDownForce;
     [SerializeField] float _minSpeedToDamage;
     [SerializeField] float _minDistanceToPickUp;
-
-    public Rigidbody RB { get { return _rb; } }
-    public GameObject Parent { get { return _parent; } }
-    public bool IsFlying { get => _isFlying; set => _isFlying = value; }
-    public bool IsSeperated { get => _isSeperated; set => _isSeperated = value; }
-    public bool Interrupted { get => _interupted; set => _interupted = value; }
-    public bool ReachedMaxRange { get => _reachedMaxRange; set => _reachedMaxRange = value; }
-    public float Damage { get => _damage; }
-    public float MinDistanceToPickUp { get => _minDistanceToPickUp; }
-
-    protected bool _isFlying;
-    protected bool _isSeperated;
-    private bool _interupted; // to check if hit anything that changes its trajectory
-    private bool _reachedMaxRange; // to check if reached max range and should start returning to player
-    LayerMask _canAttackLayerMask;
+    [SerializeField] float _maxSpeed;
+    [SerializeField] AnimationCurve _speedCurve;
+    [SerializeField] LayerMask _canAttackLayerMask;
+    [Header("Ability Parameters")]
+    float _range;
+    Vector3 _launchDirection;
     float _damage;
+    [Header("Boomerang Information")]
+    float _distanceTravelled;
+    float _currentSpeed;
+    bool _interrupted;
+    bool _damaging;
+    bool _reachedMaxDistance;
+    bool _attachable;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!IsFlying && IsSeperated)
-        {
-            if (RB.velocity.magnitude <= 0.1f)
-            {
-                RB.velocity = Vector3.zero;
-            }
-            else
-            {
-                RB.AddForce(-RB.velocity.normalized * _slowDownForce);
-            }
-
-            if (Vector3.Distance(transform.position, _parent.transform.position) < MinDistanceToPickUp)
-            {
-                Attach();
-            }
-        }
+        if (!gameObject.activeInHierarchy)
+            return;
+        TryAttach();
+        CheckDamaging();
+        Fly();
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (RB.velocity.magnitude <= _minSpeedToDamage)
+        if (!_damaging)
             return;
 
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
         {
-            other.gameObject.GetComponent<Health>().TakeDamage(Damage);
+            other.gameObject.GetComponent<Health>().TakeDamage(_damage);
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Interrupted = true;
-    //}
-
-    public void SetBoomerangDamage(float damage)
+    private void OnCollisionEnter(Collision collision)
     {
+        if (_reachedMaxDistance)
+            _interrupted = true;
+    }
+
+    public void Release(Vector3 directionVector, float damage)
+    {
+        //set range, direction and damage
+        _range = directionVector.magnitude;
+        _launchDirection = directionVector.normalized;
         _damage = damage;
-    }
-    public void SetAttackLayerMask(LayerMask layerMask)
-    {
-        _canAttackLayerMask = layerMask;
+        //reset parameters
+        _interrupted = false;
+        _reachedMaxDistance = false;
+        _attachable = false;
+        _distanceTravelled = 0;
+        //activate logic boomerang
+        gameObject.SetActive(true);
+        _rb.velocity = directionVector;
+        print("Boomerang Released");
     }
 
-    //release from player prefab.
-    public void Release()
-    {
-        print("Boomerang Released");
-        transform.SetParent(null);
-        _isSeperated = true;
-        _reachedMaxRange = false;
-        _interupted = false;
-    }
-    //attach to player prefab
     public void Attach()
     {
         print("Boomerang Attached");
@@ -93,19 +77,77 @@ public class Boomerang : MonoBehaviourPun
         transform.SetParent(_parent.transform);
         //set position
         transform.localPosition = Vector3.zero;
-        //set on player.
-        _isSeperated = false;
         //stop movement
         Stop();
-        //ignore gravity
-        _rb.useGravity = false;
+        //deactivate logic boomerang
+        gameObject.SetActive(false);
     }
-    public void Stop()
+
+    private void TryAttach()
     {
-        //stoped flying.
-        IsFlying = false;
-        //stop velocity.
-        RB.velocity = Vector3.zero;
+        if (!_attachable) return;
+        if (Vector3.Distance(transform.position, _parent.transform.position) < _minDistanceToPickUp)
+            Attach();
+    }
+
+    private void Fly()
+    {
+        CalculateDistanceTravelled();
+        if (!_interrupted)
+            FlyUninterrupted();
+        else
+            SlowDown();
+    }
+
+    private void FlyUninterrupted()
+    {
+        CalculateUninterruptedSpeed();
+        Vector3 newVelocity = _reachedMaxDistance ?
+            Vector3.Normalize(_parent.transform.position - transform.position) :
+            _rb.velocity.normalized;
+
+        newVelocity *= _currentSpeed;
+        _rb.velocity = newVelocity;
+    }
+
+    private void CalculateUninterruptedSpeed()
+    {
+        float speedCurveModifier = _speedCurve.Evaluate(_distanceTravelled / _range);
+        Mathf.Clamp(speedCurveModifier, 0.01f, 0.99f);
+        if (_reachedMaxDistance)
+            _currentSpeed = Vector3.Magnitude(_rb.velocity.normalized * _maxSpeed * (1 - speedCurveModifier));
+        else
+            _currentSpeed = Vector3.Magnitude(_rb.velocity.normalized * _maxSpeed * speedCurveModifier);
+    }
+
+    private void CalculateDistanceTravelled()
+    {
+        _distanceTravelled += _rb.velocity.magnitude * Time.fixedDeltaTime;
+        _attachable = _distanceTravelled > _minDistanceToPickUp + 0.3f;
+        _reachedMaxDistance = _distanceTravelled >= _range ? true : false;
+
+        if (_reachedMaxDistance)
+        {
+            print("Reached Max Distance");
+        }
+    }
+
+    private void CheckDamaging()
+    {
+        _damaging = _rb.velocity.magnitude > _minSpeedToDamage;
+    }
+
+    private void SlowDown()
+    {
+        if (_rb.velocity.magnitude <= 0.05f)
+            _rb.velocity = Vector3.zero;
+        else
+            _rb.AddForce(-_rb.velocity.normalized * _slowDownForce * Time.fixedDeltaTime);
+    }
+
+    private void Stop()
+    {
+        _rb.velocity = Vector3.zero;
     }
 
 }

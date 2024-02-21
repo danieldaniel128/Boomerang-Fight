@@ -44,10 +44,7 @@ public class RangeAbility : AttackAbility//interface of attacks
     #region Ability Overrides
     public override void UseAbility() //on joystick up
     {
-        _releasedPosition = transform.position;
-        PlayerBoomerang.IsFlying = true;
-        PlayerBoomerang.SetBoomerangDamage(_baseDamage);
-        timeFlying = 0;
+       
         PlayerBoomerang.Release();
     }
     protected override void GetData()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -15,16 +16,17 @@ public class NewBoomerang : MonoBehaviour
     [SerializeField] float _minDistanceToPickUp;
     [SerializeField] float _maxSpeed;
     [SerializeField] AnimationCurve _speedCurve;
+    [SerializeField] LayerMask _canAttackLayerMask;
     [Header("Ability Parameters")]
     float _range;
     Vector3 _launchDirection;
-
+    float _damage;
     [Header("Boomerang Information")]
     float _distanceTravelled;
     float _currentSpeed;
-    bool _interrupted = false;
+    bool _interrupted;
     bool _damaging;
-    bool _reachedMaxRange;
+    bool _reachedMaxDistance;
     bool _attachable;
 
     private void FixedUpdate()
@@ -35,20 +37,37 @@ public class NewBoomerang : MonoBehaviour
         CheckDamaging();
         Fly();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!_damaging)
+            return;
 
+        if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
+        {
+            other.gameObject.GetComponent<Health>().TakeDamage(_damage);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
-        if (_reachedMaxRange)
+        if (_reachedMaxDistance)
             _interrupted = true;
     }
 
-    public void Release(Vector3 directionVector)
+    public void Release(Vector3 directionVector, float damage)
     {
+        //set range, direction and damage
         _range = directionVector.magnitude;
         _launchDirection = directionVector.normalized;
+        _damage = damage;
+        //reset parameters
+        _interrupted = false;
+        _reachedMaxDistance = false;
+        _attachable = false;
         _distanceTravelled = 0;
+        //activate logic boomerang
         gameObject.SetActive(true);
         _rb.velocity = directionVector;
+        print("Boomerang Released");
     }
 
     public void Attach()
@@ -60,6 +79,8 @@ public class NewBoomerang : MonoBehaviour
         transform.localPosition = Vector3.zero;
         //stop movement
         Stop();
+        //deactivate logic boomerang
+        gameObject.SetActive(false);
     }
 
     private void TryAttach()
@@ -81,7 +102,7 @@ public class NewBoomerang : MonoBehaviour
     private void FlyUninterrupted()
     {
         CalculateUninterruptedSpeed();
-        Vector3 newVelocity = _reachedMaxRange ? 
+        Vector3 newVelocity = _reachedMaxDistance ? 
             Vector3.Normalize(_parent.transform.position - transform.position) : 
             _rb.velocity.normalized;
 
@@ -93,7 +114,7 @@ public class NewBoomerang : MonoBehaviour
     {
         float speedCurveModifier = _speedCurve.Evaluate(_distanceTravelled / _range);
         Mathf.Clamp(speedCurveModifier, 0.01f, 0.99f);
-        if (_reachedMaxRange)
+        if (_reachedMaxDistance)
             _currentSpeed = Vector3.Magnitude(_rb.velocity.normalized * _maxSpeed * (1 - speedCurveModifier));
         else
             _currentSpeed = Vector3.Magnitude(_rb.velocity.normalized * _maxSpeed * speedCurveModifier);
@@ -103,7 +124,12 @@ public class NewBoomerang : MonoBehaviour
     {
         _distanceTravelled += _rb.velocity.magnitude * Time.fixedDeltaTime;
         _attachable = _distanceTravelled > _minDistanceToPickUp + 0.3f;
-        _reachedMaxRange = _distanceTravelled >= _range ? true : false;
+        _reachedMaxDistance = _distanceTravelled >= _range ? true : false;
+
+        if(_reachedMaxDistance)
+        {
+            print("Reached Max Distance");
+        }
     }
 
     private void CheckDamaging()
