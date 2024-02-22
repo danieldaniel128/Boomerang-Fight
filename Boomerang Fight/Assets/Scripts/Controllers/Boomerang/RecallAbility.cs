@@ -31,8 +31,8 @@ public class RecallAbility : AttackAbility
         _recallForce = recallAbilityData.RecallForce;
 
         //comment so ill remember to delete later
-        //_minDistanceToRecallPosition = recallAbilityData.MinDistanceToRecallPosition;
         //_maxRecallBoomerangSpeed = recallAbilityData.MaxBoomerangRecallSpeed;
+        //_minDistanceToRecallPosition = recallAbilityData.MinDistanceToRecallPosition;
     }
     public override void UseAbility()
     {

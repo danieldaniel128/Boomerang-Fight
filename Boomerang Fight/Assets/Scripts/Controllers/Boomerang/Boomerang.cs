@@ -16,6 +16,7 @@ public class Boomerang : MonoBehaviourPun
     [SerializeField] float _minSpeedToDamage;
     [SerializeField] float _minDistanceToPickUp;
     [SerializeField] float _maxSpeed;
+    [SerializeField] float _maxRecallSpeed;
     [SerializeField] AnimationCurve _speedCurve;
     [SerializeField] LayerMask _canAttackLayerMask;
     [Header("Ability Parameters")]
@@ -34,6 +35,7 @@ public class Boomerang : MonoBehaviourPun
 
     public bool ReachedMaxDistance { get => _reachedMaxDistance; }
     public Rigidbody RB { get => _rb; }
+    public float MaxSpeed { get => _recalling ? _maxRecallSpeed : _maxSpeed; }
 
     private void Start()
     {
@@ -51,7 +53,7 @@ public class Boomerang : MonoBehaviourPun
     {
         if (!_damaging)
             return;
-
+        print(other.name);
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
         {
             other.gameObject.GetComponent<Health>().TakeDamage(_damage);
@@ -73,7 +75,6 @@ public class Boomerang : MonoBehaviourPun
     public void Release(Vector3 directionVector, float damage)
     {
         //remove game object from parent
-        transform.SetParent(null);
         gameObject.SetActive(true);
         //set range, direction and damage
         _range = directionVector.magnitude;
@@ -83,6 +84,7 @@ public class Boomerang : MonoBehaviourPun
         ResetBoomerangInformation();
         //activate logic boomerang
         _rb.velocity = directionVector;
+        transform.SetParent(null);
     }
 
 
@@ -139,7 +141,7 @@ public class Boomerang : MonoBehaviourPun
 
         float speedCurveModifier = Mathf.Clamp(_speedCurve.Evaluate(distanceRatio), 0.05f, 0.95f);
 
-        _currentSpeed = speedCurveModifier * _maxSpeed;
+        _currentSpeed = speedCurveModifier * MaxSpeed;
     }
 
     public void Recall(float recallForce)
@@ -147,6 +149,7 @@ public class Boomerang : MonoBehaviourPun
         //TODO check if isMine should be on the boomerang
         if (!photonView.IsMine)
             return;
+        
         _recalling = true;
         AddRecallForce(recallForce);
         //checks if close enough to end Recall.
@@ -157,9 +160,10 @@ public class Boomerang : MonoBehaviourPun
     {
         //calculate how much force to add so it doesnt go over max speed
         float forceToAdd = recallForce * Time.deltaTime;
-        if (_rb.velocity.magnitude >= _maxSpeed)
+        if (_rb.velocity.magnitude >= MaxSpeed)
             forceToAdd = 0;
-
+        print(_rb.velocity.magnitude);
+        print("force to add: " +  forceToAdd);
         //add force in the direction of recall position
         _rb.AddForce(_directionToParent * forceToAdd);
     }
