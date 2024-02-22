@@ -17,7 +17,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   _damage: 1
-  _maxRecallBoomerangSpeed: 20
-  _recallForce: 5
+  _maxBoomerangRecallSpeed: 0
+  _recallForce: 10
   _minDistanceToAttach: 1
   _autoBoomerangTeleportToPlayerTime: 5

@@ -355,11 +355,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838ad581c5ec41a4891a7f959715046f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 7463914113709303179}
   _parent: {fileID: 0}
-  _slowDownForce: 5
+  _rb: {fileID: 7463914113709303179}
+  _slowDownForce: 40
   _minSpeedToDamage: 2
-  _minDistanceToPickUp: 0.5
+  _minDistanceToPickUp: 1
+  _maxSpeed: 20
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.011720664
+      outSlope: -0.011720664
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.4724316
+    - serializedVersion: 3
+      time: 1
+      value: 0.05
+      inSlope: -9.05424
+      outSlope: -9.05424
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.10458112
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _canAttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 192
 --- !u!135 &7827871511119988387
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -367,7 +395,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6820703380817466682}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 56c14c3b5a3b2b34cbb0c00e0546bd28, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 256

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class NewBoomerang : MonoBehaviour
@@ -67,12 +66,10 @@ public class NewBoomerang : MonoBehaviour
         //activate logic boomerang
         gameObject.SetActive(true);
         _rb.velocity = directionVector;
-        print("Boomerang Released");
     }
 
     public void Attach()
     {
-        print("Boomerang Attached");
         //set boomerang body parent to its parent holder.
         transform.SetParent(_parent.transform);
         //set position

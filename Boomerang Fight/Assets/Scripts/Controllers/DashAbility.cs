@@ -123,7 +123,6 @@ public class DashAbility : MonoBehaviour
     [ContextMenu("TryDash")]
     public void TryStartDash()
     {
-        print("can dash: " + _canDash);
         if (_canDash)
         {
             //set dash destination

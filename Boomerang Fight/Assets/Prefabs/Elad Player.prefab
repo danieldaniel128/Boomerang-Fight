@@ -612,7 +612,7 @@ MonoBehaviour:
   abilityData: {fileID: 11400000, guid: 5d0df67e750da774f9b307838dc7595d, type: 2}
   animator: {fileID: 0}
   _playerBoomerang: {fileID: 6437971786199756181}
-  _baseDamage: 0
+  _baseDamage: 1
 --- !u!114 &2637411979835113435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ MonoBehaviour:
   abilityData: {fileID: 11400000, guid: e29c792490326654da1005b5a7deff10, type: 2}
   animator: {fileID: 0}
   _playerBoomerang: {fileID: 6437971786199756181}
-  _baseDamage: 0
+  _baseDamage: 1
   _recallObject: {fileID: 2457579034938624542}
 --- !u!1001 &1311365642296509354
 PrefabInstance:
@@ -688,6 +688,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4503815329630383127, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: _parent
@@ -697,6 +702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Elad Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820703380817466682, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

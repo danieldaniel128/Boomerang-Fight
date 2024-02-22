@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviourPun, IPunInstantiateMagicCallback
         if (!photonView.IsMine)
             return;
         //checks if can recall boomerang.
-        if (_recallAbility.CanRecall())
+        if (_recallAbility.PlayerBoomerang.CanRecall())
         {
             //when recalling, disable attack
             DisableRangeAbility();
@@ -104,10 +104,12 @@ public class PlayerController : MonoBehaviourPun, IPunInstantiateMagicCallback
     private void EnableRecallAbility()
     {
         _AttackJoystick.OnJoystickPressed += HandleRecall;
+        _AttackJoystick.OnJoystickUp += _recallAbility.PlayerBoomerang.StopRecall;
     }
     private void DisableRecallAbility()
     {
         _AttackJoystick.OnJoystickPressed -= HandleRecall;
+        _AttackJoystick.OnJoystickUp -= _recallAbility.PlayerBoomerang.StopRecall;
     }
     #endregion Recall Ability
 

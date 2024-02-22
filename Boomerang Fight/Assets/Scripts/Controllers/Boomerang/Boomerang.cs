@@ -1,4 +1,5 @@
 using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -21,6 +22,7 @@ public class Boomerang : MonoBehaviourPun
     float _range;
     Vector3 _launchDirection;
     float _damage;
+    Vector3 _directionToParent => _parent.transform.position - transform.position;
     [Header("Boomerang Information")]
     float _distanceTravelled;
     float _currentSpeed;
@@ -28,11 +30,19 @@ public class Boomerang : MonoBehaviourPun
     bool _damaging;
     bool _reachedMaxDistance;
     bool _attachable;
+    bool _recalling;
 
+    public bool ReachedMaxDistance { get => _reachedMaxDistance; }
+    public Rigidbody RB { get => _rb; }
+
+    private void Start()
+    {
+        if (!photonView.IsMine)
+            return;
+        gameObject.SetActive(false);
+    }
     private void FixedUpdate()
     {
-        if (!gameObject.activeInHierarchy)
-            return;
         TryAttach();
         CheckDamaging();
         Fly();
@@ -52,27 +62,33 @@ public class Boomerang : MonoBehaviourPun
         if (_reachedMaxDistance)
             _interrupted = true;
     }
+    private void ResetBoomerangInformation()
+    {
+        _interrupted = false;
+        _reachedMaxDistance = false;
+        _attachable = false;
+        _distanceTravelled = 0;
+    }
 
     public void Release(Vector3 directionVector, float damage)
     {
+        //remove game object from parent
+        transform.SetParent(null);
+        gameObject.SetActive(true);
         //set range, direction and damage
         _range = directionVector.magnitude;
         _launchDirection = directionVector.normalized;
         _damage = damage;
         //reset parameters
-        _interrupted = false;
-        _reachedMaxDistance = false;
-        _attachable = false;
-        _distanceTravelled = 0;
+        ResetBoomerangInformation();
         //activate logic boomerang
-        gameObject.SetActive(true);
         _rb.velocity = directionVector;
-        print("Boomerang Released");
     }
+
 
     public void Attach()
     {
-        print("Boomerang Attached");
+        ResetBoomerangInformation();
         //set boomerang body parent to its parent holder.
         transform.SetParent(_parent.transform);
         //set position
@@ -96,15 +112,20 @@ public class Boomerang : MonoBehaviourPun
         if (!_interrupted)
             FlyUninterrupted();
         else
-            SlowDown();
+        {
+            if (!_recalling)
+                SlowDown();
+        }
     }
 
     private void FlyUninterrupted()
     {
         CalculateUninterruptedSpeed();
-        Vector3 newVelocity = _reachedMaxDistance ?
-            Vector3.Normalize(_parent.transform.position - transform.position) :
-            _rb.velocity.normalized;
+        Vector3 newVelocity;
+        if (_reachedMaxDistance)
+            newVelocity = Vector3.Normalize(_parent.transform.position - transform.position);
+        else
+            newVelocity = _rb.velocity.normalized;
 
         newVelocity *= _currentSpeed;
         _rb.velocity = newVelocity;
@@ -112,23 +133,61 @@ public class Boomerang : MonoBehaviourPun
 
     private void CalculateUninterruptedSpeed()
     {
-        float speedCurveModifier = _speedCurve.Evaluate(_distanceTravelled / _range);
-        Mathf.Clamp(speedCurveModifier, 0.01f, 0.99f);
+        float distanceRatio = _distanceTravelled / _range;
+        if(_reachedMaxDistance)
+            distanceRatio = 1 - distanceRatio;
+
+        float speedCurveModifier = Mathf.Clamp(_speedCurve.Evaluate(distanceRatio), 0.05f, 0.95f);
+
+        _currentSpeed = speedCurveModifier * _maxSpeed;
+    }
+
+    public void Recall(float recallForce)
+    {
+        //TODO check if isMine should be on the boomerang
+        if (!photonView.IsMine)
+            return;
+        _recalling = true;
+        AddRecallForce(recallForce);
+        //checks if close enough to end Recall.
+        TryAttach();
+    }
+
+    private void AddRecallForce(float recallForce)
+    {
+        //calculate how much force to add so it doesnt go over max speed
+        float forceToAdd = recallForce * Time.deltaTime;
+        if (_rb.velocity.magnitude >= _maxSpeed)
+            forceToAdd = 0;
+
+        //add force in the direction of recall position
+        _rb.AddForce(_directionToParent * forceToAdd);
+    }
+
+    public void StopRecall()
+    {
+        _recalling = false;
+    }
+
+    public bool CanRecall()
+    {
         if (_reachedMaxDistance)
-            _currentSpeed = Vector3.Magnitude(_rb.velocity.normalized * _maxSpeed * (1 - speedCurveModifier));
-        else
-            _currentSpeed = Vector3.Magnitude(_rb.velocity.normalized * _maxSpeed * speedCurveModifier);
+            return true;
+        return false;
     }
 
     private void CalculateDistanceTravelled()
     {
         _distanceTravelled += _rb.velocity.magnitude * Time.fixedDeltaTime;
-        _attachable = _distanceTravelled > _minDistanceToPickUp + 0.3f;
+        if(_reachedMaxDistance) return;
+
+
+        _attachable = _distanceTravelled > _minDistanceToPickUp + 0.5f;
         _reachedMaxDistance = _distanceTravelled >= _range ? true : false;
 
         if (_reachedMaxDistance)
         {
-            print("Reached Max Distance");
+            _distanceTravelled = 0;
         }
     }
 
@@ -139,10 +198,10 @@ public class Boomerang : MonoBehaviourPun
 
     private void SlowDown()
     {
-        if (_rb.velocity.magnitude <= 0.05f)
-            _rb.velocity = Vector3.zero;
+        if (_rb.velocity.magnitude <= 0.5f)
+            Stop();
         else
-            _rb.AddForce(-_rb.velocity.normalized * _slowDownForce * Time.fixedDeltaTime);
+            _rb.AddForce(-_rb.velocity.normalized * _slowDownForce);
     }
 
     private void Stop()
