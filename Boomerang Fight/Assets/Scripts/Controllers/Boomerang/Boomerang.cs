@@ -37,12 +37,6 @@ public class Boomerang : MonoBehaviourPun
     public Rigidbody RB { get => _rb; }
     public float MaxSpeed { get => _recalling ? _maxRecallSpeed : _maxSpeed; }
 
-    private void Start()
-    {
-        if (!photonView.IsMine)
-            return;
-        gameObject.SetActive(false);
-    }
     private void FixedUpdate()
     {
         TryAttach();
