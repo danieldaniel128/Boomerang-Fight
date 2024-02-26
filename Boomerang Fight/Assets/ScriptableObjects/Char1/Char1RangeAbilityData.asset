@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40ad013b2f9444489cd2654f1e4987a, type: 3}
+  m_Name: Char1RangeAbilityData
+  m_EditorClassIdentifier: 
+  _cooldown: 0.2
+  _canAttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 192
+  _damage: 1
+  _maxBoomerangSpeed: 20
+  _maxAttackRange: 8
+  _minAttackRange: 4
+  _maxChargeTime: 2
+  _attackSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1003.8875
+      outSlope: 1003.8875
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.0009935498
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

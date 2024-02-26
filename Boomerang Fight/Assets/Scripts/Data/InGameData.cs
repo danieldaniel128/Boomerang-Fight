@@ -7,7 +7,6 @@ using UnityEngine;
 public class InGameData
 {
     public int PlayersAliveCount { get; private set; }
-
     public InGameData(int PlayersCount)
     {
         PlayersAliveCount = PlayersCount;
