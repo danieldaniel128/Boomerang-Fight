@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class EventTesting : MonoBehaviour
 {
-    EventBinding<PlayerEvent> playerEventBinding;
+    EventBinding<OnPlayerHealthChangedEvent> playerEventBinding;
     private void OnEnable()
     {
-        EventBus<PlayerEvent>.Register(playerEventBinding);
+        playerEventBinding = new EventBinding<OnPlayerHealthChangedEvent>(HandlePlayerEvent);
+        playerEventBinding.Add(DanielIsGodPlayerEvent);
+        EventBus<OnPlayerHealthChangedEvent>.Register(playerEventBinding);
     }
     private void OnDisable()
     {
-        EventBus<PlayerEvent>.Deregister(playerEventBinding);
+        EventBus<OnPlayerHealthChangedEvent>.Deregister(playerEventBinding);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W))
-            EventBus<PlayerEvent>.Raise(new PlayerEvent { health = 43,mana = 34} );
     }
-    void HandlePlayerEvent(PlayerEvent playerEvent)
+    void HandlePlayerEvent(OnPlayerHealthChangedEvent playerEvent)
     {
         Debug.Log("handled Event");
+    }
+    void DanielIsGodPlayerEvent(OnPlayerHealthChangedEvent playerEvent)
+    {
+        Debug.Log("daniel is god");
     }
 }
