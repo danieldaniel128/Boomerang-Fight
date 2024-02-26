@@ -4,8 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviourPun, IPunInstantiateMagicCallback
+public class PlayerController : MonoBehaviourPun
 {
 
     //[SerializeField] UserInputPhone _input;
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviourPun, IPunInstantiateMagicCallback
     [SerializeField] Joystick _AttackJoystick;
     [Header("Player Stats")]
     [SerializeField] float _moveSpeed;
+    [Header("Actions")]
+    public UnityEvent OnRecall;
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerUpdate;
@@ -141,9 +144,5 @@ public class PlayerController : MonoBehaviourPun, IPunInstantiateMagicCallback
     }
     #endregion Range Ability
 
-    public void OnPhotonInstantiate(PhotonMessageInfo info)
-    {
-        MultiplayerPlayerSpawner.Instance.SetMyPlayerController(this);
-        MultiplayerPlayerSpawner.Instance.RegisterPlayerController(this);
-    }
+    
 }
