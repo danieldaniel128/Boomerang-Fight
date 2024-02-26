@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] GameObject _playerBody;
     [Header("Components")]
     [SerializeField] CameraFollow _cameraFollow;
-    [SerializeField] BoomerangRangeAttack _battlerangAttack;
+    [SerializeField] RangeAbility _rangeAbility;
+    [SerializeField] RecallAbility _recallAbility;
 
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
@@ -58,17 +59,18 @@ public class PlayerController : MonoBehaviourPun
         //on my player, handle movement in update.
         OnLocalPlayerControllerUpdate += HandleMovement;
         //when press attack button, enable attack.
-        _AttackJoystick.OnJoystickDown += EnableRangeAttack;
-        //when is pressed, handle recall boomerang.
-        _AttackJoystick.OnJoystickPressed += HandleRecall;
+        _AttackJoystick.OnJoystickDown += EnableRangeAbility;
+        _AttackJoystick.OnJoystickDown += EnableRecallAbility;
+
     }
     private void OnDisable()
     {
         //In order to prevent resource leaks, unsubscribe events
         OnLocalPlayerControllerUpdate -= HandleMovement;
-        _AttackJoystick.OnJoystickPressed -= HandleRecall;
-        _AttackJoystick.OnJoystickDown -= EnableRangeAttack;
-        DisableRangeAttack();
+        _AttackJoystick.OnJoystickDown -= EnableRangeAbility;
+        _AttackJoystick.OnJoystickDown -= EnableRecallAbility;
+        DisableRangeAbility();
+        DisableRecallAbility();
     }
 
     private void Update()
@@ -79,46 +81,68 @@ public class PlayerController : MonoBehaviourPun
     private void HandleMovement()
     {
         Vector3 moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
-        transform.position +=  moveDirection * _moveSpeed * Time.deltaTime;
+        transform.position += moveDirection * _moveSpeed * Time.deltaTime;
         //do logic
     }
     private void LocalPlayerControlUpdate()
     {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
             OnLocalPlayerControllerUpdate?.Invoke();
     }
+
+    #region Recall Ability
     private void HandleRecall()
     {
         if (!photonView.IsMine)
             return;
         //checks if can recall boomerang.
-        if (_battlerangAttack.CanRecall())
+        if (_recallAbility.PlayerBoomerang.CanRecall())
         {
             //when recalling, disable attack
-            DisableRangeAttack();
+            DisableRangeAbility();
             //recalling boomerang.
-            _battlerangAttack.Recall();
+            _recallAbility.UseAbility();
         }
     }
-    private void HandleAttack()
+    private void EnableRecallAbility()
+    {
+        _AttackJoystick.OnJoystickPressed += HandleRecall;
+        _AttackJoystick.OnJoystickUp += _recallAbility.PlayerBoomerang.StopRecall;
+    }
+    private void DisableRecallAbility()
+    {
+        _AttackJoystick.OnJoystickPressed -= HandleRecall;
+        _AttackJoystick.OnJoystickUp -= _recallAbility.PlayerBoomerang.StopRecall;
+    }
+    #endregion Recall Ability
+
+    #region Range Ability
+    private void UseRangeAbility()
     {
         if (!photonView.IsMine)
             return;
-        if (_AttackJoystick.Direction != Vector2.zero)
-        {
-            Vector3 attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
-            _battlerangAttack.AttackRange(attackDirection);
-        }
-        //else auto aim like brawl stars?
+
+        _rangeAbility.UseAbility();
     }
-    private void EnableRangeAttack()
+    private void HandleRangeAbility()
     {
-        _AttackJoystick.OnJoystickUp += HandleAttack;
+        if (!photonView.IsMine)
+            return;
+
+        Vector3 attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
+        _rangeAbility.CalculateAttackRange(attackDirection);
     }
-    private void DisableRangeAttack()
+    private void EnableRangeAbility()
     {
-        _AttackJoystick.OnJoystickUp -= HandleAttack;
+        _AttackJoystick.OnJoystickUp += UseRangeAbility;
+        _AttackJoystick.OnJoystickDrag += HandleRangeAbility;
     }
+    private void DisableRangeAbility()
+    {
+        _AttackJoystick.OnJoystickUp -= UseRangeAbility;
+        _AttackJoystick.OnJoystickDrag -= HandleRangeAbility;
+    }
+    #endregion Range Ability
 
     
 }

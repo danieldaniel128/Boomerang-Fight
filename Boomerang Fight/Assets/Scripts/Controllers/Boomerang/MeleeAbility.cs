@@ -6,29 +6,27 @@ using System.Net.Security;
 using UnityEngine;
 using UnityEngine.InputSystem.XInput;
 
-public class BoomerangMeleeAttack : MonoBehaviourPun
+public class MeleeAbility : AttackAbility
 {
     private const string MELEE_ATTACK_STRING_CONST = "MeleeAttack";
 
-    public Action OnAttackPressed { get; set; }
+    public float Damage { get => _baseDamage; }
 
     [Header("Collider Parameters")]
     [SerializeField] BoxCollider _attackCollider;
-    [SerializeField] LayerMask _canAttackLayerMask;
+    LayerMask _canAttackLayerMask;
 
     [Header("Timing Parameters")]
-    [SerializeField] float _timeToStartAttack;
-    [SerializeField] float _attackDuration;
-    [SerializeField] float _cooldownDuration;
-
-    [Header("Components")]
-    [SerializeField] Animator _characterAnimator;
+    float _timeToStartAttack;
+    float _attackDuration;
+    float _cooldownDuration;
 
     bool _canAttack = true;
 
     CountdownTimer _cooldownTimer;
     CountdownTimer _delayAttackTimer;
     CountdownTimer _attackDurationTimer;
+
 
     //Gizmo Parameters
     [SerializeField] bool _showGizmos;
@@ -37,32 +35,13 @@ public class BoomerangMeleeAttack : MonoBehaviourPun
 
     private void Start()
     {
-        //set up cooldown timer
-        _cooldownTimer = new(_cooldownDuration);
-        _cooldownTimer.OnTimerStop += () => _canAttack = true;
-
-        //set up delay to attack timer
-        _delayAttackTimer = new(_timeToStartAttack);
-        _delayAttackTimer.OnTimerStop += Attack;
-
-        //set up duration of attack timer
-        _attackDurationTimer = new(_attackDuration);
-        _attackDurationTimer.OnTimerStop += StopAttack;
-
-    }
-    private void OnEnable()
-    {
-        OnAttackPressed += TryInitiateAttack;
-    }
-    private void OnDisable()
-    {
-        OnAttackPressed -= TryInitiateAttack;
+        GetData();
+        InitializeTimers();
     }
     private void Update()
     {
         Tick();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
@@ -71,33 +50,76 @@ public class BoomerangMeleeAttack : MonoBehaviourPun
         }
     }
 
+    #region Ability Overrides
+
+    [ContextMenu("Press Attack")]
+    public override void UseAbility()
+    {
+        TryInitiateAttack();
+    }
+    protected override void GetData()
+    {
+        MeleeAttackData meleeAttackData = abilityData as MeleeAttackData;
+
+        _canAttackLayerMask = meleeAttackData.CanAttackLayerMask;
+        _timeToStartAttack = meleeAttackData.TimeToStartAttack;
+        _attackDuration = meleeAttackData.AttackDuration;
+        _cooldownDuration = meleeAttackData.Cooldown;
+        _baseDamage = meleeAttackData.Damage;
+    }
+
+    #endregion Ability Overrides
+
+    #region Timers
+    private void InitializeTimers()
+    {
+        //set up cooldown timer
+        InitializeCooldownTimer();
+
+        //set up delay to attack timer
+        InitializeDelayTimer();
+
+        //set up duration of attack timer
+        InitializeDurationTimer();
+    }
+
+    private void InitializeDurationTimer()
+    {
+        _attackDurationTimer = new(_attackDuration);
+        _attackDurationTimer.OnTimerStop += StopAttack;
+    }
+
+    private void InitializeDelayTimer()
+    {
+        _delayAttackTimer = new(_timeToStartAttack);
+        _delayAttackTimer.OnTimerStop += Attack;
+    }
+
+    private void InitializeCooldownTimer()
+    {
+        _cooldownTimer = new(_cooldownDuration);
+        _cooldownTimer.OnTimerStop += () => _canAttack = true;
+    }
+
     void Tick()
     {
         _delayAttackTimer.Tick(Time.deltaTime);
         _cooldownTimer.Tick(Time.deltaTime);
         _attackDurationTimer.Tick(Time.deltaTime);
     }
+    #endregion Timers
 
-    [ContextMenu("Press Attack")]
-    public void ActivateAttackEvent()
-    {
-        //print("Attack invoked");
-        OnAttackPressed?.Invoke();
-    }
-
-    public void TryInitiateAttack()
+    private void TryInitiateAttack()
     {
         if (_canAttack)
         {
             _canAttack = false;
-            //_characterAnimator.Play(MELEE_ATTACK_STRING_CONST);
             _delayAttackTimer.Start();
             _cooldownTimer.Start();
         }
-
     }
 
-    public void Attack()
+    private void Attack()
     {
         //enable collider
         _attackDurationTimer.Start();
@@ -106,7 +128,7 @@ public class BoomerangMeleeAttack : MonoBehaviourPun
 
     }
 
-    public void StopAttack()
+    private void StopAttack()
     {
         _attackCollider.enabled = false;
         _inAttack = false;
@@ -114,7 +136,7 @@ public class BoomerangMeleeAttack : MonoBehaviourPun
 
     public void HitTarget(Collider target)
     {
-        target.GetComponentInParent<Health>().TakeDamage(2);
+        target.GetComponentInParent<Health>().TakeDamage(Damage);
     }
 
     private void OnDrawGizmosSelected()

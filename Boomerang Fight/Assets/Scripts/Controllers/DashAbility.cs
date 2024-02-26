@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbilityStrategy : MonoBehaviour
+public class DashAbility : MonoBehaviour
 {
     [Header("Dash Parameters")]
     [SerializeField] float _range;
@@ -123,7 +123,6 @@ public class DashAbilityStrategy : MonoBehaviour
     [ContextMenu("TryDash")]
     public void TryStartDash()
     {
-        print("can dash: " + _canDash);
         if (_canDash)
         {
             //set dash destination
