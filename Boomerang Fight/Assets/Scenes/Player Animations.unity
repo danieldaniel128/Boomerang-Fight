@@ -1285,6 +1285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elad Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6770214255349758022, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7036467791487929342, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -1299,6 +1304,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneViewId
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8785645338474385315, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
