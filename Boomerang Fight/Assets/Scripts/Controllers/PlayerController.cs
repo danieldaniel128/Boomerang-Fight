@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] CameraFollow _cameraFollow;
     [SerializeField] RangeAbility _rangeAbility;
     [SerializeField] RecallAbility _recallAbility;
+    [SerializeField] DashAbility _dashAbility;
+    [SerializeField] MeleeAbility _meleeAbility;
     [SerializeField] PlayerAnimationController _playerAnimationController;
+    [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
     [SerializeField] Joystick _moveJoystick;
@@ -58,33 +61,61 @@ public class PlayerController : MonoBehaviourPun
     private void OnEnable()
     {
         //on my player, handle movement in update.
-        OnLocalPlayerControllerUpdate += HandleMovement;
-        //when press attack button, enable attack.
-        _AttackJoystick.OnJoystickDown += EnableRangeAbility;
-        _AttackJoystick.OnJoystickDown += EnableRecallAbility;
-
+        Subscribe();
     }
+
+    
+
     private void OnDisable()
     {
         //In order to prevent resource leaks, unsubscribe events
-        OnLocalPlayerControllerUpdate -= HandleMovement;
-        _AttackJoystick.OnJoystickDown -= EnableRangeAbility;
-        _AttackJoystick.OnJoystickDown -= EnableRecallAbility;
-        DisableRangeAbility();
-        DisableRecallAbility();
+        UnsubscribeEvents();
     }
+
+
 
     private void Update()
     {
         LocalPlayerControlUpdate();
     }
-
+    private void Subscribe()
+    {
+        OnLocalPlayerControllerUpdate += HandleMovement;
+        //when press attack button, enable attack.
+        _AttackJoystick.OnJoystickDown += EnableRangeAbility;
+        _AttackJoystick.OnJoystickDown += EnableRecallAbility;
+        _boomerang.OnAttach += ToggleVisualBoomerang;
+        _boomerang.OnRelease += ToggleVisualBoomerang;
+        _boomerang.OnRelease += FaceThrowDirection;
+        _meleeAbility.OnAttack += _playerAnimationController.AttackPressedTrigger;
+        _dashAbility.OnDash += _playerAnimationController.DashPressedTrigger;
+    }
+    private void UnsubscribeEvents()
+    {
+        OnLocalPlayerControllerUpdate -= HandleMovement;
+        _AttackJoystick.OnJoystickDown -= EnableRangeAbility;
+        _AttackJoystick.OnJoystickDown -= EnableRecallAbility;
+        DisableRangeAbility();
+        DisableRecallAbility();
+        _boomerang.OnAttach -= ToggleVisualBoomerang;
+        _boomerang.OnRelease -= ToggleVisualBoomerang;
+        _boomerang.OnRelease -= FaceThrowDirection;
+        _meleeAbility.OnAttack -= _playerAnimationController.AttackPressedTrigger;
+        _dashAbility.OnDash -= _playerAnimationController.DashPressedTrigger;
+    }
     private void HandleMovement()
     {
         Vector3 moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
         transform.position += moveDirection * _moveSpeed * Time.deltaTime;
         if (moveDirection.magnitude > 0)
+        {
+            _playerAnimationController.StartWalk();
             _playerBody.transform.forward = moveDirection;
+        }
+        else
+        {
+            _playerAnimationController.StopWalk();
+        }
     }
     private void LocalPlayerControlUpdate()
     {
@@ -161,5 +192,13 @@ public class PlayerController : MonoBehaviourPun
     }
     #endregion Range Ability
 
+    void ToggleVisualBoomerang()
+    {
+        _boomerangVisual.SetActive(!_boomerangVisual.activeInHierarchy);
+    }
 
+    void FaceThrowDirection()
+    {
+        _playerBody.transform.forward = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
+    }
 }

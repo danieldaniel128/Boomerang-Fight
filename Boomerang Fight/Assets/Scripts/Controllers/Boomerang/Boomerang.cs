@@ -32,6 +32,10 @@ public class Boomerang : MonoBehaviourPun
     bool _reachedMaxDistance;
     bool _attachable;
     bool _recalling;
+    [Header("Events")]
+    public Action OnAttach;
+    public Action OnRelease;
+
 
     public bool ReachedMaxDistance { get => _reachedMaxDistance; }
     public Rigidbody RB { get => _rb; }
@@ -79,6 +83,7 @@ public class Boomerang : MonoBehaviourPun
         //activate logic boomerang
         _rb.velocity = directionVector;
         transform.SetParent(null);
+        OnRelease?.Invoke();
     }
 
 
@@ -92,6 +97,7 @@ public class Boomerang : MonoBehaviourPun
         //stop movement
         Stop();
         //deactivate logic boomerang
+        OnAttach?.Invoke();
         gameObject.SetActive(false);
     }
 

@@ -27,6 +27,7 @@ public class MeleeAbility : AttackAbility
     CountdownTimer _delayAttackTimer;
     CountdownTimer _attackDurationTimer;
 
+    public Action OnAttack;
 
     //Gizmo Parameters
     [SerializeField] bool _showGizmos;
@@ -113,6 +114,7 @@ public class MeleeAbility : AttackAbility
     {
         if (_canAttack)
         {
+            OnAttack?.Invoke();
             _canAttack = false;
             _delayAttackTimer.Start();
             _cooldownTimer.Start();
