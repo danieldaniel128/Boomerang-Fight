@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Boomerang : MonoBehaviourPun
 {
-
     [SerializeField] GameObject _parent;
     [Header("Components")]
     [SerializeField] Rigidbody _rb;
@@ -16,6 +15,7 @@ public class Boomerang : MonoBehaviourPun
     [SerializeField] float _minSpeedToDamage;
     [SerializeField] float _minDistanceToPickUp;
     [SerializeField] float _maxSpeed;
+    [SerializeField] float _directionToPlayerAngleThreshHold;
     [SerializeField] float _maxRecallSpeed;
     [SerializeField] AnimationCurve _speedCurve;
     [SerializeField] LayerMask _canAttackLayerMask;
@@ -140,6 +140,7 @@ public class Boomerang : MonoBehaviourPun
 
         if (MovingTowardsPlayer())
         {
+            print("towards player cur speed: " + _currentSpeed + " newSpeed: " + newSpeed);
             if(newSpeed > _currentSpeed)
             {
                 _currentSpeed = newSpeed;
@@ -149,12 +150,14 @@ public class Boomerang : MonoBehaviourPun
         {
             _currentSpeed = newSpeed;
         }
+        print("cur speed: " + _currentSpeed);
     }
     bool MovingTowardsPlayer()
     {
-        float dotProduct = Vector3.Dot(_rb.velocity.normalized, _directionToParent);
+        float dotProduct = Vector3.Dot(_rb.velocity.normalized, _directionToParent.normalized);
         float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
-        return angle < 160 / 2;
+        print("Angle to player: " + angle);
+        return angle < _directionToPlayerAngleThreshHold / 2;
     }
 
     public void Recall(float recallForce)
