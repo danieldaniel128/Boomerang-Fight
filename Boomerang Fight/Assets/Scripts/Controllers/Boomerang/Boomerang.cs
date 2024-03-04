@@ -130,12 +130,31 @@ public class Boomerang : MonoBehaviourPun
     private void CalculateUninterruptedSpeed()
     {
         float distanceRatio = _distanceTravelled / _range;
-        if(_reachedMaxDistance)
+        if (_reachedMaxDistance)
             distanceRatio = 1 - distanceRatio;
-
+        //if moving towards player then dont slow down.
+        //if next speed is faster or slower, 
+        //if moving towards player
         float speedCurveModifier = Mathf.Clamp(_speedCurve.Evaluate(distanceRatio), 0.05f, 0.95f);
+        float newSpeed = speedCurveModifier * MaxSpeed;
 
-        _currentSpeed = speedCurveModifier * MaxSpeed;
+        if (MovingTowardsPlayer())
+        {
+            if(newSpeed > _currentSpeed)
+            {
+                _currentSpeed = newSpeed;
+            }
+        }
+        else
+        {
+            _currentSpeed = newSpeed;
+        }
+    }
+    bool MovingTowardsPlayer()
+    {
+        float dotProduct = Vector3.Dot(_rb.velocity.normalized, _directionToParent);
+        float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
+        return angle < 160 / 2;
     }
 
     public void Recall(float recallForce)
@@ -143,7 +162,7 @@ public class Boomerang : MonoBehaviourPun
         //TODO check if isMine should be on the boomerang
         if (!photonView.IsMine)
             return;
-        
+
         _recalling = true;
         AddRecallForce(recallForce);
         //checks if close enough to end Recall.
@@ -157,7 +176,7 @@ public class Boomerang : MonoBehaviourPun
         if (_rb.velocity.magnitude >= MaxSpeed)
             forceToAdd = 0;
         print(_rb.velocity.magnitude);
-        print("force to add: " +  forceToAdd);
+        print("force to add: " + forceToAdd);
         //add force in the direction of recall position
         _rb.AddForce(_directionToParent * forceToAdd);
     }
@@ -177,7 +196,7 @@ public class Boomerang : MonoBehaviourPun
     private void CalculateDistanceTravelled()
     {
         _distanceTravelled += _rb.velocity.magnitude * Time.fixedDeltaTime;
-        if(_reachedMaxDistance) return;
+        if (_reachedMaxDistance) return;
 
 
         _attachable = _distanceTravelled > _minDistanceToPickUp + 0.5f;
