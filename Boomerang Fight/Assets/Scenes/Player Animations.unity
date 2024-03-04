@@ -478,6 +478,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0089e6891e25194f9e5ce35057bb15b, type: 3}
+--- !u!95 &286389103 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4679763095203438921, guid: be63c66fea0b98844a61870527b50878,
+    type: 3}
+  m_PrefabInstance: {fileID: 869166501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &323402543
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +886,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   Occupied: 0
+--- !u!114 &634202248 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3299242753739002790, guid: be63c66fea0b98844a61870527b50878,
+    type: 3}
+  m_PrefabInstance: {fileID: 869166501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e68a79c9bc6fb40850b10dccec9553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &644043230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1260,6 +1278,11 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3299242753739002790, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: characterAnimator
+      value: 
+      objectReference: {fileID: 286389103}
     - target: {fileID: 3513349834178558494, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
       propertyPath: sceneViewId
@@ -1275,6 +1298,16 @@ PrefabInstance:
       propertyPath: _cameraFollow
       value: 
       objectReference: {fileID: 323402549}
+    - target: {fileID: 6187736998003109280, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: _boomerangVisual
+      value: 
+      objectReference: {fileID: 1781800950}
+    - target: {fileID: 6187736998003109280, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: _playerAnimationController
+      value: 
+      objectReference: {fileID: 634202248}
     - target: {fileID: 6437971786199756181, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
       propertyPath: _maxRecallSpeed
@@ -2226,6 +2259,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3502450225376900500, guid: b0089e6891e25194f9e5ce35057bb15b,
     type: 3}
   m_PrefabInstance: {fileID: 2098763646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1781800950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8080197317390398945, guid: be63c66fea0b98844a61870527b50878,
+    type: 3}
+  m_PrefabInstance: {fileID: 869166501}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1818749315
 PrefabInstance:
