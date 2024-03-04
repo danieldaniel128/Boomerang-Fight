@@ -68,7 +68,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void LoadGame()
     {
-        PhotonNetwork.LoadLevel(GAME_SCENE_NAME);
+        PhotonNetwork.LoadLevel(1);
     }
     /// <summary>
     /// create new room if it failed

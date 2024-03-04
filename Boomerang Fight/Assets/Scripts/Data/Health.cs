@@ -9,13 +9,34 @@ public class Health : MonoBehaviourPun
 {
     [SerializeField] private float _currentHP;
     [SerializeField] private float _maxHP;
-    public float CurrentHP { get { return _currentHP; } private set { _currentHP = value; OnValueChanged?.Invoke(_currentHP, _maxHP); } }
+    public float CurrentHP
+    {
+        get { return _currentHP; }
+        private set
+        {
+            _currentHP = value;
+            if(photonView.IsMine)
+            EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
+        }
+    }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
     public bool IsDead { get; private set; }
 
-    public UnityEvent<float,float> OnValueChanged;
+    //public UnityEvent<float,float> OnValueChanged;
     public UnityEvent OnDeath;
 
+    [ContextMenu("Take Damage Test Local")]
+    public void TakeDamageTest()
+    {
+        // Update health for remote players
+        CurrentHP -= 5;
+        if (CurrentHP <= 0)
+        {
+            IsDead = true;
+            OnDeath?.Invoke();
+            gameObject.SetActive(false);
+        }
+    }
 
     public void TakeDamage(float damage)
     {

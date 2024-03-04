@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IEvent { }
-public struct PlayerEvent : IEvent
+public struct OnPlayerHealthChangedEvent : IEvent
 {
-    public int health;
-    public int mana;
+    public float newHealth;
+    public float maxHealth;
 }

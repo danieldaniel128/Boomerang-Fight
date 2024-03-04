@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviourPun
 
     //[SerializeField] UserInputPhone _input;
     [SerializeField] GameObject _playerBody;
+    [SerializeField] GameObject _boomerangVisual;
     [Header("Components")]
     [SerializeField] CameraFollow _cameraFollow;
     [SerializeField] RangeAbility _rangeAbility;
     [SerializeField] RecallAbility _recallAbility;
-
+    [SerializeField] PlayerAnimationController _playerAnimationController;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
     [SerializeField] Joystick _moveJoystick;
@@ -121,26 +122,41 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
-
+        StopCharge();
         _rangeAbility.UseAbility();
     }
-    private void HandleRangeAbility()
+    private void HandleRangeAbilityDirection()
     {
         if (!photonView.IsMine)
             return;
-
         Vector3 attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
         _rangeAbility.CalculateAttackRange(attackDirection);
     }
+    private void StartCharge()
+    {
+        if (!photonView.IsMine)
+            return;
+        _playerAnimationController.StartChargingBoomerang();
+        //range ability start charge timer
+    }
+    private void StopCharge()
+    {
+        if (!photonView.IsMine)
+            return;
+        _playerAnimationController.StopChargingBoomerang();
+    }
+
     private void EnableRangeAbility()
     {
+        _AttackJoystick.OnJoystickDown += StartCharge;
         _AttackJoystick.OnJoystickUp += UseRangeAbility;
-        _AttackJoystick.OnJoystickDrag += HandleRangeAbility;
+        _AttackJoystick.OnJoystickDrag += HandleRangeAbilityDirection;
     }
     private void DisableRangeAbility()
     {
+        _AttackJoystick.OnJoystickDown -= StartCharge;
         _AttackJoystick.OnJoystickUp -= UseRangeAbility;
-        _AttackJoystick.OnJoystickDrag -= HandleRangeAbility;
+        _AttackJoystick.OnJoystickDrag -= HandleRangeAbilityDirection;
     }
     #endregion Range Ability
 
