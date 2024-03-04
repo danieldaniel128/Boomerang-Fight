@@ -83,7 +83,8 @@ public class PlayerController : MonoBehaviourPun
     {
         Vector3 moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
         transform.position += moveDirection * _moveSpeed * Time.deltaTime;
-        //do logic
+        if (moveDirection.magnitude > 0)
+            _playerBody.transform.forward = moveDirection;
     }
     private void LocalPlayerControlUpdate()
     {
@@ -160,5 +161,5 @@ public class PlayerController : MonoBehaviourPun
     }
     #endregion Range Ability
 
-    
+
 }
