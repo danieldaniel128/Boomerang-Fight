@@ -73,7 +73,7 @@ public class Boomerang : MonoBehaviourPun
     public void Release(Vector3 directionVector, float damage)
     {
         //remove game object from parent
-        gameObject.SetActive(true);
+        photonView.RPC(nameof(ReleaseRPC), RpcTarget.All, directionVector, damage);
         //set range, direction and damage
         _range = directionVector.magnitude;
         _launchDirection = directionVector.normalized;
@@ -89,6 +89,13 @@ public class Boomerang : MonoBehaviourPun
 
     public void Attach()
     {
+        
+        photonView.RPC(nameof(AttachRPC), RpcTarget.All);
+        //gameObject.SetActive(false);
+    }
+    [PunRPC]
+    private void AttachRPC()
+    {
         ResetBoomerangInformation();
         //set boomerang body parent to its parent holder.
         transform.SetParent(_parent.transform);
@@ -100,7 +107,21 @@ public class Boomerang : MonoBehaviourPun
         OnAttach?.Invoke();
         gameObject.SetActive(false);
     }
-
+    [PunRPC]
+    private void ReleaseRPC(Vector3 directionVector, float damage)
+    {
+        gameObject.SetActive(true);
+        //set range, direction and damage
+        _range = directionVector.magnitude;
+        _launchDirection = directionVector.normalized;
+        _damage = damage;
+        //reset parameters
+        ResetBoomerangInformation();
+        //activate logic boomerang
+        _rb.velocity = directionVector;
+        transform.SetParent(null);
+        OnRelease?.Invoke();
+    }
     private void TryAttach()
     {
         if (!_attachable) return;
@@ -123,13 +144,14 @@ public class Boomerang : MonoBehaviourPun
     private void FlyUninterrupted()
     {
         CalculateUninterruptedSpeed();
-        Vector3 newVelocity;
+        Vector3 newVelocity = Vector3.zero;
         if (_reachedMaxDistance)
             newVelocity = Vector3.Normalize(_parent.transform.position - transform.position);
         else
             newVelocity = _rb.velocity.normalized;
 
         newVelocity *= _currentSpeed;
+
         _rb.velocity = newVelocity;
     }
 

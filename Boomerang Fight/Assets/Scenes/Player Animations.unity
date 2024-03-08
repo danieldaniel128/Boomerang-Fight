@@ -1195,6 +1195,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1949292043620430676, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2268886858427433525, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1245,6 +1250,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3220685287909732285, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513349834178558494, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6187736998003109280, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
       propertyPath: _cameraFollow
@@ -1254,6 +1269,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Elad Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461610516121305678, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1352,7 +1372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &897731430
 CapsuleCollider:
   m_ObjectHideFlags: 0
