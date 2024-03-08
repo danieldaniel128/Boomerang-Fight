@@ -53,10 +53,10 @@ public class PlayerController : MonoBehaviourPun
         }
         else
         {
+            gameObject.layer = 3;//player layer
             //set camera follow to my player
             _cameraFollow.target = _playerBody.transform;
         }
-        Debug.Log("OnStart");
     }
     private void OnEnable()
     {

@@ -9,19 +9,20 @@ public class Health : MonoBehaviourPun
 {
     [SerializeField] private float _currentHP;
     [SerializeField] private float _maxHP;
+    [SerializeField] UpdateHPBarMaterial _updateHPBarMaterial;
     public float CurrentHP
     {
         get { return _currentHP; }
         private set
         {
             _currentHP = value;
-            if(photonView.IsMine)
-            EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
+            _updateHPBarMaterial.UpdateOnHealthChangedEvent(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
+            //if (photonView.IsMine)
+            //EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
         }
     }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
     public bool IsDead { get; private set; }
-
     //public UnityEvent<float,float> OnValueChanged;
     public UnityEvent OnDeath;
 
@@ -40,9 +41,14 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        if (photonView.IsMine)
-            Debug.Log("i got hit");
-        photonView.RPC(nameof(SyncHealth), RpcTarget.Others, CurrentHP - damage);
+        CurrentHP = CurrentHP - damage;
+        if (CurrentHP <= 0)
+        {
+            IsDead = true;
+            OnDeath?.Invoke();
+            //gameObject.SetActive(false);
+        }
+        photonView.RPC(nameof(SyncHealth), RpcTarget.Others, CurrentHP);
     }
 
     [PunRPC]

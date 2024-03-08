@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 2503413388573940175}
   - component: {fileID: 2637411979835113435}
   - component: {fileID: 3299242753739002790}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHP: 10
   _maxHP: 10
+  _updateHPBarMaterial: {fileID: 4540214632164705568}
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -677,6 +678,11 @@ PrefabInstance:
       propertyPath: _parent
       value: 
       objectReference: {fileID: 6461610516121305678}
+    - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: _canAttackLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6820703380817466682, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: m_Name

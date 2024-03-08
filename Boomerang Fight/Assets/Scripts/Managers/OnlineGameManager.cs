@@ -50,33 +50,23 @@ public class OnlineGameManager : MonoBehaviourPun
                 return player;
             }
         }
-        Debug.Log("returned Null");
         return null;
     }
-    private void Start()
-    {
-        StartCoroutine(SetLayerOnAllPlayersJoined());
-        //_gameData = new InGameData(PhotonNetwork.CurrentRoom.PlayerCount);
-        //set ui of game data
-        //_updateInGameUIData.SetPlayersAliveCountText(_gameData);
-        //set layers to all players
-    }
+    //private void Start()
+    //{
+    //    StartCoroutine(SetLayerOnAllPlayersJoined());
+    //    //_gameData = new InGameData(PhotonNetwork.CurrentRoom.PlayerCount);
+    //    //set ui of game data
+    //    //_updateInGameUIData.SetPlayersAliveCountText(_gameData);
+    //    //set layers to all players
+    //}
     IEnumerator SetLayerOnAllPlayersJoined()
     {
         //wait until all players are in game
         yield return new WaitUntil(() => _onlinePlayersManagers.Count == PhotonNetwork.CountOfPlayers);
-        SetEnemiesLayer();
+        
     }
-    void SetEnemiesLayer()
-    {
-        foreach (var onlinePlayerManager in _onlinePlayersManagers)
-        {
-            if (onlinePlayerManager == _onlinePlayerManager)//if my player.
-                onlinePlayerManager.gameObject.layer = _playerLayerIndex;
-            else//if its not my player.
-                onlinePlayerManager.gameObject.layer = _enemyLayerIndex;
-        }
-    }
+    
     public void RegisterPlayerController(OnlinePlayerManager onlinePlayerManager)
     {
         _onlinePlayersManagers.Add(onlinePlayerManager);
