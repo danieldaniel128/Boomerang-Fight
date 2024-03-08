@@ -8,3 +8,4 @@ public struct OnPlayerHealthChangedEvent : IEvent
     public float newHealth;
     public float maxHealth;
 }
+public struct OnPlayerDeath : IEvent { }

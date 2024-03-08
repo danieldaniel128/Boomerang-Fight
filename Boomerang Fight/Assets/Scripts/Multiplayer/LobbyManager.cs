@@ -40,6 +40,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //joins a random room.
         PhotonNetwork.JoinRandomRoom();
     }
+    private IEnumerator LoadDataTimer()
+    {
+        yield return new WaitForSeconds(2f);
+        photonView.RPC(nameof(LoadGame), RpcTarget.MasterClient);
+    }
+
     #region IMatchmakingCallbacks
     #region UsedCallBacks
     
@@ -53,7 +59,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         QuickMatchPanel.SetActive(false);
         SearchingPlayersPanel.SetActive(true);
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-            photonView.RPC(nameof(LoadGame),RpcTarget.MasterClient);
+            StartCoroutine(LoadDataTimer());
         RefreshPlayerCountTXT();
     }
     public override void OnLeftRoom()
@@ -102,7 +108,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
     #endregion
-
     #endregion
 
 }

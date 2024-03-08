@@ -15,7 +15,6 @@ public class Health : MonoBehaviourPun
         private set
         {
             _currentHP = value;
-            if(photonView.IsMine)
             EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
         }
     }
@@ -34,6 +33,7 @@ public class Health : MonoBehaviourPun
         {
             IsDead = true;
             OnDeath?.Invoke();
+            EventBus<OnPlayerDeath>.Raise(new OnPlayerDeath { });
             gameObject.SetActive(false);
         }
     }
@@ -76,6 +76,10 @@ public class Health : MonoBehaviourPun
     {
         MaxHP = health;
         CurrentHP = health;
+    }
+    private void PlayerDiedEvent()
+    {
+        Debug.Log("player died");
     }
     //private void OnDisable()
     //{
