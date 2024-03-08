@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Security;
 using UnityEngine;
 using UnityEngine.InputSystem.XInput;
+using static UnityEngine.GraphicsBuffer;
 
 public class MeleeAbility : AttackAbility
 {
@@ -45,10 +46,12 @@ public class MeleeAbility : AttackAbility
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.gameObject.layer)))
-        {
-            HitTarget(other);
-        }
+        if (other.attachedRigidbody != null)
+            if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
+            {
+                other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(Damage);
+            }
+        //HitTarget(other);
     }
 
     #region Ability Overrides

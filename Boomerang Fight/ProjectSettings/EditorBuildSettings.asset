@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: b51020e39139c8f478a949d01150b673
   - enabled: 1
-    path: Assets/Scenes/Player Animations.unity
-    guid: 02b84eadb94df1d488e452255ae80a93
+    path: Assets/Scenes/White Box.unity
+    guid: 212f8b587e05f4448962dde7797a4914
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6bbf041ee71327948bf41d3018144244,
       type: 2}
