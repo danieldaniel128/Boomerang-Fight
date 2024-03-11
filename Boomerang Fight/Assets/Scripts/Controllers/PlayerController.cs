@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviourPun
         {
             _playerAnimationController.StartWalk();
             _playerBody.transform.forward = moveDirection;
+            _dashAbility.UpdateDashDirection(moveDirection);
         }
         else
         {

@@ -137,7 +137,7 @@ public class DashAbility : MonoBehaviour
             OnDash?.Invoke();
             //set dash destination
             _dashStartPosition = transform.position;
-            _dashDestination = _dashStartPosition + transform.forward * _range;
+            _dashDestination = _dashStartPosition + _forwardDirection * _range;
             //start timers
             _dashCooldown.Start();
             _dashDuration.Start();

@@ -266,7 +266,7 @@ AnimatorStateMachine:
     m_Position: {x: 10, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -190103594335801868}
-    m_Position: {x: 600, y: 110, z: 0}
+    m_Position: {x: 500, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3798041049015686440}
     m_Position: {x: 10, y: -120, z: 0}
@@ -276,15 +276,15 @@ AnimatorStateMachine:
     m_Position: {x: 450, y: -120, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 6865331059378154296}
-    m_Position: {x: 380, y: 330, z: 0}
+    m_Position: {x: 390, y: 330, z: 0}
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
   - first: {fileID: -1311159174803279869}
     second: []
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -190, y: 60, z: 0}
-  m_EntryPosition: {x: -190, y: 160, z: 0}
+  m_AnyStatePosition: {x: -340, y: -100, z: 0}
+  m_EntryPosition: {x: -150, y: 480, z: 0}
   m_ExitPosition: {x: 1020, y: 420, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -8944266602073434749}
@@ -480,25 +480,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DashPressed
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: ChargingBoomerang
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: AttackPressed
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
