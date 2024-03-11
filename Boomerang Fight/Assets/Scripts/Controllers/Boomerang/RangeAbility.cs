@@ -10,6 +10,9 @@ public class RangeAbility : AttackAbility//interface of attacks
     float _maxAttackRange;
     float _minAttackRange;
     float _maxChargeTime;
+    [Header("Actions")]
+    public Action OnBoomerangReleased;
+
 
     Vector3 _attackDirectionVector;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,11 @@ public class DashAbility : MonoBehaviour
     [SerializeField] float _cooldown;
     [SerializeField] AnimationCurve _speedCurve;
 
+    public Action OnDash;
 
     bool _inDash;
     bool _canDash = true;
+    Vector3 _forwardDirection;
     Vector3 _dashDestination;
     Vector3 _dashStartPosition;
     CountdownTimer _dashCooldown;
@@ -69,6 +72,7 @@ public class DashAbility : MonoBehaviour
 
     private void ActivateDash()
     {
+        OnDash?.Invoke();
         _inDash = true;
     }
 
@@ -119,12 +123,18 @@ public class DashAbility : MonoBehaviour
 
     #endregion Timers
 
+    public void UpdateDashDirection(Vector3 newDirection)
+    {
+        _forwardDirection = newDirection;
+        _forwardDirection.Normalize();
+    }
 
     [ContextMenu("TryDash")]
     public void TryStartDash()
     {
         if (_canDash)
         {
+            OnDash?.Invoke();
             //set dash destination
             _dashStartPosition = transform.position;
             _dashDestination = _dashStartPosition + transform.forward * _range;
