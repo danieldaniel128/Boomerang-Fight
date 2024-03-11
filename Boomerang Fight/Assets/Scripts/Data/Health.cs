@@ -41,14 +41,10 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        CurrentHP = CurrentHP - damage;
-        if (CurrentHP <= 0)
-        {
-            IsDead = true;
-            OnDeath?.Invoke();
-            //gameObject.SetActive(false);
-        }
-        photonView.RPC(nameof(SyncHealth), RpcTarget.Others, CurrentHP);
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+       
+        photonView.RPC(nameof(SyncHealth), RpcTarget.All, CurrentHP - damage);
     }
 
     [PunRPC]

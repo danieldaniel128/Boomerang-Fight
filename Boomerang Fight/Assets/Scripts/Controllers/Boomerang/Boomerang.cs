@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Boomerang : MonoBehaviourPun
 {
+    public PlayerController owner;
     [SerializeField] GameObject _parent;
     [Header("Components")]
     [SerializeField] Rigidbody _rb;
@@ -55,7 +56,9 @@ public class Boomerang : MonoBehaviourPun
         if(other.attachedRigidbody!=null)
             if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
             {
-                other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(_damage);
+                PlayerController hitPlayerController = other.attachedRigidbody.gameObject.GetComponent<PlayerController>();
+                if(hitPlayerController.photonView.ViewID != owner.photonView.ViewID)
+                  other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(_damage);
             }
     }
     private void OnCollisionEnter(Collision collision)
@@ -75,16 +78,6 @@ public class Boomerang : MonoBehaviourPun
     {
         //remove game object from parent
         photonView.RPC(nameof(ReleaseRPC), RpcTarget.All, directionVector, damage);
-        //set range, direction and damage
-        _range = directionVector.magnitude;
-        _launchDirection = directionVector.normalized;
-        _damage = damage;
-        //reset parameters
-        ResetBoomerangInformation();
-        //activate logic boomerang
-        _rb.velocity = directionVector;
-        transform.SetParent(null);
-        OnRelease?.Invoke();
     }
 
 
