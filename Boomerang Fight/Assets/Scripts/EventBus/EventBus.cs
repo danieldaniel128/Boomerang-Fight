@@ -4,63 +4,59 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public static class EventBus<T> where T : IEvent {
+public static class EventBus<T> where T : IEvent
+{
     static readonly HashSet<IEventBinding<T>> bindings = new HashSet<IEventBinding<T>>();
-    static bool IsMine => GetIsMine();
+    static bool IsMine => PlayerOwnershipManager.Instance.IsMyPlayer;
     public static void Register(EventBinding<T> binding) => bindings.Add(binding);
     public static void Deregister(EventBinding<T> binding) => bindings.Remove(binding);
 
-    public static void Raise(T @event) {
-        foreach (var binding in bindings) 
+    public static void Raise(T @event)
+    {
+        foreach (var binding in bindings)
         {
             if (HasOnlineValidation(binding))
             {
-                binding.OnEvent.Invoke(@event);
-                binding.OnEventNoArgs.Invoke();
+                //invoke only to my player
+                if (CanInvokeLocal(binding))
+                {
+                    //if(OnPlayerHealthChangedEvent is IEvent) doesnt work???
+                    binding.OnEvent.Invoke(@event);
+                    binding.OnEventNoArgs.Invoke();
+                }
+                else //invoke to all players
+                {
+                    binding.OnEvent.Invoke(@event);
+                    binding.OnEventNoArgs.Invoke();
+                }
             }
-            //else
-            //{
-            //    binding.OnEvent.Invoke(@event);
-            //    binding.OnEventNoArgs.Invoke();
-            //}
         }
-    }
 
-    static void Clear() {
-        Debug.Log($"Clearing {typeof(T).Name} bindings");
-        bindings.Clear();
-    }
-    static bool HasOnlineValidation(IEventBinding<T> binding)
-    {
-        // is connected and local
-        if (PhotonNetwork.IsConnected && binding.UseLocal)
+        static void Clear()
         {
-            // Access IsMine as a property
-            if (IsMine)
-                return true;
-            else
-            {
-                // marked as to use local but is not local
-                Debug.LogError($"UseLocal is {binding.UseLocal} but IsMine is {IsMine}");
-                return false;
-            }
+            Debug.Log($"Clearing {typeof(T).Name} bindings");
+            bindings.Clear();
         }
-        // not connected or local
-        return false;
-    }
-    // Method to check if the local player owns the object
-    static bool GetIsMine()
-    {
-        var ownershipManager = PlayerOwnershipManager.Instance;
-        if (ownershipManager == null)
+        static bool HasOnlineValidation(IEventBinding<T> binding)
         {
-            Debug.LogError("PlayerOwnershipManager is not initialized.");
+            // is connected and local
+            if (PhotonNetwork.IsConnected)
+            {
+                // Access IsMine as a property
+                return true;
+            }
+            // not connected or local
             return false;
         }
-
-        var playerOwnershipMap = ownershipManager.PlayerOwnershipMap;
-        var localPlayerActorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        
-        return playerOwnershipMap.ContainsKey(localPlayerActorNumber) && playerOwnershipMap[localPlayerActorNumber];
+        static bool CanInvokeLocal(IEventBinding<T> binding)
+        {
+            if (binding.UseLocal)
+                if (IsMine)
+                    return true;
+                // marked as to use local but is not local
+                else
+                    Debug.LogError($"UseLocal is {binding.UseLocal} but IsMine is {IsMine}");
+            return false;
+        }
     }
 }

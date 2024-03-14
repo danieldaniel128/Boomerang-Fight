@@ -57,8 +57,9 @@ public class Boomerang : MonoBehaviourPun
             if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
             {
                 PlayerController hitPlayerController = other.attachedRigidbody.gameObject.GetComponent<PlayerController>();
+                //checks if the player and target are not the same online.
                 if(hitPlayerController.photonView.ViewID != owner.photonView.ViewID)
-                  other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(_damage);
+                    other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(_damage);
             }
     }
     private void OnCollisionEnter(Collision collision)

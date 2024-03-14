@@ -12,12 +12,11 @@ public class UpdateHPBarMaterial : MonoBehaviourPun
 
     private void OnEnable()
     {
-        HealthChangedEventBinding = new EventBinding<OnPlayerHealthChangedEvent>(UpdateOnHealthChangedEvent,true);
+        HealthChangedEventBinding = new EventBinding<OnPlayerHealthChangedEvent>(UpdateOnHealthChangedEvent,true);//use my player only true
         EventBus<OnPlayerHealthChangedEvent>.Register(HealthChangedEventBinding);
     }
     private void OnDisable()
     {
-        if (photonView.IsMine)
             EventBus<OnPlayerHealthChangedEvent>.Deregister(HealthChangedEventBinding);
     }
 

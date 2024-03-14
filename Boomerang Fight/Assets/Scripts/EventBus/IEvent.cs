@@ -9,3 +9,5 @@ public struct OnPlayerHealthChangedEvent : IEvent
     public float maxHealth;
 }
 public struct OnPlayerDeath : IEvent { }
+public struct OnPlayerMovement : IEvent { }
+public struct OnPlayerRangeAttack : IEvent { }

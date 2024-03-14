@@ -16,9 +16,9 @@ public class Health : MonoBehaviourPun
         private set
         {
             _currentHP = value;
-            _updateHPBarMaterial.UpdateOnHealthChangedEvent(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
+            //_updateHPBarMaterial.UpdateOnHealthChangedEvent(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
             //if (photonView.IsMine)
-            //EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
+            EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
         }
     }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
@@ -41,9 +41,6 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        if (!PhotonNetwork.IsMasterClient)
-            return;
-       
         photonView.RPC(nameof(SyncHealth), RpcTarget.All, CurrentHP - damage);
     }
 
@@ -55,7 +52,6 @@ public class Health : MonoBehaviourPun
         if (newHealth <= 0)
         {
             IsDead = true;
-            OnDeath?.Invoke();
             gameObject.SetActive(false);
         }
     }
