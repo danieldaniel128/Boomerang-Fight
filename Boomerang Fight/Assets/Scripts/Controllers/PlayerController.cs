@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] MeleeAbility _meleeAbility;
     [SerializeField] PlayerAnimationController _playerAnimationController;
     [SerializeField] Boomerang _boomerang;
-    [SerializeField] Collider _bodyCollider;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
     [SerializeField] Joystick _moveJoystick;
@@ -31,19 +30,23 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _moveSpeed;
     [SerializeField] float _timeToAccelerate = 0.2f;
     [SerializeField] float _timeToDecelerate = 0.2f;
-    [SerializeField] float _maxAngle = 80f;
-    [SerializeField] float _distanceToWallCheck = 2f;
     [Header("Actions")]
     public UnityEvent OnRecall;
+    [Header("Wall Collision Parameters")]
+    [SerializeField] static float _maxWallAngle = 85f;
+    [SerializeField] static float _distanceToWallCheck = .6f;
+    public static float DistanceToWall => _distanceToWallCheck;
+    public static float MaxWallAngle => _maxWallAngle;
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerUpdate;
     int _mySpawnIndex;
     float _currentSpeed = 0f;
-    Vector3 _moveDirection = Vector3.zero;
+    Vector3 _moveVelocity = Vector3.zero;
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
+
 
 
     [PunRPC]
@@ -78,7 +81,7 @@ public class PlayerController : MonoBehaviourPun
         Subscribe();
     }
 
-    
+
 
     private void OnDisable()
     {
@@ -119,6 +122,9 @@ public class PlayerController : MonoBehaviourPun
     }
     private void HandleMovement()
     {
+        if (_dashAbility.InDash)
+            return;
+
         //get movement from joystick
         Vector3 inputDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
         //check magnitude size
@@ -126,7 +132,7 @@ public class PlayerController : MonoBehaviourPun
         {
             //movement
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.deltaTime);
-            _moveDirection = inputDirection * _currentSpeed;
+            _moveVelocity = inputDirection * _currentSpeed;
 
             //animations
             _playerAnimationController.StartWalk();
@@ -139,7 +145,7 @@ public class PlayerController : MonoBehaviourPun
         {
             //movement
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, 0f, Deceleration * Time.deltaTime);
-            _moveDirection = _moveDirection.normalized * _currentSpeed;
+            _moveVelocity = _moveVelocity.normalized * _currentSpeed;
 
             //animations
             _playerAnimationController.StopWalk();
@@ -147,17 +153,16 @@ public class PlayerController : MonoBehaviourPun
 
         //cast ray forward to check if wall/can move in that direction
         //check if can move forward
-        Vector3 newPosition = AdjustMovementIfWall(_moveDirection * Time.deltaTime);
+        Vector3 newPosition = AdjustMovementIfWall(_moveVelocity * Time.deltaTime);
         transform.position += newPosition;
     }
 
     private Vector3 AdjustMovementIfWall(Vector3 MovementVector)
     {
         RaycastHit hit;
-        if(Physics.SphereCast(transform.position, _distanceToWallCheck / 2, MovementVector, out hit, _distanceToWallCheck))
+        if (Physics.SphereCast(transform.position, DistanceToWall, MovementVector, out hit, MovementVector.magnitude))
         {
-            print(Vector3.Angle(hit.normal, MovementVector.normalized)/2);
-            if (Vector3.Angle(hit.normal, MovementVector.normalized)/2 < _maxAngle)
+            if (Vector3.Angle(hit.normal, MovementVector.normalized) / 2 < MaxWallAngle)
             {
                 // Adjust movement along the wall
                 MovementVector = Vector3.ProjectOnPlane(MovementVector, hit.normal);
@@ -260,8 +265,6 @@ public class PlayerController : MonoBehaviourPun
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + _moveDirection * Time.deltaTime, _distanceToWallCheck);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position + _moveDirection.normalized * _distanceToWallCheck, _distanceToWallCheck / 2);
+        Gizmos.DrawWireSphere(transform.position + _moveVelocity * Time.deltaTime, DistanceToWall);
     }
 }
