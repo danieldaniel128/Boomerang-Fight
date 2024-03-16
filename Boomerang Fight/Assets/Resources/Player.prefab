@@ -329,7 +329,6 @@ GameObject:
   - component: {fileID: 1949292043620430676}
   - component: {fileID: 6187736998003109280}
   - component: {fileID: 8128531511137509897}
-  - component: {fileID: 2128822952462949966}
   - component: {fileID: 4417597003901068123}
   - component: {fileID: 6884603398478304450}
   - component: {fileID: 8945515412577512104}
@@ -385,7 +384,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 8128531511137509897}
-  - {fileID: 2128822952462949966}
+  - {fileID: 0}
   - {fileID: 7897514430184918760}
   - {fileID: 4837080619478518254}
   sceneViewId: 0
@@ -412,10 +411,15 @@ MonoBehaviour:
   _meleeAbility: {fileID: 1559992962702580600}
   _playerAnimationController: {fileID: 3299242753739002790}
   _boomerang: {fileID: 6437971786199756181}
+  _bodyCollider: {fileID: 9003262914291918112}
   _joystickCanvas: {fileID: 6782129767931833032}
   _moveJoystick: {fileID: 7923024098359700179}
   _AttackJoystick: {fileID: 6419214427550536264}
   _moveSpeed: 6
+  _timeToAccelerate: 0.2
+  _timeToDecelerate: 0.2
+  _maxAngle: 85
+  _distanceToWallCheck: 0.6
   OnRecall:
     m_PersistentCalls:
       m_Calls: []
@@ -435,22 +439,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &2128822952462949966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6461610516121305678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!54 &4417597003901068123
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -476,7 +464,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &6884603398478304450
 MonoBehaviour:
