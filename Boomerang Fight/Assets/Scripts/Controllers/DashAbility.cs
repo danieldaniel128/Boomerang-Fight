@@ -157,17 +157,9 @@ public class DashAbility : MonoBehaviour
         if (Physics.SphereCast(transform.position, PlayerController.DistanceToWall, newPosition, out hit, (transform.position - newPosition).magnitude))
         {
             print(hit.collider.name);
-            //if (hit.collider.CompareTag("Player"))
-            //{
-            //    print("dash hit player");
-            //}
-            //if (hit.collider.CompareTag("Wall"))
-            //{
-            //    print("dash hit wall");
-            //}
+          
             newPosition = transform.position;
-            //_dashDuration.Stop();
-            print("activate knockback");
+            _dashDuration.Stop();
         }
         transform.position = newPosition;
     }
