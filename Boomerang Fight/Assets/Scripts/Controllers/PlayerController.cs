@@ -265,6 +265,6 @@ public class PlayerController : MonoBehaviourPun
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + _moveVelocity * Time.deltaTime, DistanceToWall);
+        Gizmos.DrawWireSphere(transform.position, DistanceToWall);
     }
 }
