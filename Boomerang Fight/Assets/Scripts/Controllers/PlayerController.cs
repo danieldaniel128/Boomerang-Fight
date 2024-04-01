@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] GameObject _playerBody;
     [SerializeField] GameObject _boomerangVisual;
     [Header("Components")]
+    [SerializeField] Rigidbody rb;
     [SerializeField] RangeAbility _rangeAbility;
     [SerializeField] RecallAbility _recallAbility;
     [SerializeField] DashAbility _dashAbility;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviourPun
     int _mySpawnIndex;
     float _currentSpeed = 0f;
     Vector3 _moveVelocity = Vector3.zero;
+    Vector3 _lastFacingDirection = Vector3.forward;
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
@@ -128,6 +130,7 @@ public class PlayerController : MonoBehaviourPun
         //check magnitude size
         if (inputDirection.magnitude > 0)
         {
+            _lastFacingDirection = inputDirection.normalized;
             //movement
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.deltaTime);
             _moveVelocity = inputDirection * _currentSpeed;
@@ -148,11 +151,7 @@ public class PlayerController : MonoBehaviourPun
             //animations
             _playerAnimationController.StopWalk();
         }
-
-        //cast ray forward to check if wall/can move in that direction
-        //check if can move forward
-        Vector3 newPosition = AdjustMovementIfWall(_moveVelocity * Time.deltaTime);
-        transform.position += newPosition;
+        rb.velocity = _moveVelocity;
     }
 
     private Vector3 AdjustMovementIfWall(Vector3 MovementVector)
