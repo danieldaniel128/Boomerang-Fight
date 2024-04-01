@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] GameObject _playerBody;
     [SerializeField] GameObject _boomerangVisual;
     [Header("Components")]
-    [SerializeField] CameraFollow _cameraFollow;
     [SerializeField] RangeAbility _rangeAbility;
     [SerializeField] RecallAbility _recallAbility;
     [SerializeField] DashAbility _dashAbility;
@@ -60,8 +59,7 @@ public class PlayerController : MonoBehaviourPun
     }
     private void Start()
     {
-        //set camera reference
-        _cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        
         //checks if its not my player.
         if (!photonView.IsMine)
         {
@@ -72,7 +70,7 @@ public class PlayerController : MonoBehaviourPun
         {
             gameObject.layer = 3;//player layer
             //set camera follow to my player
-            _cameraFollow.target = _playerBody.transform;
+            CameraManager.Instance.CameraFollowRef.SetTarget(_playerBody.transform);
         }
     }
     private void OnEnable()

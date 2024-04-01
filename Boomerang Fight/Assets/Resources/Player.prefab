@@ -403,7 +403,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerBody: {fileID: 1683698286115224800}
   _boomerangVisual: {fileID: 8080197317390398945}
-  _cameraFollow: {fileID: 0}
   _rangeAbility: {fileID: 2503413388573940175}
   _recallAbility: {fileID: 2637411979835113435}
   _dashAbility: {fileID: 8945515412577512104}
