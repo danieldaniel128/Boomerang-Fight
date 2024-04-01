@@ -41,6 +41,9 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
+        if (photonView.IsMine)
+            CameraManager.Instance.CameraShakeRef.ShakeCamera();
+
         if (!PhotonNetwork.IsMasterClient)
             return;
        
