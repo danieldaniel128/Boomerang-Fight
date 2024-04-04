@@ -32,23 +32,16 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _timeToDecelerate = 0.2f;
     [Header("Actions")]
     public UnityEvent OnRecall;
-    [Header("Wall Collision Parameters")]
-    [SerializeField] static float _maxWallAngle = 85f;
-    [SerializeField] static float _distanceToWallCheck = .6f;
-    public static float DistanceToWall => _distanceToWallCheck;
-    public static float MaxWallAngle => _maxWallAngle;
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerUpdate;
     int _mySpawnIndex;
     float _currentSpeed = 0f;
     Vector3 _moveVelocity = Vector3.zero;
-    Vector3 _lastFacingDirection = Vector3.forward;
+    Vector3 _attackDirection = Vector3.forward;
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
-
-
 
     [PunRPC]
     void SetMyPlayerIndex(int index)
@@ -61,7 +54,7 @@ public class PlayerController : MonoBehaviourPun
     }
     private void Start()
     {
-        
+
         //checks if its not my player.
         if (!photonView.IsMine)
         {
@@ -80,21 +73,38 @@ public class PlayerController : MonoBehaviourPun
         //on my player, handle movement in update.
         Subscribe();
     }
-
-
-
     private void OnDisable()
     {
         //In order to prevent resource leaks, unsubscribe events
         UnsubscribeEvents();
     }
-
-
-
-    private void Update()
+    private void FixedUpdate()
     {
         LocalPlayerControlUpdate();
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer != 8)
+            return;
+
+        print(_dashAbility.InDash + ", dash progress: " + _dashAbility.DashDuration.Progress);
+        if (_dashAbility.InDash && 1 - _dashAbility.DashDuration.Progress < 0.7f)
+        {
+            print("dash progress: " + _dashAbility.DashDuration.Progress + ", should knockback");
+            _dashAbility.DashDuration.Stop();
+        }
+        print("dash disabled");
+        _dashAbility.EnableDash(false);
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer != 8)
+            return;
+
+        print("dash enabled");
+        _dashAbility.EnableDash(true);
+    }
+
     private void Subscribe()
     {
         OnLocalPlayerControllerUpdate += HandleMovement;
@@ -128,9 +138,14 @@ public class PlayerController : MonoBehaviourPun
         //get movement from joystick
         Vector3 inputDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
         //check magnitude size
-        if (inputDirection.magnitude > 0)
+        if (inputDirection.magnitude > 0.1)
         {
-            _lastFacingDirection = inputDirection.normalized;
+            if (!_rangeAbility.Aimed)
+            {
+                _attackDirection = inputDirection;
+                _rangeAbility.CalculateAttackDirection(_attackDirection);
+            }
+
             //movement
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.deltaTime);
             _moveVelocity = inputDirection * _currentSpeed;
@@ -152,26 +167,6 @@ public class PlayerController : MonoBehaviourPun
             _playerAnimationController.StopWalk();
         }
         rb.velocity = _moveVelocity;
-    }
-
-    private Vector3 AdjustMovementIfWall(Vector3 MovementVector)
-    {
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position, DistanceToWall, MovementVector, out hit, MovementVector.magnitude))
-        {
-            if (Vector3.Angle(hit.normal, MovementVector.normalized) / 2 < MaxWallAngle)
-            {
-                // Adjust movement along the wall
-                MovementVector = Vector3.ProjectOnPlane(MovementVector, hit.normal);
-                Debug.DrawRay(hit.point, MovementVector.normalized, Color.red);
-            }
-            else
-            {
-                //stop if wall angle is too steep
-                MovementVector = Vector3.zero;
-            }
-        }
-        return MovementVector;
     }
 
     private void LocalPlayerControlUpdate()
@@ -211,6 +206,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
+
         StopCharge();
         _rangeAbility.UseAbility();
     }
@@ -218,8 +214,12 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
-        Vector3 attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
-        _rangeAbility.CalculateAttackRange(attackDirection);
+        _attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
+        if (_attackDirection.magnitude > 0.1f)
+        {
+            _rangeAbility.Aimed = true;
+            _rangeAbility.CalculateAttackDirection(_attackDirection);
+        }
     }
     private void StartCharge()
     {
@@ -256,12 +256,8 @@ public class PlayerController : MonoBehaviourPun
 
     void FaceThrowDirection()
     {
-        _playerBody.transform.forward = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
+        print("attack direction: " + _attackDirection);
+        _playerBody.transform.forward = _attackDirection;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, DistanceToWall);
-    }
 }

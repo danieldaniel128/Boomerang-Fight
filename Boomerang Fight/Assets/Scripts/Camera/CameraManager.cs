@@ -30,7 +30,7 @@ public class CameraManager : MonoBehaviour
         #endregion Singleton
     }
 
-    void Update()
+    void FixedUpdate()
     {
         cameraFollow.CameraFollowUpdate();
     }

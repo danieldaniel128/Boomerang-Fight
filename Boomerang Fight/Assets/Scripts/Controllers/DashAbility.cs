@@ -10,11 +10,13 @@ public class DashAbility : MonoBehaviour
     [SerializeField] float _duration;
     [SerializeField] float _cooldown;
     [SerializeField] AnimationCurve _speedCurve;
+    [SerializeField] Rigidbody characterRB;
 
     public Action OnDash;
 
     bool _inDash;
     bool _canDash = true;
+    bool _onCooldown = false;
     Vector3 _forwardDirection;
     Vector3 _dashDestination;
     Vector3 _dashStartPosition;
@@ -23,6 +25,7 @@ public class DashAbility : MonoBehaviour
 
     Vector3 DashDirection => _dashDestination - _dashStartPosition;
 
+    public CountdownTimer DashDuration => _dashDuration;
     public bool InDash => _inDash;
 
     private void OnEnable()
@@ -69,14 +72,14 @@ public class DashAbility : MonoBehaviour
     private void SetDurationTimer()
     {
         _dashDuration = new(_duration);
-        _dashDuration.OnTimerStart += ActivateDash;
-        _dashDuration.OnTimerStop += DeactivateDash;
+        _dashDuration.OnTimerStart += StartDash;
+        _dashDuration.OnTimerStop += EndDash;
     }
 
     private void ClearDurationTimer()
     {
-        _dashDuration.OnTimerStart -= ActivateDash;
-        _dashDuration.OnTimerStop -= DeactivateDash;
+        _dashDuration.OnTimerStart -= StartDash;
+        _dashDuration.OnTimerStop -= EndDash;
     }
     #endregion DurationTimer
 
@@ -84,14 +87,14 @@ public class DashAbility : MonoBehaviour
     private void SetCooldownTimer()
     {
         _dashCooldown = new(_cooldown);
-        _dashCooldown.OnTimerStart += DisableDash;
-        _dashCooldown.OnTimerStop += EnableDash;
+        _dashCooldown.OnTimerStart += StartCooldown;
+        _dashCooldown.OnTimerStop += FinishCooldown;
     }
 
     private void ClearCooldownTimer()
     {
-        _dashCooldown.OnTimerStart -= DisableDash;
-        _dashCooldown.OnTimerStop -= EnableDash;
+        _dashCooldown.OnTimerStart -= StartCooldown;
+        _dashCooldown.OnTimerStop -= FinishCooldown;
     }
 
     #endregion CooldownTimer
@@ -110,58 +113,57 @@ public class DashAbility : MonoBehaviour
         _forwardDirection = newDirection;
         _forwardDirection.Normalize();
     }
-    private void ActivateDash()
+    private void StartDash()
     {
         OnDash?.Invoke();
         _inDash = true;
     }
-
-    private void DeactivateDash()
+    private void EndDash()
     {
         _inDash = false;
     }
-    private void EnableDash()
+
+    private void FinishCooldown()
     {
-        _canDash = true;
+        _onCooldown = false;
     }
 
-    private void DisableDash()
+    private void StartCooldown()
     {
-        _canDash = false;
+        _onCooldown = true;
+    }
+
+    public void EnableDash(bool enabled)
+    {
+        _canDash = enabled;
     }
 
     [ContextMenu("TryDash")]
     public void TryStartDash()
     {
-        if (_canDash)
-        {
-            OnDash?.Invoke();
-            //set dash destination
-            _dashStartPosition = transform.position;
-            _dashDestination = _dashStartPosition + _forwardDirection * _range;
-            //start timers
-            _dashCooldown.Start();
-            _dashDuration.Start();
-        }
+        if (!_canDash)
+            return;
+
+        if (_onCooldown)
+            return;
+
+        OnDash?.Invoke();
+        //set dash destination
+        _dashStartPosition = transform.position;
+        _dashDestination = _dashStartPosition + _forwardDirection * _range;
+        //start timers
+        _dashCooldown.Start();
+        _dashDuration.Start();
     }
 
     private void Dash()
     {
-        
         //lerp transform to facing direction + range
         float curveValue = _speedCurve.Evaluate(1 - _dashDuration.Progress);
         // update dash destination after checking collision?
         Vector3 newPosition = Vector3.Lerp(_dashStartPosition, _dashDestination, curveValue);
-        //ray cast from transform pos to new pos, if collide then stop dash
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position, PlayerController.DistanceToWall, newPosition, out hit, (transform.position - newPosition).magnitude))
-        {
-            print(hit.collider.name);
-          
-            newPosition = transform.position;
-            _dashDuration.Stop();
-        }
-        transform.position = newPosition;
+
+        characterRB.MovePosition(newPosition);
     }
 
     //call when hit a wall or death or something

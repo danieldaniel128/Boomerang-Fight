@@ -13,9 +13,9 @@ public class RangeAbility : AttackAbility//interface of attacks
     [Header("Actions")]
     public Action OnBoomerangReleased;
 
+    Vector3 _attackDirectionVector = Vector3.forward;
 
-    Vector3 _attackDirectionVector;
-
+    public bool Aimed {  get; set; }
 
     private void Start()
     {
@@ -27,6 +27,7 @@ public class RangeAbility : AttackAbility//interface of attacks
     #region Ability Overrides
     public override void UseAbility() //on joystick up
     {
+        Aimed = false;
         if(!PlayerBoomerang.gameObject.activeInHierarchy)
         {
             PlayerBoomerang.Release(_attackDirectionVector * _maxAttackRange, _baseDamage);
@@ -50,7 +51,7 @@ public class RangeAbility : AttackAbility//interface of attacks
     }
     #endregion Ability Overrides
 
-    public void CalculateAttackRange(Vector3 attackDirection)
+    public void CalculateAttackDirection(Vector3 attackDirection)
     {
         //cant use attack when boomerang is disabled.
         if (PlayerBoomerang.isActiveAndEnabled)
@@ -64,6 +65,7 @@ public class RangeAbility : AttackAbility//interface of attacks
         {
             //brawlstars-like auto aim here
             //_attackDirectionVector = closest enemy direction
+            print("attack nearest enemy or facing");
         }
     }
 
