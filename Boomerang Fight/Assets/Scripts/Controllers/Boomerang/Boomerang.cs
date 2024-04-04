@@ -75,16 +75,6 @@ public class Boomerang : MonoBehaviourPun
     {
         //remove game object from parent
         photonView.RPC(nameof(ReleaseRPC), RpcTarget.All, directionVector, damage);
-        //set range, direction and damage
-        _range = directionVector.magnitude;
-        _launchDirection = directionVector.normalized;
-        _damage = damage;
-        //reset parameters
-        ResetBoomerangInformation();
-        //activate logic boomerang
-        _rb.velocity = directionVector;
-        transform.SetParent(null);
-        OnRelease?.Invoke();
     }
 
 
