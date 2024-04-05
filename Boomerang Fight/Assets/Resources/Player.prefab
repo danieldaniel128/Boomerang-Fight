@@ -418,6 +418,8 @@ MonoBehaviour:
   _moveSpeed: 6
   _timeToAccelerate: 0.2
   _timeToDecelerate: 0.2
+  _groundDistanceCheck: 0
+  _delayTillFall: 0
   OnRecall:
     m_PersistentCalls:
       m_Calls: []
@@ -495,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e81465d84cf1be409a2433585f3732e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 2
+  _range: 3
   _duration: 0.4
   _cooldown: 1
   _speedCurve:
@@ -511,22 +513,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.9512574
     - serializedVersion: 3
-      time: 0.101647444
+      time: 0.1
       value: 0.10471239
-      inSlope: 1.8709333
-      outSlope: 1.8709333
-      tangentMode: 0
+      inSlope: 5.51615
+      outSlope: 5.080114
+      tangentMode: 1
       weightedMode: 3
-      inWeight: 0.33333334
-      outWeight: 0.44088668
+      inWeight: 0.18993944
+      outWeight: 0.16286893
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.4074519
+      outSlope: 0.4074519
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.05133139
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

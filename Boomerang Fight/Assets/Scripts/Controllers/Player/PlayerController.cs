@@ -30,11 +30,15 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _moveSpeed;
     [SerializeField] float _timeToAccelerate = 0.2f;
     [SerializeField] float _timeToDecelerate = 0.2f;
+    [Header("Falling Parameters")]
+    [SerializeField] float _groundDistanceCheck;
+    [SerializeField] float _delayTillFall;
+
     [Header("Actions")]
     public UnityEvent OnRecall;
 
     private Action OnMasterPlayerControllerUpdate;
-    private Action OnLocalPlayerControllerUpdate;
+    private Action OnLocalPlayerControllerFixedUpdate;
     int _mySpawnIndex;
     float _currentSpeed = 0f;
     Vector3 _moveVelocity = Vector3.zero;
@@ -71,7 +75,7 @@ public class PlayerController : MonoBehaviourPun
     private void OnEnable()
     {
         //on my player, handle movement in update.
-        Subscribe();
+        SubscribeEvents();
     }
     private void OnDisable()
     {
@@ -87,10 +91,8 @@ public class PlayerController : MonoBehaviourPun
         if (collision.gameObject.layer != 8)
             return;
 
-        print(_dashAbility.InDash + ", dash progress: " + _dashAbility.DashDuration.Progress);
         if (_dashAbility.InDash && 1 - _dashAbility.DashDuration.Progress < 0.7f)
         {
-            print("dash progress: " + _dashAbility.DashDuration.Progress + ", should knockback");
             _dashAbility.DashDuration.Stop();
         }
         print("dash disabled");
@@ -105,9 +107,9 @@ public class PlayerController : MonoBehaviourPun
         _dashAbility.EnableDash(true);
     }
 
-    private void Subscribe()
+    private void SubscribeEvents()
     {
-        OnLocalPlayerControllerUpdate += HandleMovement;
+        OnLocalPlayerControllerFixedUpdate += HandleMovement;
         //when press attack button, enable attack.
         _AttackJoystick.OnJoystickDown += EnableRangeAbility;
         _AttackJoystick.OnJoystickDown += EnableRecallAbility;
@@ -116,10 +118,12 @@ public class PlayerController : MonoBehaviourPun
         _boomerang.OnRelease += FaceThrowDirection;
         _meleeAbility.OnAttack += _playerAnimationController.AttackPressedTrigger;
         _dashAbility.OnDash += _playerAnimationController.DashPressedTrigger;
+        _dashAbility.OnDash += _meleeAbility.DisableAttack;
+        _dashAbility.OnDashEnd += _meleeAbility.EnableAttack;
     }
     private void UnsubscribeEvents()
     {
-        OnLocalPlayerControllerUpdate -= HandleMovement;
+        OnLocalPlayerControllerFixedUpdate -= HandleMovement;
         _AttackJoystick.OnJoystickDown -= EnableRangeAbility;
         _AttackJoystick.OnJoystickDown -= EnableRecallAbility;
         DisableRangeAbility();
@@ -129,10 +133,14 @@ public class PlayerController : MonoBehaviourPun
         _boomerang.OnRelease -= FaceThrowDirection;
         _meleeAbility.OnAttack -= _playerAnimationController.AttackPressedTrigger;
         _dashAbility.OnDash -= _playerAnimationController.DashPressedTrigger;
+        _dashAbility.OnDash -= _meleeAbility.DisableAttack;
+        _dashAbility.OnDashEnd -= _meleeAbility.EnableAttack;
     }
     private void HandleMovement()
     {
         if (_dashAbility.InDash)
+            return;
+        if (_meleeAbility.InAttack)
             return;
 
         //get movement from joystick
@@ -172,7 +180,7 @@ public class PlayerController : MonoBehaviourPun
     private void LocalPlayerControlUpdate()
     {
         if (photonView.IsMine)
-            OnLocalPlayerControllerUpdate?.Invoke();
+            OnLocalPlayerControllerFixedUpdate?.Invoke();
     }
 
     #region Recall Ability
@@ -225,6 +233,11 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
+        if (_meleeAbility.InAttack)
+        {
+            DisableRangeAbility();
+            return;
+        }
         _playerAnimationController.StartChargingBoomerang();
         //range ability start charge timer
     }
@@ -256,7 +269,6 @@ public class PlayerController : MonoBehaviourPun
 
     void FaceThrowDirection()
     {
-        print("attack direction: " + _attackDirection);
         _playerBody.transform.forward = _attackDirection;
     }
 

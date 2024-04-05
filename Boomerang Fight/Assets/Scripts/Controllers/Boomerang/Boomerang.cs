@@ -51,7 +51,6 @@ public class Boomerang : MonoBehaviourPun
     {
         if (!_damaging)
             return;
-        print(other.name);
         if(other.attachedRigidbody!=null)
             if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
             {
@@ -159,7 +158,6 @@ public class Boomerang : MonoBehaviourPun
 
         if (MovingTowardsPlayer())
         {
-            //print("towards player cur speed: " + _currentSpeed + " newSpeed: " + newSpeed);
             if(newSpeed > _currentSpeed)
             {
                 _currentSpeed = newSpeed;
@@ -169,13 +167,11 @@ public class Boomerang : MonoBehaviourPun
         {
             _currentSpeed = newSpeed;
         }
-        //print("cur speed: " + _currentSpeed);
     }
     bool MovingTowardsPlayer()
     {
         float dotProduct = Vector3.Dot(_rb.velocity.normalized, _directionToParent.normalized);
         float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
-        //print("Angle to player: " + angle);
         return angle < _directionToPlayerAngleThreshHold / 2;
     }
 
@@ -197,8 +193,6 @@ public class Boomerang : MonoBehaviourPun
         float forceToAdd = recallForce * Time.deltaTime;
         if (_rb.velocity.magnitude >= MaxSpeed)
             forceToAdd = 0;
-        //print(_rb.velocity.magnitude);
-        //print("force to add: " + forceToAdd);
         //add force in the direction of recall position
         _rb.AddForce(_directionToParent * forceToAdd);
     }

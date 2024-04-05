@@ -23,6 +23,7 @@ public class MeleeAbility : AttackAbility
     float _cooldownDuration;
 
     bool _canAttack = true;
+    bool _onCooldown = false;
 
     CountdownTimer _cooldownTimer;
     CountdownTimer _delayAttackTimer;
@@ -31,9 +32,11 @@ public class MeleeAbility : AttackAbility
     public Action OnAttack;
 
     //Gizmo Parameters
+    [Header("Gizmos")]
     [SerializeField] bool _showGizmos;
     bool _inAttack = false;
 
+    public bool InAttack => _inAttack;
 
     private void Start()
     {
@@ -46,6 +49,12 @@ public class MeleeAbility : AttackAbility
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer == 6)
+        {
+            print("Hit Boomerang");
+            return;
+        }
+
         if (other.attachedRigidbody != null)
             if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
             {
@@ -59,7 +68,8 @@ public class MeleeAbility : AttackAbility
     [ContextMenu("Press Attack")]
     public override void UseAbility()
     {
-        TryInitiateAttack();
+        if (photonView.IsMine) //maybe not necessary?
+            TryInitiateAttack();
     }
     protected override void GetData()
     {
@@ -102,7 +112,8 @@ public class MeleeAbility : AttackAbility
     private void InitializeCooldownTimer()
     {
         _cooldownTimer = new(_cooldownDuration);
-        _cooldownTimer.OnTimerStop += () => _canAttack = true;
+        _cooldownTimer.OnTimerStop += () => _onCooldown = false;
+        _cooldownTimer.OnTimerStart += () => _onCooldown = true;
     }
 
     void Tick()
@@ -115,13 +126,18 @@ public class MeleeAbility : AttackAbility
 
     private void TryInitiateAttack()
     {
-        if (_canAttack)
-        {
-            OnAttack?.Invoke();
-            _canAttack = false;
-            _delayAttackTimer.Start();
-            _cooldownTimer.Start();
-        }
+        if (!_canAttack)
+            return;
+
+        if (_onCooldown)
+            return;
+
+        if (PlayerBoomerang.gameObject.activeInHierarchy)
+            return;
+
+        OnAttack?.Invoke();
+        _delayAttackTimer.Start();
+        _cooldownTimer.Start();
     }
 
     private void Attack()
@@ -142,6 +158,16 @@ public class MeleeAbility : AttackAbility
     public void HitTarget(Collider target)
     {
         target.GetComponentInParent<Health>().TakeDamage(Damage);
+    }
+
+    public void EnableAttack()
+    {
+        _canAttack = true;
+    }
+
+    public void DisableAttack()
+    {
+        _canAttack = false;
     }
 
     private void OnDrawGizmosSelected()

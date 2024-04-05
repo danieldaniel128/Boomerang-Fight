@@ -13,6 +13,7 @@ public class DashAbility : MonoBehaviour
     [SerializeField] Rigidbody characterRB;
 
     public Action OnDash;
+    public Action OnDashEnd;
 
     bool _inDash;
     bool _canDash = true;
@@ -23,7 +24,7 @@ public class DashAbility : MonoBehaviour
     CountdownTimer _dashCooldown;
     CountdownTimer _dashDuration;
 
-    Vector3 DashDirection => _dashDestination - _dashStartPosition;
+    //Vector3 DashDirection => _dashDestination - _dashStartPosition;
 
     public CountdownTimer DashDuration => _dashDuration;
     public bool InDash => _inDash;
@@ -121,6 +122,7 @@ public class DashAbility : MonoBehaviour
     private void EndDash()
     {
         _inDash = false;
+        OnDashEnd?.Invoke();
     }
 
     private void FinishCooldown()
@@ -138,22 +140,25 @@ public class DashAbility : MonoBehaviour
         _canDash = enabled;
     }
 
+    //called from an external button
     [ContextMenu("TryDash")]
     public void TryStartDash()
     {
+        if (_inDash)
+            return;
         if (!_canDash)
             return;
-
         if (_onCooldown)
             return;
 
-        OnDash?.Invoke();
         //set dash destination
         _dashStartPosition = transform.position;
         _dashDestination = _dashStartPosition + _forwardDirection * _range;
         //start timers
         _dashCooldown.Start();
         _dashDuration.Start();
+
+        OnDash?.Invoke();
     }
 
     private void Dash()

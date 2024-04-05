@@ -61,12 +61,7 @@ public class RangeAbility : AttackAbility//interface of attacks
         {
             _attackDirectionVector = attackDirection;
         }
-        else
-        {
-            //brawlstars-like auto aim here
-            //_attackDirectionVector = closest enemy direction
-            print("attack nearest enemy or facing");
-        }
+
     }
 
 }
