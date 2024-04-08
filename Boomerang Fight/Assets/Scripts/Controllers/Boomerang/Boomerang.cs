@@ -49,6 +49,8 @@ public class Boomerang : MonoBehaviourPun
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(!photonView.IsMine) return;
+
         if (!_damaging)
             return;
         if(other.attachedRigidbody!=null)
