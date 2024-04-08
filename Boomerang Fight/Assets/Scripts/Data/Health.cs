@@ -41,9 +41,9 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        if (!photonView.IsMine)
-            return;
-        CameraManager.Instance.CameraShakeRef.ShakeCamera();
+        //if (!photonView.IsMine)
+        //    CameraManager.Instance.CameraShakeRef.ShakeCamera();
+
         photonView.RPC(nameof(MasterUpdateHealth), RpcTarget.MasterClient, CurrentHP - damage);
 
     }
