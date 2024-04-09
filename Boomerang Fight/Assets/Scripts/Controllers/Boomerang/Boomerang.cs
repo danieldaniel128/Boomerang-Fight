@@ -10,12 +10,14 @@ public class Boomerang : MonoBehaviourPun
     [SerializeField] GameObject _parent;
     [Header("Components")]
     [SerializeField] Rigidbody _rb;
+    [SerializeField] Animator _animator;
     [Header("Boomerang Limits")]
     [SerializeField] float _slowDownForce;
     [SerializeField] float _minSpeedToDamage;
     [SerializeField] float _minDistanceToPickUp;
     [SerializeField] float _maxSpeed;
     [SerializeField] float _directionToPlayerAngleThreshHold;
+    [SerializeField] float _returnToParentForce;
     [SerializeField] float _maxRecallSpeed;
     [SerializeField] AnimationCurve _speedCurve;
     [SerializeField] LayerMask _canAttackLayerMask;
@@ -32,6 +34,7 @@ public class Boomerang : MonoBehaviourPun
     bool _reachedMaxDistance;
     bool _attachable;
     bool _recalling;
+    bool _grounded;
     [Header("Events")]
     public Action OnAttach;
     public Action OnRelease;
@@ -40,6 +43,15 @@ public class Boomerang : MonoBehaviourPun
     public bool ReachedMaxDistance { get => _reachedMaxDistance; }
     public Rigidbody RB { get => _rb; }
     public float MaxSpeed { get => _recalling ? _maxRecallSpeed : _maxSpeed; }
+    bool Grounded
+    {
+        get => _grounded;
+        set
+        {
+            _animator.SetBool("grounded", value);
+            _grounded = value;
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -49,11 +61,11 @@ public class Boomerang : MonoBehaviourPun
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(!photonView.IsMine) return;
+        if (!photonView.IsMine) return;
 
         if (!_damaging)
             return;
-        if(other.attachedRigidbody!=null)
+        if (other.attachedRigidbody != null)
             if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
             {
                 other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(_damage);
@@ -69,6 +81,7 @@ public class Boomerang : MonoBehaviourPun
         _interrupted = false;
         _reachedMaxDistance = false;
         _attachable = false;
+        Grounded = false;
         _distanceTravelled = 0;
     }
 
@@ -81,7 +94,7 @@ public class Boomerang : MonoBehaviourPun
 
     public void Attach()
     {
-        
+
         photonView.RPC(nameof(AttachRPC), RpcTarget.All);
         //gameObject.SetActive(false);
     }
@@ -138,13 +151,25 @@ public class Boomerang : MonoBehaviourPun
         CalculateUninterruptedSpeed();
         Vector3 newVelocity = Vector3.zero;
         if (_reachedMaxDistance)
-            newVelocity = Vector3.Normalize(_parent.transform.position - transform.position);
-        else
-            newVelocity = _rb.velocity.normalized;
+        {
 
-        newVelocity *= _currentSpeed;
+            Vector3 directionToPlayer = (_parent.transform.position - transform.position).normalized;
+
+            Vector3 forceToApply = directionToPlayer * _returnToParentForce;
+
+            Vector3 forcedVelocity = _rb.velocity + forceToApply * Time.fixedDeltaTime;
+
+            newVelocity = Vector3.ClampMagnitude(forcedVelocity, _maxSpeed);
+
+        }
+        else
+        {
+            newVelocity = _rb.velocity.normalized * _currentSpeed;
+
+        }
 
         _rb.velocity = newVelocity;
+
     }
 
     private void CalculateUninterruptedSpeed()
@@ -152,15 +177,14 @@ public class Boomerang : MonoBehaviourPun
         float distanceRatio = _distanceTravelled / _range;
         if (_reachedMaxDistance)
             distanceRatio = 1 - distanceRatio;
-        //if moving towards player then dont slow down.
-        //if next speed is faster or slower, 
-        //if moving towards player
+
         float speedCurveModifier = Mathf.Clamp(_speedCurve.Evaluate(distanceRatio), 0.05f, 0.95f);
         float newSpeed = speedCurveModifier * MaxSpeed;
 
         if (MovingTowardsPlayer())
         {
-            if(newSpeed > _currentSpeed)
+            //if moving towards player then dont slow down.
+            if (newSpeed > _currentSpeed)
             {
                 _currentSpeed = newSpeed;
             }
@@ -179,10 +203,10 @@ public class Boomerang : MonoBehaviourPun
 
     public void Recall(float recallForce)
     {
-        //TODO check if isMine should be on the boomerang
+
         if (!photonView.IsMine)
             return;
-
+        Grounded = false;
         _recalling = true;
         AddRecallForce(recallForce);
         //checks if close enough to end Recall.
@@ -233,6 +257,9 @@ public class Boomerang : MonoBehaviourPun
 
     private void SlowDown()
     {
+        if (Grounded)
+            return;
+
         if (_rb.velocity.magnitude <= 0.5f)
             Stop();
         else
@@ -242,6 +269,7 @@ public class Boomerang : MonoBehaviourPun
     private void Stop()
     {
         _rb.velocity = Vector3.zero;
+        Grounded = true;
     }
 
 }
