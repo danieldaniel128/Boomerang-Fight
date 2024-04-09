@@ -260,7 +260,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 2
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &4810855456674465314
@@ -459,7 +459,7 @@ MonoBehaviour:
   - {fileID: -7594913216037415481}
   - {fileID: 3455175033154031731}
   - {fileID: 4837080619478518254}
-  sceneViewId: 4
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &6187736998003109280
@@ -788,7 +788,7 @@ PrefabInstance:
     - target: {fileID: 4503815329630383127, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: sceneViewId
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
