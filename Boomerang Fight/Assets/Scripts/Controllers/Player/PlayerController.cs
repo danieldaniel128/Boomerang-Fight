@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -39,10 +40,13 @@ public class PlayerController : MonoBehaviourPun
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerFixedUpdate;
+    private Action OnLocalPlayerControllerUpdate;
     int _mySpawnIndex;
     float _currentSpeed = 0f;
     Vector3 _moveVelocity = Vector3.zero;
     Vector3 _attackDirection = Vector3.forward;
+    float _fallTimer = 0f;
+    bool _canMove = true;
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
@@ -74,13 +78,22 @@ public class PlayerController : MonoBehaviourPun
     }
     private void OnEnable()
     {
+        _canMove = true;
         //on my player, handle movement in update.
         SubscribeEvents();
     }
     private void OnDisable()
     {
+        _canMove = false;
         //In order to prevent resource leaks, unsubscribe events
         UnsubscribeEvents();
+    }
+    private void Update()
+    {
+        //check over ground
+        //if not then block movement
+        //fall down with animation
+        OnLocalPlayerControllerUpdate?.Invoke();
     }
     private void FixedUpdate()
     {
@@ -110,6 +123,7 @@ public class PlayerController : MonoBehaviourPun
     private void SubscribeEvents()
     {
         OnLocalPlayerControllerFixedUpdate += HandleMovement;
+        OnLocalPlayerControllerUpdate += HandleFalling;
         //when press attack button, enable attack.
         _AttackJoystick.OnJoystickDown += EnableRangeAbility;
         _AttackJoystick.OnJoystickDown += EnableRecallAbility;
@@ -124,6 +138,7 @@ public class PlayerController : MonoBehaviourPun
     private void UnsubscribeEvents()
     {
         OnLocalPlayerControllerFixedUpdate -= HandleMovement;
+        OnLocalPlayerControllerUpdate -= HandleFalling;
         _AttackJoystick.OnJoystickDown -= EnableRangeAbility;
         _AttackJoystick.OnJoystickDown -= EnableRecallAbility;
         DisableRangeAbility();
@@ -138,6 +153,8 @@ public class PlayerController : MonoBehaviourPun
     }
     private void HandleMovement()
     {
+        if (!_canMove)
+            return;
         if (_dashAbility.InDash)
             return;
         if (_meleeAbility.InAttack)
@@ -175,6 +192,31 @@ public class PlayerController : MonoBehaviourPun
             _playerAnimationController.StopWalk();
         }
         rb.velocity = _moveVelocity;
+    }
+
+    void HandleFalling()
+    {
+        if (!_canMove)
+            return;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundDistanceCheck, 9))
+        {
+            print("player " + gameObject.name + "is on ground");
+            _fallTimer += Time.deltaTime;
+        }
+        else
+        {
+            _fallTimer = 0f;
+        }
+
+        if (_fallTimer > _delayTillFall)
+        {
+            print("player " + gameObject.name + "is falling");
+            //play falling animation with root motion
+            _canMove = false;
+            rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
+        }
     }
 
     private void LocalPlayerControlUpdate()
@@ -270,6 +312,12 @@ public class PlayerController : MonoBehaviourPun
     void FaceThrowDirection()
     {
         _playerBody.transform.forward = _attackDirection;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, Vector3.down * _groundDistanceCheck);
     }
 
 }

@@ -54,7 +54,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.71, y: 1.4393581, z: 1.4604645}
-  m_Center: {x: 0, y: 0.21967906, z: 0.23023254}
+  m_Center: {x: 0, y: 0.23, z: 0.23}
 --- !u!114 &1182163968275124313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.71, y: 1, z: 1.2}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Center: {x: 0, y: 0.01, z: 0.1}
 --- !u!114 &3455175033154031731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &4810855456674465314
@@ -459,7 +459,7 @@ MonoBehaviour:
   - {fileID: -7594913216037415481}
   - {fileID: 3455175033154031731}
   - {fileID: 4837080619478518254}
-  sceneViewId: 0
+  sceneViewId: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &6187736998003109280
@@ -489,8 +489,8 @@ MonoBehaviour:
   _moveSpeed: 6
   _timeToAccelerate: 0.2
   _timeToDecelerate: 0.2
-  _groundDistanceCheck: 0
-  _delayTillFall: 0
+  _groundDistanceCheck: 1
+  _delayTillFall: 0.3
   OnRecall:
     m_PersistentCalls:
       m_Calls: []
@@ -788,7 +788,7 @@ PrefabInstance:
     - target: {fileID: 4503815329630383127, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: sceneViewId
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5434346254430645823, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
