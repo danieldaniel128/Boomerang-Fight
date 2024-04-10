@@ -476,7 +476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerBody: {fileID: 1683698286115224800}
   _boomerangVisual: {fileID: 8080197317390398945}
-  rb: {fileID: 899578235012881067}
+  _rb: {fileID: 899578235012881067}
+  _bodyCollider: {fileID: 9003262914291918112}
   _rangeAbility: {fileID: 2503413388573940175}
   _recallAbility: {fileID: 2637411979835113435}
   _dashAbility: {fileID: 8945515412577512104}
@@ -488,9 +489,10 @@ MonoBehaviour:
   _AttackJoystick: {fileID: 6419214427550536264}
   _moveSpeed: 6
   _timeToAccelerate: 0.2
-  _timeToDecelerate: 0.2
+  _timeToDecelerate: 0.1
   _groundDistanceCheck: 1
-  _delayTillFall: 0.3
+  _delayTillFallFromWalk: 0.1
+  _delayTillFallFromDash: 0.4
   OnRecall:
     m_PersistentCalls:
       m_Calls: []

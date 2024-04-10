@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] GameObject _playerBody;
     [SerializeField] GameObject _boomerangVisual;
     [Header("Components")]
-    [SerializeField] Rigidbody rb;
+    [SerializeField] Rigidbody _rb;
+    [SerializeField] Collider _bodyCollider;
     [SerializeField] RangeAbility _rangeAbility;
     [SerializeField] RecallAbility _recallAbility;
     [SerializeField] DashAbility _dashAbility;
@@ -33,7 +34,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _timeToDecelerate = 0.2f;
     [Header("Falling Parameters")]
     [SerializeField] float _groundDistanceCheck;
-    [SerializeField] float _delayTillFall;
+    [SerializeField] float _delayTillFallFromWalk;
+    [SerializeField] float _delayTillFallFromDash;
 
     [Header("Actions")]
     public UnityEvent OnRecall;
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviourPun
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
+    float DelayTillFall => _dashAbility.InDash ? _delayTillFallFromDash : _delayTillFallFromWalk;
 
     [PunRPC]
     void SetMyPlayerIndex(int index)
@@ -191,7 +194,7 @@ public class PlayerController : MonoBehaviourPun
             //animations
             _playerAnimationController.StopWalk();
         }
-        rb.velocity = _moveVelocity;
+        _rb.velocity = _moveVelocity;
     }
 
     void HandleFalling()
@@ -200,23 +203,29 @@ public class PlayerController : MonoBehaviourPun
             return;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundDistanceCheck, 9))
-        {
-            print("player " + gameObject.name + "is on ground");
-            _fallTimer += Time.deltaTime;
-        }
-        else
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundDistanceCheck))
         {
             _fallTimer = 0f;
         }
-
-        if (_fallTimer > _delayTillFall)
+        else
         {
-            print("player " + gameObject.name + "is falling");
-            //play falling animation with root motion
-            _canMove = false;
-            rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
+            _fallTimer += Time.deltaTime;
         }
+
+        if (_fallTimer > DelayTillFall)
+        {
+            Fall();
+        }
+    }
+
+    private void Fall()
+    {
+        print("player " + gameObject.name + "is falling");
+        _canMove = false;
+        _rb.velocity = Vector3.zero;
+        _rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
+        _bodyCollider.isTrigger = true;
+        //play falling animation
     }
 
     private void LocalPlayerControlUpdate()
@@ -258,15 +267,18 @@ public class PlayerController : MonoBehaviourPun
             return;
 
         StopCharge();
+        FaceThrowDirection();
         _rangeAbility.UseAbility();
     }
     private void HandleRangeAbilityDirection()
     {
         if (!photonView.IsMine)
             return;
-        _attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
-        if (_attackDirection.magnitude > 0.1f)
+        Vector3 newAttackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
+        
+        if (newAttackDirection.magnitude > 0.1f)
         {
+            _attackDirection = newAttackDirection;
             _rangeAbility.Aimed = true;
             _rangeAbility.CalculateAttackDirection(_attackDirection);
         }
