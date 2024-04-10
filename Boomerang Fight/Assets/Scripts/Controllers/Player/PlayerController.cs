@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviourPun
 
     [Header("Actions")]
     public UnityEvent OnRecall;
+    public Action OnChargeStart; //for activating indicators
+    public Action OnCharging; //for updating indicator position
+    public Action OnRelease; //for removing indicators
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerFixedUpdate;
@@ -292,13 +295,17 @@ public class PlayerController : MonoBehaviourPun
             DisableRangeAbility();
             return;
         }
+        OnChargeStart?.Invoke();
         _playerAnimationController.StartChargingBoomerang();
+        print("start charging boomerang");
         //range ability start charge timer
+        _rangeAbility.StartCharge();
     }
     private void StopCharge()
     {
         if (!photonView.IsMine)
             return;
+        OnRelease?.Invoke();
         _playerAnimationController.StopChargingBoomerang();
     }
 
@@ -307,12 +314,16 @@ public class PlayerController : MonoBehaviourPun
         _AttackJoystick.OnJoystickDown += StartCharge;
         _AttackJoystick.OnJoystickUp += UseRangeAbility;
         _AttackJoystick.OnJoystickDrag += HandleRangeAbilityDirection;
+        _AttackJoystick.OnJoystickDrag += _rangeAbility.AddCharge;
+        _AttackJoystick.OnJoystickDrag += OnCharging.Invoke;
     }
     private void DisableRangeAbility()
     {
         _AttackJoystick.OnJoystickDown -= StartCharge;
         _AttackJoystick.OnJoystickUp -= UseRangeAbility;
         _AttackJoystick.OnJoystickDrag -= HandleRangeAbilityDirection;
+        _AttackJoystick.OnJoystickDrag -= _rangeAbility.AddCharge;
+        _AttackJoystick.OnJoystickDrag -= OnCharging.Invoke;
     }
     #endregion Range Ability
 

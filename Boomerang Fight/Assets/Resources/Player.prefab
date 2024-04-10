@@ -524,8 +524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4cb46ec81157c4e9ebaf719328d1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHP: 10
-  _maxHP: 10
+  _currentHP: 4
+  _maxHP: 4
   _updateHPBarMaterial: {fileID: 4540214632164705568}
   OnDeath:
     m_PersistentCalls:

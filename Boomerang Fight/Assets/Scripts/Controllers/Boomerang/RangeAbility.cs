@@ -9,7 +9,9 @@ public class RangeAbility : AttackAbility//interface of attacks
     [Header("Range Ability Limits")]
     float _maxAttackRange;
     float _minAttackRange;
-    float _maxChargeTime;
+    float _timeTillMaxCharge;
+    float _currentRange;
+    float _chargeTimer = 0;
     [Header("Actions")]
     public Action OnBoomerangReleased;
 
@@ -30,7 +32,7 @@ public class RangeAbility : AttackAbility//interface of attacks
         Aimed = false;
         if(!PlayerBoomerang.gameObject.activeInHierarchy)
         {
-            PlayerBoomerang.Release(_attackDirectionVector * _maxAttackRange, _baseDamage);
+            PlayerBoomerang.Release(_attackDirectionVector * _currentRange, _baseDamage);
         }
     }
     protected override void GetData()
@@ -39,7 +41,7 @@ public class RangeAbility : AttackAbility//interface of attacks
 
         _maxAttackRange = rangeAbilityData.MaxAttackRange;
         _minAttackRange = rangeAbilityData.MinAttackRange;
-        _maxChargeTime = rangeAbilityData.MaxChargeTime;
+        _timeTillMaxCharge = rangeAbilityData.TimeTillMaxCharge;
         _baseDamage = rangeAbilityData.Damage;
 
 
@@ -62,6 +64,20 @@ public class RangeAbility : AttackAbility//interface of attacks
             _attackDirectionVector = attackDirection;
         }
 
+    }
+
+    public void StartCharge()
+    {
+        _chargeTimer = 0;
+        _currentRange = _minAttackRange;
+    }
+
+    public void AddCharge()
+    {
+        if(_chargeTimer < _timeTillMaxCharge)
+            _chargeTimer += Time.deltaTime;
+
+        _currentRange = Mathf.Lerp(_minAttackRange, _maxAttackRange, Mathf.Clamp01(_chargeTimer/_timeTillMaxCharge));
     }
 
 }
