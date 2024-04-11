@@ -16,19 +16,20 @@ public class Boomerang : MonoBehaviourPun
     [SerializeField] float _minSpeedToDamage;
     [SerializeField] float _minDistanceToPickUp;
     [SerializeField] float _maxSpeed;
-    [SerializeField] float _directionToPlayerAngleThreshHold;
-    [SerializeField] float _returnToParentForce;
     [SerializeField] float _maxRecallSpeed;
+    [SerializeField] float _directionToPlayerAngleThreshHold;
+    [SerializeField] float _directionToPlayerAngleThreshHoldWhileRecalling;
+    [SerializeField] float _returnToParentForce;
     [SerializeField] AnimationCurve _speedCurve;
     [SerializeField] LayerMask _canAttackLayerMask;
     [Header("Ability Parameters")]
     float _range;
     Vector3 _launchDirection;
     float _damage;
-    Vector3 _directionToParent => _parent.transform.position - transform.position;
     [Header("Boomerang Information")]
     float _distanceTravelled;
     float _currentSpeed;
+    float _currentRecallForce;
     bool _interrupted;
     bool _damaging;
     bool _reachedMaxDistance;
@@ -40,9 +41,17 @@ public class Boomerang : MonoBehaviourPun
     public Action OnRelease;
 
 
+    Vector3 DirectionToParent => _parent.transform.position - transform.position;
     public bool ReachedMaxDistance { get => _reachedMaxDistance; }
     public Rigidbody RB { get => _rb; }
     public float MaxSpeed { get => _recalling ? _maxRecallSpeed : _maxSpeed; }
+
+    /// <summary>
+    /// while recalling, 
+    /// the angle considered moving towards is narrower meaning the boomerang needs to move more in the direction of the player to be considererd moving towards player
+    /// </summary>
+    float DirectionToParentAngleThreshHold => _recalling ? _directionToPlayerAngleThreshHoldWhileRecalling : _directionToPlayerAngleThreshHold;
+
     bool Grounded
     {
         get => _grounded;
@@ -141,7 +150,9 @@ public class Boomerang : MonoBehaviourPun
             FlyUninterrupted();
         else
         {
-            if (!_recalling)
+            if (_recalling)
+                AddRecallForce();
+            else
                 SlowDown();
         }
     }
@@ -159,7 +170,7 @@ public class Boomerang : MonoBehaviourPun
 
             Vector3 forcedVelocity = _rb.velocity + forceToApply * Time.fixedDeltaTime;
 
-            newVelocity = Vector3.ClampMagnitude(forcedVelocity, _maxSpeed);
+            newVelocity = Vector3.ClampMagnitude(forcedVelocity, MaxSpeed);
 
         }
         else
@@ -196,9 +207,9 @@ public class Boomerang : MonoBehaviourPun
     }
     bool MovingTowardsPlayer()
     {
-        float dotProduct = Vector3.Dot(_rb.velocity.normalized, _directionToParent.normalized);
+        float dotProduct = Vector3.Dot(_rb.velocity.normalized, DirectionToParent.normalized);
         float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
-        return angle < _directionToPlayerAngleThreshHold / 2;
+        return angle < DirectionToParentAngleThreshHold / 2;
     }
 
     public void Recall(float recallForce)
@@ -208,19 +219,21 @@ public class Boomerang : MonoBehaviourPun
             return;
         Grounded = false;
         _recalling = true;
-        AddRecallForce(recallForce);
+        _currentRecallForce = recallForce;
         //checks if close enough to end Recall.
         TryAttach();
     }
 
-    private void AddRecallForce(float recallForce)
+    private void AddRecallForce()
     {
-        //calculate how much force to add so it doesnt go over max speed
-        float forceToAdd = recallForce * Time.deltaTime;
-        if (_rb.velocity.magnitude >= MaxSpeed)
-            forceToAdd = 0;
-        //add force in the direction of recall position
-        _rb.AddForce(_directionToParent * forceToAdd);
+        Vector3 recallForceToApply = DirectionToParent.normalized * _currentRecallForce;
+        recallForceToApply = MovingTowardsPlayer() ? recallForceToApply : recallForceToApply * 2;
+
+        Vector3 recallVelocity = _rb.velocity + recallForceToApply * Time.fixedDeltaTime;
+
+        recallVelocity = Vector3.ClampMagnitude(recallVelocity, MaxSpeed);
+
+        _rb.velocity = recallVelocity;
     }
 
     public void StopRecall()
@@ -230,7 +243,7 @@ public class Boomerang : MonoBehaviourPun
 
     public bool CanRecall()
     {
-        return _reachedMaxDistance;
+        return _reachedMaxDistance && _interrupted;
     }
 
     private void CalculateDistanceTravelled()

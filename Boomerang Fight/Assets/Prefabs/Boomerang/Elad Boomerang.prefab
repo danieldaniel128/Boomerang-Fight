@@ -140,9 +140,10 @@ MonoBehaviour:
   _minSpeedToDamage: 2
   _minDistanceToPickUp: 1
   _maxSpeed: 20
+  _maxRecallSpeed: 30
   _directionToPlayerAngleThreshHold: 330
+  _directionToPlayerAngleThreshHoldWhileRecalling: 180
   _returnToParentForce: 200
-  _maxRecallSpeed: 100
   _speedCurve:
     serializedVersion: 2
     m_Curve:

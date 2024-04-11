@@ -46,13 +46,18 @@ public class PlayerController : MonoBehaviourPun
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerFixedUpdate;
     private Action OnLocalPlayerControllerUpdate;
+
     int _mySpawnIndex;
     float _currentSpeed = 0f;
     Vector3 _moveVelocity = Vector3.zero;
     Vector3 _attackDirection = Vector3.forward;
     float _fallTimer = 0f;
+
+    [Header("State guards and triggers")]
     bool _canMove = true;
     bool _falling = false;
+    bool _startedRangeAbility = false;
+
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
@@ -85,12 +90,18 @@ public class PlayerController : MonoBehaviourPun
     }
     private void OnEnable()
     {
+        if (!photonView.IsMine)
+            return;
+
         _canMove = true;
         //on my player, handle movement in update.
         SubscribeEvents();
     }
     private void OnDisable()
     {
+        if (!photonView.IsMine)
+            return;
+
         _canMove = false;
         //In order to prevent resource leaks, unsubscribe events
         UnsubscribeEvents();
@@ -128,9 +139,8 @@ public class PlayerController : MonoBehaviourPun
     {
         OnLocalPlayerControllerFixedUpdate += HandleMovement;
         OnLocalPlayerControllerUpdate += HandleFalling;
-        //when press attack button, enable attack.
-        _AttackJoystick.OnJoystickDown += EnableRangeAbility;
-        _AttackJoystick.OnJoystickDown += EnableRecallAbility;
+        EnableRangeAbility();
+        EnableRecallAbility();
         _boomerang.OnAttach += ToggleVisualBoomerang;
         _boomerang.OnRelease += ToggleVisualBoomerang;
         _boomerang.OnRelease += FaceThrowDirection;
@@ -143,8 +153,6 @@ public class PlayerController : MonoBehaviourPun
     {
         OnLocalPlayerControllerFixedUpdate -= HandleMovement;
         OnLocalPlayerControllerUpdate -= HandleFalling;
-        _AttackJoystick.OnJoystickDown -= EnableRangeAbility;
-        _AttackJoystick.OnJoystickDown -= EnableRecallAbility;
         DisableRangeAbility();
         DisableRecallAbility();
         _boomerang.OnAttach -= ToggleVisualBoomerang;
@@ -244,8 +252,6 @@ public class PlayerController : MonoBehaviourPun
         //checks if can recall boomerang.
         if (_recallAbility.PlayerBoomerang.CanRecall())
         {
-            //when recalling, disable attack
-            DisableRangeAbility();
             //recalling boomerang.
             _recallAbility.UseAbility();
         }
@@ -267,8 +273,12 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
+        if (!_startedRangeAbility)
+            return;
+
         print("used range ability (joystick up)");
-        StopCharge();
+
+        StopRangeAbility();
         FaceThrowDirection();
         _rangeAbility.UseAbility();
     }
@@ -276,8 +286,11 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
+        if (!_startedRangeAbility) 
+            return;
+
         Vector3 newAttackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
-        
+
         if (newAttackDirection.magnitude > 0.1f)
         {
             _attackDirection = newAttackDirection;
@@ -285,31 +298,9 @@ public class PlayerController : MonoBehaviourPun
             _rangeAbility.CalculateAttackDirection(_attackDirection);
         }
     }
-    private void StartCharge()
+    private void StopRangeAbility()
     {
-        if (!photonView.IsMine)
-            return;
-        if (_meleeAbility.InAttack)
-        {
-            DisableRangeAbility();
-            return;
-        }
-        if (!_boomerang.gameObject.activeInHierarchy)
-        {
-            DisableRangeAbility();
-            return;
-        }
-
-        OnChargeStart?.Invoke();
-        _playerAnimationController.StartChargingBoomerang();
-        print("start charging boomerang");
-        //range ability start charge timer
-        _rangeAbility.StartCharge();
-    }
-    private void StopCharge()
-    {
-        if (!photonView.IsMine)
-            return;
+        _startedRangeAbility = false;
         OnRelease?.Invoke();
         _playerAnimationController.StopChargingBoomerang();
     }
@@ -318,29 +309,18 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
-        
+
         //we need a state machine
         if (_meleeAbility.InAttack)
-        {
-            DisableRangeAbility();
             return;
-        }
         if (_dashAbility.InDash)
-        {
-            DisableRangeAbility();
             return;
-        }
         if (_falling)
-        {
-            DisableRangeAbility();
             return;
-        }
         if (_boomerang.gameObject.activeInHierarchy)
-        {
-            DisableRangeAbility();
             return;
-        }
 
+        _startedRangeAbility = true;
         OnChargeStart?.Invoke();
         _playerAnimationController.StartChargingBoomerang();
         print("start charging boomerang");
