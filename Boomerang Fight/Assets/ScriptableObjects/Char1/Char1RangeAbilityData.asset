@@ -19,7 +19,7 @@ MonoBehaviour:
   _damage: 1
   _maxAttackRange: 10
   _minAttackRange: 6
-  _timeTillMaxCharge: 1.5
+  _timeTillMaxCharge: 1.25
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:

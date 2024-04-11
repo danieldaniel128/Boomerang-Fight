@@ -230,9 +230,7 @@ public class Boomerang : MonoBehaviourPun
 
     public bool CanRecall()
     {
-        if (_reachedMaxDistance)
-            return true;
-        return false;
+        return _reachedMaxDistance;
     }
 
     private void CalculateDistanceTravelled()

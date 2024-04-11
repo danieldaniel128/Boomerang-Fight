@@ -16,7 +16,7 @@ public class RangeAbility : AttackAbility//interface of attacks
     public Action OnBoomerangReleased;
 
     Vector3 _attackDirectionVector = Vector3.forward;
-
+    StopwatchTimer _chargeStopwatch;
     public bool Aimed {  get; set; }
 
     private void Start()
@@ -24,6 +24,12 @@ public class RangeAbility : AttackAbility//interface of attacks
         if (!photonView.IsMine)
             return;
         GetData();
+        _chargeStopwatch = new StopwatchTimer();
+    }
+
+    private void Update()
+    {
+        _chargeStopwatch.Tick(Time.deltaTime);
     }
 
     #region Ability Overrides
@@ -32,7 +38,9 @@ public class RangeAbility : AttackAbility//interface of attacks
         Aimed = false;
         if(!PlayerBoomerang.gameObject.activeInHierarchy)
         {
+            CalculateCharge();
             PlayerBoomerang.Release(_attackDirectionVector * _currentRange, _baseDamage);
+            _chargeStopwatch.Stop();
         }
     }
     protected override void GetData()
@@ -43,13 +51,6 @@ public class RangeAbility : AttackAbility//interface of attacks
         _minAttackRange = rangeAbilityData.MinAttackRange;
         _timeTillMaxCharge = rangeAbilityData.TimeTillMaxCharge;
         _baseDamage = rangeAbilityData.Damage;
-
-
-        //in a comment so ill remember to move these to boomerang:
-
-        //_maxBoomerangSpeed = rangeAbilityData.MaxBoomerangSpeed;
-        //_canAttackLayerMask = rangeAbilityData.CanAttackLayerMask;
-        //_attackSpeedCurve = rangeAbilityData.AttackSpeedCurve;
     }
     #endregion Ability Overrides
 
@@ -68,7 +69,8 @@ public class RangeAbility : AttackAbility//interface of attacks
 
     public void StartCharge()
     {
-        _chargeTimer = 0;
+        _chargeStopwatch.Reset();
+        _chargeStopwatch.Start();
         _currentRange = _minAttackRange;
     }
 
@@ -78,6 +80,18 @@ public class RangeAbility : AttackAbility//interface of attacks
             _chargeTimer += Time.deltaTime;
 
         _currentRange = Mathf.Lerp(_minAttackRange, _maxAttackRange, Mathf.Clamp01(_chargeTimer/_timeTillMaxCharge));
+    }
+
+    private void CalculateCharge()
+    {
+        _currentRange = Mathf.Lerp(_minAttackRange, _maxAttackRange, Mathf.Clamp01(_chargeStopwatch.Time / _timeTillMaxCharge));
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        CalculateCharge();
+        Gizmos.DrawRay(transform.position, _attackDirectionVector * _currentRange);
     }
 
 }

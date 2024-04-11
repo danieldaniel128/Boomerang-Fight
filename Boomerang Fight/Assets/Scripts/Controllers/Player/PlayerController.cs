@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviourPun
     Vector3 _attackDirection = Vector3.forward;
     float _fallTimer = 0f;
     bool _canMove = true;
+    bool _falling = false;
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
@@ -96,9 +97,6 @@ public class PlayerController : MonoBehaviourPun
     }
     private void Update()
     {
-        //check over ground
-        //if not then block movement
-        //fall down with animation
         OnLocalPlayerControllerUpdate?.Invoke();
     }
     private void FixedUpdate()
@@ -224,6 +222,7 @@ public class PlayerController : MonoBehaviourPun
     private void Fall()
     {
         print("player " + gameObject.name + "is falling");
+        _falling = true;
         _canMove = false;
         _rb.velocity = Vector3.zero;
         _rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
@@ -268,7 +267,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
-
+        print("used range ability (joystick up)");
         StopCharge();
         FaceThrowDirection();
         _rangeAbility.UseAbility();
@@ -295,6 +294,12 @@ public class PlayerController : MonoBehaviourPun
             DisableRangeAbility();
             return;
         }
+        if (!_boomerang.gameObject.activeInHierarchy)
+        {
+            DisableRangeAbility();
+            return;
+        }
+
         OnChargeStart?.Invoke();
         _playerAnimationController.StartChargingBoomerang();
         print("start charging boomerang");
@@ -309,21 +314,50 @@ public class PlayerController : MonoBehaviourPun
         _playerAnimationController.StopChargingBoomerang();
     }
 
+    private void StartRangeAbility()
+    {
+        if (!photonView.IsMine)
+            return;
+        
+        //we need a state machine
+        if (_meleeAbility.InAttack)
+        {
+            DisableRangeAbility();
+            return;
+        }
+        if (_dashAbility.InDash)
+        {
+            DisableRangeAbility();
+            return;
+        }
+        if (_falling)
+        {
+            DisableRangeAbility();
+            return;
+        }
+        if (_boomerang.gameObject.activeInHierarchy)
+        {
+            DisableRangeAbility();
+            return;
+        }
+
+        OnChargeStart?.Invoke();
+        _playerAnimationController.StartChargingBoomerang();
+        print("start charging boomerang");
+        //range ability start charge timer
+        _rangeAbility.StartCharge();
+    }
     private void EnableRangeAbility()
     {
-        _AttackJoystick.OnJoystickDown += StartCharge;
+        _AttackJoystick.OnJoystickDown += StartRangeAbility;
         _AttackJoystick.OnJoystickUp += UseRangeAbility;
         _AttackJoystick.OnJoystickDrag += HandleRangeAbilityDirection;
-        _AttackJoystick.OnJoystickDrag += _rangeAbility.AddCharge;
-        _AttackJoystick.OnJoystickDrag += OnCharging.Invoke;
     }
     private void DisableRangeAbility()
     {
-        _AttackJoystick.OnJoystickDown -= StartCharge;
+        _AttackJoystick.OnJoystickDown -= StartRangeAbility;
         _AttackJoystick.OnJoystickUp -= UseRangeAbility;
         _AttackJoystick.OnJoystickDrag -= HandleRangeAbilityDirection;
-        _AttackJoystick.OnJoystickDrag -= _rangeAbility.AddCharge;
-        _AttackJoystick.OnJoystickDrag -= OnCharging.Invoke;
     }
     #endregion Range Ability
 
