@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviourPun
             return;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundDistanceCheck))
+        if (Physics.Raycast(transform.position, Vector3.down* _groundDistanceCheck, out hit, _groundDistanceCheck))
         {
             _fallTimer = 0f;
         }
