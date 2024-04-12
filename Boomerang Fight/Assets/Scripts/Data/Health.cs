@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviourPun
 {
@@ -60,11 +61,16 @@ public class Health : MonoBehaviourPun
         if (newHealth <= 0)
         {
             IsDead = true;
-            OnDeath?.Invoke();
+            CallOnDeath();
+            //OnDeath?.Invoke();
             gameObject.SetActive(false);
         }
     }
-
+    public void CallOnDeath()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
+    }
     public void Revive()
     {
         //Call the RPC to notify other players about the revival

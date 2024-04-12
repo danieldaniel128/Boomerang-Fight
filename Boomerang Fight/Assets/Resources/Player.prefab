@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac23c29b1b680cf4ebf45ab2db86f30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updateInGameUIData: {fileID: 0}
+  _updateInGameUIData: {fileID: 8617498954840073301}
   _playerLayerIndex: 3
   _enemyLayerIndex: 7
   _onlinePlayersManagers: []
@@ -4012,6 +4012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Data UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5166401005230128100, guid: e4ad79606cd610c4bbd5b04473bfa7f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7815245205426247816, guid: e4ad79606cd610c4bbd5b04473bfa7f5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4128,6 +4133,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6145045211068434770}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8617498954840073301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2508531018101288199, guid: e4ad79606cd610c4bbd5b04473bfa7f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6145045211068434770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6287b761098f54ebe1951619fdaf59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8999257996140955824
 PrefabInstance:
   m_ObjectHideFlags: 0

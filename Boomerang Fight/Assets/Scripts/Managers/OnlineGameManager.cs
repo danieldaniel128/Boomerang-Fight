@@ -19,6 +19,11 @@ public class OnlineGameManager : MonoBehaviourPun
     {
         Instance = this;
     }
+    private void Start()
+    {
+        if (photonView.IsMine)
+            _updateInGameUIData.gameObject.SetActive(true);
+    }
     private void OnEnable()
     {
         SubscribeToPlayersOnDeath();
@@ -79,7 +84,7 @@ public class OnlineGameManager : MonoBehaviourPun
     public void DecreasePlayersAliveCountEvent()//called on players death
     {
         _gameData.DecreasePlayersAliveCount();
-        _updateInGameUIData.SetPlayersAliveCountText(_gameData);
+        _updateInGameUIData.SetPlayersAliveCountText();
     }
 
 }
