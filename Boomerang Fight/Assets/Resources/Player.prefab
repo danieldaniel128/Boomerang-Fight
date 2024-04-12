@@ -490,7 +490,7 @@ MonoBehaviour:
   _moveSpeed: 6
   _timeToAccelerate: 0.2
   _timeToDecelerate: 0.1
-  _groundDistanceCheck: 2
+  _groundDistanceCheck: 1
   _delayTillFallFromWalk: 0.1
   _delayTillFallFromDash: 0.4
   OnRecall:
