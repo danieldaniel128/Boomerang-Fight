@@ -62,7 +62,7 @@ public class Health : MonoBehaviourPun
         {
             IsDead = true;
             CallOnDeath();
-            //OnDeath?.Invoke();
+            OnDeath?.Invoke();
             gameObject.SetActive(false);
         }
     }

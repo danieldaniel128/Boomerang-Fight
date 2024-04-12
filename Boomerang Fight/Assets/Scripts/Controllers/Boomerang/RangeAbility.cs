@@ -29,6 +29,8 @@ public class RangeAbility : AttackAbility//interface of attacks
 
     private void Update()
     {
+        if (!photonView.IsMine)
+            return;
         _chargeStopwatch.Tick(Time.deltaTime);
     }
 

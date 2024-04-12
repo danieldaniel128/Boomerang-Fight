@@ -3,8 +3,9 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class OnlineGameManager : MonoBehaviourPun
+public class OnlineGameManager : MonoBehaviourPunCallbacks
 {
     public static OnlineGameManager instance;
     [SerializeField] UpdateInGameUIData _updateInGameUIData;
@@ -38,6 +39,23 @@ public class OnlineGameManager : MonoBehaviourPun
         {
             item.OnPlayerDeath += DecreasePlayersAliveCountEvent;
         }
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 1)//player won
+            {
+                StartCoroutine(WinCoro());
+            }
+        }
+
+    }
+    IEnumerator WinCoro()
+    {
+        yield return new WaitForSeconds(2f);
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
     }
     void UnSubscribeToPlayersOnDeath()
     {
@@ -83,7 +101,6 @@ public class OnlineGameManager : MonoBehaviourPun
     //called on playes death
     public void DecreasePlayersAliveCountEvent()//called on players death
     {
-        _gameData.DecreasePlayersAliveCount();
         _updateInGameUIData.SetPlayersAliveCountText();
     }
 
