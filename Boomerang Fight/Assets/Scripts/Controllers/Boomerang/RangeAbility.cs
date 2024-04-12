@@ -87,11 +87,4 @@ public class RangeAbility : AttackAbility//interface of attacks
         _currentRange = Mathf.Lerp(_minAttackRange, _maxAttackRange, Mathf.Clamp01(_chargeStopwatch.Time / _timeTillMaxCharge));
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        CalculateCharge();
-        Gizmos.DrawRay(transform.position, _attackDirectionVector * _currentRange);
-    }
-
 }
