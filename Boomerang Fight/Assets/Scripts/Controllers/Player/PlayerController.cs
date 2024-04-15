@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] MeleeAbility _meleeAbility;
     [SerializeField] PlayerAnimationController _playerAnimationController;
     [SerializeField] VFXTransitioner _vfxActivator;
+    [SerializeField] SpriteRenderer _playerCircleSprite;
     public VFXTransitioner VFXTransitioner { get { return _vfxActivator; } private set { _vfxActivator = value; } }
     [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviourPun
         else
         {
             gameObject.layer = 3;//player layer
+            _playerCircleSprite.color = new Color(108f/255f, 145f/255f, 187f/255f, 184f/ 255f);//6C91BB
             //set camera follow to my player
             CameraManager.Instance.CameraFollowRef.SetTarget(_playerBody.transform);
         }
