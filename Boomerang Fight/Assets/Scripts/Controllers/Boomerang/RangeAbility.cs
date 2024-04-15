@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class RangeAbility : AttackAbility//interface of attacks
 {
+    [Header("Charge Components")]
+    [SerializeField] Animator _arrowVFXAnimator;
+    [SerializeField] Transform _arrowVFXTransform;
     [Header("Range Ability Limits")]
     float _maxAttackRange;
     float _minAttackRange;
@@ -25,6 +28,7 @@ public class RangeAbility : AttackAbility//interface of attacks
             return;
         GetData();
         _chargeStopwatch = new StopwatchTimer();
+        _chargeStopwatch.OnTimerStart += () => _arrowVFXAnimator.Play("MoveForwardAnimation");
     }
 
     private void Update()
@@ -65,6 +69,8 @@ public class RangeAbility : AttackAbility//interface of attacks
         if (attackDirection != Vector3.zero)
         {
             _attackDirectionVector = attackDirection;
+            _arrowVFXTransform.forward = attackDirection;
+            _arrowVFXTransform.rotation.SetLookRotation(attackDirection);
         }
 
     }
@@ -74,6 +80,7 @@ public class RangeAbility : AttackAbility//interface of attacks
         _chargeStopwatch.Reset();
         _chargeStopwatch.Start();
         _currentRange = _minAttackRange;
+        
     }
 
     public void AddCharge()
