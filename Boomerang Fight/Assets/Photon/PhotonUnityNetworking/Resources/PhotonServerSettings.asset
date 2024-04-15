@@ -57,6 +57,10 @@ MonoBehaviour:
   - AttachRPC
   - MasterDealDamage
   - MasterUpdateHealth
+  - SyncVFX
+  - SyncTriggerVFX
+  - SyncProlongedVFX
+  - SyncDeActivateProlongedVFX
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

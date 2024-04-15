@@ -59,6 +59,7 @@ public class MeleeAbility : AttackAbility
             if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
             {
                 other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(Damage);
+                other.attachedRigidbody.gameObject.GetComponent<PlayerController>().VFXTransitioner.ActivateVFX(VFXTypeEnum.HittingEnemy);
             }
         //HitTarget(other);
     }

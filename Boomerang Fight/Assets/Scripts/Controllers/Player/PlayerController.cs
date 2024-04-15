@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] DashAbility _dashAbility;
     [SerializeField] MeleeAbility _meleeAbility;
     [SerializeField] PlayerAnimationController _playerAnimationController;
+    [SerializeField] VFXTransitioner _vfxActivator;
+    public VFXTransitioner VFXTransitioner { get { return _vfxActivator; } private set { _vfxActivator = value; } }
     [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
@@ -144,7 +146,7 @@ public class PlayerController : MonoBehaviourPun
         _boomerang.OnAttach += ToggleVisualBoomerang;
         _boomerang.OnRelease += ToggleVisualBoomerang;
         _boomerang.OnRelease += FaceThrowDirection;
-        _meleeAbility.OnAttack += _playerAnimationController.AttackPressedTrigger;
+        _meleeAbility.OnAttack += PlayerMelee;
         _dashAbility.OnDash += _playerAnimationController.DashPressedTrigger;
         _dashAbility.OnDash += _meleeAbility.DisableAttack;
         _dashAbility.OnDashEnd += _meleeAbility.EnableAttack;
@@ -158,10 +160,15 @@ public class PlayerController : MonoBehaviourPun
         _boomerang.OnAttach -= ToggleVisualBoomerang;
         _boomerang.OnRelease -= ToggleVisualBoomerang;
         _boomerang.OnRelease -= FaceThrowDirection;
-        _meleeAbility.OnAttack -= _playerAnimationController.AttackPressedTrigger;
+        _meleeAbility.OnAttack -= PlayerMelee;
         _dashAbility.OnDash -= _playerAnimationController.DashPressedTrigger;
         _dashAbility.OnDash -= _meleeAbility.DisableAttack;
         _dashAbility.OnDashEnd -= _meleeAbility.EnableAttack;
+    }
+    private void PlayerMelee()
+    {
+        _playerAnimationController.AttackPressedTrigger();
+        _vfxActivator.ActivateVFX(VFXTypeEnum.Slap);
     }
     private void HandleMovement()
     {
@@ -187,6 +194,9 @@ public class PlayerController : MonoBehaviourPun
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.deltaTime);
             _moveVelocity = inputDirection * _currentSpeed;
 
+            //vfx
+            _vfxActivator.ActivateVFX(VFXTypeEnum.Walking);
+
             //animations
             _playerAnimationController.StartWalk();
             _playerBody.transform.forward = inputDirection;
@@ -196,6 +206,8 @@ public class PlayerController : MonoBehaviourPun
         }
         else
         {
+            //vfx
+            _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Walking);
             //movement
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, 0f, Deceleration * Time.deltaTime);
             _moveVelocity = _moveVelocity.normalized * _currentSpeed;
@@ -252,19 +264,25 @@ public class PlayerController : MonoBehaviourPun
         //checks if can recall boomerang.
         if (_recallAbility.PlayerBoomerang.CanRecall())
         {
+            _vfxActivator.ActivateVFX(VFXTypeEnum.Recall);
             //recalling boomerang.
             _recallAbility.UseAbility();
         }
     }
+    private void RecallOff()
+    {
+        _recallAbility.PlayerBoomerang.StopRecall();
+        _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Recall);
+    }
     private void EnableRecallAbility()
     {
         _AttackJoystick.OnJoystickPressed += HandleRecall;
-        _AttackJoystick.OnJoystickUp += _recallAbility.PlayerBoomerang.StopRecall;
+        _AttackJoystick.OnJoystickUp += RecallOff;
     }
     private void DisableRecallAbility()
     {
         _AttackJoystick.OnJoystickPressed -= HandleRecall;
-        _AttackJoystick.OnJoystickUp -= _recallAbility.PlayerBoomerang.StopRecall;
+        _AttackJoystick.OnJoystickUp -= RecallOff;
     }
     #endregion Recall Ability
 

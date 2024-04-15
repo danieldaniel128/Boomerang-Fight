@@ -78,6 +78,7 @@ public class Boomerang : MonoBehaviourPun
             if (_canAttackLayerMask == (_canAttackLayerMask | (1 << other.attachedRigidbody.gameObject.layer)))
             {
                 other.attachedRigidbody.gameObject.GetComponent<Health>().TakeDamage(_damage);
+                other.attachedRigidbody.gameObject.GetComponent<PlayerController>().VFXTransitioner.ActivateVFX(VFXTypeEnum.HittingEnemy);
             }
     }
     private void OnCollisionEnter(Collision collision)
