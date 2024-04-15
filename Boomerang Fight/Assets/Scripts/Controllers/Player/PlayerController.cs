@@ -321,7 +321,7 @@ public class PlayerController : MonoBehaviourPun
         _startedRangeAbility = false;
         OnRelease?.Invoke();
         _playerAnimationController.StopChargingBoomerang();
-        _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Arrow);
+        _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Arrow, true);
     }
 
     private void StartRangeAbility()
@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviourPun
         print("start charging boomerang");
         //range ability start charge timer
         _rangeAbility.StartCharge();
-        _vfxActivator.ActivateVFX(VFXTypeEnum.Arrow);
+        _vfxActivator.ActivateVFX(VFXTypeEnum.Arrow, true);
     }
     private void EnableRangeAbility()
     {
