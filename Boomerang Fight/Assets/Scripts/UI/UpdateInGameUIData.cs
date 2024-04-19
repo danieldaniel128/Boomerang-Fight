@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UpdateInGameUIData : MonoBehaviour
+public class UpdateInGameUIData : MonoBehaviourPun
 {
     [SerializeField] TextMeshProUGUI _playersAliveCount_TMP;
 
-    public void SetPlayersAliveCountText(InGameData data)
+    private void Start()
     {
-        _playersAliveCount_TMP.text = $"Players Left: {data.PlayersAliveCount}";
+        SetPlayersAliveCountText();
+    }
+    public void SetPlayersAliveCountText()
+    {
+        _playersAliveCount_TMP.text = $"Players Left: {PhotonNetwork.CurrentRoom.PlayerCount}";
     }
 
 

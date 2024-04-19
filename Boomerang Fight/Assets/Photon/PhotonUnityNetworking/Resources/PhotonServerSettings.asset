@@ -17,7 +17,7 @@ MonoBehaviour:
     AppIdFusion: 
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 0.02
+    AppVersion: 0.07
     UseNameServer: 1
     FixedRegion: 
     Server: 
@@ -55,6 +55,13 @@ MonoBehaviour:
   - DeactivateGameObject
   - ReleaseRPC
   - AttachRPC
+  - MasterDealDamage
+  - MasterUpdateHealth
+  - SyncVFX
+  - SyncTriggerVFX
+  - SyncProlongedVFX
+  - SyncDeActivateProlongedVFX
+  - Fall
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

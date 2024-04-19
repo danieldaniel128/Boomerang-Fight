@@ -10,7 +10,10 @@ public class OnlinePlayerManager : MonoBehaviourPun, IPunInstantiateMagicCallbac
 {
     [SerializeField] Health _playerHealth;
     public Action OnPlayerDeath;
-    
+    private void Start()
+    {
+        _playerHealth.OnDeath.AddListener(PlayerDeathEvent);
+    }
     public void PlayerDeathEvent()
     {
         OnPlayerDeath?.Invoke();

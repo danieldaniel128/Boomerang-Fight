@@ -17,10 +17,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   _damage: 1
-  _maxBoomerangSpeed: 20
-  _maxAttackRange: 8
-  _minAttackRange: 4
-  _maxChargeTime: 2
+  _maxAttackRange: 10
+  _minAttackRange: 6
+  _timeTillMaxCharge: 1.25
   _attackSpeedCurve:
     serializedVersion: 2
     m_Curve:

@@ -18,6 +18,6 @@ MonoBehaviour:
     m_Bits: 192
   _damage: 1
   _maxBoomerangRecallSpeed: 0
-  _recallForce: 20
+  _recallForce: 100
   _minDistanceToAttach: 1
   _autoBoomerangTeleportToPlayerTime: 5

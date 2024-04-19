@@ -135,12 +135,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 0}
   _rb: {fileID: 7463914113709303179}
+  _animator: {fileID: 2419474963681807535}
   _slowDownForce: 40
   _minSpeedToDamage: 2
   _minDistanceToPickUp: 1
   _maxSpeed: 20
-  _directionToPlayerAngleThreshHold: 180
-  _maxRecallSpeed: 100
+  _maxRecallSpeed: 30
+  _directionToPlayerAngleThreshHold: 330
+  _directionToPlayerAngleThreshHoldWhileRecalling: 180
+  _returnToParentForce: 200
   _speedCurve:
     serializedVersion: 2
     m_Curve:

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviourPun
 {
@@ -41,15 +42,17 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        if (photonView.IsMine)
-            CameraManager.Instance.CameraShakeRef.ShakeCamera();
+        //if (!photonView.IsMine)
+        //    CameraManager.Instance.CameraShakeRef.ShakeCamera();
 
-        if (!PhotonNetwork.IsMasterClient)
-            return;
-       
-        photonView.RPC(nameof(SyncHealth), RpcTarget.All, CurrentHP - damage);
+        photonView.RPC(nameof(MasterUpdateHealth), RpcTarget.MasterClient, CurrentHP - damage);
+
     }
-
+    [PunRPC]
+    private void MasterUpdateHealth(float newHealth)
+    {
+        photonView.RPC(nameof(SyncHealth), RpcTarget.All, newHealth);
+    }
     [PunRPC]
     private void SyncHealth(float newHealth)
     {
@@ -58,11 +61,16 @@ public class Health : MonoBehaviourPun
         if (newHealth <= 0)
         {
             IsDead = true;
+            CallOnDeath();
             OnDeath?.Invoke();
             gameObject.SetActive(false);
         }
     }
-
+    public void CallOnDeath()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
+    }
     public void Revive()
     {
         //Call the RPC to notify other players about the revival

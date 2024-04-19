@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -15,12 +16,16 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] GameObject _playerBody;
     [SerializeField] GameObject _boomerangVisual;
     [Header("Components")]
-    [SerializeField] Rigidbody rb;
+    [SerializeField] Rigidbody _rb;
+    [SerializeField] Collider _bodyCollider;
     [SerializeField] RangeAbility _rangeAbility;
     [SerializeField] RecallAbility _recallAbility;
     [SerializeField] DashAbility _dashAbility;
     [SerializeField] MeleeAbility _meleeAbility;
     [SerializeField] PlayerAnimationController _playerAnimationController;
+    [SerializeField] VFXTransitioner _vfxActivator;
+    [SerializeField] SpriteRenderer _playerCircleSprite;
+    public VFXTransitioner VFXTransitioner { get { return _vfxActivator; } private set { _vfxActivator = value; } }
     [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
@@ -32,20 +37,34 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _timeToDecelerate = 0.2f;
     [Header("Falling Parameters")]
     [SerializeField] float _groundDistanceCheck;
-    [SerializeField] float _delayTillFall;
+    [SerializeField] float _delayTillFallFromWalk;
+    [SerializeField] float _delayTillFallFromDash;
 
     [Header("Actions")]
     public UnityEvent OnRecall;
+    public Action OnChargeStart; //for activating indicators
+    public Action OnCharging; //for updating indicator position
+    public Action OnRelease; //for removing indicators
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerFixedUpdate;
+    private Action OnLocalPlayerControllerUpdate;
+
     int _mySpawnIndex;
     float _currentSpeed = 0f;
     Vector3 _moveVelocity = Vector3.zero;
     Vector3 _attackDirection = Vector3.forward;
+    float _fallTimer = 0f;
+
+    [Header("State guards and triggers")]
+    bool _canMove = true;
+    bool _falling = false;
+    bool _startedRangeAbility = false;
+
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
+    float DelayTillFall => _dashAbility.InDash ? _delayTillFallFromDash : _delayTillFallFromWalk;
 
     [PunRPC]
     void SetMyPlayerIndex(int index)
@@ -68,19 +87,32 @@ public class PlayerController : MonoBehaviourPun
         else
         {
             gameObject.layer = 3;//player layer
+            _playerCircleSprite.color = new Color(108f/255f, 145f/255f, 187f/255f, 184f/ 255f);//6C91BB
             //set camera follow to my player
             CameraManager.Instance.CameraFollowRef.SetTarget(_playerBody.transform);
         }
     }
     private void OnEnable()
     {
+        if (!photonView.IsMine)
+            return;
+
+        _canMove = true;
         //on my player, handle movement in update.
         SubscribeEvents();
     }
     private void OnDisable()
     {
+        if (!photonView.IsMine)
+            return;
+
+        _canMove = false;
         //In order to prevent resource leaks, unsubscribe events
         UnsubscribeEvents();
+    }
+    private void Update()
+    {
+        OnLocalPlayerControllerUpdate?.Invoke();
     }
     private void FixedUpdate()
     {
@@ -110,13 +142,13 @@ public class PlayerController : MonoBehaviourPun
     private void SubscribeEvents()
     {
         OnLocalPlayerControllerFixedUpdate += HandleMovement;
-        //when press attack button, enable attack.
-        _AttackJoystick.OnJoystickDown += EnableRangeAbility;
-        _AttackJoystick.OnJoystickDown += EnableRecallAbility;
+        OnLocalPlayerControllerUpdate += HandleFalling;
+        EnableRangeAbility();
+        EnableRecallAbility();
         _boomerang.OnAttach += ToggleVisualBoomerang;
         _boomerang.OnRelease += ToggleVisualBoomerang;
         _boomerang.OnRelease += FaceThrowDirection;
-        _meleeAbility.OnAttack += _playerAnimationController.AttackPressedTrigger;
+        _meleeAbility.OnAttack += PlayerMelee;
         _dashAbility.OnDash += _playerAnimationController.DashPressedTrigger;
         _dashAbility.OnDash += _meleeAbility.DisableAttack;
         _dashAbility.OnDashEnd += _meleeAbility.EnableAttack;
@@ -124,20 +156,26 @@ public class PlayerController : MonoBehaviourPun
     private void UnsubscribeEvents()
     {
         OnLocalPlayerControllerFixedUpdate -= HandleMovement;
-        _AttackJoystick.OnJoystickDown -= EnableRangeAbility;
-        _AttackJoystick.OnJoystickDown -= EnableRecallAbility;
+        OnLocalPlayerControllerUpdate -= HandleFalling;
         DisableRangeAbility();
         DisableRecallAbility();
         _boomerang.OnAttach -= ToggleVisualBoomerang;
         _boomerang.OnRelease -= ToggleVisualBoomerang;
         _boomerang.OnRelease -= FaceThrowDirection;
-        _meleeAbility.OnAttack -= _playerAnimationController.AttackPressedTrigger;
+        _meleeAbility.OnAttack -= PlayerMelee;
         _dashAbility.OnDash -= _playerAnimationController.DashPressedTrigger;
         _dashAbility.OnDash -= _meleeAbility.DisableAttack;
         _dashAbility.OnDashEnd -= _meleeAbility.EnableAttack;
     }
+    private void PlayerMelee()
+    {
+        _playerAnimationController.AttackPressedTrigger();
+        _vfxActivator.ActivateVFX(VFXTypeEnum.Slap);
+    }
     private void HandleMovement()
     {
+        if (!_canMove)
+            return;
         if (_dashAbility.InDash)
             return;
         if (_meleeAbility.InAttack)
@@ -158,6 +196,9 @@ public class PlayerController : MonoBehaviourPun
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.deltaTime);
             _moveVelocity = inputDirection * _currentSpeed;
 
+            //vfx
+            _vfxActivator.ActivateVFX(VFXTypeEnum.Walking);
+
             //animations
             _playerAnimationController.StartWalk();
             _playerBody.transform.forward = inputDirection;
@@ -167,6 +208,8 @@ public class PlayerController : MonoBehaviourPun
         }
         else
         {
+            //vfx
+            _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Walking);
             //movement
             _currentSpeed = Mathf.MoveTowards(_currentSpeed, 0f, Deceleration * Time.deltaTime);
             _moveVelocity = _moveVelocity.normalized * _currentSpeed;
@@ -174,7 +217,39 @@ public class PlayerController : MonoBehaviourPun
             //animations
             _playerAnimationController.StopWalk();
         }
-        rb.velocity = _moveVelocity;
+        _rb.velocity = _moveVelocity;
+    }
+
+    void HandleFalling()
+    {
+        if (!_canMove)
+            return;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down* _groundDistanceCheck, out hit, _groundDistanceCheck))
+        {
+            _fallTimer = 0f;
+        }
+        else
+        {
+            _fallTimer += Time.deltaTime;
+        }
+
+        if (_fallTimer > DelayTillFall)
+        {
+            Fall();
+        }
+    }
+
+    private void Fall()
+    {
+        print("player " + gameObject.name + "is falling");
+        _falling = true;
+        _canMove = false;
+        _rb.velocity = Vector3.zero;
+        _rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
+        _bodyCollider.isTrigger = true;
+        //play falling animation
     }
 
     private void LocalPlayerControlUpdate()
@@ -191,21 +266,25 @@ public class PlayerController : MonoBehaviourPun
         //checks if can recall boomerang.
         if (_recallAbility.PlayerBoomerang.CanRecall())
         {
-            //when recalling, disable attack
-            DisableRangeAbility();
+            _vfxActivator.ActivateVFX(VFXTypeEnum.Recall);
             //recalling boomerang.
             _recallAbility.UseAbility();
         }
     }
+    private void RecallOff()
+    {
+        _recallAbility.PlayerBoomerang.StopRecall();
+        _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Recall);
+    }
     private void EnableRecallAbility()
     {
         _AttackJoystick.OnJoystickPressed += HandleRecall;
-        _AttackJoystick.OnJoystickUp += _recallAbility.PlayerBoomerang.StopRecall;
+        _AttackJoystick.OnJoystickUp += RecallOff;
     }
     private void DisableRecallAbility()
     {
         _AttackJoystick.OnJoystickPressed -= HandleRecall;
-        _AttackJoystick.OnJoystickUp -= _recallAbility.PlayerBoomerang.StopRecall;
+        _AttackJoystick.OnJoystickUp -= RecallOff;
     }
     #endregion Recall Ability
 
@@ -214,49 +293,71 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
+        if (!_startedRangeAbility)
+            return;
 
-        StopCharge();
+        print("used range ability (joystick up)");
+
+        StopRangeAbility();
+        FaceThrowDirection();
         _rangeAbility.UseAbility();
     }
     private void HandleRangeAbilityDirection()
     {
         if (!photonView.IsMine)
             return;
-        _attackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
-        if (_attackDirection.magnitude > 0.1f)
+        if (!_startedRangeAbility) 
+            return;
+
+        Vector3 newAttackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
+
+        if (newAttackDirection.magnitude > 0.1f)
         {
+            _attackDirection = newAttackDirection;
             _rangeAbility.Aimed = true;
             _rangeAbility.CalculateAttackDirection(_attackDirection);
         }
     }
-    private void StartCharge()
+    private void StopRangeAbility()
     {
-        if (!photonView.IsMine)
-            return;
-        if (_meleeAbility.InAttack)
-        {
-            DisableRangeAbility();
-            return;
-        }
-        _playerAnimationController.StartChargingBoomerang();
-        //range ability start charge timer
-    }
-    private void StopCharge()
-    {
-        if (!photonView.IsMine)
-            return;
+        _startedRangeAbility = false;
+        OnRelease?.Invoke();
         _playerAnimationController.StopChargingBoomerang();
+        _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Arrow, true);
     }
 
+    private void StartRangeAbility()
+    {
+        if (!photonView.IsMine)
+            return;
+
+        //we need a state machine
+        if (_meleeAbility.InAttack)
+            return;
+        if (_dashAbility.InDash)
+            return;
+        if (_falling)
+            return;
+        if (_boomerang.gameObject.activeInHierarchy)
+            return;
+
+        _startedRangeAbility = true;
+        OnChargeStart?.Invoke();
+        _playerAnimationController.StartChargingBoomerang();
+        print("start charging boomerang");
+        //range ability start charge timer
+        _rangeAbility.StartCharge();
+        _vfxActivator.ActivateVFX(VFXTypeEnum.Arrow, true);
+    }
     private void EnableRangeAbility()
     {
-        _AttackJoystick.OnJoystickDown += StartCharge;
+        _AttackJoystick.OnJoystickDown += StartRangeAbility;
         _AttackJoystick.OnJoystickUp += UseRangeAbility;
         _AttackJoystick.OnJoystickDrag += HandleRangeAbilityDirection;
     }
     private void DisableRangeAbility()
     {
-        _AttackJoystick.OnJoystickDown -= StartCharge;
+        _AttackJoystick.OnJoystickDown -= StartRangeAbility;
         _AttackJoystick.OnJoystickUp -= UseRangeAbility;
         _AttackJoystick.OnJoystickDrag -= HandleRangeAbilityDirection;
     }
@@ -270,6 +371,12 @@ public class PlayerController : MonoBehaviourPun
     void FaceThrowDirection()
     {
         _playerBody.transform.forward = _attackDirection;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, Vector3.down * _groundDistanceCheck);
     }
 
 }
