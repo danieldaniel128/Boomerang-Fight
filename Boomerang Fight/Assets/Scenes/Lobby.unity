@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f02694d82368744b91edaa026fb8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxPlayersInRoom: 1
+  _maxPlayersInRoom: 4
   _currentRoomPlayersTXT: {fileID: 1989399774}
   SearchingPlayersPanel: {fileID: 1586817660}
   QuickMatchPanel: {fileID: 1069420653}
