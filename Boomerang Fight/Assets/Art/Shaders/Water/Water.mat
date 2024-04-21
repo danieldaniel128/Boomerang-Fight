@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: -6465566751694194690, guid: ff047713221dcb74c95975c6f0438e92,
+  m_Shader: {fileID: -6465566751694194690, guid: 6caab10b9c03def4ea38251545cda134,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,12 +24,40 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _DepthFadefoamtex_a34ec4bf042d47b9964ae4ed5b1e6729_FoamTexture_1059016445_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Foam_Shore_Texture:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Foam_Texture:
         m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Foams_Texture:
         m_Texture: {fileID: 2800000, guid: 1509fb1e7e3f6ac4db940268e76cb50b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_2c0cd9af0c064c9aa5a7f318b5e82b55_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_982eff7adf73433396c3f1d1bff6772a_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a2840d2ccafe4ef49a4728b6460a420f_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_ef034b5071c24368918c207cf4beb4b8_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_9470b5697bbb4a43902ed7fbaf55d9e2_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -46,31 +74,42 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 1
-    - _Depth_Falloff: 2
+    - _Depth: 0.62
+    - _Depth_Falloff: 4.78
+    - _Depth_Fallout: -0.01
+    - _Depth_Gradient: 1
     - _Foam: 414.9
-    - _Foam_Amount: 4.54
-    - _Foam_Cutout: 0.11
-    - _Foam_Depth: 1
+    - _Foam_Amount: 0.35
+    - _Foam_Cutout: 0.61
+    - _Foam_Depth: -0.29
     - _Foam_Depth_Falloff: 17.91
-    - _Foam_Falloff: 0.72
-    - _Foam_Shore_Width: 1
-    - _Foam_Speed: 0.2
-    - _Foam_Tilling: 1
+    - _Foam_Falloff: 2.96
+    - _Foam_More_Less: 0.6
+    - _Foam_Shore_Amount: 0.32
+    - _Foam_Shore_Speed: -0.2
+    - _Foam_Shore_Strengh: 5
+    - _Foam_Shore_Width: 0.15
+    - _Foam_Speed: -0.4
+    - _Foam_Strengh: 5
+    - _Foam_Tilling: 5.49
     - _Foam_Tilling_1: 0
     - _Foam_Tilling_2: 0
     - _Foam_Tilling_3: 0
     - _Foam_Width: 115.43
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Texture_Strength: 0.1
+    - _Texture_Strength: 1
     m_Colors:
     - _BaseColor: {r: 0.86477983, g: 1, b: 0.9992317, a: 1}
+    - _Base_Color: {r: 0, g: 0.7764707, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.7762213, b: 1, a: 1}
+    - _Color_1: {r: 0.233624, g: 0.46192494, b: 0.5943396, a: 1}
     - _Foam_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Foam_Speed: {r: 0, g: -0.2, b: 0, a: 0}
+    - _Foam_Speed: {r: 0, g: -0.27, b: 0, a: 0}
     - _Main_Color: {r: 0, g: 0.51425123, b: 1, a: 0}
     - _SecondColor: {r: 0.2681559, g: 0.55625844, b: 0.6509434, a: 1}
-    - _Shore_Color: {r: 0, g: 0.76862717, b: 1, a: 0}
+    - _Shore_Color: {r: 0, g: 0.53265035, b: 0.6886792, a: 1}
+    - _Vector2: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7410558575568835400
 MonoBehaviour:
