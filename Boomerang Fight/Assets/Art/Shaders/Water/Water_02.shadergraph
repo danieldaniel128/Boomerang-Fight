@@ -158,6 +158,9 @@
         },
         {
             "m_Id": "fe42384d5be44446bf109106ddb21fd1"
+        },
+        {
+            "m_Id": "981845c4a9e649a396998eb7b0b2261b"
         }
     ],
     "m_GroupDatas": [
@@ -446,6 +449,20 @@
                     "m_Id": "4ad8d93999744c48a931d54da964214c"
                 },
                 "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "981845c4a9e649a396998eb7b0b2261b"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "647fd287e32743dda0bd16d9542cf087"
+                },
+                "m_SlotId": -692997039
             }
         },
         {
@@ -955,10 +972,10 @@
     "m_Guid": {
         "m_GuidSerialized": "5e74b75c-8e5a-42da-b799-c4639dea5cea"
     },
-    "m_Name": "Foam More / Less",
+    "m_Name": "Foam Speed",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Foam More / Less",
-    "m_DefaultReferenceName": "_Foam_More_Less",
+    "m_RefNameGeneratedByDisplayName": "Foam Speed",
+    "m_DefaultReferenceName": "_Foam_Speed",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2466,6 +2483,9 @@
             "m_Id": "2d67db7c6f804762877ddef402ede7ee"
         },
         {
+            "m_Id": "7c23234d84c14d39906cae49621d8f63"
+        },
+        {
             "m_Id": "018c0b632aaf4245baa9b87644dd7d3f"
         }
     ],
@@ -2480,11 +2500,13 @@
     "m_SerializedSubGraph": "{\n    \"subGraph\": {\n        \"fileID\": -5475051401550479605,\n        \"guid\": \"1956e124dc974b54b91a47a200ed3697\",\n        \"type\": 3\n    }\n}",
     "m_PropertyGuids": [
         "cf4b7032-a80e-41f8-b1e4-243bf4bf22a5",
-        "0164b9e0-1cdb-4779-817d-de30d67eae5f"
+        "0164b9e0-1cdb-4779-817d-de30d67eae5f",
+        "143ba7f5-80ec-45ad-b558-cb27fdcbeca0"
     ],
     "m_PropertyIds": [
         280331129,
-        695051884
+        695051884,
+        -692997039
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -2851,6 +2873,21 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "7c23234d84c14d39906cae49621d8f63",
+    "m_Id": -692997039,
+    "m_DisplayName": "Foam Speed",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Foam_Speed",
+    "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -3357,6 +3394,42 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "981845c4a9e649a396998eb7b0b2261b",
+    "m_Group": {
+        "m_Id": "9f8de90441e14b4bb56310d6fb0d0e2b"
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 44.66667175292969,
+            "y": 511.3333740234375,
+            "width": 142.0,
+            "height": 36.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "d257ac90cf8142828bbe4bd72d3e7fa8"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "18375ffb49e14f089c8092d6694abb7c"
     }
 }
 
@@ -3973,6 +4046,21 @@
     "m_Property": {
         "m_Id": "370dfc7ab04148d58b571b28775f130d"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "d257ac90cf8142828bbe4bd72d3e7fa8",
+    "m_Id": 0,
+    "m_DisplayName": "Foam Speed",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
