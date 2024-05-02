@@ -116,11 +116,14 @@ Material:
     - _Foam_More_Less: 0.6
     - _Foam_Shore_Amount: 3.91
     - _Foam_Shore_Density: 29.3
+    - _Foam_Shore_Opacity: 1
     - _Foam_Shore_Speed: -0.2
     - _Foam_Shore_Strengh: 14.04
-    - _Foam_Shore_Width: 0.263
+    - _Foam_Shore_Width: 0.273
+    - _Foam_Shore_Width_Opacity: 1
     - _Foam_Speed: 0.01
     - _Foam_Strengh: 0.4
+    - _Foam_Texture_Opacity: 0.308
     - _Foam_Tiling: 10
     - _Foam_Tilling: 5.49
     - _Foam_Tilling_1: 0
