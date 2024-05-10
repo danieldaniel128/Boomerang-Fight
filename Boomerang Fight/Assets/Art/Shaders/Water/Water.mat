@@ -103,10 +103,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 7.39
-    - _Depth: 0.5
+    - _Depth: 0.4
     - _Depth_Falloff: 4.78
     - _Depth_Fallout: -0.01
-    - _Depth_Gradient: 0.5
+    - _Depth_Gradient: 1
     - _Foam: 414.9
     - _Foam_Amount: 0.35
     - _Foam_Cutout: 0
@@ -114,16 +114,16 @@ Material:
     - _Foam_Depth_Falloff: 17.91
     - _Foam_Falloff: 2.96
     - _Foam_More_Less: 0.6
-    - _Foam_Shore_Amount: 3.91
-    - _Foam_Shore_Density: 29.3
+    - _Foam_Shore_Amount: 5
+    - _Foam_Shore_Density: 42.91
     - _Foam_Shore_Opacity: 1
     - _Foam_Shore_Speed: -0.2
-    - _Foam_Shore_Strengh: 14.04
-    - _Foam_Shore_Width: 0.273
+    - _Foam_Shore_Strengh: 10
+    - _Foam_Shore_Width: 0.192
     - _Foam_Shore_Width_Opacity: 1
-    - _Foam_Speed: 0.01
+    - _Foam_Speed: 4
     - _Foam_Strengh: 0.4
-    - _Foam_Texture_Opacity: 0.308
+    - _Foam_Texture_Opacity: 0.2
     - _Foam_Tiling: 10
     - _Foam_Tilling: 5.49
     - _Foam_Tilling_1: 0
