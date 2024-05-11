@@ -77,9 +77,9 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _CastShadows: 1
-    - _Clouds_Opacity: 0.45
+    - _Clouds_Opacity: 0.2
     - _Clouds_Power: 5.95
-    - _Clouds_Scale: 1
+    - _Clouds_Scale: 2.5
     - _Cull: 0
     - _DecalAngleFadeSupported: 1
     - _DecalMeshBiasType: 0
@@ -96,7 +96,7 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Clouds_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Clouds_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Clouds_Speed: {r: 0.015, g: 0.015, b: 0, a: 0}
     - _Shadow_Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
