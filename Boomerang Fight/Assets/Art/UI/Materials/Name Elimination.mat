@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Name Eliminated
-  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
-  m_Parent: {fileID: 7034674610670283448, guid: 2c3b9a65d6959334fb3952663cbf0fc0,
+  m_Name: Name Elimination
+  m_Shader: {fileID: 4800000, guid: c3015d70b8dda4144843441b79be7d9b, type: 3}
+  m_Parent: {fileID: -8089506268120072075, guid: f841c74ca1141c94a8431a2079b2a50b,
     type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -27,7 +27,11 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Sharpness: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioC: 0.6770833
+    - _UnderlayDilate: -0.5
+    - _UnderlayOffsetX: 0.5
+    - _UnderlayOffsetY: -0.25
     m_Colors:
-    - _UnderlayColor: {r: 0, g: 0.05448028, b: 0.20507877, a: 1}
+    - _UnderlayColor: {r: 0, g: 0.09084173, b: 0.19120172, a: 1}
   m_BuildTextureStacks: []

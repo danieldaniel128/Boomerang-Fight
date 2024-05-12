@@ -7,15 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tag Name
-  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+  m_Name: Player Left Amount
+  m_Shader: {fileID: 4800000, guid: c3015d70b8dda4144843441b79be7d9b, type: 3}
   m_Parent: {fileID: -8089506268120072075, guid: f841c74ca1141c94a8431a2079b2a50b,
     type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - OUTLINE_ON
   - UNDERLAY_ON
-  m_InvalidKeywords:
-  - RATIOS_OFF
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -28,15 +28,10 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _CullMode: 0
-    - _OutlineSoftness: 0
-    - _ScaleRatioA: 1
-    - _ScaleRatioC: 1
-    - _Sharpness: 1
-    - _UnderlayDilate: 0.27
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
-    - _UnderlaySoftness: 0
+    - _OutlineWidth: 0.049
+    - _ScaleRatioA: 0.8333333
+    - _UnderlayDilate: -0.5
+    - _UnderlayOffsetX: -0.2
     m_Colors:
-    - _UnderlayColor: {r: 0, g: 0.09084173, b: 0.19120172, a: 1}
+    - _OutlineColor: {r: 0, g: 0.09084173, b: 0.19120172, a: 1}
   m_BuildTextureStacks: []
