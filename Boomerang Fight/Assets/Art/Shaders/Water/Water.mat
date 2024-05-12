@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water
+  m_Shader: {fileID: -6465566751694194690, guid: 6caab10b9c03def4ea38251545cda134,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DepthFadefoamtex_a34ec4bf042d47b9964ae4ed5b1e6729_FoamTexture_1059016445_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Foam_Shore_Texture:
+        m_Texture: {fileID: 2800000, guid: ff3219a8f5deb3c40b42e7a753807412, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Foam_Texture:
+        m_Texture: {fileID: 2800000, guid: d2dc4145cceb9f94db86ffc8bc11e1f1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Foams_Texture:
+        m_Texture: {fileID: 2800000, guid: 1509fb1e7e3f6ac4db940268e76cb50b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_13d488b637f94754a3462489d0bee7f0_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_2c0cd9af0c064c9aa5a7f318b5e82b55_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_435d3e656efa487f9fab6453876acabd_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_8a09e26dd8c745ad9e6c14afaa353df3_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_8f210931bc3c490e9161764b1a7a9d00_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_982eff7adf73433396c3f1d1bff6772a_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a2840d2ccafe4ef49a4728b6460a420f_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b0a7e9650a9e4e61bc5d1a0b2215c4ef_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_c53400353db94b188a352936ad652099_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_ef034b5071c24368918c207cf4beb4b8_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_fbe21f38c1834f00b982abd5e0e18265_Texture_1_Texture2D:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_9470b5697bbb4a43902ed7fbaf55d9e2_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 10c449713bef3d54682e25c108355582, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 7.39
+    - _Depth: 0.4
+    - _Depth_Falloff: 4.78
+    - _Depth_Fallout: -0.01
+    - _Depth_Gradient: 1
+    - _Foam: 414.9
+    - _Foam_Amount: 0.35
+    - _Foam_Cutout: 0
+    - _Foam_Depth: -0.29
+    - _Foam_Depth_Falloff: 17.91
+    - _Foam_Falloff: 2.96
+    - _Foam_More_Less: 0.6
+    - _Foam_Shore_Amount: 5
+    - _Foam_Shore_Density: 42.91
+    - _Foam_Shore_Opacity: 1
+    - _Foam_Shore_Speed: -0.2
+    - _Foam_Shore_Strengh: 10
+    - _Foam_Shore_Width: 0.192
+    - _Foam_Shore_Width_Opacity: 1
+    - _Foam_Speed: 4
+    - _Foam_Strengh: 0.4
+    - _Foam_Texture_Opacity: 0.2
+    - _Foam_Tiling: 10
+    - _Foam_Tilling: 5.49
+    - _Foam_Tilling_1: 0
+    - _Foam_Tilling_2: 0
+    - _Foam_Tilling_3: 0
+    - _Foam_Width: 115.43
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Strengh: 0.23
+    - _Texture_Strength: 1
+    m_Colors:
+    - _BaseColor: {r: 0.86477983, g: 1, b: 0.9992317, a: 1}
+    - _Base_Color: {r: 0, g: 0.74643517, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.085627966, b: 0.4811321, a: 1}
+    - _Color_1: {r: 0.233624, g: 0.46192494, b: 0.5943396, a: 1}
+    - _Deep_Water_Color: {r: 0, g: 0.078803256, b: 0.6603774, a: 0}
+    - _Foam_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Foam_Speed: {r: 0, g: -0.27, b: 0, a: 0}
+    - _Main_Color: {r: 0, g: 0.51425123, b: 1, a: 0}
+    - _SecondColor: {r: 0.2681559, g: 0.55625844, b: 0.6509434, a: 1}
+    - _Shore_Color: {r: 0, g: 0.876143, b: 1, a: 1}
+    - _Vector2: {r: 0, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &7410558575568835400
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
