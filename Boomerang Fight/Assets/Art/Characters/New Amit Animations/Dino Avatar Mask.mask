@@ -1,0 +1,1379 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dino Avatar Mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Dino
+    m_Weight: 1
+  - m_Path: Dino/global_C0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_L0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_L0_root/Shoulder_L0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_L0_root/Shoulder_L0_ik_cns/Shoulder_L0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_L0_root/Shoulder_L0_ik_cns/Shoulder_L0_ctl/Hand_L0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_L0_root/Shoulder_L0_ik_cns/Shoulder_L0_ctl/Hand_L0_root/Hand_L0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_L0_root/Shoulder_L0_ik_cns/Shoulder_L0_ctl/Hand_L0_root/Hand_L0_ik_cns/Hand_L0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_R0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_R0_root/Shoulder_R0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_R0_root/Shoulder_R0_ik_cns/Shoulder_R0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_R0_root/Shoulder_R0_ik_cns/Shoulder_R0_ctl/Hand_R0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_R0_root/Shoulder_R0_ik_cns/Shoulder_R0_ctl/Hand_R0_root/Hand_R0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/Shoulder_R0_root/Shoulder_R0_ik_cns/Shoulder_R0_ctl/Hand_R0_root/Hand_R0_ik_cns/Hand_R0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cns/spine_C0_1_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cns/spine_C0_1_cns/spine_C0_2_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_ankle_lvl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_ankle_lvl/legBack_L0_ankle_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_ikHandleLegChainUpvRef
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_knee_lvl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_knee_lvl/legBack_L0_knee_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_legBones3_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_legBones3_jnt/legBack_L0_tws3_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_legBones3_jnt/legBack_L0_tws3_loc/legBack_L0_tws3_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_legBones3_jnt/legBack_L0_tws3_loc/legBack_L0_tws3_rot/legBack_L0_end_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_legBones3_jnt/legBack_L0_tws3_loc/legBack_L0_tws3_rot/legBack_L0_end_ref/legBack_L0_squashEnd_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_legBones3_jnt/legBack_L0_tws3_loc/legBack_L0_tws3_rot/legBack_L0_end_ref/legBack_L0_squashEnd_npo/legBack_L0_squashEnd_scl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_legBones3_jnt/legBack_L0_tws3_loc/legBack_L0_tws3_rot/legBack_L0_end_ref/legBack_L0_squashEnd_npo/legBack_L0_squashEnd_scl/legBack_L0_squash_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_legBones2_jnt/legBack_L0_tws3_drv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_mid2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_mid2_jnt/legBack_L0_tws2_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legBones1_jnt/legBack_L0_mid2_jnt/legBack_L0_tws2_loc/legBack_L0_tws2_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_legRollRef_crv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_mid1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_mid1_jnt/legBack_L0_tws1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legBones0_jnt/legBack_L0_mid1_jnt/legBack_L0_tws1_loc/legBack_L0_tws1_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legFK0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legFK0_jnt/legBack_L0_legFK1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legFK0_jnt/legBack_L0_legFK1_jnt/legBack_L0_legFK2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legFK0_jnt/legBack_L0_legFK1_jnt/legBack_L0_legFK2_jnt/legBack_L0_legFK3_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legIK0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legIK0_jnt/legBack_L0_legIK1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legIK0_jnt/legBack_L0_legIK1_jnt/legBack_L0_legIK2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legIK0_jnt/legBack_L0_legIK1_jnt/legBack_L0_legIK2_jnt/legBack_L0_legIK3_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legRollRef
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legUpvRef0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_legUpvRef0_jnt/legBack_L0_legUpvRef1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_matchFk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_matchFk0_npo/legBack_L0_fk0_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_matchFk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_matchFk1_npo/legBack_L0_fk1_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_matchFk2_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_matchFk2_npo/legBack_L0_fk2_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_rollChain0
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_rollChain0/legBack_L0_rollChain1
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_rollChain0/legBack_L0_tws0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_rollChain0/legBack_L0_tws0_loc/legBack_L0_tws0_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_aimSoftIK
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_aimSoftIK/legBack_L0_wristSoftIK
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_aimSoftIK2
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_aimSoftIK2/legBack_L0_ankleSoftIK
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div0_loc/legBack_L0_tweak0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div1_loc/legBack_L0_tweak1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div2_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div2_loc/legBack_L0_tweak2_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div3_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div3_loc/legBack_L0_tweak3_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div4_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div4_loc/legBack_L0_tweak4_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div5_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div5_loc/legBack_L0_tweak5_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div6_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_div6_loc/legBack_L0_tweak6_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo/legBack_L0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo/legBack_L0_fk1_ctl/legBack_L0_fk2_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo/legBack_L0_fk1_ctl/legBack_L0_fk2_npo/legBack_L0_fk2_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo/legBack_L0_fk1_ctl/legBack_L0_fk2_npo/legBack_L0_fk2_ctl/legBack_L0_fk3_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo/legBack_L0_fk1_ctl/legBack_L0_fk2_npo/legBack_L0_fk2_ctl/legBack_L0_fk3_npo/legBack_L0_fk3_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo/legBack_L0_fk1_ctl/legBack_L0_fk2_npo/legBack_L0_fk2_ctl/legBack_L0_fk3_npo/legBack_L0_fk3_ctl/legBack_L0_fk_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_fk1_npo/legBack_L0_fk1_ctl/legBack_L0_fk2_npo/legBack_L0_fk2_ctl/legBack_L0_fk3_npo/legBack_L0_fk3_ctl/legBack_L0_ik_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_fk0_npo/legBack_L0_fk0_ctl/legBack_L0_upv_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/footBack_L0_fk_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/footBack_L0_fk_ref/footBack_L0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/footBack_L0_fk_ref/footBack_L0_fk0_npo/footBack_L0_fk0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/footBack_L0_fk_ref/footBack_L0_fk0_npo/footBack_L0_fk0_loc/footBack_L0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/footBack_L0_fk_ref/footBack_L0_fk0_npo/footBack_L0_fk0_loc/footBack_L0_fk0_ctl/legBack_UI_L0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/footBack_L0_fk_ref/footBack_L0_fk0_npo/footBack_L0_fk0_loc/footBack_L0_fk0_ctl/legBack_UI_L0_root/legBack_UI_L0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/footBack_L0_fk_ref/footBack_L0_fk0_npo/footBack_L0_fk0_loc/footBack_L0_fk0_ctl/legBack_UI_L0_root/legBack_UI_L0_ik_cns/legBack_UI_L0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/legBack_L0_ik2B_A_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/footBack_L0_root/footBack_L0_in_npo/footBack_L0_in_piv/footBack_L0_out_piv/footBack_L0_heel_loc/footBack_L0_heel_ctl/footBack_L0_tip_ctl/footBack_L0_bk0_loc/footBack_L0_bk0_ctl/footBack_L0_bk1_loc/footBack_L0_bk1_ctl/legBack_L0_ik_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/legBack_L0_fk3_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/legBack_L0_ik2B_blend
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/legBack_L0_ik2B_blend/legBack_L0_roll_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/legBack_L0_ik2B_blend/legBack_L0_roll_ctl/legBack_L0_ik2B_ik_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_root_npo/legBack_L0_root_ctl/legBack_L0_ik_cns/legBack_L0_ikcns_ctl/legBack_L0_ik_ctl/legBack_L0_ik2B_blend/legBack_L0_roll_ctl/legBack_L0_ik2B_ik_npo/legBack_L0_ik2B_ik_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_softblendLoc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_softblendLoc/legBack_L0_ik3BonesHandle
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_softblendLoc2
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_softblendLoc2/legBack_L0_ik2BonesHandle
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_upv_lvl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_upv_lvl/legBack_L0_upv_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_upv_lvl/legBack_L0_upv_cns/legBack_L0_upv_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_L0_root/legBack_L0_upv_lvl/legBack_L0_upv_cns/legBack_L0_upv_ctl/legBack_L0_visalRef
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_ankle_lvl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_ankle_lvl/legBack_R0_ankle_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_ikHandleLegChainUpvRef
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_knee_lvl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_knee_lvl/legBack_R0_knee_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_legBones3_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_legBones3_jnt/legBack_R0_tws3_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_legBones3_jnt/legBack_R0_tws3_loc/legBack_R0_tws3_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_legBones3_jnt/legBack_R0_tws3_loc/legBack_R0_tws3_rot/legBack_R0_end_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_legBones3_jnt/legBack_R0_tws3_loc/legBack_R0_tws3_rot/legBack_R0_end_ref/legBack_R0_squashEnd_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_legBones3_jnt/legBack_R0_tws3_loc/legBack_R0_tws3_rot/legBack_R0_end_ref/legBack_R0_squashEnd_npo/legBack_R0_squashEnd_scl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_legBones3_jnt/legBack_R0_tws3_loc/legBack_R0_tws3_rot/legBack_R0_end_ref/legBack_R0_squashEnd_npo/legBack_R0_squashEnd_scl/legBack_R0_squash_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_legBones2_jnt/legBack_R0_tws3_drv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_mid2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_mid2_jnt/legBack_R0_tws2_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legBones1_jnt/legBack_R0_mid2_jnt/legBack_R0_tws2_loc/legBack_R0_tws2_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_legRollRef_crv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_mid1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_mid1_jnt/legBack_R0_tws1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legBones0_jnt/legBack_R0_mid1_jnt/legBack_R0_tws1_loc/legBack_R0_tws1_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legFK0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legFK0_jnt/legBack_R0_legFK1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legFK0_jnt/legBack_R0_legFK1_jnt/legBack_R0_legFK2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legFK0_jnt/legBack_R0_legFK1_jnt/legBack_R0_legFK2_jnt/legBack_R0_legFK3_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legIK0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legIK0_jnt/legBack_R0_legIK1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legIK0_jnt/legBack_R0_legIK1_jnt/legBack_R0_legIK2_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legIK0_jnt/legBack_R0_legIK1_jnt/legBack_R0_legIK2_jnt/legBack_R0_legIK3_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legRollRef
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legUpvRef0_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_legUpvRef0_jnt/legBack_R0_legUpvRef1_jnt
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_matchFk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_matchFk0_npo/legBack_R0_fk0_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_matchFk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_matchFk1_npo/legBack_R0_fk1_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_matchFk2_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_matchFk2_npo/legBack_R0_fk2_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_rollChain0
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_rollChain0/legBack_R0_rollChain1
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_rollChain0/legBack_R0_tws0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_rollChain0/legBack_R0_tws0_loc/legBack_R0_tws0_rot
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_aimSoftIK
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_aimSoftIK/legBack_R0_wristSoftIK
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_aimSoftIK2
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_aimSoftIK2/legBack_R0_ankleSoftIK
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div0_loc/legBack_R0_tweak0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div1_loc/legBack_R0_tweak1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div2_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div2_loc/legBack_R0_tweak2_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div3_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div3_loc/legBack_R0_tweak3_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div4_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div4_loc/legBack_R0_tweak4_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div5_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div5_loc/legBack_R0_tweak5_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div6_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_div6_loc/legBack_R0_tweak6_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo/legBack_R0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo/legBack_R0_fk1_ctl/legBack_R0_fk2_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo/legBack_R0_fk1_ctl/legBack_R0_fk2_npo/legBack_R0_fk2_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo/legBack_R0_fk1_ctl/legBack_R0_fk2_npo/legBack_R0_fk2_ctl/legBack_R0_fk3_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo/legBack_R0_fk1_ctl/legBack_R0_fk2_npo/legBack_R0_fk2_ctl/legBack_R0_fk3_npo/legBack_R0_fk3_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo/legBack_R0_fk1_ctl/legBack_R0_fk2_npo/legBack_R0_fk2_ctl/legBack_R0_fk3_npo/legBack_R0_fk3_ctl/legBack_R0_fk_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_fk1_npo/legBack_R0_fk1_ctl/legBack_R0_fk2_npo/legBack_R0_fk2_ctl/legBack_R0_fk3_npo/legBack_R0_fk3_ctl/legBack_R0_ik_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_fk0_npo/legBack_R0_fk0_ctl/legBack_R0_upv_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/footBack_R0_fk_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/footBack_R0_fk_ref/footBack_R0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/footBack_R0_fk_ref/footBack_R0_fk0_npo/footBack_R0_fk0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/footBack_R0_fk_ref/footBack_R0_fk0_npo/footBack_R0_fk0_loc/footBack_R0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/footBack_R0_fk_ref/footBack_R0_fk0_npo/footBack_R0_fk0_loc/footBack_R0_fk0_ctl/legBack_UI_R0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/footBack_R0_fk_ref/footBack_R0_fk0_npo/footBack_R0_fk0_loc/footBack_R0_fk0_ctl/legBack_UI_R0_root/legBack_UI_R0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/footBack_R0_fk_ref/footBack_R0_fk0_npo/footBack_R0_fk0_loc/footBack_R0_fk0_ctl/legBack_UI_R0_root/legBack_UI_R0_ik_cns/legBack_UI_R0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/legBack_R0_ik2B_A_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/footBack_R0_root/footBack_R0_in_npo/footBack_R0_in_piv/footBack_R0_out_piv/footBack_R0_heel_loc/footBack_R0_heel_ctl/footBack_R0_tip_ctl/footBack_R0_bk0_loc/footBack_R0_bk0_ctl/footBack_R0_bk1_loc/footBack_R0_bk1_ctl/legBack_R0_ik_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/legBack_R0_fk3_mth
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/legBack_R0_ik2B_blend
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/legBack_R0_ik2B_blend/legBack_R0_roll_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/legBack_R0_ik2B_blend/legBack_R0_roll_ctl/legBack_R0_ik2B_ik_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_root_npo/legBack_R0_root_ctl/legBack_R0_ik_cns/legBack_R0_ikcns_ctl/legBack_R0_ik_ctl/legBack_R0_ik2B_blend/legBack_R0_roll_ctl/legBack_R0_ik2B_ik_npo/legBack_R0_ik2B_ik_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_softblendLoc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_softblendLoc/legBack_R0_ik3BonesHandle
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_softblendLoc2
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_softblendLoc2/legBack_R0_ik2BonesHandle
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_upv_lvl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_upv_lvl/legBack_R0_upv_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_upv_lvl/legBack_R0_upv_cns/legBack_R0_upv_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/legBack_R0_root/legBack_R0_upv_lvl/legBack_R0_upv_cns/legBack_R0_upv_ctl/legBack_R0_visalRef
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_0_loc/tail_C0_1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_0_loc/tail_C0_1_loc/tail_C0_2_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns/tail_C0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns/tail_C0_fk1_ctl/tail_C0_fk2_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns/tail_C0_fk1_ctl/tail_C0_fk2_npo/tail_C0_spring2_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns/tail_C0_fk1_ctl/tail_C0_fk2_npo/tail_C0_spring2_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns/tail_C0_fk1_ctl/tail_C0_fk2_npo/tail_C0_spring2_cns/tail_C0_fk2_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns/tail_C0_fk1_ctl/tail_C0_spring2_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_fk1_npo/tail_C0_spring1_cns/tail_C0_fk1_ctl/tail_C0_spring2_npo/tail_C0_spring2
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_spring1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_fk0_npo/tail_C0_spring0_cns/tail_C0_fk0_ctl/tail_C0_spring1_npo/tail_C0_spring1
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_spring0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_cnx/tail_C0_root/tail_C0_spring0_npo/tail_C0_spring0
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_loc/spine_C0_0_scl_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_loc/spine_C0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_loc/spine_C0_fk0_npo/spine_C0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_loc/spine_C0_fk0_npo/spine_C0_fk0_ctl/spine_C0_1_scl_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_loc/spine_C0_fk0_npo/spine_C0_fk0_ctl/spine_C0_2_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_0_loc/spine_C0_fk0_npo/spine_C0_fk0_ctl/spine_C0_2_loc/spine_C0_2_scl_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_cns/neck_C0_1_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_cns/neck_C0_1_cns/neck_C0_2_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_L0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_L0_root/eye_L0_eyeOver_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_L0_root/eye_L0_eyeOver_npo/eye_L0_Over_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_L0_root/eye_L0_eyeOver_npo/eye_L0_Over_ctl/eye_L0_eye_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_L0_root/eye_L0_eyeOver_npo/eye_L0_Over_ctl/eye_L0_eye_npo/eye_L0_fk_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_R0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_R0_root/eye_R0_eyeOver_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_R0_root/eye_R0_eyeOver_npo/eye_R0_Over_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_R0_root/eye_R0_eyeOver_npo/eye_R0_Over_ctl/eye_R0_eye_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eye_R0_root/eye_R0_eyeOver_npo/eye_R0_Over_ctl/eye_R0_eye_npo/eye_R0_fk_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns/eyesLook_C0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns/eyesLook_C0_ctl/eye_L0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns/eyesLook_C0_ctl/eye_L0_ik_cns/eye_L0_ik_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns/eyesLook_C0_ctl/eye_L0_ik_cns/eye_L0_ik_npo/eye_L0_ik_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns/eyesLook_C0_ctl/eye_R0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns/eyesLook_C0_ctl/eye_R0_ik_cns/eye_R0_ik_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/eyesLook_C0_root/eyesLook_C0_ik_cns/eyesLook_C0_ctl/eye_R0_ik_cns/eye_R0_ik_npo/eye_R0_ik_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/face_UI_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/face_UI_C0_root/face_UI_C0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/face_UI_C0_root/face_UI_C0_ik_cns/face_UI_C0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/head_UI_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/head_UI_C0_root/head_UI_C0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/head_UI_C0_root/head_UI_C0_ik_cns/head_UI_C0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_0_loc/leftLeaf_L0_1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns/leftLeaf_L0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns/leftLeaf_L0_fk0_ctl/leftLeaf_L0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns/leftLeaf_L0_fk0_ctl/leftLeaf_L0_fk1_npo/leftLeaf_L0_spring1_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns/leftLeaf_L0_fk0_ctl/leftLeaf_L0_fk1_npo/leftLeaf_L0_spring1_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns/leftLeaf_L0_fk0_ctl/leftLeaf_L0_fk1_npo/leftLeaf_L0_spring1_cns/leftLeaf_L0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns/leftLeaf_L0_fk0_ctl/leftLeaf_L0_spring1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_fk0_npo/leftLeaf_L0_spring0_cns/leftLeaf_L0_fk0_ctl/leftLeaf_L0_spring1_npo/leftLeaf_L0_spring1
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_spring0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/leftLeaf_L0_root/leftLeaf_L0_spring0_npo/leftLeaf_L0_spring0
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_0_loc/middleLeaf_C0_1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns/middleLeaf_C0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns/middleLeaf_C0_fk0_ctl/middleLeaf_C0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns/middleLeaf_C0_fk0_ctl/middleLeaf_C0_fk1_npo/middleLeaf_C0_spring1_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns/middleLeaf_C0_fk0_ctl/middleLeaf_C0_fk1_npo/middleLeaf_C0_spring1_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns/middleLeaf_C0_fk0_ctl/middleLeaf_C0_fk1_npo/middleLeaf_C0_spring1_cns/middleLeaf_C0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns/middleLeaf_C0_fk0_ctl/middleLeaf_C0_spring1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_fk0_npo/middleLeaf_C0_spring0_cns/middleLeaf_C0_fk0_ctl/middleLeaf_C0_spring1_npo/middleLeaf_C0_spring1
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_spring0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/middleLeaf_C0_root/middleLeaf_C0_spring0_npo/middleLeaf_C0_spring0
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_0_loc/mouth_C0_1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns/mouth_C0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns/mouth_C0_fk0_ctl/mouth_C0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns/mouth_C0_fk0_ctl/mouth_C0_fk1_npo/mouth_C0_spring1_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns/mouth_C0_fk0_ctl/mouth_C0_fk1_npo/mouth_C0_spring1_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns/mouth_C0_fk0_ctl/mouth_C0_fk1_npo/mouth_C0_spring1_cns/mouth_C0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns/mouth_C0_fk0_ctl/mouth_C0_spring1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_fk0_npo/mouth_C0_spring0_cns/mouth_C0_fk0_ctl/mouth_C0_spring1_npo/mouth_C0_spring1
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_spring0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/mouth_C0_root/mouth_C0_spring0_npo/mouth_C0_spring0
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_0_loc/rightLeaf_R0_1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns/rightLeaf_R0_fk0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns/rightLeaf_R0_fk0_ctl/rightLeaf_R0_fk1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns/rightLeaf_R0_fk0_ctl/rightLeaf_R0_fk1_npo/rightLeaf_R0_spring1_aim
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns/rightLeaf_R0_fk0_ctl/rightLeaf_R0_fk1_npo/rightLeaf_R0_spring1_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns/rightLeaf_R0_fk0_ctl/rightLeaf_R0_fk1_npo/rightLeaf_R0_spring1_cns/rightLeaf_R0_fk1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns/rightLeaf_R0_fk0_ctl/rightLeaf_R0_spring1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_fk0_npo/rightLeaf_R0_spring0_cns/rightLeaf_R0_fk0_ctl/rightLeaf_R0_spring1_npo/rightLeaf_R0_spring1
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_spring0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/rightLeaf_R0_root/rightLeaf_R0_spring0_npo/rightLeaf_R0_spring0
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/tail_UI_C0_root
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/tail_UI_C0_root/tail_UI_C0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_0_scl_npo/neck_C0_fk0_npo/neck_C0_fk0_ctl/neck_C0_1_scl_npo/neck_C0_fk1_npo/neck_C0_fk1_ctl/neck_C0_2_scl_npo/neck_C0_2_loc/neck_C0_head_cns/neck_C0_head_ctl/tail_UI_C0_root/tail_UI_C0_ik_cns/tail_UI_C0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_ik_cns
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_intMRef
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_mst_crv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_reference
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_reference/neck_C0_0_pos_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_reference/neck_C0_0_rot_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_reference/neck_C0_1_pos_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_reference/neck_C0_1_rot_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_reference/neck_C0_2_pos_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_reference/neck_C0_2_rot_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_slv_crv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_tan0_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_1_cnx/neck_C0_root/neck_C0_tan0_loc/neck_C0_tan0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_ik1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_ik1_ctl/neck_C0_ik_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_ik1_ctl/neck_C0_ik_ctl/neck_C0_tan1_loc
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_ik1_ctl/neck_C0_ik_ctl/neck_C0_tan1_loc/neck_C0_tan1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_ik1_ctl/spine_C0_tan1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_ik1_ctl/spine_C0_tan1_npo/spine_C0_tan1_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_tan0_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik0_npo/spine_C0_ik0_ctl/spine_C0_tan0_npo/spine_C0_tan0_ctl
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_ik1_npo
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_mst_crv
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_reference
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_reference/spine_C0_0_pos_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_reference/spine_C0_0_rot_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_reference/spine_C0_1_pos_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_reference/spine_C0_1_rot_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_reference/spine_C0_2_pos_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_reference/spine_C0_2_rot_ref
+    m_Weight: 0
+  - m_Path: Dino/global_C0_ctl/local_C0_root/local_C0_ik_cns/local_C0_ctl/body_C0_root/body_C0_ik_cns/body_C0_ctl/spine_C0_root/spine_C0_slv_crv
+    m_Weight: 0
+  - m_Path: Dino/jnt_org
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/Shoulder_L0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/Shoulder_L0_0_jnt/Hand_L0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/Shoulder_R0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/Shoulder_R0_0_jnt/Hand_R0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt/legBack_L0_2_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt/legBack_L0_2_jnt/legBack_L0_3_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt/legBack_L0_2_jnt/legBack_L0_3_jnt/legBack_L0_4_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt/legBack_L0_2_jnt/legBack_L0_3_jnt/legBack_L0_4_jnt/legBack_L0_5_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt/legBack_L0_2_jnt/legBack_L0_3_jnt/legBack_L0_4_jnt/legBack_L0_5_jnt/legBack_L0_6_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt/legBack_L0_2_jnt/legBack_L0_3_jnt/legBack_L0_4_jnt/legBack_L0_5_jnt/legBack_L0_6_jnt/legBack_L0_end_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_L0_0_jnt/legBack_L0_1_jnt/legBack_L0_2_jnt/legBack_L0_3_jnt/legBack_L0_4_jnt/legBack_L0_5_jnt/legBack_L0_6_jnt/legBack_L0_end_jnt/footBack_L0_0_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt/legBack_R0_2_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt/legBack_R0_2_jnt/legBack_R0_3_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt/legBack_R0_2_jnt/legBack_R0_3_jnt/legBack_R0_4_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt/legBack_R0_2_jnt/legBack_R0_3_jnt/legBack_R0_4_jnt/legBack_R0_5_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt/legBack_R0_2_jnt/legBack_R0_3_jnt/legBack_R0_4_jnt/legBack_R0_5_jnt/legBack_R0_6_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt/legBack_R0_2_jnt/legBack_R0_3_jnt/legBack_R0_4_jnt/legBack_R0_5_jnt/legBack_R0_6_jnt/legBack_R0_end_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/legBack_R0_0_jnt/legBack_R0_1_jnt/legBack_R0_2_jnt/legBack_R0_3_jnt/legBack_R0_4_jnt/legBack_R0_5_jnt/legBack_R0_6_jnt/legBack_R0_end_jnt/footBack_R0_0_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/eye_L0_eye_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/eye_L0_eyeOver_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/eye_R0_eye_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/eye_R0_eyeOver_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/leftLeaf_L0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/leftLeaf_L0_0_jnt/leftLeaf_L0_1_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/middleLeaf_C0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/middleLeaf_C0_0_jnt/middleLeaf_C0_1_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/mouth_C0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/mouth_C0_0_jnt/mouth_C0_1_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/rightLeaf_R0_0_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/spine_C0_1_jnt/spine_C0_2_jnt/neck_C0_0_jnt/neck_C0_1_jnt/neck_C0_2_jnt/neck_C0_head_jnt/rightLeaf_R0_0_jnt/rightLeaf_R0_1_jnt
+    m_Weight: 1
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/tail_C0_0_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/tail_C0_0_jnt/tail_C0_1_jnt
+    m_Weight: 0
+  - m_Path: Dino/jnt_org/spine_C0_0_jnt/tail_C0_0_jnt/tail_C0_1_jnt/tail_C0_2_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain2bones0_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain2bones0_jnt/legBack_L0_chain2bones1_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain2bones0_jnt/legBack_L0_chain2bones1_jnt/legBack_L0_chain2bones2_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain3bones0_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain3bones0_jnt/legBack_L0_chain3bones1_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain3bones0_jnt/legBack_L0_chain3bones1_jnt/legBack_L0_chain3bones2_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain3bones0_jnt/legBack_L0_chain3bones1_jnt/legBack_L0_chain3bones2_jnt/legBack_L0_chain3bones3_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_L0_WS/legBack_L0_chain3bones0_jnt/legBack_L0_chain3bones1_jnt/legBack_L0_chain3bones2_jnt/legBack_L0_chain3bones3_jnt/legBack_L0_ik2B_B_ref
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain2bones0_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain2bones0_jnt/legBack_R0_chain2bones1_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain2bones0_jnt/legBack_R0_chain2bones1_jnt/legBack_R0_chain2bones2_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain3bones0_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain3bones0_jnt/legBack_R0_chain3bones1_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain3bones0_jnt/legBack_R0_chain3bones1_jnt/legBack_R0_chain3bones2_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain3bones0_jnt/legBack_R0_chain3bones1_jnt/legBack_R0_chain3bones2_jnt/legBack_R0_chain3bones3_jnt
+    m_Weight: 0
+  - m_Path: Dino/setup/legBack_R0_WS/legBack_R0_chain3bones0_jnt/legBack_R0_chain3bones1_jnt/legBack_R0_chain3bones2_jnt/legBack_R0_chain3bones3_jnt/legBack_R0_ik2B_B_ref
+    m_Weight: 0
+  - m_Path: Dino_Geometry
+    m_Weight: 0
+  - m_Path: Dino_Geometry/Body
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Left_Leg
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Left_Leg/Claw_01
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Left_Leg/Claw_04
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Left_Leg/Claw_05
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Right_Leg
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Right_Leg/Claw_01
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Right_Leg/Claw_02
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Claws/Right_Leg/Claw_03
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Eyes
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Eyes/Left_Eye
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Eyes/Right_Eye
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Hands
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Hands/Left_Hand
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Hands/Right_Hand
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_01
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_02
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_03
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_04
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_05
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_06
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_07
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Horns/Horns_08
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Leaves
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Leaves/Left_Leaf
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Leaves/Middle_Leaf
+    m_Weight: 1
+  - m_Path: Dino_Geometry/Leaves/Right_Leaf
+    m_Weight: 1
+  - m_Path: guide
+    m_Weight: 0
+  - m_Path: guide/controllers_org
+    m_Weight: 1
+  - m_Path: guide/controllers_org/body_C0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/eye_L0_fk_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/eye_L0_ik_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/eye_L0_Over_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/eye_R0_fk_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/eye_R0_ik_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/eye_R0_Over_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/eyesLook_C0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/face_UI_C0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_L0_bk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_L0_bk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_L0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_L0_heel_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_L0_tip_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_R0_bk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_R0_bk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_R0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_R0_heel_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/footBack_R0_tip_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/global_C0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/Hand_L0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/Hand_R0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/head_UI_C0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/leftLeaf_C0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/leftLeaf_C0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/leftLeaf_C0_fk2_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/leftLeaf_L0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/leftLeaf_L0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_L0_ankle_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_L0_ik_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_L0_ikcns_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_L0_knee_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_L0_roll_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_L0_root_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_L0_upv_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_R0_ankle_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_R0_ik_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_R0_ikcns_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_R0_knee_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_R0_roll_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_R0_root_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_R0_upv_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_UI_L0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/legBack_UI_R0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/local_C0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/middleLeaf_C0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/middleLeaf_C0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/middleLeaf_C0_fk2_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/mouth_C0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/mouth_C0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_fk2_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_fk3_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_head_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_ik_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_tan0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/neck_C0_tan1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/rightLeaf_C0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/rightLeaf_C0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/rightLeaf_C0_fk2_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/rightLeaf_R0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/rightLeaf_R0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/Shoulder_L0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/Shoulder_R0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/spine_C0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/spine_C0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/spine_C0_fk2_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/spine_C0_ik0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/spine_C0_ik1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/spine_C0_tan0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/spine_C0_tan1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/tail_C0_fk0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/tail_C0_fk1_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/tail_C0_fk2_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/controllers_org/tail_UI_C0_ctl_controlBuffer
+    m_Weight: 1
+  - m_Path: guide/local_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/body_C0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_L0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_L0_root/Hand_L0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_L0_root/Hand_L0_root/Hand_L0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_L0_root/Shoulder_L0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_R0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_R0_root/Hand_R0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_R0_root/Hand_R0_root/Hand_R0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/Shoulder_R0_root/Shoulder_R0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_crv1
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/footBack_L0_0_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/footBack_L0_0_loc/footBack_L0_1_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/footBack_L0_1
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/footBack_L0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/footBack_L0_heel
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/footBack_L0_inpivot
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/footBack_L0_outpivot
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/legBack_UI_L0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/footBack_L0_root/legBack_UI_L0_root/legBack_UI_L0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_L0_root/legBack_L0_knee/legBack_L0_ankle/legBack_L0_foot/legBack_L0_eff
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_crv1
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/footBack_R0_0_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/footBack_R0_0_loc/footBack_R0_1_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/footBack_R0_1
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/footBack_R0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/footBack_R0_heel
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/footBack_R0_inpivot
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/footBack_R0_outpivot
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/legBack_UI_R0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/footBack_R0_root/legBack_UI_R0_root/legBack_UI_R0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/legBack_R0_root/legBack_R0_knee/legBack_R0_ankle/legBack_R0_foot/legBack_R0_eff
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_blade
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_blade
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eye_L0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eye_L0_root/eye_L0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eye_L0_root/eye_L0_look
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eye_R0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eye_R0_root/eye_R0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eye_R0_root/eye_R0_look
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eyesLook_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/eyesLook_C0_root/eyesLook_C0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/face_UI_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/face_UI_C0_root/face_UI_C0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/head_UI_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/head_UI_C0_root/head_UI_C0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/leftLeaf_L0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/leftLeaf_L0_root/leftLeaf_L0_0_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/leftLeaf_L0_root/leftLeaf_L0_0_loc/leftLeaf_L0_1_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/leftLeaf_L0_root/leftLeaf_L0_blade
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/leftLeaf_L0_root/leftLeaf_L0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/middleLeaf_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/middleLeaf_C0_root/middleLeaf_C0_0_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/middleLeaf_C0_root/middleLeaf_C0_0_loc/middleLeaf_C0_1_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/middleLeaf_C0_root/middleLeaf_C0_blade
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/middleLeaf_C0_root/middleLeaf_C0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/mouth_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/mouth_C0_root/mouth_C0_0_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/mouth_C0_root/mouth_C0_0_loc/mouth_C0_1_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/mouth_C0_root/mouth_C0_blade
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/mouth_C0_root/mouth_C0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/neck_C0_eff
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/rightLeaf_R0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/rightLeaf_R0_root/rightLeaf_R0_0_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/rightLeaf_R0_root/rightLeaf_R0_0_loc/rightLeaf_R0_1_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/rightLeaf_R0_root/rightLeaf_R0_blade
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/rightLeaf_R0_root/rightLeaf_R0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/tail_UI_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head/tail_UI_C0_root/tail_UI_C0_sizeRef
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_head_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck/neck_C0_tan1
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_neck_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/spine_C0_eff/neck_C0_root/neck_C0_tan0
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/tail_C0_root
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/tail_C0_root/tail_C0_0_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/tail_C0_root/tail_C0_0_loc/tail_C0_1_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/tail_C0_root/tail_C0_0_loc/tail_C0_1_loc/tail_C0_2_loc
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/tail_C0_root/tail_C0_blade
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/body_C0_root/spine_C0_root/tail_C0_root/tail_C0_crv
+    m_Weight: 1
+  - m_Path: guide/local_C0_root/local_C0_sizeRef
+    m_Weight: 1

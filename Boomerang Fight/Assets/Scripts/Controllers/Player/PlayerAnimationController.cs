@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    const string MOVEMENT_LAYER = "Movement Layer";
+    const string AIMING_LAYER = "Aiming Layer";
+
     const string WALKING_BOOL = "Walking";
     const string DASH_PRESSED_TRIGGER = "DashPressed";
     const string CHARGING_BOOMERANG_BOOL = "ChargingBoomerang";
@@ -21,6 +24,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
     public void StartChargingBoomerang()
     {
+        characterAnimator.SetLayerWeight(characterAnimator.GetLayerIndex(AIMING_LAYER), 1);
         characterAnimator.SetBool(CHARGING_BOOMERANG_BOOL, true);
     }
     public void StopChargingBoomerang()
@@ -34,5 +38,10 @@ public class PlayerAnimationController : MonoBehaviour
     public void DashPressedTrigger()
     {
         characterAnimator.SetTrigger(DASH_PRESSED_TRIGGER);
+    }
+
+    public void ResetAimingLayerWeight()
+    {
+        characterAnimator.SetLayerWeight(characterAnimator.GetLayerIndex(AIMING_LAYER), 0);
     }
 }
