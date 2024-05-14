@@ -36,8 +36,8 @@ RectTransform:
   - {fileID: 2953957610617961573}
   - {fileID: 608304014867518139}
   - {fileID: 5249838248463042412}
-  - {fileID: 5357374874388789582}
   - {fileID: 7411017478071755375}
+  - {fileID: 5357374874388789582}
   - {fileID: 2011387993515550207}
   - {fileID: 6340921324634723398}
   m_Father: {fileID: 0}
@@ -767,6 +767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Recall Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103422949985491554, guid: 88ee2b45666a29b42a093c6a3ea07093,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2943159263487731718, guid: 88ee2b45666a29b42a093c6a3ea07093,
         type: 3}
