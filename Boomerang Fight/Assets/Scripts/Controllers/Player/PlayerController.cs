@@ -37,8 +37,7 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _timeToDecelerate = 0.2f;
     [Header("Falling Parameters")]
     [SerializeField] float _groundDistanceCheck;
-    [SerializeField] float _delayTillFallFromWalk;
-    [SerializeField] float _delayTillFallFromDash;
+    [SerializeField] float _delayTillFall = 0.3f;
 
     [Header("Actions")]
     public UnityEvent OnRecall;
@@ -59,12 +58,13 @@ public class PlayerController : MonoBehaviourPun
     [Header("State guards and triggers")]
     bool _canMove = true;
     bool _falling = false;
+    bool _startedFalling = false;
     bool _startedRangeAbility = false;
 
 
     float Acceleration => _moveSpeed / _timeToAccelerate;
     float Deceleration => _moveSpeed / _timeToDecelerate;
-    float DelayTillFall => _dashAbility.InDash ? _delayTillFallFromDash : _delayTillFallFromWalk;
+    float DelayTillFall => _delayTillFall;
 
     [PunRPC]
     void SetMyPlayerIndex(int index)
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviourPun
         else
         {
             gameObject.layer = 3;//player layer
-            _playerCircleSprite.color = new Color(108f/255f, 145f/255f, 187f/255f, 184f/ 255f);//6C91BB
+            _playerCircleSprite.color = new Color(108f / 255f, 145f / 255f, 187f / 255f, 184f / 255f);//6C91BB
             //set camera follow to my player
             CameraManager.Instance.CameraFollowRef.SetTarget(_playerBody.transform);
         }
@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviourPun
         if (_dashAbility.InDash && 1 - _dashAbility.DashDuration.Progress < 0.7f)
         {
             _dashAbility.DashDuration.Stop();
+            _playerAnimationController.DashHitWallTrigger();
         }
         print("dash disabled");
         _dashAbility.EnableDash(false);
@@ -152,6 +153,7 @@ public class PlayerController : MonoBehaviourPun
         _dashAbility.OnDash += _playerAnimationController.DashPressedTrigger;
         _dashAbility.OnDash += _meleeAbility.DisableAttack;
         _dashAbility.OnDashEnd += _meleeAbility.EnableAttack;
+        _moveJoystick.OnJoystickDrag += HandleDash;
     }
     private void UnsubscribeEvents()
     {
@@ -166,23 +168,25 @@ public class PlayerController : MonoBehaviourPun
         _dashAbility.OnDash -= _playerAnimationController.DashPressedTrigger;
         _dashAbility.OnDash -= _meleeAbility.DisableAttack;
         _dashAbility.OnDashEnd -= _meleeAbility.EnableAttack;
+        _moveJoystick.OnJoystickDrag -= HandleDash;
     }
     private void PlayerMelee()
     {
         _playerAnimationController.AttackPressedTrigger();
         _vfxActivator.ActivateVFX(VFXTypeEnum.Slap);
     }
+
     private void HandleMovement()
     {
-        if (!_canMove)
-            return;
         if (_dashAbility.InDash)
             return;
         if (_meleeAbility.InAttack)
             return;
+        if (!_canMove)
+            return;
 
-        //get movement from joystick
         Vector3 inputDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical).normalized;
+        //get movement from joystick
         //check magnitude size
         if (inputDirection.magnitude > 0.1)
         {
@@ -203,8 +207,7 @@ public class PlayerController : MonoBehaviourPun
             _playerAnimationController.StartWalk();
             _playerBody.transform.forward = inputDirection;
 
-            //ability updates
-            _dashAbility.UpdateDashDirection(inputDirection);
+
         }
         else
         {
@@ -222,34 +225,46 @@ public class PlayerController : MonoBehaviourPun
 
     void HandleFalling()
     {
-        if (!_canMove)
+        //if in dash or already falling, return
+        if (_dashAbility.InDash)
+            return;
+        if (_falling)
             return;
 
+        //check if over ground
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down* _groundDistanceCheck, out hit, _groundDistanceCheck))
+        if (Physics.Raycast(transform.position, Vector3.down * _groundDistanceCheck, out hit, _groundDistanceCheck))
         {
             _fallTimer = 0f;
+            _canMove = true;
+            _startedFalling = false;
+            _falling = false;
         }
         else
         {
+            _canMove = false;
             _fallTimer += Time.deltaTime;
+            if (!_startedFalling)
+            {
+                _startedFalling = true;
+                _rb.velocity = Vector3.zero;
+                _playerAnimationController.FallingTrigger();
+            }
         }
 
         if (_fallTimer > DelayTillFall)
         {
-            Fall();
+            print("player " + gameObject.name + "is falling");
+            _falling = true;
         }
     }
 
     private void Fall()
     {
-        print("player " + gameObject.name + "is falling");
-        _falling = true;
-        _canMove = false;
-        _rb.velocity = Vector3.zero;
-        _rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
-        _bodyCollider.isTrigger = true;
-        //play falling animation
+        
+        //_rb.velocity = Vector3.zero;
+        //_rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
+        //_bodyCollider.isTrigger = true;
     }
 
     private void LocalPlayerControlUpdate()
@@ -306,7 +321,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine)
             return;
-        if (!_startedRangeAbility) 
+        if (!_startedRangeAbility)
             return;
 
         Vector3 newAttackDirection = new Vector3(_AttackJoystick.Horizontal, 0, _AttackJoystick.Vertical).normalized;
@@ -325,7 +340,6 @@ public class PlayerController : MonoBehaviourPun
         _playerAnimationController.StopChargingBoomerang();
         _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Arrow, true);
     }
-
     private void StartRangeAbility()
     {
         if (!photonView.IsMine)
@@ -362,6 +376,20 @@ public class PlayerController : MonoBehaviourPun
         _AttackJoystick.OnJoystickDrag -= HandleRangeAbilityDirection;
     }
     #endregion Range Ability
+
+    #region Dash Ability
+    //called by external button
+    public void UseDashAbility()
+    {
+        if(_falling) return;
+        _dashAbility.TryStartDash();
+    }
+    private void HandleDash()
+    {
+        Vector3 inputDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical);
+        _dashAbility.UpdateDashDirection(inputDirection);
+    }
+    #endregion Dash Ability
 
     void ToggleVisualBoomerang()
     {

@@ -18,7 +18,7 @@ public class DashAbility : MonoBehaviour
     bool _inDash;
     bool _canDash = true;
     bool _onCooldown = false;
-    Vector3 _forwardDirection;
+    Vector3 _dashDirection;
     Vector3 _dashDestination;
     Vector3 _dashStartPosition;
     CountdownTimer _dashCooldown;
@@ -111,8 +111,11 @@ public class DashAbility : MonoBehaviour
 
     public void UpdateDashDirection(Vector3 newDirection)
     {
-        _forwardDirection = newDirection;
-        _forwardDirection.Normalize();
+        if (newDirection.magnitude < 0.1)
+            return;
+
+        _dashDirection = newDirection;
+        _dashDirection.Normalize();
     }
     private void StartDash()
     {
@@ -153,7 +156,7 @@ public class DashAbility : MonoBehaviour
 
         //set dash destination
         _dashStartPosition = transform.position;
-        _dashDestination = _dashStartPosition + _forwardDirection * _range;
+        _dashDestination = _dashStartPosition + _dashDirection * _range;
         //start timers
         _dashCooldown.Start();
         _dashDuration.Start();

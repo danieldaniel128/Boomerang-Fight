@@ -25,6 +25,7 @@ public class Boomerang : MonoBehaviourPun
     [Header("Ability Parameters")]
     float _range;
     Vector3 _launchDirection;
+    Vector3 _startLocalPosition;
     float _damage;
     [Header("Boomerang Information")]
     float _distanceTravelled;
@@ -62,6 +63,11 @@ public class Boomerang : MonoBehaviourPun
         }
     }
 
+
+    private void Awake()
+    {
+        _startLocalPosition = transform.localPosition;
+    }
     private void FixedUpdate()
     {
         TryAttach();
@@ -115,7 +121,7 @@ public class Boomerang : MonoBehaviourPun
         //set boomerang body parent to its parent holder.
         transform.SetParent(_parent.transform);
         //set position
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = _startLocalPosition;
         //stop movement
         Stop();
         //deactivate logic boomerang
