@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviourPun
     [Header("Falling Parameters")]
     [SerializeField] float _groundDistanceCheck;
     [SerializeField] float _delayTillFall = 0.3f;
+    [SerializeField] float _delayTillCantMove = 0.3f;
 
     [Header("Actions")]
     public UnityEvent OnRecall;
@@ -197,7 +198,7 @@ public class PlayerController : MonoBehaviourPun
             }
 
             //movement
-            _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.deltaTime);
+            _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.fixedDeltaTime);
             _moveVelocity = inputDirection * _currentSpeed;
 
             //vfx
@@ -214,7 +215,7 @@ public class PlayerController : MonoBehaviourPun
             //vfx
             _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Walking);
             //movement
-            _currentSpeed = Mathf.MoveTowards(_currentSpeed, 0f, Deceleration * Time.deltaTime);
+            _currentSpeed = Mathf.MoveTowards(_currentSpeed, 0f, Deceleration * Time.fixedDeltaTime);
             _moveVelocity = _moveVelocity.normalized * _currentSpeed;
 
             //animations
@@ -247,9 +248,11 @@ public class PlayerController : MonoBehaviourPun
             if (!_startedFalling)
             {
                 _startedFalling = true;
-                _rb.velocity = Vector3.zero;
                 _playerAnimationController.FallingTrigger();
             }
+
+            if(_fallTimer >= _delayTillCantMove)
+                _rb.velocity = Vector3.zero;
         }
 
         if (_fallTimer > DelayTillFall)
@@ -257,14 +260,6 @@ public class PlayerController : MonoBehaviourPun
             print("player " + gameObject.name + "is falling");
             _falling = true;
         }
-    }
-
-    private void Fall()
-    {
-        
-        //_rb.velocity = Vector3.zero;
-        //_rb.constraints &= ~RigidbodyConstraints.FreezePositionY; // Remove Y position constraint
-        //_bodyCollider.isTrigger = true;
     }
 
     private void LocalPlayerControlUpdate()
