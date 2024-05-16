@@ -732,7 +732,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 34451c7fb3e82be4aa6f0f4fa43e9211,
         type: 3}
       propertyPath: m_Name
-      value: Rock_04 1
+      value: Rock_04
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 34451c7fb3e82be4aa6f0f4fa43e9211,
         type: 3}
