@@ -74,7 +74,8 @@ public class Health : MonoBehaviourPun
         if(_livesCount<=0)
         {
             PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene(0);
+            //select room scene
+            SceneManager.LoadScene(1);
         }
         StartCoroutine(InvincibleFromHitCoroutine());
     }

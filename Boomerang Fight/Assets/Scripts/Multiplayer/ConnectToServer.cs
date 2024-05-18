@@ -31,11 +31,11 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         EnterLobby();
     }
     /// <summary>
-    /// switches to lobby panel when connected
+    /// switches to select rooms when connected
     /// </summary>
     private void EnterLobby()
     {
-        gameObject.SetActive(false);
-        _lobbyPanel.SetActive(true);
+        //select room scene
+        SceneManager.LoadScene(1);
     }
 }

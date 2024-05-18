@@ -4,18 +4,42 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     [Header("room settings/monitors")]
     [SerializeField] private int _maxPlayersInRoom = 4;
-    [SerializeField] private TextMeshProUGUI _currentRoomPlayersTXT;
+    int _playerInRoomCount = 1;
+    [SerializeField] private TMP_Text _currentRoomPlayersTXT;
+    [SerializeField] private TMP_Text _roomPlayersCountPlayersTXT;
     [Header("LobbyPanels")]
     [SerializeField] private GameObject SearchingPlayersPanel;
     [SerializeField] private GameObject QuickMatchPanel;
+    [SerializeField] private Button _startGameBtn;
 
     private const string GAME_SCENE_NAME = "Game Scene";
 
+    private void OnEnable()
+    {
+        SetPlayerCountInRoomTXTBtnEvent();
+    }
+    private void SetPlayerCountInRoomTXTBtnEvent()
+    {
+        _roomPlayersCountPlayersTXT.text = _playerInRoomCount.ToString();
+    }
+    public void AddPlayerToSetting()
+    {
+        _playerInRoomCount++;
+        _playerInRoomCount = Mathf.Clamp(_playerInRoomCount, 1, _maxPlayersInRoom);
+        SetPlayerCountInRoomTXTBtnEvent();
+    }
+    public void DecreasePlayerToSetting()
+    {
+        _playerInRoomCount--;
+        _playerInRoomCount = Mathf.Clamp(_playerInRoomCount, 1, _maxPlayersInRoom);
+        SetPlayerCountInRoomTXTBtnEvent();
+    }
     private void RefreshPlayerCountTXT()
     {
         _currentRoomPlayersTXT.text = $"Found Players " +
@@ -24,10 +48,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     /// <summary>
     /// creates and enters room.
     /// </summary>
-    private void CreateRoom()
+    public void CreateRoom()
     {
         //set room options
-        RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_maxPlayersInRoom }; 
+        RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_playerInRoomCount }; 
         //create and enter room
         PhotonNetwork.CreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions);
     }
@@ -39,6 +63,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         //joins a random room.
         PhotonNetwork.JoinRandomRoom();
+    }
+
+    public void StartGame()
+    {
+        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
+            photonView.RPC(nameof(LoadGame), RpcTarget.MasterClient);
     }
     #region IMatchmakingCallbacks
     #region UsedCallBacks
@@ -52,9 +83,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log($"<color=green>player: {PhotonNetwork.LocalPlayer.NickName} joined room {PhotonNetwork.NetworkingClient.CurrentRoom.Name}</color>");
         QuickMatchPanel.SetActive(false);
         SearchingPlayersPanel.SetActive(true);
-        if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-            photonView.RPC(nameof(LoadGame),RpcTarget.MasterClient);
         RefreshPlayerCountTXT();
+        if(!PhotonNetwork.IsMasterClient)
+            _startGameBtn.interactable = false;
     }
     public override void OnLeftRoom()
     {
@@ -78,7 +109,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("<color=red>joined failed</color>");
-        CreateRoom();
     }
     #endregion
     #region UnusedCallBacks
