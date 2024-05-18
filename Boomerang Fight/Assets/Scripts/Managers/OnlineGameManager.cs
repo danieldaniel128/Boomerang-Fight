@@ -19,6 +19,7 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         Instance = this;
+        PhotonNetwork.AutomaticallySyncScene = false;
     }
     private void Start()
     {

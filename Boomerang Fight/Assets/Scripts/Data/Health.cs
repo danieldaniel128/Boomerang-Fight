@@ -10,6 +10,9 @@ public class Health : MonoBehaviourPun
 {
     [SerializeField] private float _currentHP;
     [SerializeField] private float _maxHP;
+    [SerializeField] private int _livesCount = 3;
+    bool _isInvincible;
+
     [SerializeField] UpdateHPBarMaterial _updateHPBarMaterial;
     public float CurrentHP
     {
@@ -63,13 +66,23 @@ public class Health : MonoBehaviourPun
             IsDead = true;
             CallOnDeath();
             OnDeath?.Invoke();
-            gameObject.SetActive(false);
         }
     }
     public void CallOnDeath()
     {
-        PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(0);
+        _livesCount--;
+        if(_livesCount<=0)
+        {
+            PhotonNetwork.LeaveRoom();
+            SceneManager.LoadScene(0);
+        }
+        StartCoroutine(InvincibleFromHitCoroutine());
+    }
+    IEnumerator InvincibleFromHitCoroutine()
+    {
+        _isInvincible = true;
+        yield return new WaitForSeconds(2f);
+        _isInvincible = false;
     }
     public void Revive()
     {
