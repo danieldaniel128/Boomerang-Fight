@@ -170,7 +170,6 @@ public class Boomerang : MonoBehaviourPun
         Vector3 newVelocity = Vector3.zero;
         if (_reachedMaxDistance)
         {
-
             Vector3 directionToPlayer = (_parent.transform.position - transform.position).normalized;
 
             Vector3 forceToApply = directionToPlayer * _returnToParentForce;
@@ -178,12 +177,10 @@ public class Boomerang : MonoBehaviourPun
             Vector3 forcedVelocity = _rb.velocity + forceToApply * Time.fixedDeltaTime;
 
             newVelocity = Vector3.ClampMagnitude(forcedVelocity, MaxSpeed);
-
         }
         else
         {
             newVelocity = _rb.velocity.normalized * _currentSpeed;
-
         }
 
         _rb.velocity = newVelocity;
@@ -216,7 +213,7 @@ public class Boomerang : MonoBehaviourPun
     {
         float dotProduct = Vector3.Dot(_rb.velocity.normalized, DirectionToParent.normalized);
         float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
-        return angle < DirectionToParentAngleThreshHold / 2;
+        return angle < DirectionToParentAngleThreshHold;
     }
 
     public void Recall(float recallForce)
