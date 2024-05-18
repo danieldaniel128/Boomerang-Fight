@@ -1324,7 +1324,7 @@ MonoBehaviour:
   _timeToDecelerate: 0.2
   _groundDistanceCheck: 1
   _delayTillFall: 0.3
-  _delayTillCantMove: 0.3
+  _delayTillCantMove: 0.15
   OnRecall:
     m_PersistentCalls:
       m_Calls: []
