@@ -8,9 +8,17 @@ using TMPro;
 
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
+    public static ConnectToServer Instance;
     [SerializeField] TMP_InputField _playerNameInput;
     [SerializeField] TextMeshProUGUI _connectingState_TMP;
     [SerializeField] GameObject _lobbyPanel;
+    [SerializeField] GameObject _connectToLobbyPanel;
+
+    private void Start()
+    {
+        if (!PhotonNetwork.IsConnected)
+            _connectToLobbyPanel.SetActive(true);
+    }
 
     /// <summary>
     /// tries to connect to server using setting and seting player nickname
@@ -19,7 +27,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.NickName = _playerNameInput.text;
         _connectingState_TMP.text = "Connecting...";
-        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -30,12 +38,12 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         EnterLobby();
     }
+    
     /// <summary>
     /// switches to select rooms when connected
     /// </summary>
     private void EnterLobby()
     {
-        //select room scene
-        SceneManager.LoadScene(1);
+        _connectToLobbyPanel.SetActive(false);
     }
 }

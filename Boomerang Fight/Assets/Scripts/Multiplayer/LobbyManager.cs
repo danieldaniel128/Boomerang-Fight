@@ -17,6 +17,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject SearchingPlayersPanel;
     [SerializeField] private GameObject QuickMatchPanel;
     [SerializeField] private Button _startGameBtn;
+    [SerializeField] private Button _createRoomBtn;
 
     private const string GAME_SCENE_NAME = "Game Scene";
 
@@ -45,15 +46,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         _currentRoomPlayersTXT.text = $"Found Players " +
             $"{string.Format("{0}/{1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers)}";
     }
+
+    public void CreateSettingsRoom()
+    {
+        CreateRoom();
+    }
     /// <summary>
     /// creates and enters room.
     /// </summary>
-    public void CreateRoom()
+    private void CreateRoom()
     {
-        //set room options
-        RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_playerInRoomCount }; 
-        //create and enter room
-        PhotonNetwork.CreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions);
+        if (PhotonNetwork.InRoom)
+            return;
+        ////set room options
+        RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_maxPlayersInRoom };
+        ////create and enter room
+        PhotonNetwork.JoinOrCreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions,null);
+        _createRoomBtn.interactable = false;
     }
     /// <summary>
     /// tries to join a random room. if there is no room or failed, OnJoinRandomFailed will call.
@@ -68,15 +77,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         if(PhotonNetwork.IsMasterClient)
-        if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
             photonView.RPC(nameof(LoadGame), RpcTarget.MasterClient);
+        //if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
     }
     #region IMatchmakingCallbacks
     #region UsedCallBacks
     
     public override void OnCreatedRoom()
     {
-        //Debug.Log("room created" + PhotonNetwork.NetworkingClient.CurrentRoom.Name);
+        Debug.Log("dasdsa");
+        SearchingPlayersPanel.SetActive(true);
+        Debug.Log("room created" + PhotonNetwork.NetworkingClient.CurrentRoom.Name);
     }
     public override void OnJoinedRoom()
     {
