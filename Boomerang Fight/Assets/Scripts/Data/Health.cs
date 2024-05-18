@@ -49,12 +49,18 @@ public class Health : MonoBehaviourPun
         //    CameraManager.Instance.CameraShakeRef.ShakeCamera();
 
         photonView.RPC(nameof(MasterUpdateHealth), RpcTarget.MasterClient, CurrentHP - damage);
-
+        
     }
     [PunRPC]
     private void MasterUpdateHealth(float newHealth)
     {
         photonView.RPC(nameof(SyncHealth), RpcTarget.All, newHealth);
+    }
+    private void RemovePlayer()
+    {
+        PhotonNetwork.AutomaticallySyncScene = false;
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
     }
     [PunRPC]
     private void SyncHealth(float newHealth)
@@ -63,7 +69,6 @@ public class Health : MonoBehaviourPun
         CurrentHP = newHealth;
         if (newHealth <= 0)
         {
-            IsDead = true;
             CallOnDeath();
             OnDeath?.Invoke();
         }
@@ -71,10 +76,14 @@ public class Health : MonoBehaviourPun
     public void CallOnDeath()
     {
         _livesCount--;
+        SyncRevive();
         if(_livesCount<=0)
         {
-            PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene(0);
+            IsDead = true;
+            if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
+            {
+                RemovePlayer();
+            }
         }
         StartCoroutine(InvincibleFromHitCoroutine());
     }
@@ -95,7 +104,6 @@ public class Health : MonoBehaviourPun
     {
         // Handle revival for remote players
         CurrentHP = MaxHP;
-        IsDead = false;
     }
 
     public void SetHealth(float health)
