@@ -12,7 +12,17 @@ public class Health : MonoBehaviourPun
     [SerializeField] private float _maxHP;
     [SerializeField] private int _livesCount = 3;
     [SerializeField] UnityEvent<float, float> OnHealthChangedEvent;
+    [SerializeField] UnityEvent<int> OnLivesCountChangedEvent;
     bool _isInvincible;
+    public int LivesCount
+    {
+        get { return _livesCount; }
+        private set
+        {
+            _livesCount = value;
+            OnLivesCountChangedEvent?.Invoke(_livesCount);
+        }
+    }
     public float CurrentHP
     {
         get { return _currentHP; }
@@ -20,14 +30,17 @@ public class Health : MonoBehaviourPun
         {
             _currentHP = value;
             OnHealthChangedEvent?.Invoke(_currentHP, MaxHP);
-            //if (photonView.IsMine)
-            //EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
         }
     }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
     public bool IsDead { get; private set; }
     //public UnityEvent<float,float> OnValueChanged;
     public UnityEvent OnDeath;
+
+    private void Start()
+    {
+        OnLivesCountChangedEvent?.Invoke(LivesCount);
+    }
 
     [ContextMenu("Take Damage Test Local")]
     public void TakeDamageTest()
@@ -66,6 +79,13 @@ public class Health : MonoBehaviourPun
     {
         // Update health for remote players
         CurrentHP = newHealth;
+        if(photonView.IsMine)
+        {
+            #if UNITY_ANDROID || UNITY_IOS
+                Handheld.Vibrate();
+            #endif
+            CameraManager.Instance.CameraShakeRef.ShakeCamera();
+        }
         if (newHealth <= 0)
         {
             CallOnDeath();
@@ -74,16 +94,17 @@ public class Health : MonoBehaviourPun
     }
     public void CallOnDeath()
     {
-        _livesCount--;
-        SyncRevive();
-        if(_livesCount<=0)
+        LivesCount--;
+        if(LivesCount <= 0)
         {
             IsDead = true;
             if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
             {
                 RemovePlayer();
+                return;
             }
         }
+        SyncRevive();
         StartCoroutine(InvincibleFromHitCoroutine());
     }
     IEnumerator InvincibleFromHitCoroutine()
