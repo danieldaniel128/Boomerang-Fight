@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateHPBarUI : MonoBehaviour
+public class UpdateHPBarUI : MonoBehaviourPun
 {
     [SerializeField] private Slider _healthBar_Slider;
     [SerializeField] private TMP_Text _livesCount_TMP;
@@ -13,7 +13,7 @@ public class UpdateHPBarUI : MonoBehaviour
     private void Start()
     {
         _healthBar_Canvas.worldCamera = Camera.main;
-        _playerNickname.text = OnlineGameManager.instance.GetMyPlayer().NickName;
+        _playerNickname.text = photonView.Owner.NickName;
     }
     public void UpdateOnHealthChangedEvent(float newHP,float maxHP)
     {

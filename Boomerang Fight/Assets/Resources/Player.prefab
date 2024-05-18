@@ -4632,6 +4632,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7759441694142039600}
+    - targetCorrespondingSourceObject: {fileID: 8351920474112513272, guid: 145e8fae255b71d439bd2d4d20c7267a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8109571356024732172}
   m_SourcePrefab: {fileID: 100100000, guid: 145e8fae255b71d439bd2d4d20c7267a, type: 3}
 --- !u!224 &1814037198466467014 stripped
 RectTransform:
@@ -4673,6 +4677,28 @@ MonoBehaviour:
   _livesCount_TMP: {fileID: 2895924847473562381}
   _playerNickname: {fileID: 5777014830289622187}
   _healthBar_Canvas: {fileID: 6074510759051992811}
+--- !u!114 &8109571356024732172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826487440341596057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &5777014830289622187 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1644241605241583562, guid: 145e8fae255b71d439bd2d4d20c7267a,
