@@ -7,11 +7,13 @@ public class UpdateHPBarUI : MonoBehaviour
 {
     [SerializeField] private Slider _healthBar_Slider;
     [SerializeField] private TMP_Text _livesCount_TMP;
+    [SerializeField] private TMP_Text _playerNickname;
     [SerializeField] private Canvas _healthBar_Canvas;
     // Function to update the health bar material
     private void Start()
     {
         _healthBar_Canvas.worldCamera = Camera.main;
+        _playerNickname.text = OnlineGameManager.instance.GetMyPlayer().NickName;
     }
     public void UpdateOnHealthChangedEvent(float newHP,float maxHP)
     {

@@ -478,7 +478,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &129553555580034889
 MonoBehaviour:
@@ -4671,7 +4671,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar_Slider: {fileID: 8499856115949489682}
   _livesCount_TMP: {fileID: 2895924847473562381}
+  _playerNickname: {fileID: 5777014830289622187}
   _healthBar_Canvas: {fileID: 6074510759051992811}
+--- !u!114 &5777014830289622187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1644241605241583562, guid: 145e8fae255b71d439bd2d4d20c7267a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5115404619316732769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8499856115949489682 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3677223714826349939, guid: 145e8fae255b71d439bd2d4d20c7267a,
