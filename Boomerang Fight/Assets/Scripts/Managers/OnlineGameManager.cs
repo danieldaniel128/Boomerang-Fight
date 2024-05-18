@@ -22,8 +22,8 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
     }
     private void Start()
     {
-        if (photonView.IsMine)
-            _updateInGameUIData.gameObject.SetActive(true);
+        //if (photonView.IsMine)
+        //    _updateInGameUIData.gameObject.SetActive(true);
     }
     private void OnEnable()
     {
