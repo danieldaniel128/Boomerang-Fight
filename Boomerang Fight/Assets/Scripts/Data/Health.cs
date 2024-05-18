@@ -11,16 +11,15 @@ public class Health : MonoBehaviourPun
     [SerializeField] private float _currentHP;
     [SerializeField] private float _maxHP;
     [SerializeField] private int _livesCount = 3;
+    [SerializeField] UnityEvent<float, float> OnHealthChangedEvent;
     bool _isInvincible;
-
-    [SerializeField] UpdateHPBarMaterial _updateHPBarMaterial;
     public float CurrentHP
     {
         get { return _currentHP; }
         private set
         {
             _currentHP = value;
-            _updateHPBarMaterial.UpdateOnHealthChangedEvent(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
+            OnHealthChangedEvent?.Invoke(_currentHP, MaxHP);
             //if (photonView.IsMine)
             //EventBus<OnPlayerHealthChangedEvent>.Raise(new OnPlayerHealthChangedEvent { newHealth = _currentHP, maxHealth = _maxHP });
         }
