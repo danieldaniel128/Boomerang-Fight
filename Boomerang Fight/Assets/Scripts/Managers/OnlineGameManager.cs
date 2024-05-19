@@ -35,7 +35,7 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
     }
     IEnumerator WinCoro()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);

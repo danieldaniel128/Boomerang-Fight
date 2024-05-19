@@ -13,6 +13,7 @@ public class Health : MonoBehaviourPun
     [SerializeField] private int _livesCount = 3;
     [SerializeField] UnityEvent<float, float> OnHealthChangedEvent;
     [SerializeField] UnityEvent<int> OnLivesCountChangedEvent;
+    [SerializeField] UnityEvent OnLivesCountZero;
     bool _isInvincible;
     public int LivesCount
     {
@@ -100,6 +101,7 @@ public class Health : MonoBehaviourPun
             IsDead = true;
             if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
             {
+                OnLivesCountZero?.Invoke();
                 RemovePlayer();
                 return;
             }
