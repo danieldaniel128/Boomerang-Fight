@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Leafs
+  m_Name: Leaves
   m_Shader: {fileID: -6465566751694194690, guid: ef9f934ccb8645a4bbe6fa4111c6d46e,
     type: 3}
   m_Parent: {fileID: 0}
@@ -65,5 +65,5 @@ Material:
     - _Wind_Strengh: 1
     m_Colors:
     - _Toon_Ramp_Tinting: {r: 0.85490197, g: 0.85490197, b: 0.85490197, a: 0}
-    - _Wind_Direction: {r: 0, g: 1, b: 0, a: 0}
+    - _Wind_Direction: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
