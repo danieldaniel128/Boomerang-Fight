@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] PlayerAnimationController _playerAnimationController;
     [SerializeField] VFXTransitioner _vfxActivator;
     [SerializeField] SpriteRenderer _playerCircleSprite;
+
+    public GameObject PlayerBody { get { return _playerBody; } private set { _playerBody = value; } }
     public VFXTransitioner VFXTransitioner { get { return _vfxActivator; } private set { _vfxActivator = value; } }
     [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]

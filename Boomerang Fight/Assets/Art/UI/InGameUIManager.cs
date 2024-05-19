@@ -1,8 +1,9 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InGameUIManager : MonoBehaviour
+public class InGameUIManager : MonoBehaviourPun
 {
     [SerializeField] GameObject _eliminatedFeed;//a ui that contains images and the nickname of the local player killed.
     [SerializeField] GameObject _eliminatorFeed;//a ui that contains images and nicknames of the one the killed and the one that was killed by the killed.
@@ -14,6 +15,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void ShowEliminatedFeed()
     {
+        _eliminatedNickname.text = photonView.Owner.NickName;
         StartCoroutine(ShowFeedCoroutine(_eliminatedFeed, _showEliminatedTime));
     }
     public void ShowEliminatorFeed(string eliminatorNickname, string eliminatedNickname)

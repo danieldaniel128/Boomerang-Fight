@@ -14,6 +14,7 @@ public class Health : MonoBehaviourPun
     [SerializeField] UnityEvent<float, float> OnHealthChangedEvent;
     [SerializeField] UnityEvent<int> OnLivesCountChangedEvent;
     [SerializeField] UnityEvent OnLivesCountZero;
+    [SerializeField] GameObject _healthBarObject;
     bool _isInvincible;
     public int LivesCount
     {
@@ -64,6 +65,27 @@ public class Health : MonoBehaviourPun
         photonView.RPC(nameof(MasterUpdateHealth), RpcTarget.MasterClient, CurrentHP - damage);
         
     }
+    public void KillPlayer()
+    {
+        photonView.RPC(nameof(ExecutePlayer), RpcTarget.MasterClient);
+    }
+    [PunRPC]
+    void ExecutePlayer()
+    {
+        photonView.RPC(nameof(FinishPlayerLives), RpcTarget.All);
+    }
+    [PunRPC]
+    void FinishPlayerLives()
+    {
+        LivesCount=0;
+        IsDead = true;
+        if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
+        {
+            OnLivesCountZero?.Invoke();
+            RemovePlayer();
+        }
+        _healthBarObject.SetActive(false);
+    }
     [PunRPC]
     private void MasterUpdateHealth(float newHealth)
     {
@@ -71,9 +93,7 @@ public class Health : MonoBehaviourPun
     }
     private void RemovePlayer()
     {
-        PhotonNetwork.AutomaticallySyncScene = false;
-        PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(0);
+        StartCoroutine(OnlineGameManager.LeaveGameCoroutine());
     }
     [PunRPC]
     private void SyncHealth(float newHealth)
@@ -92,6 +112,7 @@ public class Health : MonoBehaviourPun
             CallOnDeath();
             OnDeath?.Invoke();
         }
+        StartCoroutine(InvincibleFromHitCoroutine());
     }
     public void CallOnDeath()
     {
@@ -103,11 +124,13 @@ public class Health : MonoBehaviourPun
             {
                 OnLivesCountZero?.Invoke();
                 RemovePlayer();
-                return;
             }
+            gameObject.GetComponent<PlayerController>().PlayerBody.SetActive(false);
+            _healthBarObject.SetActive(false);
+            return;
+
         }
         SyncRevive();
-        StartCoroutine(InvincibleFromHitCoroutine());
     }
     IEnumerator InvincibleFromHitCoroutine()
     {

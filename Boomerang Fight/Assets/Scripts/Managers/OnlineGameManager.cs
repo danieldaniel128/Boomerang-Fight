@@ -28,12 +28,12 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.CurrentRoom.PlayerCount == 1)//player won
             {
-                StartCoroutine(WinCoro());
+                StartCoroutine(LeaveGameCoroutine());
             }
         }
 
     }
-    IEnumerator WinCoro()
+    public static IEnumerator LeaveGameCoroutine()
     {
         yield return new WaitForSeconds(3f);
         PhotonNetwork.AutomaticallySyncScene = false;

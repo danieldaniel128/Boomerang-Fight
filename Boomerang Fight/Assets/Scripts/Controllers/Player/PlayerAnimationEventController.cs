@@ -18,13 +18,6 @@ public class PlayerAnimationEventController : MonoBehaviour
         Health playerHealth = playerController.GetComponent<Health>();
         if(playerHealth==null)
             return;
-        playerHealth.TakeDamage(100);
-        playerHealth.TakeDamage(100);
-        playerHealth.TakeDamage(100);
-        playerHealth.TakeDamage(100);
-        playerHealth.TakeDamage(100);
-        playerHealth.TakeDamage(100);
-        playerHealth.TakeDamage(100);
-        playerHealth.TakeDamage(100);
+        playerHealth.KillPlayer();
     }
 }

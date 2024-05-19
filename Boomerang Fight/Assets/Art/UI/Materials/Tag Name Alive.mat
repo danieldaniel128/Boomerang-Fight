@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tag Name Alive
-  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+  m_Shader: {fileID: 4800000, guid: c3015d70b8dda4144843441b79be7d9b, type: 3}
   m_Parent: {fileID: -8089506268120072075, guid: f841c74ca1141c94a8431a2079b2a50b,
     type: 2}
   m_ModifiedSerializedProperties: 0
