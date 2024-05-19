@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DashAbility : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class DashAbility : MonoBehaviour
     [SerializeField] float _cooldown;
     [SerializeField] AnimationCurve _speedCurve;
     [SerializeField] Rigidbody characterRB;
+
+    [Header("UI Components")]
+    [SerializeField] TMPro.TMP_Text DashTimer_TMP;
+    [SerializeField] Button Dash_BTN;
 
     public Action OnDash;
     public Action OnDashEnd;
@@ -32,19 +37,28 @@ public class DashAbility : MonoBehaviour
     private void OnEnable()
     {
         SetTimers();
+        OnDash += ToggleDashBTN;
+        _dashCooldown.OnTimerStop += ToggleDashBTN;
         _canDash = true;
     }
-
+    void ToggleDashBTN()
+    {
+        Dash_BTN.interactable = !Dash_BTN.interactable;
+        Debug.Log(Dash_BTN.interactable);
+    }
     private void Update()
     {
         TickTimers();
         if (_dashDuration.IsRunning)
             Dash();
+        DashTimer_TMP.text = Math.Ceiling(_dashCooldown.Time).ToString();
     }
 
     private void OnDisable()
     {
         ClearTimers();
+        OnDash -= ToggleDashBTN;
+        _dashCooldown.OnTimerStop -= ToggleDashBTN;
     }
 
     #region Timers
@@ -160,8 +174,6 @@ public class DashAbility : MonoBehaviour
         //start timers
         _dashCooldown.Start();
         _dashDuration.Start();
-
-        OnDash?.Invoke();
     }
 
     private void Dash()
