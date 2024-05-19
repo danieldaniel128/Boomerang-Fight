@@ -1626,6 +1626,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
         type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.18431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.3921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 790123189126879548, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6187736998003109280}
@@ -1638,6 +1683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275245417591208314, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 2343437609772654163, guid: b5e15d70f073b62488bfa1af72a225de,
         type: 3}

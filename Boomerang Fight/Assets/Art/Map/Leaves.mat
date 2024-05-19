@@ -61,7 +61,7 @@ Material:
     - _Rim_Power: 0.53
     - _Toon_Ramp_Offset: 0.71
     - _Toon_Ramp_Smoothness: 0
-    - _Wind_Speed: 1
+    - _Wind_Speed: 1.5
     - _Wind_Strengh: 1
     m_Colors:
     - _Toon_Ramp_Tinting: {r: 0.85490197, g: 0.85490197, b: 0.85490197, a: 0}
