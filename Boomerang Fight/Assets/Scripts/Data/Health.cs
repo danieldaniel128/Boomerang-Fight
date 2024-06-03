@@ -142,6 +142,7 @@ public class Health : MonoBehaviourPun
     {
         //Call the RPC to notify other players about the revival
         photonView.RPC(nameof(SyncRevive), RpcTarget.All);
+        //send to master to revive player with actorID
     }
 
     [PunRPC]
