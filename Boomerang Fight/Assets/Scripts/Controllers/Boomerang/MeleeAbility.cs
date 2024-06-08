@@ -156,11 +156,6 @@ public class MeleeAbility : AttackAbility
         _inAttack = false;
     }
 
-    public void HitTarget(Collider target)
-    {
-        target.GetComponentInParent<Health>().TakeDamage(Damage);
-    }
-
     public void EnableAttack()
     {
         _canAttack = true;

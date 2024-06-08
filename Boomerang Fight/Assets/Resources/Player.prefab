@@ -769,6 +769,7 @@ GameObject:
   - component: {fileID: 3299242753739002790}
   - component: {fileID: 899578235012881067}
   - component: {fileID: 1419638241563305603}
+  - component: {fileID: 6992580662840770557}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -857,6 +858,7 @@ MonoBehaviour:
   _moveSpeed: 4.8
   _timeToAccelerate: 0.3
   _timeToDecelerate: 0.2
+  _speedWhileAimingModifier: 0.2
   _groundDistanceCheck: 1
   _delayTillFall: 0.3
   _delayTillCantMove: 0.15
@@ -1104,6 +1106,18 @@ MonoBehaviour:
   - {fileID: 5854231550399310820}
   - {fileID: 2216464473457073204}
   _playTriggerVFXTime: 1.5
+--- !u!114 &6992580662840770557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461610516121305678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1355bd42f013a8b48813b04e5d38c43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6693986192440524327
 GameObject:
   m_ObjectHideFlags: 0
