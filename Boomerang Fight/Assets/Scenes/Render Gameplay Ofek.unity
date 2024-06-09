@@ -1355,7 +1355,7 @@ PrefabInstance:
     - target: {fileID: 938533352464153954, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
       propertyPath: m_Name
-      value: Dino (4)
+      value: Yellow Dino
       objectReference: {fileID: 0}
     - target: {fileID: 960735474552521802, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
@@ -6214,7 +6214,7 @@ PrefabInstance:
     - target: {fileID: 938533352464153954, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
       propertyPath: m_Name
-      value: Dino (6)
+      value: Red Dino
       objectReference: {fileID: 0}
     - target: {fileID: 960735474552521802, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
@@ -10565,7 +10565,7 @@ PrefabInstance:
     - target: {fileID: 938533352464153954, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
       propertyPath: m_Name
-      value: Dino (1)
+      value: 'Blue Dino '
       objectReference: {fileID: 0}
     - target: {fileID: 960735474552521802, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
@@ -14575,7 +14575,7 @@ PrefabInstance:
     - target: {fileID: 938533352464153954, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
       propertyPath: m_Name
-      value: Dino (2)
+      value: Green Dino
       objectReference: {fileID: 0}
     - target: {fileID: 960735474552521802, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
@@ -21454,7 +21454,7 @@ PrefabInstance:
     - target: {fileID: 938533352464153954, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
       propertyPath: m_Name
-      value: Dino (3)
+      value: Purple Dino
       objectReference: {fileID: 0}
     - target: {fileID: 960735474552521802, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
@@ -25370,7 +25370,7 @@ PrefabInstance:
     - target: {fileID: 938533352464153954, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
       propertyPath: m_Name
-      value: Dino (5)
+      value: 'Turquoise Dino '
       objectReference: {fileID: 0}
     - target: {fileID: 960735474552521802, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
@@ -37902,7 +37902,7 @@ PrefabInstance:
     - target: {fileID: 938533352464153954, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
       propertyPath: m_Name
-      value: Dino
+      value: Orange Dino
       objectReference: {fileID: 0}
     - target: {fileID: 960735474552521802, guid: 92bb4d962b896eb4bb61f55cca848a98,
         type: 3}
