@@ -25,10 +25,11 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] PlayerAnimationController _playerAnimationController;
     [SerializeField] VFXTransitioner _vfxActivator;
     [SerializeField] SpriteRenderer _playerCircleSprite;
-
+    [SerializeField] Boomerang _boomerang;
+    public Boomerang PlayerBoomerang => _boomerang;
+    public PlayerAnimationController AnimationController => _playerAnimationController;
     public GameObject PlayerBody { get { return _playerBody; } private set { _playerBody = value; } }
     public VFXTransitioner VFXTransitioner { get { return _vfxActivator; } private set { _vfxActivator = value; } }
-    [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
     [SerializeField] Joystick _moveJoystick;
@@ -278,6 +279,7 @@ public class PlayerController : MonoBehaviourPun
         _falling = false;
         _fallTimer = 0f;
         playerHealth.KillPlayer();
+        this.enabled = false;
     }
 
     private void LocalPlayerControlUpdate()

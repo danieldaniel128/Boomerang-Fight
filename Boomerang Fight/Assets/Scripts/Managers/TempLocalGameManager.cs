@@ -18,7 +18,7 @@ public class TempLocalGameManager : MonoBehaviour
         playerCharacters.Add(go);
     }
 
-    public GameObject GetPlayerCharacterBasedOnID(int id)
+    public GameObject GetPlayerGameObjectBasedOnID(int id)
     {
         foreach (var character in playerCharacters)
         {
@@ -27,6 +27,21 @@ public class TempLocalGameManager : MonoBehaviour
                 if(currentPlayer.ID == id)
                 {
                     return character;
+                }
+            }
+        }
+        return null;
+    }
+
+    public OnlinePlayer GetOnlinePlayer(int id)
+    {
+        foreach(var character in playerCharacters)
+        {
+            if (character.TryGetComponent(out OnlinePlayer currentPlayer))
+            {
+                if (currentPlayer.ID == id)
+                {
+                    return currentPlayer;
                 }
             }
         }

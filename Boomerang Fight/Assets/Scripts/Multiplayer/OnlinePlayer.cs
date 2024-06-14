@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class OnlinePlayer : MonoBehaviourPun
 {
+    [SerializeField] InGameUIManager gameUIManager;
+    [SerializeField] PlayerController playerController;
     int _id;
     public int ID => _id;
+    public InGameUIManager GameUIManager => gameUIManager;
+    public PlayerController PlayerControllerRef => playerController;
     private void Start()
     {
         Initialize();
@@ -16,4 +20,5 @@ public class OnlinePlayer : MonoBehaviourPun
     {
         _id = photonView.OwnerActorNr;
     }
+
 }

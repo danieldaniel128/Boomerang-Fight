@@ -3,6 +3,8 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 using ExitGames.Client.Photon;
+using System;
+using Random = UnityEngine.Random;
 
 public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
 {
@@ -12,14 +14,9 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     Player _myPlayer;
     const string PLAYER_RESOURCE_NAME = "Player";
     const string SPAWN_POINTS_KEY = "SpawnPoints";
-    const string PLAYER_CHARACTER_OBJECT_KEY = "PlayerCharacterObject";
 
     private Dictionary<int, bool> spawnPointsHash = new Dictionary<int, bool>();
-    /// <summary>
-    /// dictionary of int index and int type
-    /// </summary>
-    private Dictionary<int, int> actorToCharacterHash = new();
-
+    public Action<int> OnRespawn;
 
     private void Awake()
     {
@@ -45,7 +42,7 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
             spawnPoint.Available = true;
             spawnPointsHash.Add(spawnPoint.ID, spawnPoint.Available);
         }
-        UpdateRoomSpawnProperties();
+        //UpdateRoomSpawnProperties();
     }
 
     void InitialSpawnPlayers()
@@ -79,39 +76,52 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
         if (!spawnPointsHash.ContainsKey(id))
             return;
 
-        if (availability)
-        {
-            spawnPointsHash[id] = availability;
-            UpdateRoomSpawnProperties();
-        }
+        spawnPointsHash[id] = availability;
+        //UpdateRoomSpawnProperties();
     }
 
-    //private int GetAvailableSpawnPoint()
-    //{
-    //    foreach (var point in spawnPointsHash)
-    //    {
-    //        if (point.Value)
-    //        {
-    //            return point.Key;
-    //        }
-    //    }
-    //    print("no available spawn point");
-    //    //refresh available spawn points.
-    //    RefreshSpawnPoints();
-    //    return spawnPointsHash.;
-    //}
+    private int GetAvailableSpawnPoint()
+    {
+        foreach (var point in spawnPointsHash)
+        {
+            if (point.Value) // if available
+            {
+                return point.Key;
+            }
+        }
+        print("no available spawn point");
+        //refresh available spawn points and get random spawn point
+        RefreshSpawnPoints();
+        int randSpawnID = 0;
+        return randSpawnID;
+    }
 
+    public void TryRespawn(int id)
+    {
+        photonView.RPC(nameof(MasterGetSpawnPoint), RpcTarget.MasterClient, id);
+    }
 
     [PunRPC]
-    public void Respawn(int id)
+    public void Respawn(int playerID, int spawnID)
     {
-        GameObject go = TempLocalGameManager.Instance.GetPlayerCharacterBasedOnID(id);
-        //get random available spawn point
-        int randSpawnID = 2;
+        OnlinePlayer deadPlayer = TempLocalGameManager.Instance.GetOnlinePlayer(playerID);
 
         //move transform to spawn point
-        go.transform.position = _spawnPoints[randSpawnID].transform.position;
-        //TODO reset player here. (boomerang, health, ui...)
+        deadPlayer.gameObject.transform.position = _spawnPoints[spawnID].transform.position;
+
+        deadPlayer.gameObject.GetComponent<Health>().TogglePlayerBodyAndHealth(true);
+        deadPlayer.GameUIManager.DisableDeathScreen();
+        deadPlayer.PlayerControllerRef.enabled = true;
+        deadPlayer.PlayerControllerRef.AnimationController.ResetAnimations();
+    }
+
+    [PunRPC]
+    public void MasterGetSpawnPoint(int playerID)
+    {
+        int randSpawnID = GetAvailableSpawnPoint();
+        SetSpawnPointAvailability(randSpawnID, false);
+
+        photonView.RPC(nameof(Respawn), RpcTarget.All, playerID, randSpawnID);
     }
 
     /// <summary>
@@ -120,10 +130,10 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     void RefreshSpawnPoints()
     {
         //set all spawn points availability to true.
-        foreach(var point in spawnPointsHash)
+        foreach (var point in spawnPointsHash)
             spawnPointsHash[point.Key] = true;
-        
-        UpdateRoomSpawnProperties();
+
+        //UpdateRoomSpawnProperties();
     }
 
     void UpdateRoomSpawnProperties()
@@ -134,33 +144,22 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
         //update or add properties
         currentProperties[SPAWN_POINTS_KEY] = spawnPointsHash;
 
-        //update room properties
+        foreach (var point in spawnPointsHash)
+        {
+            print("point " + point.Key + ": " + point.Value);
+        }
+
         //PhotonNetwork.CurrentRoom.SetCustomProperties(currentProperties);
-    }
-    void UpdateRoomActorToCharacterProperties()
-    {
-        //get current properties
-        Hashtable currentProperties = PhotonNetwork.CurrentRoom.CustomProperties;
-
-        //update or add properties
-        currentProperties[PLAYER_CHARACTER_OBJECT_KEY] = actorToCharacterHash;
-
-        //update room properties
-        PhotonNetwork.CurrentRoom.SetCustomProperties(currentProperties);
     }
 
     public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
     {
         if (propertiesThatChanged.TryGetValue(SPAWN_POINTS_KEY, out object spawnPointsObject))
         {
+            print("onroomp prp update spawn points");
             spawnPointsHash = spawnPointsObject as Dictionary<int, bool>;
             UpdateLocalSpawnPoints();
         }
-        //if(propertiesThatChanged.TryGetValue(PLAYER_CHARACTER_OBJECT_KEY, out object actorToCharacterObject))
-        //{
-        //    actorToCharacterHash = actorToCharacterObject as Dictionary<int, Object>;
-        //    DebugActorToPlayerHash();
-        //}
     }
     private void UpdateLocalSpawnPoints()
     {
