@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5434346254430645823}
   - component: {fileID: 7827871511119988387}
   m_Layer: 6
-  m_Name: Elad Boomerang
+  m_Name: BaseBoomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
