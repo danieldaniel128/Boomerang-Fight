@@ -11,12 +11,42 @@ PrefabInstance:
     - target: {fileID: 1086940954117442922, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.64705884
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1086940954117442922, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9882353
+      value: 0.67534417
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086940954117442922, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.64705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247822354839254155, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247822354839254155, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.64705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247822354839254155, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247822354839254155, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.64705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247822354839254155, guid: ae5d6ee223ee27d448a5b928ea41e72d,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_ColorSpace
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1349526859354559059, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
@@ -72,11 +102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fe974beddff6bec44a0ba165fa45abf6, type: 2}
+      objectReference: {fileID: 2100000, guid: 45e4f7f833ffd164a9e8640bd7aaf6a5, type: 2}
     - target: {fileID: 6820703380817466682, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: m_Name
-      value: BaseBoomerang Yellow
+      value: BaseBoomerang Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

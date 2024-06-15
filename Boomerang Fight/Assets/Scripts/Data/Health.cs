@@ -149,6 +149,8 @@ public class Health : MonoBehaviourPun
             OnlinePlayer onlinePlayer = TempLocalGameManager.Instance.GetOnlinePlayer(photonView.OwnerActorNr);
             onlinePlayer.GameUIManager.PlayerDeath();
             onlinePlayer.PlayerControllerRef.PlayerBoomerang.Attach();
+            onlinePlayer.PlayerControllerRef.StopVelocity();
+            onlinePlayer.PlayerControllerRef.enabled = false;
         }
     }
 

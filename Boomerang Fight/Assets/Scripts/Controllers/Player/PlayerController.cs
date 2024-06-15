@@ -260,8 +260,8 @@ public class PlayerController : MonoBehaviourPun
                 _playerAnimationController.FallingTrigger();
             }
 
-            if(_fallTimer >= _delayTillCantMove)
-                _rb.velocity = Vector3.zero;
+            if (_fallTimer >= _delayTillCantMove)
+                StopVelocity();
         }
 
         if (_fallTimer > DelayTillFall)
@@ -269,6 +269,11 @@ public class PlayerController : MonoBehaviourPun
             print("player " + gameObject.name + "is falling");
             _falling = true;
         }
+    }
+
+    public void StopVelocity()
+    {
+        _rb.velocity = Vector3.zero;
     }
 
     private void FallEnded()

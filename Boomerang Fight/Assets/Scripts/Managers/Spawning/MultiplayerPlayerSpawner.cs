@@ -15,6 +15,13 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     const string PLAYER_RESOURCE_NAME = "Player";
     const string SPAWN_POINTS_KEY = "SpawnPoints";
 
+    List<string> PlayerColors = new()
+    {
+        "Orange",
+        "Purple",
+        "Red",
+        "Blue"
+    };
     private Dictionary<int, bool> spawnPointsHash = new Dictionary<int, bool>();
     public Action<int> OnRespawn;
 
@@ -63,7 +70,7 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     void InstantiationPlayerRPC(int index)
     {
         //photon instantiate player object
-        GameObject playerGameobject = PhotonNetwork.Instantiate(PLAYER_RESOURCE_NAME, _spawnPoints[index].SpawnPosition, Quaternion.identity, 0);
+        GameObject playerGameobject = PhotonNetwork.Instantiate(PLAYER_RESOURCE_NAME + PlayerColors[index], _spawnPoints[index].SpawnPosition, Quaternion.identity, 0);
     }
 
     /// <summary>
