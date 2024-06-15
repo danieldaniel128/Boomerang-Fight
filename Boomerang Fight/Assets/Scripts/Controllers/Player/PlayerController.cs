@@ -25,10 +25,11 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] PlayerAnimationController _playerAnimationController;
     [SerializeField] VFXTransitioner _vfxActivator;
     [SerializeField] SpriteRenderer _playerCircleSprite;
-
+    [SerializeField] Boomerang _boomerang;
+    public Boomerang PlayerBoomerang => _boomerang;
+    public PlayerAnimationController AnimationController => _playerAnimationController;
     public GameObject PlayerBody { get { return _playerBody; } private set { _playerBody = value; } }
     public VFXTransitioner VFXTransitioner { get { return _vfxActivator; } private set { _vfxActivator = value; } }
-    [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
     [SerializeField] Joystick _moveJoystick;
@@ -37,16 +38,18 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _moveSpeed;
     [SerializeField] float _timeToAccelerate = 0.2f;
     [SerializeField] float _timeToDecelerate = 0.2f;
+    [SerializeField] float _speedWhileAimingModifier = 0.2f;
     [Header("Falling Parameters")]
     [SerializeField] float _groundDistanceCheck;
     [SerializeField] float _delayTillFall = 0.3f;
     [SerializeField] float _delayTillCantMove = 0.3f;
-
+    
     [Header("Actions")]
     public UnityEvent OnRecall;
     public Action OnChargeStart; //for activating indicators
     public Action OnCharging; //for updating indicator position
     public Action OnRelease; //for removing indicators
+    public Action OnFallEnded;
 
     private Action OnMasterPlayerControllerUpdate;
     private Action OnLocalPlayerControllerFixedUpdate;
@@ -64,10 +67,12 @@ public class PlayerController : MonoBehaviourPun
     bool _startedFalling = false;
     bool _startedRangeAbility = false;
 
-
-    float Acceleration => _moveSpeed / _timeToAccelerate;
-    float Deceleration => _moveSpeed / _timeToDecelerate;
+    float Acceleration => MoveSpeed / _timeToAccelerate;
+    float Deceleration => MoveSpeed / _timeToDecelerate;
+    float MoveSpeed => _moveSpeed * SpeedMod;
+    float SpeedMod => _startedRangeAbility ? _speedWhileAimingModifier : 1f;
     float DelayTillFall => _delayTillFall;
+
 
     [PunRPC]
     void SetMyPlayerIndex(int index)
@@ -147,6 +152,7 @@ public class PlayerController : MonoBehaviourPun
     {
         OnLocalPlayerControllerFixedUpdate += HandleMovement;
         OnLocalPlayerControllerUpdate += HandleFalling;
+        OnFallEnded += FallEnded;
         EnableRangeAbility();
         EnableRecallAbility();
         _boomerang.OnAttach += ToggleVisualBoomerang;
@@ -162,6 +168,7 @@ public class PlayerController : MonoBehaviourPun
     {
         OnLocalPlayerControllerFixedUpdate -= HandleMovement;
         OnLocalPlayerControllerUpdate -= HandleFalling;
+        OnFallEnded -= FallEnded;
         DisableRangeAbility();
         DisableRecallAbility();
         _boomerang.OnAttach -= ToggleVisualBoomerang;
@@ -200,7 +207,7 @@ public class PlayerController : MonoBehaviourPun
             }
 
             //movement
-            _currentSpeed = Mathf.MoveTowards(_currentSpeed, _moveSpeed, Acceleration * Time.fixedDeltaTime);
+            _currentSpeed = Mathf.MoveTowards(_currentSpeed, MoveSpeed, Acceleration * Time.fixedDeltaTime);
             _moveVelocity = inputDirection * _currentSpeed;
 
             //vfx
@@ -253,8 +260,8 @@ public class PlayerController : MonoBehaviourPun
                 _playerAnimationController.FallingTrigger();
             }
 
-            if(_fallTimer >= _delayTillCantMove)
-                _rb.velocity = Vector3.zero;
+            if (_fallTimer >= _delayTillCantMove)
+                StopVelocity();
         }
 
         if (_fallTimer > DelayTillFall)
@@ -262,6 +269,22 @@ public class PlayerController : MonoBehaviourPun
             print("player " + gameObject.name + "is falling");
             _falling = true;
         }
+    }
+
+    public void StopVelocity()
+    {
+        _rb.velocity = Vector3.zero;
+    }
+
+    private void FallEnded()
+    {
+        Health playerHealth = GetComponent<Health>();
+        if (playerHealth == null)
+            return;
+        _falling = false;
+        _fallTimer = 0f;
+        playerHealth.KillPlayer();
+        this.enabled = false;
     }
 
     private void LocalPlayerControlUpdate()

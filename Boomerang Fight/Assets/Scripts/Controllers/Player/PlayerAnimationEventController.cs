@@ -14,10 +14,6 @@ public class PlayerAnimationEventController : MonoBehaviour
 
     public void EndOfFallAnimation()
     {
-        //end of fall animation, player death
-        Health playerHealth = playerController.GetComponent<Health>();
-        if(playerHealth==null)
-            return;
-        playerHealth.KillPlayer();
+        playerController.OnFallEnded?.Invoke();
     }
 }

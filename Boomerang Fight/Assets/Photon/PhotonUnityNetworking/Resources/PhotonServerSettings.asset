@@ -64,6 +64,13 @@ MonoBehaviour:
   - Fall
   - ExecutePlayer
   - FinishPlayerLives
+  - RespawnPlayer
+  - Respawn
+  - ResetHealth
+  - VibrateOhHit
+  - CallOnDeath
+  - TryRespawn
+  - MasterGetSpawnPoint
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -36,6 +36,7 @@ public class Health : MonoBehaviourPun
     }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
     public bool IsDead { get; private set; }
+    public GameObject HealthBarObject => _healthBarObject;
     //public UnityEvent<float,float> OnValueChanged;
     public UnityEvent OnDeath;
 
@@ -59,25 +60,23 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        //if (!photonView.IsMine)
-        //    CameraManager.Instance.CameraShakeRef.ShakeCamera();
-
         photonView.RPC(nameof(MasterUpdateHealth), RpcTarget.MasterClient, CurrentHP - damage);
-        
     }
     public void KillPlayer()
     {
         photonView.RPC(nameof(ExecutePlayer), RpcTarget.MasterClient);
     }
+
     [PunRPC]
     void ExecutePlayer()
     {
-        photonView.RPC(nameof(FinishPlayerLives), RpcTarget.All);
+        photonView.RPC(nameof(CallOnDeath), RpcTarget.All);
     }
+
     [PunRPC]
     void FinishPlayerLives()
     {
-        LivesCount=0;
+        LivesCount = 0;
         IsDead = true;
         if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
         {
@@ -86,38 +85,53 @@ public class Health : MonoBehaviourPun
         }
         _healthBarObject.SetActive(false);
     }
+
     [PunRPC]
     private void MasterUpdateHealth(float newHealth)
     {
-        photonView.RPC(nameof(SyncHealth), RpcTarget.All, newHealth);
+        photonView.RPC(nameof(VibrateOhHit), RpcTarget.All);
+
+        if (newHealth <= 0)
+        {
+            photonView.RPC(nameof(CallOnDeath), RpcTarget.All);
+            OnDeath?.Invoke();
+        }
+        else
+            photonView.RPC(nameof(SyncHealth), RpcTarget.All, newHealth);
     }
+
     private void RemovePlayer()
     {
         StartCoroutine(OnlineGameManager.LeaveGameCoroutine());
     }
+
+    [PunRPC]
+    private void VibrateOhHit()
+    {
+        if (!photonView.IsMine)
+            return;
+
+#if UNITY_ANDROID || UNITY_IOS
+        Handheld.Vibrate();
+#endif
+        CameraManager.Instance.CameraShakeRef.ShakeCamera();
+    }
+
     [PunRPC]
     private void SyncHealth(float newHealth)
     {
         // Update health for remote players
         CurrentHP = newHealth;
-        if(photonView.IsMine)
-        {
-            #if UNITY_ANDROID || UNITY_IOS
-                Handheld.Vibrate();
-            #endif
-            CameraManager.Instance.CameraShakeRef.ShakeCamera();
-        }
-        if (newHealth <= 0)
-        {
-            CallOnDeath();
-            OnDeath?.Invoke();
-        }
-        StartCoroutine(InvincibleFromHitCoroutine());
+        //StartCoroutine(InvincibleFromHitCoroutine());
     }
+
+    [PunRPC]
     public void CallOnDeath()
     {
         LivesCount--;
-        if(LivesCount <= 0)
+        TogglePlayerBodyAndHealth(false);
+
+        if (LivesCount <= 0)
         {
             IsDead = true;
             if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
@@ -125,31 +139,34 @@ public class Health : MonoBehaviourPun
                 OnLivesCountZero?.Invoke();
                 RemovePlayer();
             }
-            gameObject.GetComponent<PlayerController>().PlayerBody.SetActive(false);
-            _healthBarObject.SetActive(false);
             return;
 
         }
-        SyncRevive();
+
+        CurrentHP = MaxHP;
+        if (photonView.IsMine)
+        {
+            OnlinePlayer onlinePlayer = TempLocalGameManager.Instance.GetOnlinePlayer(photonView.OwnerActorNr);
+            onlinePlayer.GameUIManager.PlayerDeath();
+            onlinePlayer.PlayerControllerRef.PlayerBoomerang.Attach();
+            onlinePlayer.PlayerControllerRef.StopVelocity();
+            onlinePlayer.PlayerControllerRef.enabled = false;
+        }
     }
+
+    public void TogglePlayerBodyAndHealth(bool enabled)
+    {
+        gameObject.GetComponent<PlayerController>().PlayerBody.SetActive(enabled);
+        _healthBarObject.SetActive(enabled);
+    }
+
     IEnumerator InvincibleFromHitCoroutine()
     {
         _isInvincible = true;
         yield return new WaitForSeconds(2f);
         _isInvincible = false;
     }
-    public void Revive()
-    {
-        //Call the RPC to notify other players about the revival
-        photonView.RPC(nameof(SyncRevive), RpcTarget.All);
-    }
 
-    [PunRPC]
-    private void SyncRevive()
-    {
-        // Handle revival for remote players
-        CurrentHP = MaxHP;
-    }
 
     public void SetHealth(float health)
     {

@@ -53,4 +53,10 @@ public class PlayerAnimationController : MonoBehaviour
     {
         characterAnimator.SetBool(FALLING_TRIGGER, true);
     }
+
+    public void ResetAnimations()
+    {
+        characterAnimator.Play("Idle");
+    }
+
 }
