@@ -178,6 +178,11 @@ public class DashAbility : MonoBehaviour
 
     private void Dash()
     {
+        if(1 - _dashDuration.Progress > 0.9f)
+        {
+            StopDash();
+            return;
+        }
         //lerp transform to facing direction + range
         float curveValue = _speedCurve.Evaluate(1 - _dashDuration.Progress);
         // update dash destination after checking collision?

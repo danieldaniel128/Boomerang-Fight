@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviourPun
 
         if (_dashAbility.InDash && 1 - _dashAbility.DashDuration.Progress < 0.7f)
         {
-            _dashAbility.DashDuration.Stop();
+            _dashAbility.StopDash();
             _playerAnimationController.DashHitWallTrigger();
         }
         print("dash disabled");
