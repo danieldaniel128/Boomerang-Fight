@@ -11,6 +11,7 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     public static MultiplayerPlayerSpawner Instance { get; private set; }
 
     [SerializeField] SpawnPoint[] _spawnPoints;
+    [SerializeField] float _spawnInvincibilityDuration = 2f;
     Player _myPlayer;
     const string PLAYER_RESOURCE_NAME = "Player";
     const string SPAWN_POINTS_KEY = "SpawnPoints";
@@ -120,6 +121,7 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
         deadPlayer.GameUIManager.DisableDeathScreen();
         deadPlayer.PlayerControllerRef.enabled = true;
         deadPlayer.PlayerControllerRef.AnimationController.ResetAnimations();
+        deadPlayer.Invincibility(_spawnInvincibilityDuration);
     }
 
     [PunRPC]

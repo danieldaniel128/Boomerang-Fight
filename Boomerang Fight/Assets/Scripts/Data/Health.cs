@@ -40,6 +40,8 @@ public class Health : MonoBehaviourPun
     //public UnityEvent<float,float> OnValueChanged;
     public UnityEvent OnDeath;
 
+    public UnityEvent OnHitEvent;
+
     private void Start()
     {
         OnLivesCountChangedEvent?.Invoke(LivesCount);
@@ -89,7 +91,7 @@ public class Health : MonoBehaviourPun
     [PunRPC]
     private void MasterUpdateHealth(float newHealth)
     {
-        photonView.RPC(nameof(VibrateOhHit), RpcTarget.All);
+        photonView.RPC(nameof(OhHit), RpcTarget.All);
 
         if (newHealth <= 0)
         {
@@ -97,7 +99,9 @@ public class Health : MonoBehaviourPun
             OnDeath?.Invoke();
         }
         else
+        {
             photonView.RPC(nameof(SyncHealth), RpcTarget.All, newHealth);
+        }
     }
 
     private void RemovePlayer()
@@ -106,8 +110,10 @@ public class Health : MonoBehaviourPun
     }
 
     [PunRPC]
-    private void VibrateOhHit()
+    private void OhHit()
     {
+        OnHitEvent.Invoke();
+
         if (!photonView.IsMine)
             return;
 
@@ -122,7 +128,7 @@ public class Health : MonoBehaviourPun
     {
         // Update health for remote players
         CurrentHP = newHealth;
-        //StartCoroutine(InvincibleFromHitCoroutine());
+        
     }
 
     [PunRPC]
@@ -160,12 +166,7 @@ public class Health : MonoBehaviourPun
         _healthBarObject.SetActive(enabled);
     }
 
-    IEnumerator InvincibleFromHitCoroutine()
-    {
-        _isInvincible = true;
-        yield return new WaitForSeconds(2f);
-        _isInvincible = false;
-    }
+
 
 
     public void SetHealth(float health)
