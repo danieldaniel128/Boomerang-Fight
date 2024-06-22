@@ -14,7 +14,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [Header("LobbyPanels")]
     [SerializeField] private GameObject SearchingPlayersPanel;
     [SerializeField] private GameObject QuickMatchPanel;
-
+    List<RoomInfo> _roomsList = new List<RoomInfo>();
     private const string GAME_SCENE_NAME = "Game Scene";
     //[SerializeField] Button _quickMatchBTN;
 
@@ -36,26 +36,25 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     //{
     //    _quickMatchBTN.interactable |= CheckPlayersInGameStatus();
     //}
-    public bool IsPlayerInGame(Player player)
+    
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        if (player.CustomProperties.ContainsKey("IsInGame"))
-        {
-            return (bool)player.CustomProperties["IsInGame"];
-        }
-        return false;
+        _roomsList = roomList;
     }
-
-    // Example usage
-    public bool CheckPlayersInGameStatus()
+    bool CheckRoomList()
     {
-        foreach (Player player in PhotonNetwork.PlayerList)
+
+        if (_roomsList != null)
         {
-            bool isInGame = IsPlayerInGame(player);
-            if(isInGame)
-                return true;
-            Debug.Log($"Player {player.NickName} is in game: {isInGame}");
+            foreach (RoomInfo room in _roomsList)
+            {
+                if (room.CustomProperties.ContainsKey("IsInGame"))
+                {
+                    return (bool)room.CustomProperties["IsInGame"];
+                }
+            }
         }
-        return false;
+        return false ;
     }
     /// <summary>
     /// creates and enters room.
@@ -77,6 +76,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void QuickMatch()
     {
         //joins a random room.
+        if (!CheckRoomList())
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -94,11 +94,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         SearchingPlayersPanel.SetActive(true);
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
         {
-            ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable
-            {
-                { "IsInGame", true }
-            };
-            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
             photonView.RPC(nameof(LoadGame), RpcTarget.MasterClient);
         }
         RefreshPlayerCountTXT();
@@ -115,6 +110,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void LoadGame()
     {
+        ExitGames.Client.Photon.Hashtable roomProperties = new ExitGames.Client.Photon.Hashtable
+        {
+            { "IsInGame", true }
+        };
+        PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
         PhotonNetwork.LoadLevel(1);
     }
     /// <summary>
@@ -125,7 +125,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("<color=red>joined failed</color>");
-        if (!CheckPlayersInGameStatus())
             CreateRoom();
     }
     #endregion

@@ -37,11 +37,11 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(3f);
         PhotonNetwork.AutomaticallySyncScene = false;
-        ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable
+        ExitGames.Client.Photon.Hashtable roomProperties = new ExitGames.Client.Photon.Hashtable
         {
         { "IsInGame", false }
         };
-        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(roomProperties);
         PhotonNetwork.LeaveRoom();//
     }
     public override void OnLeftRoom()
