@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviourPun
     bool _startedFalling = false;
     bool _startedRangeAbility = false;
 
-    float Acceleration => MoveSpeed / _timeToAccelerate;
-    float Deceleration => MoveSpeed / _timeToDecelerate;
+    float Acceleration => _moveSpeed / _timeToAccelerate;
+    float Deceleration => _moveSpeed / _timeToDecelerate;
     float MoveSpeed => _moveSpeed * SpeedMod;
     float SpeedMod => _startedRangeAbility ? _speedWhileAimingModifier : 1f;
     float DelayTillFall => _delayTillFall;
