@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -15,11 +16,46 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject QuickMatchPanel;
 
     private const string GAME_SCENE_NAME = "Game Scene";
+    //[SerializeField] Button _quickMatchBTN;
 
+    //private void OnEnable()
+    //{
+    //    _quickMatchBTN.interactable = !CheckPlayersInGameStatus();
+    //}
+    
     private void RefreshPlayerCountTXT()
     {
         _currentRoomPlayersTXT.text = $"Found Players " +
             $"{string.Format("{0}/{1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers)}";
+    }
+    void RequestRoomList()
+    {
+        PhotonNetwork.GetCustomRoomList(TypedLobby.Default, "");
+    }
+    //public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    //{
+    //    _quickMatchBTN.interactable |= CheckPlayersInGameStatus();
+    //}
+    public bool IsPlayerInGame(Player player)
+    {
+        if (player.CustomProperties.ContainsKey("IsInGame"))
+        {
+            return (bool)player.CustomProperties["IsInGame"];
+        }
+        return false;
+    }
+
+    // Example usage
+    public bool CheckPlayersInGameStatus()
+    {
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            bool isInGame = IsPlayerInGame(player);
+            if(isInGame)
+                return true;
+            Debug.Log($"Player {player.NickName} is in game: {isInGame}");
+        }
+        return false;
     }
     /// <summary>
     /// creates and enters room.
@@ -27,8 +63,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void CreateRoom()
     {
         //set room options
-        RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_maxPlayersInRoom }; 
+        RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_maxPlayersInRoom};
+        roomOptions.EmptyRoomTtl = 0; // 1 minute (60000 milliseconds)
+        roomOptions.PlayerTtl = 0;
         //create and enter room
+
         PhotonNetwork.CreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions);
     }
     /// <summary>
@@ -40,12 +79,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //joins a random room.
         PhotonNetwork.JoinRandomRoom();
     }
+
     #region IMatchmakingCallbacks
     #region UsedCallBacks
     
     public override void OnCreatedRoom()
     {
-        //Debug.Log("room created" + PhotonNetwork.NetworkingClient.CurrentRoom.Name);
+        Debug.Log("room created" + PhotonNetwork.NetworkingClient.CurrentRoom.Name);
     }
     public override void OnJoinedRoom()
     {
@@ -53,7 +93,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         QuickMatchPanel.SetActive(false);
         SearchingPlayersPanel.SetActive(true);
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-            photonView.RPC(nameof(LoadGame),RpcTarget.MasterClient);
+        {
+            ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable
+            {
+                { "IsInGame", true }
+            };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+            photonView.RPC(nameof(LoadGame), RpcTarget.MasterClient);
+        }
         RefreshPlayerCountTXT();
     }
     public override void OnLeftRoom()
@@ -78,7 +125,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("<color=red>joined failed</color>");
-        CreateRoom();
+        if (!CheckPlayersInGameStatus())
+            CreateRoom();
     }
     #endregion
     #region UnusedCallBacks

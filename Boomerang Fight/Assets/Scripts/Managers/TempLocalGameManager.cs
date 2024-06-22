@@ -1,8 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class TempLocalGameManager : MonoBehaviour
+public class TempLocalGameManager : MonoBehaviourPunCallbacks
 {
     public static TempLocalGameManager Instance;
 
@@ -17,7 +19,10 @@ public class TempLocalGameManager : MonoBehaviour
     {
         playerCharacters.Add(go);
     }
-
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene(0);
+    }
     public GameObject GetPlayerGameObjectBasedOnID(int id)
     {
         foreach (var character in playerCharacters)
