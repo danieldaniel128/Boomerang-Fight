@@ -38,7 +38,7 @@ public class OnlinePlayer : MonoBehaviourPun
     private void Start()
     {
         Initialize();
-        TempLocalGameManager.Instance.AddPlayerCharacter(gameObject);
+        TempLocalGameManager.Instance.AddPlayerCharacter(this);
     }
     public void Initialize()
     {

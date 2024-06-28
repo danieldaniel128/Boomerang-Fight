@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 1562349585433992285}
   - component: {fileID: 879577194195712651}
   - component: {fileID: 1182163968275124313}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dino Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -978,6 +978,74 @@ MonoBehaviour:
   _baseDamage: 1
   _attackCollider: {fileID: 6763774625053604192}
   _showGizmos: 0
+--- !u!1 &5177662279676638777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3817152862802797522}
+  - component: {fileID: 7876457686908556898}
+  - component: {fileID: 422625205585703688}
+  m_Layer: 7
+  m_Name: AutoAimCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3817152862802797522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177662279676638777}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2268886858427433525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7876457686908556898
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177662279676638777}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 895
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &422625205585703688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177662279676638777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757d7d94988941c439bbdaf783b38bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 7876457686908556898}
+  targetTransforms: []
 --- !u!1 &5178514810636989025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,6 +1175,7 @@ Transform:
   - {fileID: 1219115255461585967}
   - {fileID: 2192621044312717717}
   - {fileID: 9043973978649211172}
+  - {fileID: 3817152862802797522}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1949292043620430676
@@ -1158,6 +1227,7 @@ MonoBehaviour:
   _vfxActivator: {fileID: 1419638241563305603}
   _playerCircleSprite: {fileID: 4089326688657950869}
   _boomerang: {fileID: 6437971786199756181}
+  _autoAimController: {fileID: 422625205585703688}
   _joystickCanvas: {fileID: 6546138126150159090}
   _moveJoystick: {fileID: 3737626569095463724}
   _AttackJoystick: {fileID: 1258259486007026078}
