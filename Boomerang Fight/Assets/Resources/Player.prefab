@@ -1044,8 +1044,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757d7d94988941c439bbdaf783b38bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 7876457686908556898}
-  targetTransforms: []
 --- !u!1 &5178514810636989025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,6 +5191,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 999286599406860383}
   m_SourcePrefab: {fileID: 100100000, guid: 92bb4d962b896eb4bb61f55cca848a98, type: 3}
+--- !u!137 &526287260689223516 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3659127255901873818, guid: 92bb4d962b896eb4bb61f55cca848a98,
+    type: 3}
+  m_PrefabInstance: {fileID: 3858014381116418502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1181138913415522134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2733214618528714384, guid: 92bb4d962b896eb4bb61f55cca848a98,
@@ -5235,6 +5239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c14dedc14747542a55b6d2aea5230f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 526287260689223516}
   shimmerMaterial: {fileID: 2100000, guid: 2e2b3753f2c7ed049922bd3ca7ef497c, type: 2}
 --- !u!1 &8640210604057242812 stripped
 GameObject:
