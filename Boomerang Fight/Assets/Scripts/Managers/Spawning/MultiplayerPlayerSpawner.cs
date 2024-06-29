@@ -16,6 +16,8 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     const string PLAYER_RESOURCE_NAME = "Player";
     const string SPAWN_POINTS_KEY = "SpawnPoints";
 
+    int playersSpawned = 0;
+
     List<string> PlayerColors = new()
     {
         "Orange",
@@ -25,6 +27,7 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     };
     private Dictionary<int, bool> spawnPointsHash = new Dictionary<int, bool>();
     public Action<int> OnRespawn;
+    public Action OnAllPlayersJoined;
 
     private void Awake()
     {
@@ -72,8 +75,26 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
     {
         //photon instantiate player object
         GameObject playerGameobject = PhotonNetwork.Instantiate(PLAYER_RESOURCE_NAME + PlayerColors[index], _spawnPoints[index].SpawnPosition, Quaternion.identity, 0);
+        photonView.RPC(nameof(MasterClientUpdatePlayerAmount), RpcTarget.MasterClient);
     }
 
+    [PunRPC]
+    void MasterClientUpdatePlayerAmount()
+    {
+        playersSpawned++;
+        print(playersSpawned + "/" + PhotonNetwork.CurrentRoom.PlayerCount + " players spawned");
+        if (playersSpawned == PhotonNetwork.CurrentRoom.PlayerCount)
+        {
+            photonView.RPC(nameof(CallOnAllPlayersJoined), RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    void CallOnAllPlayersJoined()
+    {
+        print("all players joined");
+        OnAllPlayersJoined.Invoke();
+    }
     /// <summary>
     /// set specific spawn point to unavailable or available and updates everyone.
     /// </summary>

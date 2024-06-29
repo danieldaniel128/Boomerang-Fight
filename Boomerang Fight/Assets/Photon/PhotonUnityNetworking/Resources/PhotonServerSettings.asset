@@ -72,6 +72,8 @@ MonoBehaviour:
   - TryRespawn
   - MasterGetSpawnPoint
   - OhHit
+  - MasterClientUpdatePlayerAmount
+  - CallOnAllPlayersJoined
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
