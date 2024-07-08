@@ -53,6 +53,7 @@ public class VFXTransitioner : MonoBehaviourPun
     #region Local
     private void TriggerVFX(int vfxIndex)
     {
+        _vFXTransitions[vfxIndex].gameObject.SetActive(false);
         _vFXTransitions[vfxIndex].gameObject.SetActive(true);
         StartCoroutine(FinishTriggerCoroutine(_vFXTransitions[vfxIndex].gameObject));
     }
@@ -65,6 +66,7 @@ public class VFXTransitioner : MonoBehaviourPun
     [PunRPC]
     private void SyncTriggerVFX(int vfxIndex)
     {
+        _vFXTransitions[vfxIndex].gameObject.SetActive(false);
         _vFXTransitions[vfxIndex].gameObject.SetActive(true);
         StartCoroutine(FinishTriggerCoroutine(_vFXTransitions[vfxIndex].gameObject));
     }

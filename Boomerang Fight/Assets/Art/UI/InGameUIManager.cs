@@ -3,7 +3,9 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameUIManager : MonoBehaviourPun
 {
@@ -39,7 +41,7 @@ public class InGameUIManager : MonoBehaviourPun
         StartCoroutine(ShowFeedCoroutine(_eliminatorFeed, _showEliminatorTime));
     }
 
-    private IEnumerator ShowFeedCoroutine(GameObject feedObject,float showFeedTime)
+    private IEnumerator ShowFeedCoroutine(GameObject feedObject, float showFeedTime)
     {
         feedObject.SetActive(true);
         yield return new WaitForSeconds(showFeedTime);
@@ -101,4 +103,5 @@ public class InGameUIManager : MonoBehaviourPun
     }
 
     #endregion Respawning
+
 }

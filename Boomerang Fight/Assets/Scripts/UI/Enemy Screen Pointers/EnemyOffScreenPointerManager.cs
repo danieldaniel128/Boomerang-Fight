@@ -30,6 +30,9 @@ public class EnemyOffScreenPointerManager : MonoBehaviourPun
             if (!pointer.gameObject.activeInHierarchy)
                 continue;
 
+            if (pointer.TargetPlayer == null)
+                continue;
+
             //if player body is off, deactivate pointer.
             if (!pointer.TargetPlayer.PlayerControllerRef.PlayerBody.activeInHierarchy)
             {

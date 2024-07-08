@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UpdateHPBarUI : MonoBehaviourPun
@@ -20,16 +21,17 @@ public class UpdateHPBarUI : MonoBehaviourPun
     [Header("Utilities")]
     [SerializeField] Transform _bufferEnemyParent;
     [SerializeField] Transform _bufferPlayerParent;
-    [SerializeField] GameObject _playerBufferPrefab;
-    [SerializeField] GameObject _enemyBufferPrefab;
+    [SerializeField] Image _playerBufferPrefab;
+    [SerializeField] Image _enemyBufferPrefab;
     [SerializeField] private Canvas _healthBar_Canvas;
     [SerializeField] private Health _playerHealth;
     [Header("Monitors")]
-    [SerializeField] GameObject _bufferPrefab;
+    [SerializeField] Image _bufferPrefab;
     [SerializeField] Transform _bufferParent;
     [SerializeField] private Slider _currentHealthBar_Slider;
     [SerializeField] private TMP_Text _currentLivesCount_TMP;
 
+    public UnityEvent<Image> OnHandleCreated = new();
 
     // Function to update the health bar material
     private void Start()
@@ -64,7 +66,9 @@ public class UpdateHPBarUI : MonoBehaviourPun
     {
         for (int i = 0; i < _playerHealth.MaxHP - 1; i++)
         {
-            Instantiate(_bufferPrefab, _bufferParent);
+            Image newHandle = Instantiate(_bufferPrefab, _bufferParent);
+            OnHandleCreated.Invoke(newHandle);
+            //add divider to ui to flash
         }
     }
     public void UpdateOnHealthChangedEvent(float newHP,float maxHP)
