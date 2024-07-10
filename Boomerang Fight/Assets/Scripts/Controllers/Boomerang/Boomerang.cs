@@ -85,7 +85,6 @@ public class Boomerang : MonoBehaviourPun
             {
                 OnlinePlayer player = other.attachedRigidbody.gameObject.GetComponent<OnlinePlayer>();
                 player.TryTakeDamage(_damage);
-                player.PlayerControllerRef.VFXTransitioner.ActivateVFX(VFXTypeEnum.HittingEnemy);
             }
     }
     private void OnCollisionEnter(Collision collision)

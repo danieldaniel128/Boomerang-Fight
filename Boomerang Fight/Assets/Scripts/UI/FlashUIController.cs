@@ -25,7 +25,6 @@ public class FlashUIController : MonoBehaviour
         {
             i.material.SetFloat("_FlashAmount", 1f);
             i.material.DOFloat(0f, "_FlashAmount", _flashDuration).SetEase(Ease.InSine);
-            print(i.name);
         }
         foreach (var s in _SpritesToFlash)
         {

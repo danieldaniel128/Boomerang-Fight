@@ -113,8 +113,7 @@ public class Health : MonoBehaviourPun
     private void OhHit()
     {
         OnHitEvent.Invoke();
-        print("on hit " + gameObject.name);
-        GetComponent<OnlinePlayer>().PlayerControllerRef.VFXTransitioner.ActivateVFX(VFXTypeEnum.HittingEnemy);
+        GetComponent<OnlinePlayer>().PlayerControllerRef.VFXTransitioner.ActivateVFX(VFXTypeEnum.HittingEnemy,true);
         if (!photonView.IsMine)
             return;
 
