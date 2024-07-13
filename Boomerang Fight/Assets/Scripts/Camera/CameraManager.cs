@@ -11,7 +11,6 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] CameraFollow cameraFollow;
     [SerializeField] CameraShake cameraShake;
-
     public CameraShake CameraShakeRef => cameraShake;
     public CameraFollow CameraFollowRef => cameraFollow;
 
@@ -32,6 +31,6 @@ public class CameraManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        cameraFollow.CameraFollowUpdate();
+        cameraFollow.FollowTarget();
     }
 }
