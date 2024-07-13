@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviourPun
             _playerCircleSprite.color = new Color(108f / 255f, 145f / 255f, 187f / 255f, 184f / 255f);//6C91BB
             //set camera follow to my player
             CameraManager.Instance.CameraFollowRef.SetTarget(_playerBody.transform);
+            CameraManager.Instance.CameraFollowRef.SetFollowTime(3);
             _rangeAbility.OnDataRecieved += InitializeAutoAim;
         }
     }
