@@ -10,7 +10,7 @@ public class FlashUIController : MonoBehaviour
     [SerializeField] List<Image> _ImagesToFlash = new();
     [SerializeField] List<SpriteRenderer> _SpritesToFlash = new();
     [SerializeField] float _flashDuration = 0.7f;
-
+    [SerializeField] float _peakFlashAmount = 0.8f;
     private void OnEnable()
     {
         InitializeFlashMaterial();
@@ -23,12 +23,12 @@ public class FlashUIController : MonoBehaviour
     {
         foreach (var i in _ImagesToFlash)
         {
-            i.material.SetFloat("_FlashAmount", 1f);
+            i.material.SetFloat("_FlashAmount", _peakFlashAmount);
             i.material.DOFloat(0f, "_FlashAmount", _flashDuration).SetEase(Ease.InSine);
         }
         foreach (var s in _SpritesToFlash)
         {
-            s.material.SetFloat("_FlashAmount", 1f);
+            s.material.SetFloat("_FlashAmount", _peakFlashAmount);
             s.material.DOFloat(0f, "_FlashAmount", _flashDuration).SetEase(Ease.InSine);
         }
     }

@@ -285671,7 +285671,7 @@ PrefabInstance:
     - target: {fileID: 6535061152000378284, guid: 3ea9a479c3cd6ff48bcf5887ec9c7ccb,
         type: 3}
       propertyPath: m_Name
-      value: Elad Rendered Map
+      value: Rendered Map
       objectReference: {fileID: 0}
     - target: {fileID: 6535061152000378284, guid: 3ea9a479c3cd6ff48bcf5887ec9c7ccb,
         type: 3}

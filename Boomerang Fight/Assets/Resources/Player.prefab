@@ -1805,6 +1805,7 @@ MonoBehaviour:
   _SpritesToFlash:
   - {fileID: 4089326688657950869}
   _flashDuration: 0.7
+  _peakFlashAmount: 0.8
 --- !u!1 &7273053905900754608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,7 +2095,7 @@ PrefabInstance:
     - target: {fileID: 6820703380817466682, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: m_Name
-      value: Elad Boomerang
+      value: Boomerang
       objectReference: {fileID: 0}
     - target: {fileID: 6820703380817466682, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
@@ -2494,6 +2495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953957610617961573, guid: b5e15d70f073b62488bfa1af72a225de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.51
       objectReference: {fileID: 0}
     - target: {fileID: 4532304769358922513, guid: b5e15d70f073b62488bfa1af72a225de,
         type: 3}
