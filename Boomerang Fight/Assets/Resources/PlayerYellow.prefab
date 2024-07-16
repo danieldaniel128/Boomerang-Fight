@@ -109,6 +109,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3752eaa5c67f5a94a83f44257d80aa1e, type: 2}
+    - target: {fileID: 1559992962702580600, guid: be63c66fea0b98844a61870527b50878,
+        type: 3}
+      propertyPath: _playerBoomerang
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2268886858427433525, guid: be63c66fea0b98844a61870527b50878,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -255,7 +260,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5519981084497024656, guid: be63c66fea0b98844a61870527b50878, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2268886858427433525, guid: be63c66fea0b98844a61870527b50878,
         type: 3}

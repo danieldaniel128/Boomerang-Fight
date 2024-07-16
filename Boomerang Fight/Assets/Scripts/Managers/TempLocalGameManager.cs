@@ -1,34 +1,50 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class TempLocalGameManager : MonoBehaviour
+public class TempLocalGameManager : MonoBehaviourPunCallbacks
 {
     public static TempLocalGameManager Instance;
 
-    [SerializeField] List<GameObject> playerCharacters = new();
+    [SerializeField] List<OnlinePlayer> playerCharacters = new();
+
+    public List<OnlinePlayer> PlayerCharacters => playerCharacters;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void AddPlayerCharacter(GameObject go)
+    public void AddPlayerCharacter(OnlinePlayer player)
     {
-        playerCharacters.Add(go);
+        playerCharacters.Add(player);
     }
-
-    public GameObject GetPlayerCharacterBasedOnID(int id)
+    public override void OnLeftRoom()
     {
-        foreach (var character in playerCharacters)
+        SceneManager.LoadScene(0);
+    }
+    //public GameObject GetPlayerGameObjectBasedOnID(int id)
+    //{
+    //    foreach (var character in playerCharacters)
+    //    {
+    //        if(character.TryGetComponent(out OnlinePlayer currentPlayer))
+    //        {
+    //            if(currentPlayer.ID == id)
+    //            {
+    //                return character;
+    //            }
+    //        }
+    //    }
+    //    return null;
+    //}
+
+    public OnlinePlayer GetOnlinePlayer(int id)
+    {
+        foreach(var player in playerCharacters)
         {
-            if(character.TryGetComponent(out OnlinePlayer currentPlayer))
-            {
-                if(currentPlayer.ID == id)
-                {
-                    return character;
-                }
-            }
+            if (player.ID == id) return player;
         }
         return null;
     }

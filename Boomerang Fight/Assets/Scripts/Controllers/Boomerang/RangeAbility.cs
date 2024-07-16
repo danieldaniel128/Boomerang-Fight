@@ -17,10 +17,13 @@ public class RangeAbility : AttackAbility//interface of attacks
     float _chargeTimer = 0;
     [Header("Actions")]
     public Action OnBoomerangReleased;
+    public Action OnDataRecieved;
 
     Vector3 _attackDirectionVector = Vector3.forward;
     StopwatchTimer _chargeStopwatch;
     public bool Aimed {  get; set; }
+    public float MinAttackRange => _minAttackRange;
+    public float MaxAttackRange => _maxAttackRange;
 
     private void Start()
     {
@@ -57,6 +60,7 @@ public class RangeAbility : AttackAbility//interface of attacks
         _minAttackRange = rangeAbilityData.MinAttackRange;
         _timeTillMaxCharge = rangeAbilityData.TimeTillMaxCharge;
         _baseDamage = rangeAbilityData.Damage;
+        OnDataRecieved.Invoke();
     }
     #endregion Ability Overrides
 

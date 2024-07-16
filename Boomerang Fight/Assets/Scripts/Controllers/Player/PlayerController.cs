@@ -25,10 +25,12 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] PlayerAnimationController _playerAnimationController;
     [SerializeField] VFXTransitioner _vfxActivator;
     [SerializeField] SpriteRenderer _playerCircleSprite;
-
+    [SerializeField] Boomerang _boomerang;
+    [SerializeField] AutoAimController _autoAimController;
+    public Boomerang PlayerBoomerang => _boomerang;
+    public PlayerAnimationController AnimationController => _playerAnimationController;
     public GameObject PlayerBody { get { return _playerBody; } private set { _playerBody = value; } }
     public VFXTransitioner VFXTransitioner { get { return _vfxActivator; } private set { _vfxActivator = value; } }
-    [SerializeField] Boomerang _boomerang;
     [Header("JoySticks Set-UP")]
     [SerializeField] GameObject _joystickCanvas;
     [SerializeField] Joystick _moveJoystick;
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float _groundDistanceCheck;
     [SerializeField] float _delayTillFall = 0.3f;
     [SerializeField] float _delayTillCantMove = 0.3f;
-    
+
     [Header("Actions")]
     public UnityEvent OnRecall;
     public Action OnChargeStart; //for activating indicators
@@ -66,8 +68,8 @@ public class PlayerController : MonoBehaviourPun
     bool _startedFalling = false;
     bool _startedRangeAbility = false;
 
-    float Acceleration => MoveSpeed / _timeToAccelerate;
-    float Deceleration => MoveSpeed / _timeToDecelerate;
+    float Acceleration => _moveSpeed / _timeToAccelerate;
+    float Deceleration => _moveSpeed / _timeToDecelerate;
     float MoveSpeed => _moveSpeed * SpeedMod;
     float SpeedMod => _startedRangeAbility ? _speedWhileAimingModifier : 1f;
     float DelayTillFall => _delayTillFall;
@@ -94,9 +96,11 @@ public class PlayerController : MonoBehaviourPun
         else
         {
             gameObject.layer = 3;//player layer
+            _bodyCollider.gameObject.layer = 3;
             _playerCircleSprite.color = new Color(108f / 255f, 145f / 255f, 187f / 255f, 184f / 255f);//6C91BB
             //set camera follow to my player
             CameraManager.Instance.CameraFollowRef.SetTarget(_playerBody.transform);
+            _rangeAbility.OnDataRecieved += InitializeAutoAim;
         }
     }
     private void OnEnable()
@@ -132,7 +136,7 @@ public class PlayerController : MonoBehaviourPun
 
         if (_dashAbility.InDash && 1 - _dashAbility.DashDuration.Progress < 0.7f)
         {
-            _dashAbility.DashDuration.Stop();
+            _dashAbility.StopDash();
             _playerAnimationController.DashHitWallTrigger();
         }
         print("dash disabled");
@@ -259,8 +263,8 @@ public class PlayerController : MonoBehaviourPun
                 _playerAnimationController.FallingTrigger();
             }
 
-            if(_fallTimer >= _delayTillCantMove)
-                _rb.velocity = Vector3.zero;
+            if (_fallTimer >= _delayTillCantMove)
+                StopVelocity();
         }
 
         if (_fallTimer > DelayTillFall)
@@ -268,6 +272,11 @@ public class PlayerController : MonoBehaviourPun
             print("player " + gameObject.name + "is falling");
             _falling = true;
         }
+    }
+
+    public void StopVelocity()
+    {
+        _rb.velocity = Vector3.zero;
     }
 
     private void FallEnded()
@@ -278,6 +287,7 @@ public class PlayerController : MonoBehaviourPun
         _falling = false;
         _fallTimer = 0f;
         playerHealth.KillPlayer();
+        this.enabled = false;
     }
 
     private void LocalPlayerControlUpdate()
@@ -325,6 +335,17 @@ public class PlayerController : MonoBehaviourPun
             return;
 
         print("used range ability (joystick up)");
+
+        if (!_rangeAbility.Aimed)
+        {
+            //aim at nearest enemy within min range
+            Vector3 targetPos = _autoAimController.GetNearestTarget();
+            if (targetPos != Vector3.zero)
+            {
+                _attackDirection = (targetPos - transform.position).normalized;
+                _rangeAbility.CalculateAttackDirection(_attackDirection);
+            }
+        }
 
         StopRangeAbility();
         FaceThrowDirection();
@@ -394,7 +415,7 @@ public class PlayerController : MonoBehaviourPun
     //called by external button
     public void UseDashAbility()
     {
-        if(_falling) return;
+        if (_falling) return;
         _dashAbility.TryStartDash();
     }
     private void HandleDash()
@@ -403,6 +424,11 @@ public class PlayerController : MonoBehaviourPun
         _dashAbility.UpdateDashDirection(inputDirection);
     }
     #endregion Dash Ability
+
+    void InitializeAutoAim()
+    {
+        _autoAimController.SetRange(_rangeAbility.MaxAttackRange);
+    }
 
     void ToggleVisualBoomerang()
     {

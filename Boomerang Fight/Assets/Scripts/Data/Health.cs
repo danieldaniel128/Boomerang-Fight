@@ -1,12 +1,13 @@
 using ExitGames.Client.Photon;
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class Health : MonoBehaviourPun
+public class Health : MonoBehaviourPunCallbacks
 {
     [SerializeField] private float _currentHP;
     [SerializeField] private float _maxHP;
@@ -36,11 +37,15 @@ public class Health : MonoBehaviourPun
     }
     public float MaxHP { get { return _maxHP; } private set { _maxHP = value; } }
     public bool IsDead { get; private set; }
+    public GameObject HealthBarObject => _healthBarObject;
     //public UnityEvent<float,float> OnValueChanged;
     public UnityEvent OnDeath;
 
+    public UnityEvent OnHitEvent;
+
     private void Start()
     {
+        PhotonNetwork.AutomaticallySyncScene = false;
         OnLivesCountChangedEvent?.Invoke(LivesCount);
     }
 
@@ -88,7 +93,7 @@ public class Health : MonoBehaviourPun
     [PunRPC]
     private void MasterUpdateHealth(float newHealth)
     {
-        photonView.RPC(nameof(VibrateOhHit), RpcTarget.All);
+        photonView.RPC(nameof(OhHit), RpcTarget.All);
 
         if (newHealth <= 0)
         {
@@ -96,23 +101,32 @@ public class Health : MonoBehaviourPun
             OnDeath?.Invoke();
         }
         else
+        {
             photonView.RPC(nameof(SyncHealth), RpcTarget.All, newHealth);
+        }
     }
 
     private void RemovePlayer()
     {
-        StartCoroutine(OnlineGameManager.LeaveGameCoroutine());
+        StartCoroutine(LeaveGameCoroutine());
+    }
+    public IEnumerator LeaveGameCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        PhotonNetwork.LeaveRoom();
     }
 
     [PunRPC]
-    private void VibrateOhHit()
+    private void OhHit()
     {
+        OnHitEvent.Invoke();
+        GetComponent<OnlinePlayer>().PlayerControllerRef.VFXTransitioner.ActivateVFX(VFXTypeEnum.HittingEnemy,true);
         if (!photonView.IsMine)
             return;
 
-        #if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS
         Handheld.Vibrate();
-        #endif
+#endif
         CameraManager.Instance.CameraShakeRef.ShakeCamera();
     }
 
@@ -121,13 +135,15 @@ public class Health : MonoBehaviourPun
     {
         // Update health for remote players
         CurrentHP = newHealth;
-        //StartCoroutine(InvincibleFromHitCoroutine());
+        
     }
 
     [PunRPC]
     public void CallOnDeath()
     {
         LivesCount--;
+        TogglePlayerBodyAndHealth(false);
+
         if (LivesCount <= 0)
         {
             IsDead = true;
@@ -136,39 +152,29 @@ public class Health : MonoBehaviourPun
                 OnLivesCountZero?.Invoke();
                 RemovePlayer();
             }
-            TogglePlayerBodyAndHealth(false);
             return;
 
         }
+
+        CurrentHP = MaxHP;
         if (photonView.IsMine)
-            StartRespawn();
+        {
+            OnlinePlayer onlinePlayer = TempLocalGameManager.Instance.GetOnlinePlayer(photonView.OwnerActorNr);
+            onlinePlayer.GameUIManager.PlayerDeath();
+            onlinePlayer.PlayerControllerRef.PlayerBoomerang.Attach();
+            onlinePlayer.PlayerControllerRef.StopVelocity();
+            onlinePlayer.PlayerControllerRef.enabled = false;
+        }
     }
 
-    private void TogglePlayerBodyAndHealth(bool enabled)
+    public void TogglePlayerBodyAndHealth(bool enabled)
     {
         gameObject.GetComponent<PlayerController>().PlayerBody.SetActive(enabled);
         _healthBarObject.SetActive(enabled);
     }
 
-    IEnumerator InvincibleFromHitCoroutine()
-    {
-        _isInvincible = true;
-        yield return new WaitForSeconds(2f);
-        _isInvincible = false;
-    }
-    public void StartRespawn()
-    {
-        //TODO enable respawning UI, remove controls UI.
-        //TODO start countdown instead of respawning straight away
-        photonView.RPC(nameof(TryRespawn), RpcTarget.AllViaServer);
-    }
 
-    [PunRPC]
-    private void TryRespawn()
-    {
-        CurrentHP = MaxHP;
-        MultiplayerPlayerSpawner.Instance.Respawn(photonView.OwnerActorNr);
-    }
+
 
     public void SetHealth(float health)
     {

@@ -347915,6 +347915,11 @@ PrefabInstance:
       propertyPath: _spawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 1311619704}
+    - target: {fileID: 1802465709043870328, guid: 1698379cc1831df43a004b5fd5d23eed,
+        type: 3}
+      propertyPath: _spawnInvincibilityDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3682114198595103951, guid: 1698379cc1831df43a004b5fd5d23eed,
         type: 3}
       propertyPath: sceneViewId
@@ -348002,6 +348007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf82b0f3a3829b4dae19e5758b46f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCharacters: []
 --- !u!1 &8892071034598065632
 GameObject:
   m_ObjectHideFlags: 0
