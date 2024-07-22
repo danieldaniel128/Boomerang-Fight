@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f02694d82368744b91edaa026fb8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxPlayersInRoom: 4
+  _maxPlayersInRoom: 2
   _currentRoomPlayersTXT: {fileID: 1989399774}
   SearchingPlayersPanel: {fileID: 1586817660}
   QuickMatchPanel: {fileID: 1069420653}
@@ -4889,7 +4889,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c3b9a65d6959334fb3952663cbf0fc0, type: 2}
   m_sharedMaterial: {fileID: 7034674610670283448, guid: 2c3b9a65d6959334fb3952663cbf0fc0,
