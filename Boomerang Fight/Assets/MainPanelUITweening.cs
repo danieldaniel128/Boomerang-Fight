@@ -9,10 +9,10 @@ public class MainPanelUITweening : MonoBehaviour
     [SerializeField] RectTransform[] DownTransforms;
     [SerializeField] RectTransform[] LeftTransforms;
     [SerializeField] RectTransform[] RightTransforms;
-    [SerializeField] float minTweenTime = 0.2f;
-    [SerializeField] float maxTweenTime = 0.5f;
-    [SerializeField] float outOfScreenDistance = 200;
-    [SerializeField] Ease easingType = Ease.OutElastic;
+    [SerializeField] float minTweenTime = .7f;
+    [SerializeField] float maxTweenTime = .7f;
+    [SerializeField] float outOfScreenDistance = 250;
+    [SerializeField] Ease easingType = Ease.OutSine;
     float RandomTweenTime => Random.Range(minTweenTime, maxTweenTime);
     float RandomBounceOverShootAmount => Random.Range(0f, 1f);
 
