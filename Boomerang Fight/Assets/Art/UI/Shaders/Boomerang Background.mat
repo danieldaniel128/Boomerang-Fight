@@ -31,8 +31,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: 2b680064ef1cd704ca76c345587f8f6c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2b680064ef1cd704ca76c345587f8f6c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_17d77965d5a34a7eabce1bfb0a4d9d2d_Texture_1_Texture2D:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_f3ed872782cd4a92bc40db5b91a49ff3_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 2b680064ef1cd704ca76c345587f8f6c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -54,6 +62,7 @@ Material:
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
     - _Blend: 0
+    - _Boomerang_Size: 0.25
     - _CastShadows: 1
     - _Cull: 2
     - _DecalMeshBiasType: 0
@@ -62,15 +71,21 @@ Material:
     - _DrawOrder: 0
     - _DstBlend: 10
     - _Fullscreen_DepthWrite: 0
-    - _Move_Speed: -0.02
-    - _Offset_TIles: 0.5
+    - _Move_Speed: 0.05
+    - _Offset_TIles: 0.4
+    - _Offset_TIles_X: 0.5
+    - _Offset_Tiles_X: 0.5
+    - _Offset_Tiles_Y: 0.5
     - _Opacity: 0.05
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Rotate_UV: 0
     - _SrcBlend: 5
     - _Surface: 1
-    - _Tiles: 0.755
+    - _Tile_Size: 0.35
+    - _Tile_Size_X: 0.5
+    - _Tile_Size_Y: 0.2
+    - _Tiles: 0.2
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
