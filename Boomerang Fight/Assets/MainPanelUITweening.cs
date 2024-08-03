@@ -13,57 +13,148 @@ public class MainPanelUITweening : MonoBehaviour
     [SerializeField] float maxTweenTime = .7f;
     [SerializeField] float outOfScreenDistance = 250;
     [SerializeField] Ease easingType = Ease.OutSine;
+
     float RandomTweenTime => Random.Range(minTweenTime, maxTweenTime);
     float RandomBounceOverShootAmount => Random.Range(0f, 1f);
 
+    Dictionary<RectTransform, Vector2> transformInitialPosDictionary = new();
+
+
     private void OnEnable()
     {
-        TweenTransformsOnScreen();
+        SetTransformOffScreen(TweenDirection.Up);
+        SetTransformOffScreen(TweenDirection.Right);
+        SetTransformOffScreen(TweenDirection.Left);
+        SetTransformOffScreen(TweenDirection.Down);
+
+        StartCoroutine(TweenTransformsOnScreen());
     }
 
-    [ContextMenu("Tween UI")]
-    void TweenTransformsOnScreen()
+
+    IEnumerator TweenTransformsOnScreen()
     {
-        TweenUpUI();
-        TweenDownUI();
-        TweenLeftUI();
-        TweenRightUI();
+        //List<Sequence> sequences = new List<Sequence>();
+        //sequences.Add(TweenDirectionalUI(TweenDirection.Right));
+        //sequences.Add(TweenDirectionalUI(TweenDirection.Up));
+        //sequences.Add(TweenDirectionalUI(TweenDirection.Down));
+        //sequences.Add(TweenDirectionalUI(TweenDirection.Left));
+
+        //sequences[0].Play().SetEase(easingType);
+        //yield return new WaitForSecondsRealtime(1f);
+        //sequences[1].Play().SetEase(easingType);
+        ////yield return new WaitForSeconds(0.1f);
+        //sequences[2].Play().SetEase(easingType);
+        //yield return new WaitForSecondsRealtime(1f);
+        //sequences[3].Play().SetEase(easingType);
+
+
+
+        TweenTransformOnScreen(TweenDirection.Up);
+        yield return new WaitForSecondsRealtime(0.25f);
+        TweenTransformOnScreen(TweenDirection.Right);
+        TweenTransformOnScreen(TweenDirection.Left);
+        yield return new WaitForSecondsRealtime(0.2f);
+        TweenTransformOnScreen(TweenDirection.Down);
+
     }
 
-    private void TweenUpUI()
+    void SetTransformOffScreen(TweenDirection dir)
     {
-        foreach (RectTransform t in UpTransforms)
+        RectTransform[] rectTransforms = GetTransformsFromDirection(dir);
+        Vector2 offScreenDirection = GetOffScreenDirectionVector(dir);
+        foreach (RectTransform t in rectTransforms)
         {
             Vector2 initPos = t.anchoredPosition;
-            t.anchoredPosition = new Vector2(t.anchoredPosition.x, t.anchoredPosition.y + outOfScreenDistance);
-            t.DOAnchorPos(initPos, RandomTweenTime).SetEase(easingType);
+            transformInitialPosDictionary.Add(t, initPos);
+            t.anchoredPosition += offScreenDirection;
+            //t.DOAnchorPos(initPos, RandomTweenTime).SetEase(easingType);
         }
     }
-    private void TweenDownUI()
+
+    void TweenTransformOnScreen(TweenDirection dir)
     {
-        foreach (RectTransform t in DownTransforms)
+        RectTransform[] rectTransforms;
+        switch (dir)
         {
-            Vector2 initPos = t.anchoredPosition;
-            t.anchoredPosition = new Vector2(t.anchoredPosition.x, t.anchoredPosition.y - outOfScreenDistance);
-            t.DOAnchorPos(initPos, RandomTweenTime).SetEase(easingType);
+            case TweenDirection.Up:
+                rectTransforms = UpTransforms;
+                break;
+            case TweenDirection.Right:
+                rectTransforms = RightTransforms;
+                break;
+            case TweenDirection.Left:
+                rectTransforms = LeftTransforms;
+                break;
+            case TweenDirection.Down:
+                rectTransforms = DownTransforms;
+                break;
+            default:
+                return;
+        }
+
+        foreach(var t in rectTransforms)
+        {
+            Vector2 pos;
+            transformInitialPosDictionary.TryGetValue(t, out pos);
+            t.DOAnchorPos(pos, RandomTweenTime).SetEase(easingType);
         }
     }
-    private void TweenLeftUI()
+
+    Sequence TweenDirectionalUI(TweenDirection dir)
     {
-        foreach (RectTransform t in LeftTransforms)
+        var sequence = DOTween.Sequence();
+
+        RectTransform[] rectTransforms = GetTransformsFromDirection(dir);
+        Vector2 offScreenDirection = GetOffScreenDirectionVector(dir);
+        foreach (RectTransform t in rectTransforms)
         {
             Vector2 initPos = t.anchoredPosition;
-            t.anchoredPosition = new Vector2(t.anchoredPosition.x - outOfScreenDistance, t.anchoredPosition.y);
-            t.DOAnchorPos(initPos, RandomTweenTime).SetEase(easingType);
+            t.anchoredPosition += offScreenDirection;
+            sequence.Join(t.DOAnchorPos(initPos, RandomTweenTime));
+        }
+        return sequence;
+    }
+    
+
+    Vector2 GetOffScreenDirectionVector(TweenDirection dir)
+    {
+        switch (dir)
+        {
+            case TweenDirection.Up:
+                return Vector2.up * outOfScreenDistance;
+            case TweenDirection.Right:
+                return Vector2.right * outOfScreenDistance;
+            case TweenDirection.Left:
+                return Vector2.left * outOfScreenDistance;
+            case TweenDirection.Down:
+                return Vector2.down * outOfScreenDistance;
+            default:
+                return Vector2.zero;
         }
     }
-    private void TweenRightUI()
+
+
+    RectTransform[] GetTransformsFromDirection(TweenDirection dir)
     {
-        foreach (RectTransform t in RightTransforms)
+        switch (dir)
         {
-            Vector2 initPos = t.anchoredPosition;
-            t.anchoredPosition = new Vector2(t.anchoredPosition.x + outOfScreenDistance, t.anchoredPosition.y);
-            t.DOAnchorPos(initPos, RandomTweenTime).SetEase(easingType);
+            case TweenDirection.Up:
+                return UpTransforms;
+            case TweenDirection.Right:
+                return RightTransforms;
+            case TweenDirection.Left:
+                return LeftTransforms;
+            case TweenDirection.Down:
+                return DownTransforms;
+            default: return null;
         }
+    }
+
+    enum TweenDirection
+    {
+        Up,
+        Right,
+        Left,
+        Down
     }
 }

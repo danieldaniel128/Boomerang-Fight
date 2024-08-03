@@ -73,7 +73,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomOptions.EmptyRoomTtl = 0; // 1 minute (60000 milliseconds)
         roomOptions.PlayerTtl = 0;
         //create and enter room
-
         PhotonNetwork.CreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions);
     }
     /// <summary>
