@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Heart Number
-  m_Shader: {fileID: 4800000, guid: c3015d70b8dda4144843441b79be7d9b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: -8089506268120072075, guid: f841c74ca1141c94a8431a2079b2a50b,
     type: 2}
   m_ModifiedSerializedProperties: 0
@@ -27,7 +27,11 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _UnderlayDilate: -0.62
+    - _ScaleRatioA: 0.98039216
+    - _ScaleRatioB: 0.79656863
+    - _ScaleRatioC: 0.79656863
+    - _UnderlayDilate: 0.05
     m_Colors:
-    - _UnderlayColor: {r: 0, g: 0.09084173, b: 0.19120172, a: 1}
+    - _UnderlayColor: {r: 0, g: 0.34705403, b: 0.50314456, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

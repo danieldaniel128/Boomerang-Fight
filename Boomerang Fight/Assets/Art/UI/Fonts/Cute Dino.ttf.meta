@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Cute Dino
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6b43d00efe58b164391ca35f07c5b8cf, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

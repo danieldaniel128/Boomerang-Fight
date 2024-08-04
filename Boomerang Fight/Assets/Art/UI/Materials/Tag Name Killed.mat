@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tag Name Killed
-  m_Shader: {fileID: 4800000, guid: c3015d70b8dda4144843441b79be7d9b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: -8089506268120072075, guid: f841c74ca1141c94a8431a2079b2a50b,
     type: 2}
   m_ModifiedSerializedProperties: 0
@@ -30,13 +30,16 @@ Material:
     m_Floats:
     - _CullMode: 0
     - _OutlineSoftness: 0
+    - _OutlineWidth: 0
     - _ScaleRatioA: 1
+    - _ScaleRatioB: 1
     - _ScaleRatioC: 1
     - _Sharpness: 1
-    - _UnderlayDilate: 0.27
+    - _UnderlayDilate: 0.52
     - _UnderlayOffsetX: 0
     - _UnderlayOffsetY: 0
     - _UnderlaySoftness: 0
     m_Colors:
-    - _UnderlayColor: {r: 0.19806935, g: 0.000607054, b: 0.001214108, a: 1}
+    - _UnderlayColor: {r: 0.45911938, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
