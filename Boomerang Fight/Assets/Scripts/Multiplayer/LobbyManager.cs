@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    private const string GAME_SCENE_NAME = "Game Scene";
+
     [Header("room settings/monitors")]
     [SerializeField] private int _maxPlayersInRoom = 4;
     [SerializeField] private TextMeshProUGUI _currentRoomPlayersTXT;
@@ -15,14 +17,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject SearchingPlayersPanel;
     [SerializeField] private GameObject QuickMatchPanel;
     List<RoomInfo> _roomsList = new List<RoomInfo>();
-    private const string GAME_SCENE_NAME = "Game Scene";
     //[SerializeField] Button _quickMatchBTN;
 
     //private void OnEnable()
     //{
     //    _quickMatchBTN.interactable = !CheckPlayersInGameStatus();
     //}
-    
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        QuickMatchPanel.SetActive(true);
+    }
+
     private void RefreshPlayerCountTXT()
     {
         _currentRoomPlayersTXT.text = $"Found Players " +
@@ -66,7 +73,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomOptions.EmptyRoomTtl = 0; // 1 minute (60000 milliseconds)
         roomOptions.PlayerTtl = 0;
         //create and enter room
-
         PhotonNetwork.CreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions);
     }
     /// <summary>
