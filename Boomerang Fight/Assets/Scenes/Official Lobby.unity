@@ -3379,7 +3379,7 @@ MonoBehaviour:
   minTweenTime: 0.7
   maxTweenTime: 0.7
   outOfScreenDistance: 250
-  easingType: 3
+  easingType: 9
 --- !u!1 &1112778078
 GameObject:
   m_ObjectHideFlags: 0

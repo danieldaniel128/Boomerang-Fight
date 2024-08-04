@@ -50,10 +50,10 @@ public class MainPanelUITweening : MonoBehaviour
 
 
         TweenTransformOnScreen(TweenDirection.Up);
-        yield return new WaitForSecondsRealtime(0.25f);
+        yield return new WaitForSecondsRealtime(0.15f);
         TweenTransformOnScreen(TweenDirection.Right);
         TweenTransformOnScreen(TweenDirection.Left);
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.15f);
         TweenTransformOnScreen(TweenDirection.Down);
 
     }

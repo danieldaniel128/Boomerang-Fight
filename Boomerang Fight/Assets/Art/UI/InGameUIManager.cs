@@ -29,6 +29,10 @@ public class InGameUIManager : MonoBehaviourPun
     [SerializeField] TextMeshProUGUI _CountdownText;
     [SerializeField] float _countdownTweenScaleTime = 0.3f;
 
+    [Header("Dash Cooldown UI")]
+    [SerializeField] Image _dashCooldownImage;
+    [SerializeField] float _dashCooldown;
+
     public void ShowEliminatedFeed()
     {
         _eliminatedNickname.text = photonView.Owner.NickName;
@@ -103,5 +107,11 @@ public class InGameUIManager : MonoBehaviourPun
     }
 
     #endregion Respawning
+
+    public void PlayDashCooldownVisuals()
+    {
+        _dashCooldownImage.fillAmount = 1f;
+        DOTween.To(() => _dashCooldownImage.fillAmount, x => _dashCooldownImage.fillAmount = x, 0f, _dashCooldown).SetEase(Ease.Linear);
+    }
 
 }
