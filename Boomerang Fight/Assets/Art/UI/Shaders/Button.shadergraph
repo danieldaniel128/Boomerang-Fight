@@ -547,7 +547,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Dilate_Drop_Shadow_01",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": 1.0199999809265137,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -732,7 +732,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Outline_All",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": {
         "x": 1.0299999713897706,
         "y": 1.0499999523162842
@@ -1321,7 +1321,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Dilate_Drop_Shadow_02",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": 1.0499999523162842,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -1493,7 +1493,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Dimensions",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": {
         "x": 0.800000011920929,
         "y": 0.4000000059604645
