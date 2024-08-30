@@ -23,4 +23,10 @@ public class FloatingJoystick : Joystick
         background.anchoredPosition = _startPosition;
         base.OnPointerUp(eventData);
     }
+
+    public override void OnPointerUpNoEventData()
+    {
+        background.anchoredPosition = _startPosition;
+        base.OnPointerUpNoEventData();
+    }
 }

@@ -441,6 +441,22 @@ public class PlayerController : MonoBehaviourPun
         _playerBody.transform.forward = _attackDirection;
     }
 
+    public void ResetPlayerControllerOnSpawn()
+    {
+        //reset movement
+        _playerAnimationController.StopWalk();
+        _moveJoystick.OnPointerUpNoEventData();
+        _moveVelocity = Vector3.zero;
+
+        //reset everything range ability
+        _AttackJoystick.OnPointerUpNoEventData();
+        _startedRangeAbility = false;
+        _playerAnimationController.StopChargingBoomerang();
+        _vfxActivator.DeActivateProlongedVFX(VFXTypeEnum.Arrow, true);
+        _rangeAbility.Aimed = false;
+
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

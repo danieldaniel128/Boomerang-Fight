@@ -142,6 +142,8 @@ public class MultiplayerPlayerSpawner : MonoBehaviourPunCallbacks
         deadPlayer.GameUIManager.DisableDeathScreen();
         deadPlayer.PlayerControllerRef.enabled = true;
         deadPlayer.PlayerControllerRef.AnimationController.ResetAnimations();
+        //reset movement
+        deadPlayer.PlayerControllerRef.ResetPlayerControllerOnSpawn();
         deadPlayer.Invincibility(_spawnInvincibilityDuration);
     }
 
