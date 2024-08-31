@@ -159,8 +159,8 @@ public class PlayerController : MonoBehaviourPun
         OnFallEnded += FallEnded;
         EnableRangeAbility();
         EnableRecallAbility();
-        _boomerang.OnAttach += ToggleVisualBoomerang;
-        _boomerang.OnRelease += ToggleVisualBoomerang;
+        _boomerang.OnAttach += ToggleVisualBoomerangOn;
+        _boomerang.OnRelease += ToggleVisualBoomerangOff;
         _boomerang.OnRelease += FaceThrowDirection;
         _meleeAbility.OnAttack += PlayerMelee;
         _dashAbility.OnDash += _playerAnimationController.DashPressedTrigger;
@@ -175,8 +175,8 @@ public class PlayerController : MonoBehaviourPun
         OnFallEnded -= FallEnded;
         DisableRangeAbility();
         DisableRecallAbility();
-        _boomerang.OnAttach -= ToggleVisualBoomerang;
-        _boomerang.OnRelease -= ToggleVisualBoomerang;
+        _boomerang.OnAttach -= ToggleVisualBoomerangOn;
+        _boomerang.OnRelease -= ToggleVisualBoomerangOff;
         _boomerang.OnRelease -= FaceThrowDirection;
         _meleeAbility.OnAttack -= PlayerMelee;
         _dashAbility.OnDash -= _playerAnimationController.DashPressedTrigger;
@@ -434,6 +434,15 @@ public class PlayerController : MonoBehaviourPun
     void ToggleVisualBoomerang()
     {
         _boomerangVisual.SetActive(!_boomerangVisual.activeInHierarchy);
+    }
+    void ToggleVisualBoomerangOn()
+    {
+        _boomerangVisual.SetActive(true);
+    }
+
+    void ToggleVisualBoomerangOff()
+    {
+        _boomerangVisual.SetActive(false);
     }
 
     void FaceThrowDirection()
