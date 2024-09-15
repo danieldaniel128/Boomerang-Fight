@@ -46,7 +46,25 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        _roomsList = roomList;
+        Debug.Log("happend");
+        if(_roomsList.Count <=0)
+            _roomsList = roomList;
+        else
+            foreach (var room in roomList)
+            {
+                for (int i = 0; i < _roomsList.Count; i++)
+                {
+                    if (_roomsList[i].Name.Equals(room.Name))
+                    {
+                        List<RoomInfo> newList = _roomsList;
+                        if (room.RemovedFromList)
+                            newList.Remove(room);
+                        else
+                            newList[i] = room;
+                        _roomsList = newList;
+                    }
+                }
+            }
     }
     bool CheckRoomList()
     {
@@ -68,10 +86,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     /// </summary>
     private void CreateRoom()
     {
+        ExitGames.Client.Photon.Hashtable roomProperties = new ExitGames.Client.Photon.Hashtable
+        {
+            { "IsInGame", true }
+        };
         //set room options
         RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_maxPlayersInRoom};
         roomOptions.EmptyRoomTtl = 0; // 1 minute (60000 milliseconds)
         roomOptions.PlayerTtl = 0;
+        roomOptions.CustomRoomProperties = roomProperties;
         //create and enter room
         PhotonNetwork.CreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions);
     }
