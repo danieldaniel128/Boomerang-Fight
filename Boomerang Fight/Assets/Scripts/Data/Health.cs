@@ -85,7 +85,7 @@ public class Health : MonoBehaviourPunCallbacks
         if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
         {
             OnLivesCountZero?.Invoke();
-            RemovePlayer();
+            
         }
         _healthBarObject.SetActive(false);
     }
@@ -106,15 +106,7 @@ public class Health : MonoBehaviourPunCallbacks
         }
     }
 
-    private void RemovePlayer()
-    {
-        StartCoroutine(LeaveGameCoroutine());
-    }
-    public IEnumerator LeaveGameCoroutine()
-    {
-        yield return new WaitForSeconds(3f);
-        PhotonNetwork.LeaveRoom();
-    }
+    
 
     [PunRPC]
     private void OhHit()
@@ -150,7 +142,8 @@ public class Health : MonoBehaviourPunCallbacks
             if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
             {
                 OnLivesCountZero?.Invoke();
-                RemovePlayer();
+                TempLocalGameManager.Instance.endGameScreen.SetActive(true);
+                //RemovePlayer();
             }
             return;
 

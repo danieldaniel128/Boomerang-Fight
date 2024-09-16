@@ -10,6 +10,8 @@ public class TempLocalGameManager : MonoBehaviourPunCallbacks
 
     [SerializeField] List<OnlinePlayer> playerCharacters = new();
 
+    public GameObject endGameScreen;
+
     public List<OnlinePlayer> PlayerCharacters => playerCharacters;
 
     private void Awake()
@@ -48,4 +50,10 @@ public class TempLocalGameManager : MonoBehaviourPunCallbacks
         }
         return null;
     }
+
+    public void RemovePlayer()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
 }

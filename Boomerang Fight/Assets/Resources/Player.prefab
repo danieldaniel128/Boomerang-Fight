@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 1562349585433992285}
   - component: {fileID: 879577194195712651}
   - component: {fileID: 1182163968275124313}
+  - component: {fileID: 4588193809499807126}
   m_Layer: 7
   m_Name: Dino Body
   m_TagString: Untagged
@@ -390,6 +391,23 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &4588193809499807126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704941196288323276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4050ff3c7483044b66142cf68ab9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chickenLegPrefab: {fileID: 1264195060272078649, guid: 50613ea48f755524990a0cffece9f847,
+    type: 3}
+  amountOfLegs: 2
+  minForce: 2
+  maxForce: 4
 --- !u!1 &1789825938734246530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1261,7 @@ Transform:
   m_GameObject: {fileID: 5178514810636989025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2034,7 +2052,7 @@ PrefabInstance:
     - target: {fileID: 1349526859354559059, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1349526859354559059, guid: ae5d6ee223ee27d448a5b928ea41e72d,
         type: 3}
