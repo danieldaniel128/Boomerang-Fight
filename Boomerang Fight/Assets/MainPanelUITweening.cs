@@ -22,6 +22,7 @@ public class MainPanelUITweening : MonoBehaviour
 
     private void OnEnable()
     {
+        transformInitialPosDictionary.Clear();
         SetTransformOffScreen(TweenDirection.Up);
         SetTransformOffScreen(TweenDirection.Right);
         SetTransformOffScreen(TweenDirection.Left);
