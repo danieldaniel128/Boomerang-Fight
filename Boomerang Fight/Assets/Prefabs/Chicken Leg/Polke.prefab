@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4982243807548777908}
   - component: {fileID: 4115702572278478312}
   - component: {fileID: 4285920299589620771}
-  - component: {fileID: 2659679779243904729}
+  - component: {fileID: 7978973545610061054}
   m_Layer: 0
   m_Name: Polke
   m_TagString: Untagged
@@ -102,9 +102,9 @@ CapsuleCollider:
   m_Radius: 0.14
   m_Height: 0.67
   m_Direction: 1
-  m_Center: {x: 0, y: 0.25, z: 0}
---- !u!136 &2659679779243904729
-CapsuleCollider:
+  m_Center: {x: 0, y: 0.27, z: 0}
+--- !u!135 &7978973545610061054
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,11 +121,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.12
-  m_Height: 0.39
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.42, z: 0}
+  serializedVersion: 3
+  m_Radius: 0.18
+  m_Center: {x: 0, y: 0.54, z: 0}
 --- !u!1001 &2208920168536754933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,6 +197,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8958624581549106401, guid: ad6d921c72cba7549aea7853377b62f3,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9106905494445032391, guid: ad6d921c72cba7549aea7853377b62f3,
         type: 3}
       propertyPath: m_Name
@@ -226,17 +229,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2663d484ddfe4ab40867809796194d1d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2663d484ddfe4ab40867809796194d1d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2663d484ddfe4ab40867809796194d1d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2663d484ddfe4ab40867809796194d1d,
         type: 3}
@@ -287,6 +290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2663d484ddfe4ab40867809796194d1d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5212283418999763012, guid: 2663d484ddfe4ab40867809796194d1d,
         type: 3}
