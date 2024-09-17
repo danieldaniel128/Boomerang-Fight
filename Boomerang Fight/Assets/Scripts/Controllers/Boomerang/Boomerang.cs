@@ -143,6 +143,7 @@ public class Boomerang : MonoBehaviourPun
         transform.SetParent(null);
         OnRelease?.Invoke();
     }
+
     private void TryAttach()
     {
         if (!_attachable) return;

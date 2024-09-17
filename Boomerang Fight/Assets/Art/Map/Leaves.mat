@@ -62,7 +62,7 @@ Material:
     - _Toon_Ramp_Offset: 0.71
     - _Toon_Ramp_Smoothness: 0
     - _Wind_Speed: 1.5
-    - _Wind_Strengh: 1
+    - _Wind_Strengh: 1.2
     m_Colors:
     - _Toon_Ramp_Tinting: {r: 0.85490197, g: 0.85490197, b: 0.85490197, a: 0}
     - _Wind_Direction: {r: 1, g: 1, b: 0, a: 0}

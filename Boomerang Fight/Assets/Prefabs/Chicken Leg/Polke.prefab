@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4982243807548777908}
   - component: {fileID: 4115702572278478312}
   - component: {fileID: 4285920299589620771}
+  - component: {fileID: 2659679779243904729}
   m_Layer: 0
   m_Name: Polke
   m_TagString: Untagged
@@ -48,6 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09055f1bf6aa5354799ac6a0d5a64c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 136
 --- !u!54 &4115702572278478312
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82,7 +87,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264195060272078649}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 59561ff6015384445b7540516bf07315, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -94,10 +99,33 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.17
+  m_Radius: 0.14
   m_Height: 0.67
   m_Direction: 1
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!136 &2659679779243904729
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264195060272078649}
+  m_Material: {fileID: 13400000, guid: 59561ff6015384445b7540516bf07315, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.12
+  m_Height: 0.39
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.42, z: 0}
 --- !u!1001 &2208920168536754933
 PrefabInstance:
   m_ObjectHideFlags: 0

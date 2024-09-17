@@ -11,6 +11,8 @@ public class SpawnChickenLeg : MonoBehaviour
 
     private void OnDisable()
     {
+        if (!this.gameObject.scene.isLoaded) return;
+
         for (int i = 0; i < amountOfLegs; i++)
         {
             GameObject leg = Instantiate(chickenLegPrefab, transform.position, Quaternion.identity);
