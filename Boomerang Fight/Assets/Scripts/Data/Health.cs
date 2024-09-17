@@ -142,7 +142,7 @@ public class Health : MonoBehaviourPunCallbacks
             if (photonView.IsMine)  // Only call RemovePlayer if this is the local player
             {
                 OnLivesCountZero?.Invoke();
-                TempLocalGameManager.Instance.endGameScreen.SetActive(true);
+                TempLocalGameManager.Instance.ActivateEndGameScreen();
                 //RemovePlayer();
             }
             return;

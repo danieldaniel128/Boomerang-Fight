@@ -51,6 +51,16 @@ public class TempLocalGameManager : MonoBehaviourPunCallbacks
         return null;
     }
 
+    public void ActivateEndGameScreen()
+    {
+        Invoke(nameof(EnableEndGameScreen), 1.5f);
+    }
+
+    void EnableEndGameScreen()
+    {
+        endGameScreen.SetActive(true);
+    }
+
     public void RemovePlayer()
     {
         PhotonNetwork.LeaveRoom();

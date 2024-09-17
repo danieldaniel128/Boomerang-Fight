@@ -28,6 +28,7 @@ public class InGameUIManager : MonoBehaviourPun
     [SerializeField] GameObject _RespawningCountdown;
     [SerializeField] TextMeshProUGUI _CountdownText;
     [SerializeField] float _countdownTweenScaleTime = 0.3f;
+    bool triedRespawning = false;
 
     [Header("Dash Cooldown UI")]
     [SerializeField] Image _dashCooldownImage;
@@ -82,6 +83,7 @@ public class InGameUIManager : MonoBehaviourPun
 
     public void StartRespawningCountdown()
     {
+        triedRespawning = false;
         StartCoroutine(RespawningCountdown());
     }
 
@@ -103,7 +105,14 @@ public class InGameUIManager : MonoBehaviourPun
         TweenCountDownText();
         yield return new WaitForSeconds(1);
         //call respawn player
+        triedRespawning = true;
         MultiplayerPlayerSpawner.Instance.TryRespawn(photonView.OwnerActorNr);
+    }
+
+    public void TryRespawningAgain()
+    {
+        if (triedRespawning)
+            MultiplayerPlayerSpawner.Instance.TryRespawn(photonView.OwnerActorNr);
     }
 
     #endregion Respawning
