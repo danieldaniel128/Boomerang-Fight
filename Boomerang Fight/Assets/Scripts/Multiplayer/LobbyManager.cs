@@ -1,7 +1,10 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,11 +17,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private int _maxPlayersInRoom = 4;
     [SerializeField] private TextMeshProUGUI _currentRoomPlayersTXT;
     [Header("LobbyPanels")]
-    [SerializeField] private GameObject SearchingPlayersPanel;
-    [SerializeField] private GameObject QuickMatchPanel;
-    List<RoomInfo> _roomsList = new List<RoomInfo>();
-    //[SerializeField] Button _quickMatchBTN;
+    [SerializeField] private GameObject SelectRoomsPanel;
+    [SerializeField] private GameObject MainPanel;
+    [SerializeField] private GameObject waitingForPlayersPanel;
 
+    List<RoomInfo> _roomsList = new List<RoomInfo>();
+    [SerializeField] List<RoomButton> _roomsButtons;
+    [SerializeField] Button _startGameBTN;
+    int playerLastRoomID;
+    //[SerializeField] Button _quickMatchBTN;
+    bool _isCreatingRooms = true;
+    private const byte PLAYER_COUNT_EVENT = 1;
     //private void OnEnable()
     //{
     //    _quickMatchBTN.interactable = !CheckPlayersInGameStatus();
@@ -27,135 +36,167 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnEnable()
     {
         base.OnEnable();
-        QuickMatchPanel.SetActive(true);
+        MainPanel.SetActive(true);
+    }
+    private void OnDisable()
+    {
+    }
+    //private void OnEvent(EventData photonEvent)
+    //{
+    //    if (photonEvent.Code == PLAYER_COUNT_EVENT)
+    //    {
+    //        object[] data = (object[])photonEvent.CustomData;
+    //        int roomID = (int)data[0];
+    //        int change = (int)data[1];
+
+    //        // Now update the room UI
+    //        RoomButton roomButton = _roomsButtons.Find(btn => btn.GetRoomID() == roomID);
+    //        if (roomButton != null)
+    //        {
+    //            roomButton.PlayerCount += change;
+    //            Debug.Log($"Updated player count for room {roomID} by {change}. New count: {roomButton.PlayerCount}");
+    //             roomButton.RefreshRoomButtonPlayerAmount(roomButton.PlayerCount, roomButton.GetMaxPlayers());
+    //        }
+    //    }
+    //}
+
+    void InitRoomButtons()
+    {
+        for (int i = PhotonNetwork.CountOfRooms; i < 4; i++)
+        {
+            _roomsButtons[i].SetRoomID(i);
+        }
+    }
+    void CreateRoom(RoomButton roomButton)
+    {
+
+        RoomOptions roomOptions = new RoomOptions();
+        int maxPlayer = (roomButton.GetRoomID() + 1);
+        roomOptions.MaxPlayers = (byte)maxPlayer;
+        roomButton.SetMaxPlayers(maxPlayer);
+        roomOptions.IsVisible = true;
+        roomOptions.IsOpen = true;
+        roomOptions.PlayerTtl = 0;
+        
+        // Create rooms but don't join them
+        PhotonNetwork.JoinOrCreateRoom("Room " + (maxPlayer), roomOptions, TypedLobby.Default);
+    }
+    
+    private void Start()
+    {
+        //set their on click
+        InitRoomButtons();
+        for (int i = 0; i < _roomsButtons.Count; i++)
+        {
+            RoomButton roomButton = _roomsButtons[i];
+            roomButton.RoomBTN.onClick.AddListener(() => JoinExitRoom(roomButton));
+        }
+    }
+    void JoinExitRoom(RoomButton roomButton)
+    {
+        Debug.Log("joinexit");
+        playerLastRoomID = roomButton.GetRoomID();
+        if (!roomButton.IsInRoom)
+            CreateRoom(roomButton);
+        else
+            LeaveRoom();
     }
 
-    private void RefreshPlayerCountTXT()
-    {
-        _currentRoomPlayersTXT.text = $"Found Players " +
-            $"{string.Format("{0}/{1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers)}";
-    }
     void RequestRoomList()
     {
         PhotonNetwork.GetCustomRoomList(TypedLobby.Default, "");
     }
-    //public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    //{
-    //    _quickMatchBTN.interactable |= CheckPlayersInGameStatus();
-    //}
-    
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    public RoomButton GetButton(int buttonID)
     {
-        Debug.Log("happend");
-        if(_roomsList.Count <=0)
-            _roomsList = roomList;
-        else
-            foreach (var room in roomList)
-            {
-                for (int i = 0; i < _roomsList.Count; i++)
-                {
-                    if (_roomsList[i].Name.Equals(room.Name))
-                    {
-                        List<RoomInfo> newList = _roomsList;
-                        if (room.RemovedFromList)
-                            newList.Remove(room);
-                        else
-                            newList[i] = room;
-                        _roomsList = newList;
-                    }
-                }
-            }
+        return _roomsButtons.Find(btn => btn.GetRoomID() == (buttonID));
     }
-    bool CheckRoomList()
-    {
 
-        if (_roomsList != null)
-        {
-            foreach (RoomInfo room in _roomsList)
-            {
-                if (room.CustomProperties.ContainsKey("IsInGame"))
-                {
-                    return (bool)room.CustomProperties["IsInGame"];
-                }
-            }
-        }
-        return false ;
-    }
+
+    // Called when the room list is updated (i.e., after joining the lobby or when rooms change)
+
+
+    // Coroutine to leave the room right after creating it
+
+
     /// <summary>
     /// creates and enters room.
     /// </summary>
-    private void CreateRoom()
-    {
-        ExitGames.Client.Photon.Hashtable roomProperties = new ExitGames.Client.Photon.Hashtable
-        {
-            { "IsInGame", true }
-        };
-        //set room options
-        RoomOptions roomOptions = new RoomOptions() {  MaxPlayers = (byte)_maxPlayersInRoom};
-        roomOptions.EmptyRoomTtl = 0; // 1 minute (60000 milliseconds)
-        roomOptions.PlayerTtl = 0;
-        roomOptions.CustomRoomProperties = roomProperties;
-        //create and enter room
-        PhotonNetwork.CreateRoom($"Room {PhotonNetwork.NetworkingClient.RoomsCount + 1}", roomOptions);
-    }
-    /// <summary>
-    /// tries to join a random room. if there is no room or failed, OnJoinRandomFailed will call.
-    /// used onclick play button.
-    /// </summary>
-    public void QuickMatch()
-    {
-        //joins a random room.
-        if (!CheckRoomList())
-        PhotonNetwork.JoinRandomRoom();
-    }
+
 
     #region IMatchmakingCallbacks
     #region UsedCallBacks
-    
+
     public override void OnCreatedRoom()
     {
         Debug.Log("room created" + PhotonNetwork.NetworkingClient.CurrentRoom.Name);
+        GetButton(playerLastRoomID);
     }
     public override void OnJoinedRoom()
     {
-        Debug.Log($"<color=green>player: {PhotonNetwork.LocalPlayer.NickName} joined room {PhotonNetwork.NetworkingClient.CurrentRoom.Name}</color>");
-        QuickMatchPanel.SetActive(false);
-        SearchingPlayersPanel.SetActive(true);
+        _roomsButtons[playerLastRoomID].EnterExitRoom();
+        //5RaisePlayerCountEvent(playerLastRoomID, 1); // +1 for joining
+        foreach (RoomButton roomButton in _roomsButtons.Where(c=>!c.IsInRoom))
+            roomButton.RoomBTN.interactable = false;
+        Debug.Log("joined room " + PhotonNetwork.NetworkingClient.CurrentRoom.Name);
         if (PhotonNetwork.CurrentRoom.PlayerCount == PhotonNetwork.CurrentRoom.MaxPlayers)
-        {
-            photonView.RPC(nameof(LoadGame), RpcTarget.MasterClient);
-        }
+            StartGame();//_startGameBTN.interactable=true;
+        //UpdateRoomPlayerCount();
+        // _roomsButtons[playerLastRoomID].RefreshRoomButtonPlayerAmount(PhotonNetwork.CurrentRoom.PlayerCount,0);
         RefreshPlayerCountTXT();
+        WaintingToPlayersPanel();
+    }
+    public void StartGame()
+    {
+        photonView.RPC(nameof(LoadGameEnable), RpcTarget.MasterClient);
     }
     public override void OnLeftRoom()
     {
-        QuickMatchPanel.SetActive(true);
-        SearchingPlayersPanel.SetActive(false);
+        PhotonNetwork.JoinLobby(TypedLobby.Default);
+        _roomsButtons[playerLastRoomID].EnterExitRoom();
+        foreach (RoomButton roomButton in _roomsButtons.Where(c => !c.IsInRoom))
+            roomButton.RoomBTN.interactable = true;
+        _startGameBTN.interactable = false;
+        Debug.Log("left room");
+        GoToSelectRoom();
+    }
+    public void BackToMainMenu()
+    {
+        MainPanel.SetActive(true);
+        SelectRoomsPanel.SetActive(false);
+        waitingForPlayersPanel.SetActive(false);
+    }
+    public void WaintingToPlayersPanel()
+    {
+        MainPanel.SetActive(false);
+        SelectRoomsPanel.SetActive(false);
+        waitingForPlayersPanel.SetActive(true);
+    }
+    public void GoToSelectRoom()
+    {
+        MainPanel.SetActive(false);
+        SelectRoomsPanel.SetActive(true);
+        waitingForPlayersPanel.SetActive(false);
     }
     public void LeaveRoom()
     {
+        //_roomsButtons[playerLastRoomID].RefreshRoomButtonPlayerAmount(PhotonNetwork.CurrentRoom.PlayerCount,0);
+        //DecreaseUpdateRoomPlayerCountBeforeLeft();
         PhotonNetwork.LeaveRoom();
     }
     [PunRPC]
-    private void LoadGame()
+    public void LoadGameEnable()
     {
-        ExitGames.Client.Photon.Hashtable roomProperties = new ExitGames.Client.Photon.Hashtable
-        {
-            { "IsInGame", true }
-        };
-        PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
+
+        _startGameBTN.interactable = true ;
+    }
+    public void LoadLevel()
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
         PhotonNetwork.LoadLevel(1);
+        
     }
-    /// <summary>
-    /// create new room if it failed
-    /// </summary>
-    /// <param name="returnCode"></param>
-    /// <param name="message"></param>
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        Debug.Log("<color=red>joined failed</color>");
-            CreateRoom();
-    }
+    
     #endregion
     #region UnusedCallBacks
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -167,6 +208,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         //
     }
+    private void RefreshPlayerCountTXT()
+    {
+        _currentRoomPlayersTXT.text = $"Found Players " +
+            $"{string.Format("{0}/{1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers)}";
+    }
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         RefreshPlayerCountTXT();
@@ -175,7 +221,39 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         RefreshPlayerCountTXT();
+        _startGameBTN.interactable=false;
     }
+
+
+    private void DecreaseUpdateRoomPlayerCountBeforeLeft()
+    {
+        if (PhotonNetwork.CurrentRoom != null)
+        {
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new ExitGames.Client.Photon.Hashtable
+        {
+            { "PlayerCount", (byte)(Convert.ToInt32(PhotonNetwork.CurrentRoom.PlayerCount)-1) }
+        });
+        }
+
+    }
+    private void UpdateRoomPlayerCount()
+    {
+        if (PhotonNetwork.CurrentRoom != null)
+        {
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new ExitGames.Client.Photon.Hashtable
+        {
+            { "PlayerCount", PhotonNetwork.CurrentRoom.PlayerCount }
+        });
+        }
+    }
+    // Call this when a player joins or leaves the room
+    private void RaisePlayerCountEvent(int roomID, int change)
+    {
+        object[] content = new object[] { roomID, change }; // Data to send (roomID and player count change)
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; // Send to everyone
+        PhotonNetwork.RaiseEvent(PLAYER_COUNT_EVENT, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
 
     #endregion
 

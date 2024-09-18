@@ -28,7 +28,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        EnterLobby();
+        PhotonNetwork.JoinLobby();
     }
     /// <summary>
     /// switches to lobby panel when connected
@@ -38,4 +38,9 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         gameObject.SetActive(false);
         _lobbyPanel.SetActive(true);
     }
+    public override void OnJoinedLobby()
+    {
+        EnterLobby();
+    }
+    
 }
