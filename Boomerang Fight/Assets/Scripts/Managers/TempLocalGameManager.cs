@@ -17,15 +17,12 @@ public class TempLocalGameManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         Instance = this;
+        PhotonNetwork.AutomaticallySyncScene = false;
     }
 
     public void AddPlayerCharacter(OnlinePlayer player)
     {
         playerCharacters.Add(player);
-    }
-    public override void OnLeftRoom()
-    {
-        SceneManager.LoadScene(0);
     }
     //public GameObject GetPlayerGameObjectBasedOnID(int id)
     //{
@@ -63,6 +60,9 @@ public class TempLocalGameManager : MonoBehaviourPunCallbacks
 
     public void RemovePlayer()
     {
+        // Cancel any invokes or coroutines that might cause issues when leaving the room
+        CancelInvoke();
+        StopAllCoroutines();
         PhotonNetwork.LeaveRoom();
     }
 

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
@@ -36,7 +37,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnEnable()
     {
         base.OnEnable();
-        MainPanel.SetActive(true);
+        BackToMainMenu();
     }
     private void OnDisable()
     {
@@ -81,9 +82,25 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // Create rooms but don't join them
         PhotonNetwork.JoinOrCreateRoom("Room " + (maxPlayer), roomOptions, TypedLobby.Default);
     }
-    
+    private void InitializeUIReferences()
+    {
+        // Assign all UI elements and references here
+        if (FindObjectsOfType<RoomButton>() != null)
+        {
+            _roomsButtons = FindObjectsOfType<RoomButton>().ToList();
+            _roomsButtons = _roomsButtons.OrderBy(button => button.GetMaxPlayers()).ToList();
+        }
+        if (GameObject.Find("Start Button (1)")?.GetComponent<Button>() != null)
+            _startGameBTN = GameObject.Find("Start Button (1)").GetComponent<Button>();
+        // Initialize other UI components as necessary
+    }
     private void Start()
     {
+        waitingForPlayersPanel.SetActive(true);
+        SelectRoomsPanel.SetActive(true);
+        InitializeUIReferences();
+        waitingForPlayersPanel.SetActive(false);
+        SelectRoomsPanel.SetActive(false);
         //set their on click
         InitRoomButtons();
         for (int i = 0; i < _roomsButtons.Count; i++)
@@ -133,6 +150,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
+        foreach (Transform panel in GameObject.Find("Lobby Panel").transform)
+            if(panel.name.Equals("Wait_For_Players_Panel"))
+                waitingForPlayersPanel = panel.gameObject;
+        else if (panel.name.Equals("JoinRoom"))
+            SelectRoomsPanel = panel.gameObject;
+            else if (panel.name.Equals("Main_Panel"))
+                MainPanel = panel.gameObject;
+        waitingForPlayersPanel.SetActive(true);
+        SelectRoomsPanel.SetActive(true);
+        InitializeUIReferences();
+        waitingForPlayersPanel.SetActive(false);
         _roomsButtons[playerLastRoomID].EnterExitRoom();
         //5RaisePlayerCountEvent(playerLastRoomID, 1); // +1 for joining
         foreach (RoomButton roomButton in _roomsButtons.Where(c=>!c.IsInRoom))
@@ -147,10 +175,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public void StartGame()
     {
-        photonView.RPC(nameof(LoadGameEnable), RpcTarget.MasterClient);
+        GameObject.Find("Lobby Panel").GetComponent<PhotonView>().RPC(nameof(LoadGameEnable), RpcTarget.MasterClient);
     }
     public override void OnLeftRoom()
     {
+        // Check if the current scene is the lobby scene (Scene 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            SceneManager.LoadScene(0);
+            Debug.Log("Not in the lobby scene yet, ignoring OnLeftRoom.");
+            return; // Skip the logic if you're not in the lobby scene
+        }
         PhotonNetwork.JoinLobby(TypedLobby.Default);
         _roomsButtons[playerLastRoomID].EnterExitRoom();
         foreach (RoomButton roomButton in _roomsButtons.Where(c => !c.IsInRoom))
