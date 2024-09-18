@@ -1474,7 +1474,6 @@ GameObject:
   - component: {fileID: 7119118566892885847}
   - component: {fileID: 3660436447870074367}
   - component: {fileID: 3853871162554313200}
-  - component: {fileID: 1151457179100120369}
   m_Layer: 5
   m_Name: Join Button
   m_TagString: Untagged
@@ -1605,23 +1604,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1151457179100120369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4635698276753508140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98cb3373fbb850446aa017a2cb41c696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _amountOfPlayers: {fileID: 4502558708856722207}
-  _roomLabel: {fileID: 3086279595764617656}
-  _roomId: 0
-  RoomBTN: {fileID: 3660436447870074367}
-  IsInRoom: 0
 --- !u!1 &4860035805570978229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,7 +1617,6 @@ GameObject:
   - component: {fileID: 2490480053453608246}
   - component: {fileID: 6517289229192566040}
   - component: {fileID: 4747097884669516976}
-  - component: {fileID: 3996936627948318420}
   m_Layer: 5
   m_Name: Join Button
   m_TagString: Untagged
@@ -1766,23 +1747,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3996936627948318420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4860035805570978229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98cb3373fbb850446aa017a2cb41c696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _amountOfPlayers: {fileID: 4743630923072883076}
-  _roomLabel: {fileID: 8260404016481614080}
-  _roomId: 0
-  RoomBTN: {fileID: 6517289229192566040}
-  IsInRoom: 0
 --- !u!1 &5015355634278354343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,7 +2413,6 @@ GameObject:
   - component: {fileID: 5634875872112708655}
   - component: {fileID: 8230428615044091008}
   - component: {fileID: 3081086412321396039}
-  - component: {fileID: 3239751209920152052}
   m_Layer: 5
   m_Name: Join Button
   m_TagString: Untagged
@@ -2580,23 +2543,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3239751209920152052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6516530035459277491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98cb3373fbb850446aa017a2cb41c696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _amountOfPlayers: {fileID: 3815288119323462230}
-  _roomLabel: {fileID: 720102294348376891}
-  _roomId: 0
-  RoomBTN: {fileID: 8230428615044091008}
-  IsInRoom: 0
 --- !u!1 &6565739758513565017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +2961,6 @@ GameObject:
   - component: {fileID: 2033901702655627757}
   - component: {fileID: 235367613461406056}
   - component: {fileID: 4459193700617344483}
-  - component: {fileID: 2498435463971725112}
   m_Layer: 5
   m_Name: Join Button
   m_TagString: Untagged
@@ -3146,23 +3091,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2498435463971725112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6946149723524460205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98cb3373fbb850446aa017a2cb41c696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _amountOfPlayers: {fileID: 3056227384936991713}
-  _roomLabel: {fileID: 1008310826679283502}
-  _roomId: 0
-  RoomBTN: {fileID: 235367613461406056}
-  IsInRoom: 0
 --- !u!1 &8304210577002438013
 GameObject:
   m_ObjectHideFlags: 0

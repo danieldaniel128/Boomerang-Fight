@@ -74,9 +74,6 @@ MonoBehaviour:
   - OhHit
   - MasterClientUpdatePlayerAmount
   - CallOnAllPlayersJoined
-  - IncreasePlayerCount
-  - DecreasePlayerCount
-  - LoadGameEnable
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
