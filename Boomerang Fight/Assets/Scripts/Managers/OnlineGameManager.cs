@@ -42,12 +42,9 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
         { "IsInGame", false }
         };
         PhotonNetwork.LocalPlayer.SetCustomProperties(roomProperties);
-        PhotonNetwork.LeaveRoom();//
+        TempLocalGameManager.Instance.ActivateEndGameScreen();
     }
-    public override void OnLeftRoom()
-    {
-        //SceneManager.LoadScene(0);
-    }
+   
     public Player GetMyPlayer()
     {
         foreach (Player player in PhotonNetwork.PlayerList)
