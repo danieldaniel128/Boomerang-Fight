@@ -64,7 +64,6 @@ Material:
     - _Blend: 0
     - _Boomerang_Size: 0.25
     - _CastShadows: 1
-    - _ColorMask: 15
     - _Cull: 2
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
@@ -72,7 +71,7 @@ Material:
     - _DrawOrder: 0
     - _DstBlend: 10
     - _Fullscreen_DepthWrite: 0
-    - _Move_Speed: 0.08
+    - _Move_Speed: 0.05
     - _Offset_TIles: 0.4
     - _Offset_TIles_X: 0.5
     - _Offset_Tiles_X: 0.5
@@ -82,27 +81,18 @@ Material:
     - _QueueOffset: 0
     - _Rotate_UV: 0
     - _SrcBlend: 5
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
     - _Surface: 1
     - _Tile_Size: 0.35
     - _Tile_Size_X: 0.5
-    - _Tile_Size_Y: 0.5
+    - _Tile_Size_Y: 0.2
     - _Tiles: 0.2
-    - _UIMaskSoftnessX: 1
-    - _UIMaskSoftnessY: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Move_Offset: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &5488448042915880074
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -115,4 +105,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 7
